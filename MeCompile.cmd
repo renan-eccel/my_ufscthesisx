@@ -1,5 +1,5 @@
 # Just run make
 
-make 
+make
 
-pause 
+pause

@@ -13,8 +13,8 @@
 % sumario=UFSC : Sumário customizado
 
 %\newboolean{ABNTEXsumario-tradicional}     %true=titles of chapter/appendix in uppercase
-%\newboolean{ABNTEXsumario-abnt-6027-2012} 
-\newboolean{ABNTEXsumario-UFSC} 
+%\newboolean{ABNTEXsumario-abnt-6027-2012}
+\newboolean{ABNTEXsumario-UFSC}
 
 %\setboolean{ABNTEXsumario-tradicional}{false}
 %\setboolean{ABNTEXsumario-abnt-6027-2012}{true}
@@ -36,7 +36,7 @@
 	\setboolean{ABNTEXsumario-UFSC}{true}}
 
 %
-% Repassa todos os parametros a classe abntex2, 
+% Repassa todos os parametros a classe abntex2,
 \DeclareOption*{%
 	\PassOptionsToClass{\CurrentOption}{abntex2}%
 }
@@ -77,7 +77,7 @@
 % Número da última página
 \RequirePackage{lastpage}
 
-\RequirePackage{lmodern}			% Usa a fonte Latin Modern			
+\RequirePackage{lmodern}			% Usa a fonte Latin Modern
 \RequirePackage[T1]{fontenc}		% Selecao de codigos de fonte.
 \RequirePackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 \RequirePackage{color}				% Controle das cores
@@ -87,7 +87,7 @@
 \RequirePackage{pdfpages}
 \RequirePackage{fancyvrb}
 \RequirePackage{rotating}
-\RequirePackage{amsmath}		
+\RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{mathrsfs}
 \RequirePackage{pdflscape}
@@ -102,7 +102,7 @@
 \RequirePackage{float}
 \RequirePackage{siunitx} % A comprehensive (SI) units package
 \RequirePackage{datetime}
-\RequirePackage{rotating} % gives you the possibility to rotate any object of an arbitrary angle. 
+\RequirePackage{rotating} % gives you the possibility to rotate any object of an arbitrary angle.
 \RequirePackage{pdflscape} % Rotação de páginas no documento pdf.
 \RequirePackage{mdframed} % Customize the look of the frame
 
@@ -116,9 +116,9 @@
 \RequirePackage{longtable}
 \RequirePackage{tocloft}
 
-% --- 
+% ---
 % CONFIGURAÇÕES DE PACOTES
-% --- 
+% ---
 \sisetup{detect-all}
 \sisetup{scientific-notation = fixed, fixed-exponent = 0, round-mode = places,round-precision = 2,output-decimal-marker = {,} }
 \DeclareSIUnit \VA {VA} %apparent power
@@ -138,7 +138,7 @@
 \definecolor{titlecolor}{rgb}{0,0,0}  % black
 \definecolor{biocolor}{rgb}{0,0,0}  % black
 
-	
+
 
 \lstset{ %
 	aboveskip=3mm,
@@ -175,7 +175,7 @@
 %By default, listings does not support multi-byte encoding for source code. The extendedchar option only works for 8-bits encodings such as latin1.
 %
 %To handle UTF-8, you should tell listings how to interpret the special characters by defining them like so
-\lstset{literate=	
+\lstset{literate=
 	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
 	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
 	{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
@@ -183,16 +183,16 @@
 	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
 	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
 	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
-	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1	 
+	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
 	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
 	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
 	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
-	{€}{{\EUR}}1 {£}{{\pounds}}1 {ã}{{\~a}}1 {õ}{{\~o}}1 {Ã}{{\~A}}1 {Õ}{{\~O}}1	
+	{€}{{\EUR}}1 {£}{{\pounds}}1 {ã}{{\~a}}1 {õ}{{\~o}}1 {Ã}{{\~A}}1 {Õ}{{\~O}}1
 }
 
-% --- 
-% 
-% --- 
+% ---
+%
+% ---
 
 
 \newcommand{\ifnotempty}[2]{\ifthenelse{\not\equal{#1}{}}{#2}{}}
@@ -252,7 +252,7 @@
 
 
 
-% Fontes dos títulos e seções 
+% Fontes dos títulos e seções
 
 % Tamanho da fonte padrão do 'ABNTEX'
 \renewcommand{\normalsize}{\fontsize{10.5pt}{11pt}}
@@ -276,7 +276,7 @@
 %\updefault	n	\upshape, \textup{}
 %\itdefault	it	\itshape, \textit{}
 %\scdefault	sc	\scshape, \textsc{}
-%\sldefault	sl	\slshape, \textsl{} 
+%\sldefault	sl	\slshape, \textsl{}
 
 
 \renewcommand{\rmdefault}{cmr} % Selects a roman (i.e., serifed) font family
@@ -308,7 +308,7 @@
 		\addtocontents{toc}{\vspace{\cftbeforepartskip}}}%
 }
 % -----
-	
+
 
 \renewcommand{\chapnumfont}{\chaptitlefont}
 \renewcommand{\parttitlefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
@@ -320,8 +320,8 @@
 
 % No caso de Sumario (TOC) UFSC
 %
-\ifthenelse{\boolean{ABNTEXsumario-UFSC}}{%		
-		
+\ifthenelse{\boolean{ABNTEXsumario-UFSC}}{%
+
 	\cftsetindents{part}{0em}{\cftlastnumwidth}
 	\cftsetindents{chapter}{0em}{\cftlastnumwidth}
 	\cftsetindents{section}{0em}{\cftlastnumwidth}
@@ -349,16 +349,16 @@
 		\cftinserthook{toc}{A}}
 	%
 	\setlength{\cftbeforechapterskip}{1em}
-		
+
 	%
 	% Fontes das entradas do sumario
 	%
 	\renewcommand*{\l@chapter}[2]{%
 		\l@chapapp{\uppercase{#1}}{#2}{\cftchaptername}}
-		
+
 	\renewcommand*{\l@section}[2]{%
-		\l@chapapp{\ABNTEXsectionfont\uppercase{#1}}{#2}{\cftsectionname}} 
-			
+		\l@chapapp{\ABNTEXsectionfont\uppercase{#1}}{#2}{\cftsectionname}}
+
 	\renewcommand{\cftpartfont}{\ABNTEXpartfont}
 	\renewcommand{\cftpartpagefont}{\cftpartfont}
 	%
@@ -373,11 +373,11 @@
 	%
 	\renewcommand{\cftsubsubsectionfont}{\ABNTEXsubsubsectionfont}
 	\renewcommand{\cftsubsubsectionpagefont}{\cftsubsubsectionfont}
-		
+
 	%
 	\renewcommand{\cftparagraphfont}{\ABNTEXsubsubsubsectionfont}
 	\renewcommand{\cftparagraphpagefont}{\cftparagraphfont}
-		
+
 	%
 	% Ajusta entrada Referencias
 	%
@@ -389,7 +389,7 @@
 		\addcontentsline{toc}{chapter}{\uppercase{\bibname}}
 		\fi
 		\prebibhook
-	}  
+	}
 }{}
 
 \captionsetup[table]{
@@ -463,7 +463,7 @@
 % Numeracao continua das figuras
 
 %Numeração dos floats por capítulo
-\counterwithin{figure}{chapter} 
+\counterwithin{figure}{chapter}
 \counterwithin{table}{chapter}
 
 
@@ -472,9 +472,9 @@
 \newcommand{\tabref}[1]{Tabela~\ref{#1}}    % Cross-reference of tables
 \newcommand{\eqnref}[1]{\eqref{#1}}      % Cross-reference of equations
 \newcommand{\secref}[1]{Seção~\ref{#1}}  % Cross-reference of equations
-\newcommand{\defref}[1]{Definição~\ref{#1}} % 
+\newcommand{\defref}[1]{Definição~\ref{#1}} %
 
-	
+
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 % Estilo de capítulos
@@ -506,7 +506,7 @@
 	\renewcommand\afterchaptertitle{%
 		\par\vskip\midchapskip\hrule\nobreak\vskip\afterchapskip}
 }
-	
+
 \makeatother
 
 % Veja outros estilos em:
@@ -528,7 +528,7 @@
 % ------------------------------------------------------------------------
 
 % -----
-% Declaracoes de cabecalhos 
+% Declaracoes de cabecalhos
 % -----
 % Cabecalho padrao
 \makepagestyle{abntheadings}
@@ -544,7 +544,7 @@
 % ------------------------------------------------------------------------
 %% criar um novo estilo incluindo logos da UFSC e do INEP
 % ------------------------------------------------------------------------
-\makepagestyle{abntheadingsLogo} %  
+\makepagestyle{abntheadingsLogo} %
 \makeevenhead{abntheadingsLogo}{\ABNTEXfontereduzida\thepage}{\ABNTEXfontereduzida\textit\leftmark}{\includegraphics[width=20pt]{Logo/inep.pdf}}
 \makeoddhead{abntheadingsLogo}{\includegraphics[width=15pt]{Logo/ufsc.pdf}}{\ABNTEXfontereduzida\textit\rightmark}{\ABNTEXfontereduzida\thepage}
 \makeheadrule{abntheadingsLogo}{\textwidth}{\normalrulethickness}
@@ -558,13 +558,13 @@
 \renewcommand{\textual}{%
 	\ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
 		\pagestyle{plain}%
-		}{%else  
+		}{%else
 		\pagestyle{abntheadings}% Estilo original do Abntex2
 		% \aliaspagestyle{chapter}{abntchapfirst}% customizing chapter pagestyle
 		\aliaspagestyle{chapter}{empty} % Remove a numeração das páginas no início dos capítulos.
-	}  
+	}
 	\nouppercaseheads%
-	\bookmarksetup{startatroot}% 
+	\bookmarksetup{startatroot}%
 }
 
 % ---
@@ -572,14 +572,14 @@
 \newcommand{\textualINEPUFSC}{%
 	\ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
 		\pagestyle{plain}%
-		}{%else  
+		}{%else
 		%   \pagestyle{abntheadings}% Estilo original do Abntex2
 		\pagestyle{abntheadingsLogo}%
 		% \aliaspagestyle{chapter}{abntchapfirst}% customizing chapter pagestyle
 		\aliaspagestyle{chapter}{empty} % Remove a numeração das páginas no início dos capítulos.
-	}  
+	}
 	\nouppercaseheads%
-	\bookmarksetup{startatroot}% 
+	\bookmarksetup{startatroot}%
 }
 
 
@@ -598,7 +598,7 @@
 }
 
 
-% -- 
+% --
 % Solution from http://tex.stackexchange.com/questions/25105/unable-to-link-to-inserted-pages-with-pdfpages
 
 \newcounter{includepdfpage}
@@ -610,44 +610,44 @@
 \newcommand{\modifiedincludepdf}[4]{
 	\setcounter{currentpagecounter}{0}
 	\includepdf[pages=#1,pagecommand=\addlabelstoallincludedpages{#2},scale=#4]{#3}}
-	
-		
+
+
 % ---
 % Impressão da Capa
  \newcommand{\imprimircapaUFSC}{%
-	 \begin{EnvCapaUFSC}%    
-	\vspace*{5cm}		
-		 \parbox{307pt}{\center\ArialTreze \MakeUppercase{\imprimirtitulo}}	
-	 \vfill	
-	 \vspace*{3cm}				
-		\ArialCatorze\imprimirautor			
+	 \begin{EnvCapaUFSC}%
+	\vspace*{5cm}
+		 \parbox{307pt}{\center\ArialTreze \MakeUppercase{\imprimirtitulo}}
+	 \vfill
+	 \vspace*{3cm}
+		\ArialCatorze\imprimirautor
 	 \vfill
 	 \vspace*{5.8cm} % Precisa ser ajustado dependendo do tamanho do titulo
 	 \end{EnvCapaUFSC}
  }
 % ---
-		
-		
+
+
 % ---
 % Impressão da Capa
 \renewcommand{\imprimircapa}{%
 	\begin{capa}%
 		\center
-				
+
 		\ABNTEXchapterfont\bfseries\large{UNIVERSIDADE FEDERAL DE SANTA CATARINA\\PROGRAMA DE P\'OS--GRADUA\c C\~AO EM ENGENHARIA EL\'ETRICA}
-				
+
 		\vfill
-				
+
 		\ABNTEXchapterfont\large\imprimirautor
-				
+
 		\vfill
 		\ABNTEXchapterfont\bfseries\Large\MakeUppercase{\imprimirtitulo}
 		\vfill
-				
+
 		\large\imprimirlocal
-				
+
 		\large\imprimirdata
-				
+
 		\vspace*{1cm}
 	\end{capa}
 }
@@ -667,43 +667,43 @@
 % Conteudo padrao da Folha de Rosto
 \makeatletter
 \renewcommand{\folhaderostocontent}{
-	\begin{center}				
+	\begin{center}
 		%\vspace*{1cm}
 		{\ABNTEXchapterfont\large\imprimirautor}
-				
+
 		\vspace*{\fill}\vspace*{\fill}
 		\begin{center}
 			\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
 		\end{center}
 		\vspace*{\fill}
-				
+
 		\abntex@ifnotempty{\imprimirpreambulo}{%
 			\hspace{.45\textwidth}
-			\begin{minipage}{5,5cm}				
+			\begin{minipage}{5,5cm}
 				\SingleSpacing
 				\fontsize{9.5}{10.5} \selectfont	\imprimirpreambulo\\
-														
+
 				\fontsize{9.5}{10.5} \selectfont{\textbf{\imprimirorientadorRotulo}~\imprimirorientador\par}
 				\abntex@ifnotempty{\imprimircoorientador}{%
 					{\textbf{\imprimircoorientadorRotulo}~\imprimircoorientador}%
-				}%				
+				}%
 			\end{minipage}%
 			\vspace*{\fill}
 		}%
-				
+
 		%		{\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
-				
+
 		%		{\large\imprimirorientadorRotulo~\imprimirorientador\par}
 		%		\abntex@ifnotempty{\imprimircoorientador}{%
 		%			{\large\imprimircoorientadorRotulo~\imprimircoorientador}%
 		%		}%
 		\vspace*{\fill}
-				
+
 		{\large\imprimirlocal}
 		\par
 		{\large\imprimirdata}
 		\vspace*{1cm}
-				
+
 	\end{center}
 }
 \makeatother

@@ -3,8 +3,8 @@
 ECHOCMD:=/bin/echo -e
 #LATEX:=lualatex --time-statistics --shell-escape -interaction=batchmode
 #LATEX:=pdflatex --time-statistics --shell-escape -interaction=batchmode
-#LATEX:=pdflatex --time-statistics --synctex=1 -interaction=nonstopmode 
-LATEX:=pdflatex --time-statistics --shell-escape --synctex=1 --interaction=batchmode 
+#LATEX:=pdflatex --time-statistics --synctex=1 -interaction=nonstopmode
+LATEX:=pdflatex --time-statistics --shell-escape --synctex=1 --interaction=batchmode
 
 
 
@@ -24,4 +24,4 @@ clean:
 		*.pdf
 
 distclean: clean
-	rm -f *.tex 
+	rm -f *.tex
