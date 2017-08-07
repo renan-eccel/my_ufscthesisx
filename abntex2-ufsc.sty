@@ -52,7 +52,13 @@
 % Fix LaTeX Error: Option clash for package textcomp
 \RequirePackage[full]{textcomp}
 
-\RequirePackage{caption}
+% Caption package and Memoir
+% https://groups.google.com/forum/#!topic/comp.text.tex/RzpI2ATMev0
+% https://tex.stackexchange.com/questions/18931/memoir-class-with-subcaption-and-hyperref-packages
+%
+% \RequirePackage{caption}
+% \RequirePackage{subfig}  % permite ter subfiguras
+
 %\RequirePackage{etoolbox}
 \RequirePackage{layouts}
 
@@ -97,7 +103,6 @@
 \RequirePackage{nomencl} % Pacote necessário para a lista de siglas.
 \RequirePackage{mathcomp}
 \RequirePackage{booktabs} % Para Tabelas
-\RequirePackage{subfig}  % permite ter subfiguras
 \RequirePackage{float}
 \RequirePackage{siunitx} % A comprehensive (SI) units package
 \RequirePackage{datetime}
@@ -314,8 +319,10 @@
 \renewcommand{\partnumfont}{\ABNTEXpartfont\ABNTEXpartfontsize}
 \renewcommand{\partnamefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
 
-
-\DeclareCaptionFont{small}{\fontsize{9.5pt}{10.5pt}}
+% Caption package and Memoir
+% https://groups.google.com/forum/#!topic/comp.text.tex/RzpI2ATMev0
+% https://tex.stackexchange.com/questions/18931/memoir-class-with-subcaption-and-hyperref-packages
+% \DeclareCaptionFont{small}{\fontsize{9.5pt}{10.5pt}}
 
 % No caso de Sumario (TOC) UFSC
 %
@@ -391,31 +398,39 @@
 	}
 }{}
 
-\captionsetup[table]{
-	%  name=Tabela,
-	%  listformat=empty,
-	%  justification=justified,
-	%  labelsep=colon,
-	%   position=above,
-	%   skip=\onelineskip,
-	%  width=\linewidth,
-	labelfont={normalsize},
-	textfont={small},
-	font={normalsize}
-}
+% Caption package and Memoir
+% https://groups.google.com/forum/#!topic/comp.text.tex/RzpI2ATMev0
+% https://tex.stackexchange.com/questions/18931/memoir-class-with-subcaption-and-hyperref-packages
+%
+% \captionsetup[table]{
+% 	%  name=Tabela,
+% 	%  listformat=empty,
+% 	%  justification=justified,
+% 	%  labelsep=colon,
+% 	%   position=above,
+% 	%   skip=\onelineskip,
+% 	%  width=\linewidth,
+% 	labelfont={normalsize},
+% 	textfont={small},
+% 	font={normalsize}
+% }
 
-\captionsetup[figure]{
-	%  name=Tabela,
-	%  listformat=empty,
-	%  justification=justified,
-	%  labelsep=colon,
-	%   position=above,
-	%   skip=\onelineskip,
-	%  width=\linewidth,
-	labelfont={normalsize},
-	textfont={small},
-	font={normalsize}
-}
+% Caption package and Memoir
+% https://groups.google.com/forum/#!topic/comp.text.tex/RzpI2ATMev0
+% https://tex.stackexchange.com/questions/18931/memoir-class-with-subcaption-and-hyperref-packages
+%
+% \captionsetup[figure]{
+% 	%  name=Tabela,
+% 	%  listformat=empty,
+% 	%  justification=justified,
+% 	%  labelsep=colon,
+% 	%   position=above,
+% 	%   skip=\onelineskip,
+% 	%  width=\linewidth,
+% 	labelfont={normalsize},
+% 	textfont={small},
+% 	font={normalsize}
+% }
 
 % Espaçamento depois do título
 \setlength{\afterchapskip}{0.38cm}
