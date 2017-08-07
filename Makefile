@@ -23,5 +23,8 @@ clean:
 		*.log \
 		*.pdf
 
+veryclean:
+	git clean -dxf
+
 distclean: clean
 	rm -f *.tex
