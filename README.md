@@ -60,3 +60,6 @@ tomar como base.
 abnTeX2](https://www.ctan.org/pkg/abntex2)
 
 
+2017-08-07
+Renamed the modelo-abntex2-ufsc.tex to modelo-ufsc-main.tex
+
