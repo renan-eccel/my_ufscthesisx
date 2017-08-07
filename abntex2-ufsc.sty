@@ -105,7 +105,13 @@
 \RequirePackage{booktabs} % Para Tabelas
 \RequirePackage{float}
 \RequirePackage{siunitx} % A comprehensive (SI) units package
+
+% Memoir class conflict with datetime
+% https://tex.stackexchange.com/questions/162353/memoir-class-conflict-with-datetime
+% https://tex.stackexchange.com/questions/49071/difference-between-let-foo-relax-and-def-foo-for-disabling
+\let\ordinal\relax
 \RequirePackage{datetime}
+
 \RequirePackage{rotating} % gives you the possibility to rotate any object of an arbitrary angle.
 \RequirePackage{pdflscape} % Rotação de páginas no documento pdf.
 \RequirePackage{mdframed} % Customize the look of the frame
