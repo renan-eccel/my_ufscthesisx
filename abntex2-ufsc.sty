@@ -2,8 +2,8 @@
 % Define versão necessária do LaTeX
 \NeedsTeXFormat{LaTeX2e}
 
+
 % Prove acesso a classe 'abntex2-ufsc'
-\ProvidesClass{abntex2-ufsc}[2016/11/15 abntex2-ufsc]
 \RequirePackage{ifthen}
 
 %
@@ -35,14 +35,6 @@
 	%	\setboolean{ABNTEXsumario-tradicional}{false}
 	\setboolean{ABNTEXsumario-UFSC}{true}}
 
-%
-% Repassa todos os parametros a classe abntex2,
-\DeclareOption*{%
-	\PassOptionsToClass{\CurrentOption}{abntex2}%
-}
-
-\ProcessOptions\relax
-\LoadClass{abntex2}
 
 % sumario=abnt-6027-2012 : Sumário conforme recomendação da ABNT NBR 6027:2012, que
 %    soh pode ser usado com memoir v3.6k ou superior
@@ -54,6 +46,11 @@
 \setboolean{ABNTEXsumario-UFSC}{false}
 \fi
 
+% Now we'll execute any options passed in
+\ProcessOptions\relax
+
+% Fix LaTeX Error: Option clash for package textcomp
+\RequirePackage[full]{textcomp}
 
 \RequirePackage{caption}
 %\RequirePackage{etoolbox}
@@ -65,9 +62,6 @@
 % Tamanho das fontes
 \RequirePackage{anyfontsize}
 
-% Fonte 'Times New Roman'
-\RequirePackage{mathptmx}
-
 % Identação do primeiro paragráfo
 \RequirePackage{indentfirst}
 
@@ -78,8 +72,13 @@
 \RequirePackage{lastpage}
 
 \RequirePackage{lmodern}			% Usa a fonte Latin Modern
+
+% Will allow all displayable utf8 characters to be available as input
+% https://tex.stackexchange.com/questions/13067/utf8x-vs-utf8-inputenc
+% https://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc
 \RequirePackage[T1]{fontenc}		% Selecao de codigos de fonte.
 \RequirePackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+
 \RequirePackage{color}				% Controle das cores
 \RequirePackage{graphicx}			% Inclusão de gráficos
 \RequirePackage{microtype} 			% para melhorias de justificação
