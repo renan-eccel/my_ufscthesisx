@@ -1,6 +1,12 @@
 
-% resumo em português
+% Changing babel package inside a single chapter
+% https://tex.stackexchange.com/questions/20987/changing-babel-package-inside-a-single-chapter
+%
+% Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
+% https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
+\begin{otherlanguage*}{brazil}
 \begin{resumo}
+
 	Segundo a \citeonline[3.1-3.2]{NBR6028:2003}, o resumo deve ressaltar o
 	objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão
 	destes itens dependem do tipo de resumo (informativo ou indicativo) e do
@@ -12,20 +18,22 @@
 
 \vspace{\onelineskip}
 \noindent \textbf{Palavras-chaves}: latex. abntex. editoração de texto.
+
 \end{resumo}
-
-
+\end{otherlanguage*}
 
 
 % resumo em inglês
+\begin{otherlanguage*}{english}
 \begin{resumo}[Abstract]
-	\begin{otherlanguage*}{english}
-		This is the english abstract.
 
-		\vspace{\onelineskip}
-		\noindent\textbf{Key-words}: latex. abntex. text editoration.
-	\end{otherlanguage*}
+	This is the english abstract.
+
+	\vspace{\onelineskip}
+	\noindent\textbf{Key-words}: latex. abntex. text editoration.
+
 \end{resumo}
+\end{otherlanguage*}
 
 
 %
