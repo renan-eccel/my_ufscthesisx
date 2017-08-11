@@ -28,15 +28,19 @@
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 
-\PassOptionsToPackage{english}{babel}
+% The abntex2 package, hard codes the language portuguese. Therefore we are required to edit the
+% package `abntex2`, usually on:
+% `D:\User\Documents\latex\texmfs\install\tex\generic\babel\babel.sty` and change the line
+% `\RequirePackage[brazil]{babel}` to `\RequirePackage[english]{babel}`.
+%
+% How to make \PassOptionsToPackage add the option as the last option?
+% https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last-option
+\PassOptionsToPackage{brazil,main=english}{babel}
 
 \documentclass[
 10.5pt, % Tamanho da fonte
 a5paper, % Tamanho do papel
 twoside, % Impressão nos dois lados da folha
-german,
-brazil, % o último idioma é o principal do documento
-english,
 %sumario=tradicional,
 %sumario=abnt-6027-2012, %  soh pode ser usado com memoir v3.6k ou superior
 sumario=UFSC,
