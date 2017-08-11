@@ -1,17 +1,45 @@
-# ./Makefile
-
+#!/usr/bin/make -f
+# https://stackoverflow.com/questions/7123241/makefile-as-an-executable-script-with-shebang
 ECHOCMD:=/bin/echo -e
+
 #LATEX:=lualatex --time-statistics --shell-escape -interaction=batchmode
 #LATEX:=pdflatex --time-statistics --shell-escape -interaction=batchmode
 #LATEX:=pdflatex --time-statistics --synctex=1 -interaction=nonstopmode
 LATEX:=pdflatex --time-statistics --shell-escape --synctex=1 --interaction=batchmode
 
+# The main latex file
+THESIS_MAIN_FILE   = modelo-ufsc-main.tex
 
+# This will be the pdf generated
+THESIS_OUTPUT_NAME   = thesis
+
+# This is the folder where the temporary files are going to be
+CACHE_FOLDER = cache
+
+# GNU Make silent by default
+# https://stackoverflow.com/questions/24005166/gnu-make-silent-by-default
+MAKEFLAGS += --silent
 
 TEST_SRCS:=$(wildcard *.tex)
 TEST_PDFS:=$(TEST_SRCS:.tex=.pdf)
 
-default: $(TEST_PDFS)
+
+##
+## Usage:
+##   make <target>
+##
+## Targets:
+##   all               generate all assets
+##   thesis            build the `$THESIS_MAIN_FILE` to the `$THESIS_OUTPUT_NAME` file
+##   thesis_verbose    build the `$THESIS_MAIN_FILE` to the `$THESIS_OUTPUT_NAME` file with maximum output logs
+##
+
+# Print the usage instructions
+# https://gist.github.com/prwhite/8168133
+help:
+	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
+
+thesis: $(TEST_PDFS)
 
 %.pdf: %.tex
 	@$(LATEX) $<
@@ -26,5 +54,20 @@ clean:
 veryclean:
 	git clean -dxf
 
-distclean: clean
-	rm -f *.tex
+thesis_verbose: $(THESIS_MAIN_FILE)
+
+	# What is the difference between “-interaction=nonstopmode” and “-halt-on-error”?
+	# https://tex.stackexchange.com/questions/258814/what-is-the-difference-between-interaction-nonstopmode-and-halt-on-error
+	#
+	# What reasons (if any) are there for compiling in interactive mode?
+	# https://tex.stackexchange.com/questions/25267/what-reasons-if-any-are-there-for-compiling-in-interactive-mode
+	latexmk \
+	-pdf \
+	-jobname="$(THESIS_OUTPUT_NAME)" \
+	-output-directory="$(CACHE_FOLDER)" \
+	-aux-directory="$(CACHE_FOLDER)" \
+	-pdflatex="pdflatex --synctex=1 --interaction=nonstopmode" \
+	-use-make $(THESIS_MAIN_FILE)
+
+	# Copy the generated PDF file from the cache folder
+	cp $(CACHE_FOLDER)/$(THESIS_OUTPUT_NAME).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
