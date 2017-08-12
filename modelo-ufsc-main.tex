@@ -31,14 +31,24 @@
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 
-% The abntex2 package, hard codes the language portuguese. Therefore we are required to edit the
-% package `abntex2`, usually on:
-% `D:\User\Documents\latex\texmfs\install\tex\generic\babel\babel.sty` and change the line
-% `\RequirePackage[brazil]{babel}` to `\RequirePackage[english]{babel}`.
-%
-% How to make \PassOptionsToPackage add the option as the last option?
-% https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last-option
-\PassOptionsToPackage{brazil,main=english}{babel}
+% Is it possible to keep my translation together with original text?
+% https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
+\newif\ifenglish
+\englishtrue % Will show English text only
+%\englishfalse % Will show Portuguese text only
+
+\ifenglish
+	% The abntex2 package, hard codes the language portuguese. Therefore we are required to edit the
+	% package `abntex2`, usually on:
+	% `D:\User\Documents\latex\texmfs\install\tex\generic\babel\babel.sty` and change the line
+	% `\RequirePackage[brazil]{babel}` to `\RequirePackage[english]{babel}`.
+	%
+	% How to make \PassOptionsToPackage add the option as the last option?
+	% https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last-option
+	\PassOptionsToPackage{brazil,main=english}{babel}
+\else
+	\PassOptionsToPackage{main=brazil,english}{babel}
+\fi
 
 \documentclass[
 10.5pt, % Tamanho da fonte
@@ -87,21 +97,28 @@ section=TITLE  % Título de seções em caixa alta
 % ---
 
 % ---
-% Configurações do pacote backref
-% Usado sem a opção hyperpageref de backref
-\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
-% Texto padrão antes do número das páginas
-\renewcommand{\backref}{}
-% Define os textos da citação
-\renewcommand*{\backrefalt}[4]{
-	\ifcase #1 %
-		Nenhuma citação no texto.%
-	\or
-		Citado na página #2.%
-	\else
-		Citado #1 vezes nas páginas #2.%
-	\fi}%
+% Configurações do pacote backref, paginas com as citações na bibl
+\usepackage[brazilian,hyperpageref]{backref}
 
+\ifenglish
+	% The default language for backref is already English
+\else
+	% Usado sem a opção hyperpageref de backref
+	\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+
+	% Texto padrão antes do número das páginas
+	\renewcommand{\backref}{}
+
+	% Define os textos da citação
+	\renewcommand*{\backrefalt}[4]{
+		\ifcase #1 %
+			Nenhuma citação no texto.%
+		\or
+			Citado na página #2.%
+		\else
+			Citado #1 vezes nas páginas #2.%
+		\fi}%
+\fi
 
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
