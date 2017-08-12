@@ -51,20 +51,23 @@ chapter=TITLE, % Título de capítulos em caixa alta
 section=TITLE  % Título de seções em caixa alta
 ]{abntex2}
 
-\usepackage{abntex2-ufsc}
+% Package hyperref Warning: Token not allowed in a PDF string?
+% https://tex.stackexchange.com/questions/384885/package-hyperref-warning-token-not-allowed-in-a-pdf-string
+\pdfstringdefDisableCommands{\let\uppercase\relax}
+
+
 
 % ---
 % Pacotes básicos
 % ---
 
-
 % ---
 % Pacotes de citações
 % ---
-\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
 \usepackage[alf]{abntex2cite}	% Citação alfabética por autor-data [alf]
 %\usepackage[num]{abntex2cite} % Citação numérica [num]
 %\citebrackets[]
+\usepackage{abntex2-ufsc}
 
 
 % Altera de sin e tan para sen e tg nas equações
