@@ -47,9 +47,20 @@ thesis: $(TEST_PDFS)
 .PHONY: clean
 
 clean:
+	rm -f "*.gz(busy)"
 	rm -f *.aux \
 		*.log \
-		*.pdf
+		*.pdf \
+		*.aux \
+		*.bbl \
+		*.log \
+		*.out \
+		*.toc \
+		*.dvi \
+		*.blg \
+		*.synctex.gz \
+		*.fdb_latexmk \
+		*.fls
 
 veryclean:
 	git clean -dxf
