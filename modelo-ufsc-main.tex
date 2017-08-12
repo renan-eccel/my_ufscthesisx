@@ -50,12 +50,14 @@
 	\PassOptionsToPackage{main=brazil,english}{babel}
 \fi
 
+% The UFSC font size is 10.5, but memoir embbeded on `abntex2` only accepts 10 and 11pt. However
+% this will be fixed later by the abntex2-ufsc package.
+%
+% You can see whether the font sizes are correct with the \f@size at the `\begin{document}`.
 \documentclass[
-10.5pt, % Tamanho da fonte
-a5paper, % Tamanho do papel
+10pt,
+a5paper,
 twoside, % Impressão nos dois lados da folha
-%sumario=tradicional,
-%sumario=abnt-6027-2012, %  soh pode ser usado com memoir v3.6k ou superior
 sumario=UFSC,
 chapter=TITLE, % Título de capítulos em caixa alta
 section=TITLE  % Título de seções em caixa alta
