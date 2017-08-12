@@ -7,6 +7,10 @@
     [
         {
             "path": ".",
+            "folder_exclude_patterns":
+            [
+                "*cache*",
+            ],
         },
     ],
     "build_systems":
