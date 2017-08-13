@@ -40,6 +40,9 @@
 % 547: % \renewcommand{\bibcite}[2]{%
 % 548: %   \@newl@bel{b}{#1}{\hyper@@link[cite]{}{cite.#1}{#2}}}%
 
+% Document local boolean value to control whether or not to print the epigrafe
+\providecommand\WriteEpigraphs{true}
+
 % Is it possible to keep my translation together with original text?
 % https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
 \newif\ifenglish
@@ -70,32 +73,14 @@ section=TITLE  % Título de seções em caixa alta
 % https://tex.stackexchange.com/questions/384885/package-hyperref-warning-token-not-allowed-in-a-pdf-string
 \pdfstringdefDisableCommands{\let\uppercase\relax}
 
-
-
-% ---
-% Pacotes básicos
-% ---
-
-% ---
-% Pacotes de citações
-% ---
+% Setup the thesis citations packages
 \usepackage[alf]{abntex2cite}	% Citação alfabética por autor-data [alf]
 \usepackage{abntex2-ufsc}
 
 
-% Altera de sin e tan para sen e tg nas equações
-\DeclareMathOperator{\sen}{sen}
-\renewcommand{\sin}{\sen}
-
-\DeclareMathOperator{\tg}{tg}
-\renewcommand{\tan}{\tg}
-
-% Document local boolean value to control whether or not to print the epigrafe
-\providecommand\WriteEpigraphs{true}
-
 
 % ---
-% CONFIGURAÇÕES DE PACOTES
+% Pacotes básicos
 % ---
 
 % ---
