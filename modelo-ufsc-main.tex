@@ -31,6 +31,12 @@
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 
+% To fix the warning `LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right`,
+% open the file `D:\User\Documents\latex\texmfs\install\tex\latex\abntex2\abntex2cite.sty` and
+% comment out these two lines:
+% 547: % \renewcommand{\bibcite}[2]{%
+% 548: %   \@newl@bel{b}{#1}{\hyper@@link[cite]{}{cite.#1}{#2}}}%
+
 % Is it possible to keep my translation together with original text?
 % https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
 \newif\ifenglish
@@ -38,11 +44,6 @@
 %\englishfalse % Will show Portuguese text only
 
 \ifenglish
-	% The abntex2 package, hard codes the language portuguese. Therefore we are required to edit the
-	% package `abntex2`, usually on:
-	% `D:\User\Documents\latex\texmfs\install\tex\generic\babel\babel.sty` and change the line
-	% `\RequirePackage[brazil]{babel}` to `\RequirePackage[english]{babel}`.
-	%
 	% How to make \PassOptionsToPackage add the option as the last option?
 	% https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last-option
 	\PassOptionsToPackage{brazil,main=english}{babel}
@@ -77,8 +78,6 @@ section=TITLE  % Título de seções em caixa alta
 % Pacotes de citações
 % ---
 \usepackage[alf]{abntex2cite}	% Citação alfabética por autor-data [alf]
-%\usepackage[num]{abntex2cite} % Citação numérica [num]
-%\citebrackets[]
 \usepackage{abntex2-ufsc}
 
 
