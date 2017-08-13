@@ -26,9 +26,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{abntex2-ufsc}[2017/08/13 v0.0.1 Evandro]
 
-% Prove acesso a classe 'abntex2-ufsc'
-\RequirePackage{ifthen}
-
 %
 % Opções de diagramação de sumários
 % sumario=UFSC : Sumário customizado
@@ -564,33 +561,46 @@
 \makeoddfoot{abntheadingsLogo}{\ABNTEXfontereduzida\textsc \imprimirautor}{}{}
 
 
-% ---
-% Configura layout para elementos textuais
-\renewcommand{\textual}{%
-    \ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
-        \pagestyle{plain}%
-        }{%else
-        \pagestyle{abntheadings}% Estilo original do Abntex2
-        % \aliaspagestyle{chapter}{abntchapfirst}% customizing chapter pagestyle
-        \aliaspagestyle{chapter}{empty} % Remove a numeração das páginas no início dos capítulos.
+% Configura layout para elementos textuais, redefining the ABNT command `\textual`.
+% Delete his to restore the ABNT default behavior.
+\renewcommand{\textual}
+{
+    \ifthenelse{\equal{\ABNTEXisarticle}{true}}
+    {
+        \pagestyle{plain}
+
     }
-    \nouppercaseheads%
-    \bookmarksetup{startatroot}%
+    {
+        % Estilo original do Abntex2
+        \pagestyle{abntheadings}
+
+        % Remove a numeração das páginas no início dos capítulos.
+        % ABNT default value `{chapter}{abntchapfirst}`
+        \aliaspagestyle{chapter}{empty}
+    }
+
+    \nouppercaseheads
+    \bookmarksetup{startatroot}
 }
 
 % ---
 % Configura layout para elementos textuais
-\newcommand{\textualINEPUFSC}{%
-    \ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
-        \pagestyle{plain}%
-        }{%else
-        %   \pagestyle{abntheadings}% Estilo original do Abntex2
-        \pagestyle{abntheadingsLogo}%
-        % \aliaspagestyle{chapter}{abntchapfirst}% customizing chapter pagestyle
-        \aliaspagestyle{chapter}{empty} % Remove a numeração das páginas no início dos capítulos.
+\newcommand{\textualINEPUFSC}
+{
+    \ifthenelse{\equal{\ABNTEXisarticle}{true}}
+    {
+        \pagestyle{plain}
     }
-    \nouppercaseheads%
-    \bookmarksetup{startatroot}%
+    {
+        % Estilo original do Abntex2
+        \pagestyle{abntheadingsLogo}
+
+        % Remove a numeração das páginas no início dos capítulos.
+        % ABNT default value `{chapter}{abntchapfirst}`
+        \aliaspagestyle{chapter}{empty}
+    }
+    \nouppercaseheads
+    \bookmarksetup{startatroot}
 }
 
 
