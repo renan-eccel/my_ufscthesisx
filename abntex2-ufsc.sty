@@ -8,43 +8,9 @@
 
 %
 % Opções de diagramação de sumários
-% sumario=tradicional    : Sumário tradicional do LaTeX/Memoir
-% sumario=abnt-6027-2012 : Sumário conforme recomendação da ABNT NBR 6027:2012
 % sumario=UFSC : Sumário customizado
-
-%\newboolean{ABNTEXsumario-tradicional}     %true=titles of chapter/appendix in uppercase
-%\newboolean{ABNTEXsumario-abnt-6027-2012}
 \newboolean{ABNTEXsumario-UFSC}
-
-%\setboolean{ABNTEXsumario-tradicional}{false}
-%\setboolean{ABNTEXsumario-abnt-6027-2012}{true}
-\setboolean{ABNTEXsumario-UFSC}{false}
-
-\DeclareOption{sumario=tradicional}{%
-	%	\setboolean{ABNTEXsumario-tradicional}{true}%
-	%	\setboolean{ABNTEXsumario-abnt-6027-2012}{false}
-	\setboolean{ABNTEXsumario-UFSC}{false}}
-
-\DeclareOption{sumario=abnt-6027-2012}{%
-	%	\setboolean{ABNTEXsumario-abnt-6027-2012}{true}
-	%	\setboolean{ABNTEXsumario-tradicional}{false}
-	\setboolean{ABNTEXsumario-UFSC}{false}}
-
-\DeclareOption{sumario=UFSC}{%
-	%	\setboolean{ABNTEXsumario-abnt-6027-2012}{false}
-	%	\setboolean{ABNTEXsumario-tradicional}{false}
-	\setboolean{ABNTEXsumario-UFSC}{true}}
-
-
-% sumario=abnt-6027-2012 : Sumário conforme recomendação da ABNT NBR 6027:2012, que
-%    soh pode ser usado com memoir v3.6k ou superior
-%   \settocpreprocessor \changes{v3.6k}{2012/09/18}{Added}
-\ifdefined\settocpreprocessor
-\else
-\setboolean{ABNTEXsumario-tradicional}{true}
-\setboolean{ABNTEXsumario-abnt-6027-2012}{false}
-\setboolean{ABNTEXsumario-UFSC}{false}
-\fi
+\setboolean{ABNTEXsumario-UFSC}{true}
 
 % Now we'll execute any options passed in
 \ProcessOptions\relax
