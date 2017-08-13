@@ -34,27 +34,28 @@
 % Manipulação de Strings
 \RequirePackage{xstring}
 
-% Tamanho das fontes
-\RequirePackage{anyfontsize}
-
 % Identação do primeiro paragráfo
 \RequirePackage{indentfirst}
-
 
 % Número da última página
 \RequirePackage{lastpage}
 
-\RequirePackage{lmodern}			% Usa a fonte Latin Modern
+% Tamanho das fontes
+\RequirePackage{anyfontsize}
+
+% Usa a fonte Latin Modern
+\RequirePackage{lmodern}
+
 
 % Will allow all displayable utf8 characters to be available as input
 % https://tex.stackexchange.com/questions/13067/utf8x-vs-utf8-inputenc
 % https://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc
-\RequirePackage[T1]{fontenc}		% Selecao de codigos de fonte.
-\RequirePackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\RequirePackage[T1]{fontenc}        % Selecao de codigos de fonte.
+\RequirePackage[utf8]{inputenc}     % Codificacao do documento (conversão automática dos acentos)
 
-\RequirePackage{color}				% Controle das cores
-\RequirePackage{graphicx}			% Inclusão de gráficos
-\RequirePackage{microtype} 			% para melhorias de justificação
+\RequirePackage{color}              % Controle das cores
+\RequirePackage{graphicx}           % Inclusão de gráficos
+\RequirePackage{microtype}          % para melhorias de justificação
 
 \RequirePackage{pdfpages}
 \RequirePackage{fancyvrb}
@@ -86,7 +87,7 @@
 % ---
 % Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
 % ---
-\RequirePackage{lipsum}				% para geração de dummy text
+\RequirePackage{lipsum}             % para geração de dummy text
 % ---
 
 \RequirePackage{tablefootnote}
@@ -118,53 +119,53 @@
 
 
 \lstset{ %
-	aboveskip=3mm,
-	belowskip=3mm,
-	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
-	basicstyle={\small\ttfamily},    % the size of the fonts that are used for the code
-	breakatwhitespace=true,          % sets if automatic breaks should only happen at whitespace
-	breaklines=true,                 % sets automatic line breaking
-	captionpos=t,                    % sets the caption-position to bottom
-	commentstyle=\color{mygreen},    % comment style
-	columns=flexible,
-	deletekeywords={...},            % if you want to delete keywords from the given language
-	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-	frame=tb,                        % adds a frame around the code
-	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-	keywordstyle=\color{blue},       % keyword style
-	language=Matlab,                 % the language of the code
-	morekeywords={*,...},            % if you want to add more keywords to the set
-	numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
-	numbersep=5pt,                   % how far the line-numbers are from the code
-	numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
-	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-	showstringspaces=false,          % underline spaces within strings only
-	showtabs=false,                  % show tabs within strings adding particular underscores
-	stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
-	stringstyle=\color{mymauve},     % string literal style
-	tabsize=3,                       % sets default tabsize to 3 spaces
-	texcl=true,						 % Permite o uso de acentuação no código
-	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+    aboveskip=3mm,
+    belowskip=3mm,
+    backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+    basicstyle={\small\ttfamily},    % the size of the fonts that are used for the code
+    breakatwhitespace=true,          % sets if automatic breaks should only happen at whitespace
+    breaklines=true,                 % sets automatic line breaking
+    captionpos=t,                    % sets the caption-position to bottom
+    commentstyle=\color{mygreen},    % comment style
+    columns=flexible,
+    deletekeywords={...},            % if you want to delete keywords from the given language
+    escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+    extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+    frame=tb,                        % adds a frame around the code
+    keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+    keywordstyle=\color{blue},       % keyword style
+    language=Matlab,                 % the language of the code
+    morekeywords={*,...},            % if you want to add more keywords to the set
+    numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+    numbersep=5pt,                   % how far the line-numbers are from the code
+    numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+    rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+    showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+    showstringspaces=false,          % underline spaces within strings only
+    showtabs=false,                  % show tabs within strings adding particular underscores
+    stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+    stringstyle=\color{mymauve},     % string literal style
+    tabsize=3,                       % sets default tabsize to 3 spaces
+    texcl=true,                      % Permite o uso de acentuação no código
+    title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 
 %By default, listings does not support multi-byte encoding for source code. The extendedchar option only works for 8-bits encodings such as latin1.
 %
 %To handle UTF-8, you should tell listings how to interpret the special characters by defining them like so
 \lstset{literate=
-	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
-	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
-	{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
-	{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
-	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
-	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
-	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
-	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
-	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
-	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
-	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
-	{€}{{\EUR}}1 {£}{{\pounds}}1 {ã}{{\~a}}1 {õ}{{\~o}}1 {Ã}{{\~A}}1 {Õ}{{\~O}}1
+    {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+    {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+    {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+    {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+    {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+    {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+    {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+    {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+    {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+    {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+    {€}{{\EUR}}1 {£}{{\pounds}}1 {ã}{{\~a}}1 {õ}{{\~o}}1 {Ã}{{\~A}}1 {Õ}{{\~O}}1
 }
 
 % ---
@@ -181,11 +182,11 @@
 \newcounter{ufscthesis@assuntos}
 \providecommand{\listaassuntos}{}
 \providecommand{\imprimirassuntos}{%
-	\setcounter{ufscthesis@assuntos}{1}
-	\@for\assunto:={\listaassuntos}\do{%
-		\arabic{ufscthesis@assuntos}.\assunto. %
-		\addtocounter{ufscthesis@assuntos}{1}
-	}
+    \setcounter{ufscthesis@assuntos}{1}
+    \@for\assunto:={\listaassuntos}\do{%
+        \arabic{ufscthesis@assuntos}.\assunto. %
+        \addtocounter{ufscthesis@assuntos}{1}
+    }
 }
 \newcommand{\assuntos}[1]{\renewcommand{\listaassuntos}{#1}}
 
@@ -239,21 +240,21 @@
 \renewcommand{\familydefault}{cmr} % Fonte padrão utilizada no texto
 % The three default family font variables and the \familydefault variable should not be confused with their respective switch:
 %   http://www.forkosh.com/pstex/latexcommands.htm
-% variable	value	activated by
+% variable  value   activated by
 
-%\encodingdefault	OT1	\normalfont, \textnormal{}
-%\familydefault	\rmdefault	\normalfont, \textnormal{}
-%\rmdefault	cmr	\rmfamily, \textrm{}
-%\ttdefault	cmtt	\ttfamily, \texttt{}
-%\sfdefault	cmss	\sffamily, \textsf{}
-%\seriesdefault	m	\normalfont, \textnormal{}
-%\mddefault	m	\mdseries, \textmd{}
-%\bfdefault	bx	\bfseries, \textbf{}
-%\shapedefault	n	\normalfont, \textnormal{}
-%\updefault	n	\upshape, \textup{}
-%\itdefault	it	\itshape, \textit{}
-%\scdefault	sc	\scshape, \textsc{}
-%\sldefault	sl	\slshape, \textsl{}
+%\encodingdefault   OT1 \normalfont, \textnormal{}
+%\familydefault \rmdefault  \normalfont, \textnormal{}
+%\rmdefault cmr \rmfamily, \textrm{}
+%\ttdefault cmtt    \ttfamily, \texttt{}
+%\sfdefault cmss    \sffamily, \textsf{}
+%\seriesdefault m   \normalfont, \textnormal{}
+%\mddefault m   \mdseries, \textmd{}
+%\bfdefault bx  \bfseries, \textbf{}
+%\shapedefault  n   \normalfont, \textnormal{}
+%\updefault n   \upshape, \textup{}
+%\itdefault it  \itshape, \textit{}
+%\scdefault sc  \scshape, \textsc{}
+%\sldefault sl  \slshape, \textsl{}
 
 
 \renewcommand{\rmdefault}{cmr} % Selects a roman (i.e., serifed) font family
@@ -278,11 +279,11 @@
 % Comando que simula a finalizacao de uma parte no bookmark e
 % adiciona espaco de \part no sumario
 \renewcommand{\phantompart}{%
-	\bookmarksetup{startatroot}%
-	\phantomsection%
-	\ifthenelse{\boolean{ABNTEXsumario-UFSC}}{%
-		\addtocontents{toc}{\vspace{\cftbeforechapterskip}}}{%
-		\addtocontents{toc}{\vspace{\cftbeforepartskip}}}%
+    \bookmarksetup{startatroot}%
+    \phantomsection%
+    \ifthenelse{\boolean{ABNTEXsumario-UFSC}}{%
+        \addtocontents{toc}{\vspace{\cftbeforechapterskip}}}{%
+        \addtocontents{toc}{\vspace{\cftbeforepartskip}}}%
 }
 % -----
 
@@ -301,74 +302,74 @@
 %
 \ifthenelse{\boolean{ABNTEXsumario-UFSC}}{%
 
-	\cftsetindents{part}{0em}{\cftlastnumwidth}
-	\cftsetindents{chapter}{0em}{\cftlastnumwidth}
-	\cftsetindents{section}{0em}{\cftlastnumwidth}
-	\cftsetindents{subsection}{0em}{\cftlastnumwidth}
-	\cftsetindents{subsubsection}{0em}{\cftlastnumwidth}
-	\cftsetindents{paragraph}{0em}{\cftlastnumwidth}
-	\cftsetindents{subparagraph}{0em}{\cftlastnumwidth}
-	%
-	\renewcommand{\tocprintchapter}{%
-		\addtocontents{toc}{\cftsetindents{chapter}{0em}{\cftlastnumwidth}}}
-	%
-	\renewcommand{\tocinnonumchapter}{%
-		\addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}%
-		\cftinserthook{toc}{A}}
-	%
-	\renewcommand{\tocprintchapternonum}{%
-		\addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}}
-	%
-	\renewcommand{\tocpartapendices}{%
-		\addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
-		\cftinserthook{toc}{A}}
-	%
-	\renewcommand{\tocpartanexos}{%
-		\addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
-		\cftinserthook{toc}{A}}
-	%
-	\setlength{\cftbeforechapterskip}{1em}
+    \cftsetindents{part}{0em}{\cftlastnumwidth}
+    \cftsetindents{chapter}{0em}{\cftlastnumwidth}
+    \cftsetindents{section}{0em}{\cftlastnumwidth}
+    \cftsetindents{subsection}{0em}{\cftlastnumwidth}
+    \cftsetindents{subsubsection}{0em}{\cftlastnumwidth}
+    \cftsetindents{paragraph}{0em}{\cftlastnumwidth}
+    \cftsetindents{subparagraph}{0em}{\cftlastnumwidth}
+    %
+    \renewcommand{\tocprintchapter}{%
+        \addtocontents{toc}{\cftsetindents{chapter}{0em}{\cftlastnumwidth}}}
+    %
+    \renewcommand{\tocinnonumchapter}{%
+        \addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}%
+        \cftinserthook{toc}{A}}
+    %
+    \renewcommand{\tocprintchapternonum}{%
+        \addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}}
+    %
+    \renewcommand{\tocpartapendices}{%
+        \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
+        \cftinserthook{toc}{A}}
+    %
+    \renewcommand{\tocpartanexos}{%
+        \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
+        \cftinserthook{toc}{A}}
+    %
+    \setlength{\cftbeforechapterskip}{1em}
 
-	%
-	% Fontes das entradas do sumario
-	%
-	\renewcommand*{\l@chapter}[2]{%
-		\l@chapapp{\uppercase{#1}}{#2}{\cftchaptername}}
+    %
+    % Fontes das entradas do sumario
+    %
+    \renewcommand*{\l@chapter}[2]{%
+        \l@chapapp{\uppercase{#1}}{#2}{\cftchaptername}}
 
-	\renewcommand*{\l@section}[2]{%
-		\l@chapapp{\ABNTEXsectionfont\uppercase{#1}}{#2}{\cftsectionname}}
+    \renewcommand*{\l@section}[2]{%
+        \l@chapapp{\ABNTEXsectionfont\uppercase{#1}}{#2}{\cftsectionname}}
 
-	\renewcommand{\cftpartfont}{\ABNTEXpartfont}
-	\renewcommand{\cftpartpagefont}{\cftpartfont}
-	%
-	%\renewcommand{\cftchapterfont}{\ABNTEXchapterfont}
-	\renewcommand{\cftchapterpagefont}{\cftchapterfont}
-	%
-	\renewcommand{\cftsectionfont}{\ABNTEXsectionfont}
-	\renewcommand{\cftsectionpagefont}{\cftsectionfont}
-	%
-	\renewcommand{\cftsubsectionfont}{\ABNTEXsubsectionfont}
-	\renewcommand{\cftsubsectionpagefont}{\cftsubsectionfont}
-	%
-	\renewcommand{\cftsubsubsectionfont}{\ABNTEXsubsubsectionfont}
-	\renewcommand{\cftsubsubsectionpagefont}{\cftsubsubsectionfont}
+    \renewcommand{\cftpartfont}{\ABNTEXpartfont}
+    \renewcommand{\cftpartpagefont}{\cftpartfont}
+    %
+    %\renewcommand{\cftchapterfont}{\ABNTEXchapterfont}
+    \renewcommand{\cftchapterpagefont}{\cftchapterfont}
+    %
+    \renewcommand{\cftsectionfont}{\ABNTEXsectionfont}
+    \renewcommand{\cftsectionpagefont}{\cftsectionfont}
+    %
+    \renewcommand{\cftsubsectionfont}{\ABNTEXsubsectionfont}
+    \renewcommand{\cftsubsectionpagefont}{\cftsubsectionfont}
+    %
+    \renewcommand{\cftsubsubsectionfont}{\ABNTEXsubsubsectionfont}
+    \renewcommand{\cftsubsubsectionpagefont}{\cftsubsubsectionfont}
 
-	%
-	\renewcommand{\cftparagraphfont}{\ABNTEXsubsubsubsectionfont}
-	\renewcommand{\cftparagraphpagefont}{\cftparagraphfont}
+    %
+    \renewcommand{\cftparagraphfont}{\ABNTEXsubsubsubsectionfont}
+    \renewcommand{\cftparagraphpagefont}{\cftparagraphfont}
 
-	%
-	% Ajusta entrada Referencias
-	%
-	\renewcommand{\bibsection}{%
-		\chapter*{\bibname}
-		\bibmark
-		\ifnobibintoc\else
-		\phantomsection
-		\addcontentsline{toc}{chapter}{\uppercase{\bibname}}
-		\fi
-		\prebibhook
-	}
+    %
+    % Ajusta entrada Referencias
+    %
+    \renewcommand{\bibsection}{%
+        \chapter*{\bibname}
+        \bibmark
+        \ifnobibintoc\else
+        \phantomsection
+        \addcontentsline{toc}{chapter}{\uppercase{\bibname}}
+        \fi
+        \prebibhook
+    }
 }{}
 
 % Caption package and Memoir
@@ -376,16 +377,16 @@
 % https://tex.stackexchange.com/questions/18931/memoir-class-with-subcaption-and-hyperref-packages
 %
 % \captionsetup[table]{
-% 	%  name=Tabela,
-% 	%  listformat=empty,
-% 	%  justification=justified,
-% 	%  labelsep=colon,
-% 	%   position=above,
-% 	%   skip=\onelineskip,
-% 	%  width=\linewidth,
-% 	labelfont={normalsize},
-% 	textfont={small},
-% 	font={normalsize}
+%   %  name=Tabela,
+%   %  listformat=empty,
+%   %  justification=justified,
+%   %  labelsep=colon,
+%   %   position=above,
+%   %   skip=\onelineskip,
+%   %  width=\linewidth,
+%   labelfont={normalsize},
+%   textfont={small},
+%   font={normalsize}
 % }
 
 % Caption package and Memoir
@@ -393,16 +394,16 @@
 % https://tex.stackexchange.com/questions/18931/memoir-class-with-subcaption-and-hyperref-packages
 %
 % \captionsetup[figure]{
-% 	%  name=Tabela,
-% 	%  listformat=empty,
-% 	%  justification=justified,
-% 	%  labelsep=colon,
-% 	%   position=above,
-% 	%   skip=\onelineskip,
-% 	%  width=\linewidth,
-% 	labelfont={normalsize},
-% 	textfont={small},
-% 	font={normalsize}
+%   %  name=Tabela,
+%   %  listformat=empty,
+%   %  justification=justified,
+%   %  labelsep=colon,
+%   %   position=above,
+%   %   skip=\onelineskip,
+%   %  width=\linewidth,
+%   labelfont={normalsize},
+%   textfont={small},
+%   font={normalsize}
 % }
 
 % Espaçamento depois do título
@@ -414,35 +415,35 @@
 
 % Comando para inverter sobrenome e nome
 \newcommand{\ufscthesis@inverter}[1]{%
-	\StrBehind{#1}{{}},
-	\StrBefore{#1}{{}}
+    \StrBehind{#1}{{}},
+    \StrBefore{#1}{{}}
 }
 
 
 % Comandos auxiliares
 \newcommand{\showfont}{%
-	(encoding: \f@encoding{},
-	family: \f@family{},
-	series: \f@series{},
-	shape: \f@shape{},
-	size: \f@size{},
-	baseline: \f@baselineskip{})
-	%tfsize: \tf@size{},
-	%sfsize: \sf@size{},
-	%sssize: \ssf@size{}
+    (encoding: \f@encoding{},
+    family: \f@family{},
+    series: \f@series{},
+    shape: \f@shape{},
+    size: \f@size{},
+    baseline: \f@baselineskip{})
+    %tfsize: \tf@size{},
+    %sfsize: \sf@size{},
+    %sssize: \ssf@size{}
 }
 
 % Comandos auxiliares
 \newcommand{\justshowfont}{%
-	(\f@encoding{},
-	\f@family{},
-	\f@series{},
-	\f@shape{},
-	\f@size{},
-	\f@baselineskip{})
-	%tfsize: \tf@size{},
-	%sfsize: \sf@size{},
-	%sssize: \ssf@size{}
+    (\f@encoding{},
+    \f@family{},
+    \f@series{},
+    \f@shape{},
+    \f@size{},
+    \f@baselineskip{})
+    %tfsize: \tf@size{},
+    %sfsize: \sf@size{},
+    %sssize: \ssf@size{}
 }
 
 
@@ -473,25 +474,25 @@
 \newcommand\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
 
 \makechapterstyle{VZ14}{
-	%	\thispagestyle{empty}
+    %   \thispagestyle{empty}
 \setlength\beforechapskip{50pt}
 \setlength\midchapskip{20pt}
 \setlength\afterchapskip{20pt}
-	\renewcommand\chapternamenum{}
-	\renewcommand\printchaptername{}
-	\renewcommand\chapnamefont{\Huge\scshape}
-	\renewcommand\printchapternum{%
-		\chapnamefont\null\thickhrulefill\quad
-		\@chapapp\space\thechapter\quad\thickhrulefill}
-	\renewcommand\printchapternonum{%
-		\par\thickhrulefill\par\vskip\midchapskip
-		\hrule\vskip\midchapskip
-	}
-	\renewcommand\chaptitlefont{\huge\scshape\centering}
-	\renewcommand\afterchapternum{%
-		\par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip}
-	\renewcommand\afterchaptertitle{%
-		\par\vskip\midchapskip\hrule\nobreak\vskip\afterchapskip}
+    \renewcommand\chapternamenum{}
+    \renewcommand\printchaptername{}
+    \renewcommand\chapnamefont{\Huge\scshape}
+    \renewcommand\printchapternum{%
+        \chapnamefont\null\thickhrulefill\quad
+        \@chapapp\space\thechapter\quad\thickhrulefill}
+    \renewcommand\printchapternonum{%
+        \par\thickhrulefill\par\vskip\midchapskip
+        \hrule\vskip\midchapskip
+    }
+    \renewcommand\chaptitlefont{\huge\scshape\centering}
+    \renewcommand\afterchapternum{%
+        \par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip}
+    \renewcommand\afterchaptertitle{%
+        \par\vskip\midchapskip\hrule\nobreak\vskip\afterchapskip}
 }
 
 \makeatother
@@ -543,30 +544,30 @@
 % ---
 % Configura layout para elementos textuais
 \renewcommand{\textual}{%
-	\ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
-		\pagestyle{plain}%
-		}{%else
-		\pagestyle{abntheadings}% Estilo original do Abntex2
-		% \aliaspagestyle{chapter}{abntchapfirst}% customizing chapter pagestyle
-		\aliaspagestyle{chapter}{empty} % Remove a numeração das páginas no início dos capítulos.
-	}
-	\nouppercaseheads%
-	\bookmarksetup{startatroot}%
+    \ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
+        \pagestyle{plain}%
+        }{%else
+        \pagestyle{abntheadings}% Estilo original do Abntex2
+        % \aliaspagestyle{chapter}{abntchapfirst}% customizing chapter pagestyle
+        \aliaspagestyle{chapter}{empty} % Remove a numeração das páginas no início dos capítulos.
+    }
+    \nouppercaseheads%
+    \bookmarksetup{startatroot}%
 }
 
 % ---
 % Configura layout para elementos textuais
 \newcommand{\textualINEPUFSC}{%
-	\ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
-		\pagestyle{plain}%
-		}{%else
-		%   \pagestyle{abntheadings}% Estilo original do Abntex2
-		\pagestyle{abntheadingsLogo}%
-		% \aliaspagestyle{chapter}{abntchapfirst}% customizing chapter pagestyle
-		\aliaspagestyle{chapter}{empty} % Remove a numeração das páginas no início dos capítulos.
-	}
-	\nouppercaseheads%
-	\bookmarksetup{startatroot}%
+    \ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
+        \pagestyle{plain}%
+        }{%else
+        %   \pagestyle{abntheadings}% Estilo original do Abntex2
+        \pagestyle{abntheadingsLogo}%
+        % \aliaspagestyle{chapter}{abntchapfirst}% customizing chapter pagestyle
+        \aliaspagestyle{chapter}{empty} % Remove a numeração das páginas no início dos capítulos.
+    }
+    \nouppercaseheads%
+    \bookmarksetup{startatroot}%
 }
 
 
@@ -591,26 +592,26 @@
 \newcounter{includepdfpage}
 \newcounter{currentpagecounter}
 \newcommand{\addlabelstoallincludedpages}[1]{
-	\refstepcounter{includepdfpage}
-	\stepcounter{currentpagecounter}
-	\label{#1.\thecurrentpagecounter}}
+    \refstepcounter{includepdfpage}
+    \stepcounter{currentpagecounter}
+    \label{#1.\thecurrentpagecounter}}
 \newcommand{\modifiedincludepdf}[4]{
-	\setcounter{currentpagecounter}{0}
-	\includepdf[pages=#1,pagecommand=\addlabelstoallincludedpages{#2},scale=#4]{#3}}
+    \setcounter{currentpagecounter}{0}
+    \includepdf[pages=#1,pagecommand=\addlabelstoallincludedpages{#2},scale=#4]{#3}}
 
 
 % ---
 % Impressão da Capa
  \newcommand{\imprimircapaUFSC}{%
-	 \begin{EnvCapaUFSC}%
-	\vspace*{5cm}
-		 \parbox{307pt}{\center\ArialTreze \MakeUppercase{\imprimirtitulo}}
-	 \vfill
-	 \vspace*{3cm}
-		\ArialCatorze\imprimirautor
-	 \vfill
-	 \vspace*{5.8cm} % Precisa ser ajustado dependendo do tamanho do titulo
-	 \end{EnvCapaUFSC}
+     \begin{EnvCapaUFSC}%
+    \vspace*{5cm}
+         \parbox{307pt}{\center\ArialTreze \MakeUppercase{\imprimirtitulo}}
+     \vfill
+     \vspace*{3cm}
+        \ArialCatorze\imprimirautor
+     \vfill
+     \vspace*{5.8cm} % Precisa ser ajustado dependendo do tamanho do titulo
+     \end{EnvCapaUFSC}
  }
 % ---
 
@@ -618,25 +619,25 @@
 % ---
 % Impressão da Capa
 \renewcommand{\imprimircapa}{%
-	\begin{capa}%
-		\center
+    \begin{capa}%
+        \center
 
-		\ABNTEXchapterfont\bfseries\large{UNIVERSIDADE FEDERAL DE SANTA CATARINA\\PROGRAMA DE P\'OS--GRADUA\c C\~AO EM ENGENHARIA EL\'ETRICA}
+        \ABNTEXchapterfont\bfseries\large{UNIVERSIDADE FEDERAL DE SANTA CATARINA\\PROGRAMA DE P\'OS--GRADUA\c C\~AO EM ENGENHARIA EL\'ETRICA}
 
-		\vfill
+        \vfill
 
-		\ABNTEXchapterfont\large\imprimirautor
+        \ABNTEXchapterfont\large\imprimirautor
 
-		\vfill
-		\ABNTEXchapterfont\bfseries\Large\MakeUppercase{\imprimirtitulo}
-		\vfill
+        \vfill
+        \ABNTEXchapterfont\bfseries\Large\MakeUppercase{\imprimirtitulo}
+        \vfill
 
-		\large\imprimirlocal
+        \large\imprimirlocal
 
-		\large\imprimirdata
+        \large\imprimirdata
 
-		\vspace*{1cm}
-	\end{capa}
+        \vspace*{1cm}
+    \end{capa}
 }
 % ---
 
@@ -654,44 +655,44 @@
 % Conteudo padrao da Folha de Rosto
 \makeatletter
 \renewcommand{\folhaderostocontent}{
-	\begin{center}
-		%\vspace*{1cm}
-		{\ABNTEXchapterfont\large\imprimirautor}
+    \begin{center}
+        %\vspace*{1cm}
+        {\ABNTEXchapterfont\large\imprimirautor}
 
-		\vspace*{\fill}\vspace*{\fill}
-		\begin{center}
-			\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
-		\end{center}
-		\vspace*{\fill}
+        \vspace*{\fill}\vspace*{\fill}
+        \begin{center}
+            \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+        \end{center}
+        \vspace*{\fill}
 
-		\abntex@ifnotempty{\imprimirpreambulo}{%
-			\hspace{.45\textwidth}
-			\begin{minipage}{5,5cm}
-				\SingleSpacing
-				\fontsize{9.5}{10.5} \selectfont	\imprimirpreambulo\\
+        \abntex@ifnotempty{\imprimirpreambulo}{%
+            \hspace{.45\textwidth}
+            \begin{minipage}{5,5cm}
+                \SingleSpacing
+                \fontsize{9.5}{10.5} \selectfont    \imprimirpreambulo\\
 
-				\fontsize{9.5}{10.5} \selectfont{\textbf{\imprimirorientadorRotulo}~\imprimirorientador\par}
-				\abntex@ifnotempty{\imprimircoorientador}{%
-					{\textbf{\imprimircoorientadorRotulo}~\imprimircoorientador}%
-				}%
-			\end{minipage}%
-			\vspace*{\fill}
-		}%
+                \fontsize{9.5}{10.5} \selectfont{\textbf{\imprimirorientadorRotulo}~\imprimirorientador\par}
+                \abntex@ifnotempty{\imprimircoorientador}{%
+                    {\textbf{\imprimircoorientadorRotulo}~\imprimircoorientador}%
+                }%
+            \end{minipage}%
+            \vspace*{\fill}
+        }%
 
-		%		{\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
+        %       {\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
 
-		%		{\large\imprimirorientadorRotulo~\imprimirorientador\par}
-		%		\abntex@ifnotempty{\imprimircoorientador}{%
-		%			{\large\imprimircoorientadorRotulo~\imprimircoorientador}%
-		%		}%
-		\vspace*{\fill}
+        %       {\large\imprimirorientadorRotulo~\imprimirorientador\par}
+        %       \abntex@ifnotempty{\imprimircoorientador}{%
+        %           {\large\imprimircoorientadorRotulo~\imprimircoorientador}%
+        %       }%
+        \vspace*{\fill}
 
-		{\large\imprimirlocal}
-		\par
-		{\large\imprimirdata}
-		\vspace*{1cm}
+        {\large\imprimirlocal}
+        \par
+        {\large\imprimirdata}
+        \vspace*{1cm}
 
-	\end{center}
+    \end{center}
 }
 \makeatother
 
