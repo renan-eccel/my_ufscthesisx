@@ -34,6 +34,9 @@
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 
+
+
+
 % To fix the warning `LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right`,
 % open the file `D:\User\Documents\latex\texmfs\install\tex\latex\abntex2\abntex2cite.sty` and
 % comment out these two lines:
@@ -50,11 +53,11 @@
 %\englishfalse % Will show Portuguese text only
 
 \ifenglish
-	% How to make \PassOptionsToPackage add the option as the last option?
-	% https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last-option
-	\PassOptionsToPackage{brazil,main=english}{babel}
+    % How to make \PassOptionsToPackage add the option as the last option?
+    % https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last-option
+    \PassOptionsToPackage{brazil,main=english}{babel}
 \else
-	\PassOptionsToPackage{main=brazil,english}{babel}
+    \PassOptionsToPackage{main=brazil,english}{babel}
 \fi
 
 % The UFSC font size is 10.5, but memoir embbeded on `abntex2` only accepts 10 and 11pt. However
@@ -73,43 +76,21 @@ section=TITLE  % Título de seções em caixa alta
 % https://tex.stackexchange.com/questions/384885/package-hyperref-warning-token-not-allowed-in-a-pdf-string
 \pdfstringdefDisableCommands{\let\uppercase\relax}
 
-% Setup the thesis citations packages
-\usepackage[alf]{abntex2cite}	% Citação alfabética por autor-data [alf]
+% Citação alfabética por autor-data [alf]
+\usepackage[alf]{abntex2cite}
+
+% Load the UFSC thesis settings
 \usepackage{abntex2-ufsc}
 
-
-
-% ---
-% Pacotes básicos
-% ---
-
-% ---
-% Configurações do pacote backref, paginas com as citações na bibl
+% Configurações do pacote backref, paginas com as citações na bibliografia
 \usepackage[brazilian,hyperpageref]{backref}
 
-\ifenglish
-	% The default language for backref is already English
-\else
-	% Usado sem a opção hyperpageref de backref
-	\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
 
-	% Texto padrão antes do número das páginas
-	\renewcommand{\backref}{}
 
-	% Define os textos da citação
-	\renewcommand*{\backrefalt}[4]{
-		\ifcase #1 %
-			Nenhuma citação no texto.%
-		\or
-			Citado na página #2.%
-		\else
-			Citado #1 vezes nas páginas #2.%
-		\fi}%
-\fi
 
-% ---
+% Thesis settings
+%
 % Informações de dados para CAPA e FOLHA DE ROSTO
-% ---
 \titulo{Modelo Canônico de TCC, Monografia,  Dissertação, Tese ou Relatório de Pós--Doutorado da UFSC com \abnTeX}
 \autor{Nome do Autor}
 \local{Florianópolis, Santa Catarina -- Brasil}
@@ -124,97 +105,100 @@ section=TITLE  % Título de seções em caixa alta
   \par
  Programa de Pós--Graduação em Engenharia Elétrica -- PGEEL}
 
-
-% O preambulo deve conter o tipo do trabalho, o objetivo,
-% o nome da instituição e a área de concentração
+% O preambulo deve conter o tipo do trabalho, o objetivo. O nome da instituição e a área de
+% concentração.
 \preambulo{Tese submetida ao Programa de Pós--Graduação em Engenharia Elétrica da Universidade Federal de Santa Catarina para a obtenção do Grau de Doutor em Engenharia Elétrica.}
-% ---
 
+% Back references translation
+\ifenglish
+    % The default language for backref is already English
+\else
+    % Usado sem a opção hyperpageref de backref
+    \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
 
-% ---
+    % Texto padrão antes do número das páginas
+    \renewcommand{\backref}{}
+
+    % Define os textos da citação
+    \renewcommand*{\backrefalt}[4]{
+        \ifcase #1 %
+            Nenhuma citação no texto.%
+        \or
+            Citado na página #2.%
+        \else
+            Citado #1 vezes nas páginas #2.%
+        \fi}%
+\fi
+
 % Configurações de aparência do PDF final
-% ---
-% Configurações de aparência do PDF final
+\definecolor{figcolor}{rgb}{1,0.4,0}  % orange
+\definecolor{tabcolor}{rgb}{1,0.4,0}  % orange
+\definecolor{eqncolor}{rgb}{1,0.4,0}  % orange
+\definecolor{linkcolor}{rgb}{1,0.4,0} % orange
+\definecolor{citecolor}{rgb}{1,0.4,0} % orange
+\definecolor{seccolor}{rgb}{0,0,1}    % blue
+\definecolor{abscolor}{rgb}{0,0,1}    % blue
+\definecolor{titlecolor}{rgb}{0,0,1}  % blue
+\definecolor{biocolor}{rgb}{0,0,1}    % blue
 
-
-%\definecolor{figcolor}{rgb}{1,0.4,0}  % orange
-%\definecolor{tabcolor}{rgb}{1,0.4,0}  % orange
-%\definecolor{eqncolor}{rgb}{1,0.4,0}  % orange
-%\definecolor{linkcolor}{rgb}{1,0.4,0}  % orange
-%\definecolor{citecolor}{rgb}{1,0.4,0}  % orange
-%\definecolor{seccolor}{rgb}{0,0,1}  % blue
-%\definecolor{abscolor}{rgb}{0,0,1}  % blue
-%\definecolor{titlecolor}{rgb}{0,0,1}  % blue
-%\definecolor{biocolor}{rgb}{0,0,1}  % blue
-
-% alterando o aspecto da cor azul
+% Alterando o aspecto da cor azul
 \definecolor{blue}{RGB}{41,5,195}
 
-% informações do PDF
+% Informações do PDF
 \makeatletter
 \hypersetup{
-	%pagebackref=true,
-	pdftitle={\@title},
-	pdfauthor={Autores},
-	pdfsubject={Resumo do artigo},
-	pdfcreator={LaTeX with abnTeX2},
-	pdfkeywords={abnt}{latex}{UFSC}{abntex2}{tese},
-	colorlinks=true,       		% false: boxed links; true: colored links
-	linkcolor=linkcolor,          	% color of internal links
-	citecolor=citecolor,        		% color of links to bibliography
-	filecolor=black,      		% color of file links
-	urlcolor=linkcolor,
-	bookmarksdepth=4
+    % pagebackref=true, % Package hyperref Warning: Option `pagebackref' has already been used
+    pdftitle={\@title},
+    pdfauthor={Autores},
+    pdfsubject={Resumo do artigo},
+    pdfcreator={LaTeX with abnTeX2},
+    pdfkeywords={abnt}{latex}{UFSC}{abntex2}{tese},
+    colorlinks=true,            % false: boxed links; true: colored links
+    linkcolor=linkcolor,        % color of internal links
+    citecolor=citecolor,        % color of links to bibliography
+    filecolor=black,            % color of file links
+    urlcolor=linkcolor,
+    bookmarksdepth=4
 }
 \makeatother
 
-% ---
 
 
-% ---
-% Estilo de capítulos
+
+% Espaçamentos entre linhas e parágrafos
 %
-%\chapterstyle{default}
+% Estilo de capítulos, ver classe para maiores detalhes.Veja outros estilos em:
+% http://www.tex.ac.uk/tex-archive/info/MemoirChapStyles/MemoirChapStyles.pdf
+%
+% \chapterstyle{default}
 % \chapterstyle{pedersen}
-%\chapterstyle{lyhne}
-%\chapterstyle{madsen}
+% \chapterstyle{lyhne}
+% \chapterstyle{madsen}
 % \chapterstyle{veelo}
-%\chapterstyle{companion}
-
-%\chapterstyle{thatcher}
-%\chapterstyle{verville}
-
-\chapterstyle{VZ14} % Ver classe para maiores detalhes
+% \chapterstyle{companion}
+% \chapterstyle{thatcher}
+% \chapterstyle{verville}
+\chapterstyle{VZ14}
 \setlength\beforechapskip{0pt}
 \setlength\midchapskip{15pt}
 \setlength\afterchapskip{15pt}
 
-
-%
-% Veja outros estilos em:
-% http://www.tex.ac.uk/tex-archive/info/MemoirChapStyles/MemoirChapStyles.pdf
-% ---
-
-
-
-
-% ---
-% Espaçamentos entre linhas e parágrafos
-% ---
-
 % O tamanho do parágrafo é dado por:
 \setlength{\parindent}{1.3cm}
 
-% Controle do espaçamento entre um parágrafo e outro:
-\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+% Controle do espaçamento entre um parágrafo e outro. Tente também
+% \onelineskip
+\setlength{\parskip}{0.2cm}
 
-% ---
-% compila o indice
-% ---
+% Compila o índice
 \makeindex
-% ---
 
 
+
+
+% When writing a large document, it is sometimes useful to work on selected sections of the document
+% to speed up compilation time: https://en.wikibooks.org/wiki/TeX/includeonly
+%
 %\includeonly{PreTexto/fichacatalografica}
 %\includeonly{PreTexto/agradecimentos}
 %\includeonly{PreTexto/resumos}
@@ -226,7 +210,6 @@ section=TITLE  % Título de seções em caixa alta
 %\includeonly{Capitulos/02/CH02}
 %\includeonly{Capitulos/03/CH03}
 %\includeonly{Capitulos/04/CH04}
-
 
 \begin{document}
 
@@ -247,31 +230,22 @@ section=TITLE  % Título de seções em caixa alta
 % Retira espaço extra obsoleto entre as frases.
 \frenchspacing
 
-% ----------------------------------------------------------
-% ELEMENTOS PRÉ-TEXTUAIS
-% ----------------------------------------------------------
 
+
+
+% ELEMENTOS PRÉ-TEXTUAIS
 \includepdf{Imagens/FrenteCapaUFSC.pdf}%
 
 \pretextual
 
-% ---
 % Capa
-% ---
 \imprimircapa
-% ---
 
-% ---
-% Folha de rosto
-% (o * indica que haverá a ficha bibliográfica)
-% ---
+% Folha de rosto (o * indica que haverá a ficha bibliográfica)
 \imprimirfolhaderosto*
-% ---
 
-% ---
 % Inserir a ficha bibliografica
-% ---
-
+%
 % Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
 % catalogação-na-publicação''. Você pode utilizar este modelo como referência.
 % Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
@@ -282,163 +256,105 @@ section=TITLE  % Título de seções em caixa alta
 % \begin{fichacatalografica}
 %    \includepdf{PreTexto/ficha_catalografica.pdf}
 % \end{fichacatalografica}
-
 \include{PreTexto/fichacatalografica}
 
-% ---
 % Inserir errata
-% ---
 
-
-% ---
 % Inserir folha de aprovação
-% ---
 
 % Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
 % 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
 % do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
 % imagem da página assinada pela banca com o comando abaixo:
-%
 % \includepdf{folhadeaprovacao_final.pdf}
-%
 \include{PreTexto/folhadeaprovacao}
 
-
-
-
-
-% ---
-
-% ---
 % Dedicatória
-% ---
 \begin{dedicatoria}
-	\vspace*{\fill}
-	\centering
-	\noindent
-	\textit{ Este trabalho é dedicado às crianças adultas que,\\
-		quando pequenas, sonharam em se tornar cientistas.} \vspace*{\fill}
+    \vspace*{\fill}
+    \centering
+    \noindent
+    \textit{ Este trabalho é dedicado às crianças adultas que,\\
+        quando pequenas, sonharam em se tornar cientistas.} \vspace*{\fill}
 \end{dedicatoria}
-% ---
 
-% ---
 % Agradecimentos
-% ---
 \include{PreTexto/agradecimentos}
-% ---
 
-% ---
 % Epígrafe
-% ---
 \ifthenelse{ \equal{\WriteEpigraphs}{true} }{
 \begin{epigrafe}
-	\vspace*{\fill}
 
-		\begin{flushright}
-			\textit{``Assim como aquele pecado da juventude, este documento te perseguirá pelo resto da vida.''}\\Enio Valmor Kassick
-		\end{flushright}
-
-	\begin{flushright}
-		\textit{``Estupidez trará mais autoconfiança do que o conhecimento e a bravura juntas.''}\\
-		Adriano Ruseler
-	\end{flushright}
-
-	\begin{flushright}
-		\textit{``Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning.''}\\	Albert Einstein
-	\end{flushright}
-	\begin{flushright}
-		\textit{``The true sign of intelligence is not knowledge but imagination.''}\\	Albert Einstein
-	\end{flushright}
-	\begin{flushright}
-		\textit{``Peace cannot be kept by force; it can only be achieved by understanding.''}\\	Albert Einstein
-	\end{flushright}
-	\begin{flushright}
-		\textit{``Whoever is careless with the truth in small matters cannot be trusted with important matters.''}\\	Albert Einstein
-	\end{flushright}
-	\begin{flushright}
-		\textit{``Extraordinary claims require extraordinary evidence''}\\
-		Carl Sagan
-	\end{flushright}
-
-%	\begin{flushright}
-%		\textit{``Pesquisa cientifica é a arte isolar o ego e as crenças da interpretação dos fatos.''}\\
-%		Adriano Ruseler
-%	\end{flushright}
-%	\begin{flushright}
-%		\textit{``A verdadeira motivação de um pesquisador está em desenvolver suas próprias idéias seguindo a sua intuição.''}\\
-%		Adriano Ruseler
-%	\end{flushright}
-
-
-
-	\begin{flushright}
-		\textit{``Catholic, which I was until I reached the age of reason.''}\\
-		George Carlin
-	\end{flushright}
-	\begin{flushright}
-		\textit{``We made too many wrong mistakes.''}\\
-		Yogi Berra
-	\end{flushright}
+    \vspace*{\fill}
+    \begin{flushright}
+        \textit{``Assim como aquele pecado da juventude, este documento te perseguirá pelo resto da vida.''}\\Enio Valmor Kassick
+    \end{flushright}
+    \begin{flushright}
+        \textit{``Estupidez trará mais autoconfiança do que o conhecimento e a bravura juntas.''}\\
+        Adriano Ruseler
+    \end{flushright}
+    \begin{flushright}
+        \textit{``Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning.''}\\ Albert Einstein
+    \end{flushright}
+    \begin{flushright}
+        \textit{``The true sign of intelligence is not knowledge but imagination.''}\\  Albert Einstein
+    \end{flushright}
+    \begin{flushright}
+        \textit{``Peace cannot be kept by force; it can only be achieved by understanding.''}\\ Albert Einstein
+    \end{flushright}
+    \begin{flushright}
+        \textit{``Whoever is careless with the truth in small matters cannot be trusted with important matters.''}\\    Albert Einstein
+    \end{flushright}
+    \begin{flushright}
+        \textit{``Extraordinary claims require extraordinary evidence''}\\
+        Carl Sagan
+    \end{flushright}
+    \begin{flushright}
+        \textit{``Catholic, which I was until I reached the age of reason.''}\\
+        George Carlin
+    \end{flushright}
+    \begin{flushright}
+        \textit{``We made too many wrong mistakes.''}\\
+        Yogi Berra
+    \end{flushright}
 
 \end{epigrafe}
 }{
-% do something different..
+    % do something different..
 }
-% ---
 
-% ---
 % RESUMOS
-% ---
-\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
-
+%
+% Ajusta o espaçamento dos parágrafos do resumo
+\setlength{\absparsep}{18pt}
 \include{PreTexto/resumos}
 
-
-% ---
 % inserir lista de ilustrações
-% ---
 \pdfbookmark[0]{\listfigurename}{lof}
 \listoffigures*
 \cleardoublepage
-% ---
 
-% ---
 % inserir lista de tabelas
-% ---
 \pdfbookmark[0]{\listtablename}{lot}
 \listoftables*
 \cleardoublepage
-% ---
 
-% ---
 % inserir códigos fonte
 % ---
 \pdfbookmark[0]{\lstlistingname}{lol}
 \lstlistoflistings*
 \cleardoublepage
-% ---
 
-
-% ---
 % inserir lista de abreviaturas e siglas
-% ---
 \include{PreTexto/siglas}
-% ---
 
-% ---
-% inserir lista de símbolos
-% ---
+% Inserir lista de símbolos
 \include{PreTexto/simbolos}
-% ---
 
-
-% ---
-% inserir o sumario
-% ---
+% Inserir o sumario
 \pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents*
 \cleardoublepage
-% ---
 
 % warning: destination with same identifier has been already used, duplicate ignored
 % https://tex.stackexchange.com/questions/13083/pdftex-warning-destination-with-same-identifier-has-been-already-used-duplicat
@@ -446,154 +362,102 @@ section=TITLE  % Título de seções em caixa alta
 
 
 
-% ----------------------------------------------------------
-% ELEMENTOS TEXTUAIS
-% ----------------------------------------------------------
 
-\textual % Configura estilo das páginas.
+
+% ELEMENTOS TEXTUAIS
+%
+% Configura estilo das páginas.
+\textual
 
 \setlength\beforechapskip{50pt}
 \setlength\midchapskip{20pt}
 \setlength\afterchapskip{20pt}
 
-%\textualINEPUFSC  % Configura estilo das páginas com logos
+% Configura estilo das páginas com logos
+% \textualINEPUFSC
 
-% ----------------------------------------------------------
 % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
-% ----------------------------------------------------------
 \include{Capitulos/00/CH00}
 
-% ----------------------------------------------------------
 % PARTE
-% ----------------------------------------------------------
-%\part{Preparação da pesquisa}
-% ----------------------------------------------------------
+% \part{Preparação da pesquisa}
 
-% ---
 % Capitulo com exemplos de comandos inseridos de arquivo externo
-% ---
 \include{Capitulos/01/CH01}
-% ---
 
-% ----------------------------------------------------------
 % PARTE
-% ----------------------------------------------------------
-%\part{Referenciais teóricos}
-% ----------------------------------------------------------
+% \part{Referenciais teóricos}
 
-% ---
 % Capitulo de revisão de literatura
-% ---
-%\include{Capitulos/02/CH02}
-% ---
+% \include{Capitulos/02/CH02}
 
-% ----------------------------------------------------------
 % PARTE
-% ----------------------------------------------------------
-%\part{Resultados}
-% ----------------------------------------------------------
+% \part{Resultados}
 
-% ---
-% primeiro capitulo de Resultados
-% ---
+% Primeiro capitulo de Resultados
+% \include{Capitulos/03/CH03}
 
-%\include{Capitulos/03/CH03}
-
-
-
-% ---
-% segundo capitulo de Resultados
-% ---
+% Segundo capitulo de Resultados
 %\include{Capitulos/04/CH04}
 
-
-% ----------------------------------------------------------
 % Finaliza a parte no bookmark do PDF
 % para que se inicie o bookmark na raiz
 % e adiciona espaço de parte no Sumário
-% ----------------------------------------------------------
 \phantompart
 
-% ---
 % Conclusão (outro exemplo de capítulo sem numeração e presente no sumário)
-% ---
 \include{Capitulos/Concl/Concl}
 
-% ----------------------------------------------------------
+
+
+
 % ELEMENTOS PÓS-TEXTUAIS
-% ----------------------------------------------------------
 \postextual
-% ----------------------------------------------------------
 \setlength\beforechapskip{0pt}
 \setlength\midchapskip{15pt}
 \setlength\afterchapskip{15pt}
 
-% ----------------------------------------------------------
 % Referências bibliográficas
-% ----------------------------------------------------------
-
 \bibliography{modelo-ufsc-references}
 
+% Glossário, consulte o manual da classe abntex2 para orientações sobre o glossário.
+% \glossary
 
-% ----------------------------------------------------------
-% Glossário
-% ----------------------------------------------------------
-%
-% Consulte o manual da classe abntex2 para orientações sobre o glossário.
-%
-%\glossary
-
-% ----------------------------------------------------------
-% Apêndices
-% ----------------------------------------------------------
-
-% ---
-% Inicia os apêndices
-% ---
+% Apêndices, inicia os apêndices
 \begin{apendicesenv}
 
-	% Imprime uma página indicando o início dos apêndices
-	\partapendices
+    % Imprime uma página indicando o início dos apêndices
+    \partapendices
 
-	\setlength\beforechapskip{50pt}
-	\setlength\midchapskip{20pt}
-	\setlength\afterchapskip{20pt}
+    \setlength\beforechapskip{50pt}
+    \setlength\midchapskip{20pt}
+    \setlength\afterchapskip{20pt}
 
-	\include{Apendices/A/APA}
-%	\include{Apendices/B/APB}
-%	\include{Apendices/C/APC}
+    \include{Apendices/A/APA}
+    % \include{Apendices/B/APB}
+    % \include{Apendices/C/APC}
 
 \end{apendicesenv}
-% ---
 
-
-% ----------------------------------------------------------
-% Anexos
-% ----------------------------------------------------------
-
-% ---
-% Inicia os anexos
-% ---
+% Anexos, inicia os anexos
 \begin{anexosenv}
 
-	% Imprime uma página indicando o início dos anexos
-	\partanexos
+    % Imprime uma página indicando o início dos anexos
+    \partanexos
 
-	\setlength\beforechapskip{50pt}
-	\setlength\midchapskip{20pt}
-	\setlength\afterchapskip{20pt}
+    \setlength\beforechapskip{50pt}
+    \setlength\midchapskip{20pt}
+    \setlength\afterchapskip{20pt}
 
-	\include{Anexos/A/ANA}
-%	\include{Anexos/B/ANB}
-%	\include{Anexos/C/ANC}
+    \include{Anexos/A/ANA}
+    % \include{Anexos/B/ANB}
+    % \include{Anexos/C/ANC}
 
 \end{anexosenv}
 
-%---------------------------------------------------------------------
 % INDICE REMISSIVO
-%---------------------------------------------------------------------
 \phantompart
 \printindex
-%---------------------------------------------------------------------
 
 \end{document}
+
