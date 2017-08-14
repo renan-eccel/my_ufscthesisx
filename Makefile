@@ -44,26 +44,24 @@ thesis: $(TEST_PDFS)
 %.pdf: %.tex
 	@$(LATEX) $<
 
+
 .PHONY: clean
 
-clean:
-	rm -f "*.gz(busy)"
-	rm -f *.aux \
-		*.log \
-		*.pdf \
-		*.aux \
-		*.bbl \
-		*.log \
-		*.out \
-		*.toc \
-		*.dvi \
-		*.blg \
-		*.synctex.gz \
-		*.fdb_latexmk \
-		*.fls
+# Using Makefile to clean subdirectories
+# https://stackoverflow.com/questions/26007005/using-makefile-to-clean-subdirectories
+#
+# Exclude directory from find . command
+# https://stackoverflow.com/questions/4210042/exclude-directory-from-find-command
+GARBAGE_TYPES         := "*.gz(busy)" *.aux *.log *.pdf *.aux *.bbl *.log *.out *.toc *.dvi *.blg *.synctex.gz *.fdb_latexmk *.fls
+DIRECTORIES_TO_CLEAN  := $(shell find -not -path "./.git**" -not -path "./imagens**" -type d)
+GARBAGE_TYPED_FOLDERS := $(foreach DIR, $(DIRECTORIES_TO_CLEAN), $(addprefix $(DIR)/,$(GARBAGE_TYPES)))
 
-veryclean:
-	git clean -dxf
+clean:
+	rm -rfv $(GARBAGE_TYPED_FOLDERS)
+	# echo $(GARBAGE_TYPED_FOLDERS)
+
+# veryclean:
+# 	git clean -dxf
 
 thesis_verbose: $(THESIS_MAIN_FILE)
 
