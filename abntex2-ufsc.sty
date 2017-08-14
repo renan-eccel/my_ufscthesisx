@@ -674,19 +674,19 @@
 % ---
 
 
-% ---
-% Folha de rosto
-%   usar \imprimirfolhaderosto* casodeseje imprimir algo no verso da
-%   página no caso de estar no modo twoside. Util para imprimir a Ficha
-%   Bibliografica. Porem, se estiver no modo oneside, a versao sem estrela
-%   é identica.
-%\renewenvironment{folhaderosto}[1][\folhaderostoname]{\clearpage\PRIVATEbookmarkthis{#1}}{\cleardoublepage}
-%\renewenvironment{folhaderosto*}[1][\folhaderostoname]{\clearpage\PRIVATEbookmarkthis{#1}}{\newpage}%
-
-% ---
 % Conteudo padrao da Folha de Rosto
+%
+% Underfull \hbox (badness 10000) message
+% https://tex.stackexchange.com/questions/199635/underfull-hbox-badness-10000-message
+%
+% Underfull \hbox (badness …) in paragraph at lines x-y
+% https://tex.stackexchange.com/questions/356110/underfull-hbox-badness-in-paragraph-at-lines-x-y
+%
+% How to add an empty line between paragraphs?
+% https://tex.stackexchange.com/questions/135134/how-to-add-an-empty-line-between-paragraphs
 \makeatletter
-\renewcommand{\folhaderostocontent}{
+\renewcommand{\folhaderostocontent}
+{
     \begin{center}
         %\vspace*{1cm}
         {\ABNTEXchapterfont\large\imprimirautor}
@@ -697,26 +697,25 @@
         \end{center}
         \vspace*{\fill}
 
-        \abntex@ifnotempty{\imprimirpreambulo}{%
+        \abntex@ifnotempty{\imprimirpreambulo}
+        {%
             \hspace{.45\textwidth}
             \begin{minipage}{5,5cm}
+
                 \SingleSpacing
-                \fontsize{9.5}{10.5} \selectfont    \imprimirpreambulo\\
+                \fontsize{9.5}{10.5} \selectfont \imprimirpreambulo
+                \bigskip
 
                 \fontsize{9.5}{10.5} \selectfont{\textbf{\imprimirorientadorRotulo}~\imprimirorientador\par}
-                \abntex@ifnotempty{\imprimircoorientador}{%
+                \abntex@ifnotempty{\imprimircoorientador}
+                {%
                     {\textbf{\imprimircoorientadorRotulo}~\imprimircoorientador}%
                 }%
+
             \end{minipage}%
             \vspace*{\fill}
         }%
 
-        %       {\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
-
-        %       {\large\imprimirorientadorRotulo~\imprimirorientador\par}
-        %       \abntex@ifnotempty{\imprimircoorientador}{%
-        %           {\large\imprimircoorientadorRotulo~\imprimircoorientador}%
-        %       }%
         \vspace*{\fill}
 
         {\large\imprimirlocal}
