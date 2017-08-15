@@ -132,31 +132,46 @@ A Tabela~\ref{tab:a} mostra mais informações do template BU.
 
 % What does [t] and [ht] mean?
 % https://tex.stackexchange.com/questions/8652/what-does-t-and-ht-mean
-\begin{table}[!htbp]
-	\begin{center}
-		\caption{Formatação do texto. \showfont}
-		\label{tab:a}
-		\begin{tabular}{ p{3cm} | p{6cm} }
-			\hline
-			Cor                            & Branco - \showfont                                                                                                                                                                 \\ \hline
-			Formato do papel               & A5                                                                                                                                                                                 \\ \hline
-			Gramatura                      & 75                                                                                                                                                                                 \\ \hline
-			Impressão                     & Frente e verso                                                                                                                                                                     \\ \hline
-			Margens                        & Espelhadas: superior 2, Inferior: 1,5, Externa 1,5 e Externa: 2.                                                                                                                   \\ \hline
-			Cabeçalho                     & 0,7                                                                                                                                                                                \\ \hline
-			Rodapé                        & 0,7                                                                                                                                                                                \\ \hline
-			Paginação                    & Externa                                                                                                                                                                            \\ \hline
-			Alinhamento vertical           & Superior                                                                                                                                                                           \\ \hline
-			Alinhamento do texto           & Justificado                                                                                                                                                                        \\ \hline
-			Fonte sugerida                 & Times New Roman                                                                                                                                                                    \\ \hline
-			Tamanho da fonte               & 10,5 para o texto incluindo os títulos das seções e subseções. As citações com mais de três linhas as legendas das ilustrações e tabelas, fonte 9,5.                     \\ \hline
-			Espaçamento entre linhas      & Um (1) simples                                                                                                                                                                     \\ \hline
-			Espaçamento entre parágrafos & Anterior 0,0; Posterior 0,0                                                                                                                                                        \\ \hline
-			Numeração da seção         & As seções  primárias devem  começar  sempre em páginas ímpares. Deixar um espaço (simples) entre o título da seção e o texto e  entre o texto e o título da subseção. \\  \hline
-		\end{tabular}
-	\end{center}
-	Fonte: Universidade Federal de Santa Catarina (2011) \showfont
-\end{table}
+%
+% How can I get rid of the LaTeX warning: Float too large for page?
+% https://tex.stackexchange.com/questions/36252/how-can-i-get-rid-of-the-latex-warning-float-too-large-for-page
+%
+% "warning: Text page X contains only floats" How to suppress this warning?
+% https://tex.stackexchange.com/questions/223149/warning-text-page-x-contains-only-floats-how-to-suppress-this-warning
+%
+% Make a table span multiple pages
+% https://tex.stackexchange.com/questions/26462/make-a-table-span-multiple-pages
+%
+% How to make the longtable to work with centering & caption on memoir class?
+% https://tex.stackexchange.com/questions/386541/how-to-make-the-longtable-to-work-with-centering-caption-on-memoir-class
+\clearpage
+\begin{longtable}[!ht]{ | p{3cm} | p{6cm} | }
+
+		\hline
+		Cor                          & Branco - \showfont                                               \\ \hline
+		Formato do papel             & A5                                                               \\ \hline
+		Gramatura                    & 75                                                               \\ \hline
+		Impressão                    & Frente e verso                                                   \\ \hline
+		Margens                      & Espelhadas: superior 2, Inferior: 1,5, Externa 1,5 e Externa: 2. \\ \hline
+		Cabeçalho                    & 0,7                                                              \\ \hline
+		Rodapé                       & 0,7                                                              \\ \hline
+		Paginação                    & Externa                                                          \\ \hline
+		Alinhamento vertical         & Superior                                                         \\ \hline
+		Alinhamento do texto         & Justificado                                                      \\ \hline
+		Fonte sugerida               & Times New Roman                                                  \\ \hline
+		Tamanho da fonte             & 10,5 para o texto incluindo os títulos das seções e subseções.
+		                               As citações com mais de três linhas as legendas das ilustrações
+		e tabelas, fonte 9,5.                                                                           \\ \hline
+		Espaçamento entre linhas     & Um (1) simples                                                   \\ \hline
+		Espaçamento entre parágrafos & Anterior 0,0; Posterior 0,0                                      \\ \hline
+		Numeração da seção           & As seções  primárias devem  começar  sempre em páginas ímpares.
+		                               Deixar um espaço (simples) entre o título da seção e o texto e
+		                               entre o texto e o título da subseção.                            \\ \hline
+
+    \caption{Formatação do texto, Fonte: Universidade Federal de Santa Catarina (2011) \showfont}
+    \label{tab:a}
+\end{longtable}
+
 
 
 \begin{figure}
