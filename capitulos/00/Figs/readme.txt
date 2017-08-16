@@ -1,1 +1,0 @@
-Pasta destinada para conter as figuras editas em seu estado final (.eps,.pdf)

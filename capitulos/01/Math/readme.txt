@@ -1,1 +1,0 @@
-Pasta destinada para conter arquivo do Mathcad com equações transcritas.
