@@ -241,10 +241,6 @@ section=TITLE  % Título de seções em caixa alta
 
 \begin{document}
 
-% How to fix destination with the same identifier (name{page.A}) has been already used, duplicate ignored?
-% https://tex.stackexchange.com/questions/386446/how-to-fix-destination-with-the-same-identifier-namepage-a-has-been-already
-\hypersetup{pageanchor=false}
-
 % How to display the font size in use in the final output
 % https://tex.stackexchange.com/questions/20451/how-to-display-the-font-size-in-use-in-the-final-output
 % \makeatletter
@@ -258,135 +254,7 @@ section=TITLE  % Título de seções em caixa alta
 % Retira espaço extra obsoleto entre as frases.
 \frenchspacing
 
-
-
-
-% ELEMENTOS PRÉ-TEXTUAIS
-\includepdf{Imagens/FrenteCapaUFSC.pdf}%
-
-\pretextual
-
-% Capa
-\imprimircapa
-
-% Folha de rosto (o * indica que haverá a ficha bibliográfica)
-\imprimirfolhaderosto*
-
-% Inserir a ficha bibliografica
-%
-% Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
-% catalogação-na-publicação''. Você pode utilizar este modelo como referência.
-% Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
-% com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
-% com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
-% o conteúdo de implementação deste arquivo pelo comando abaixo:
-%
-% \begin{fichacatalografica}
-%    \includepdf{PreTexto/ficha_catalografica.pdf}
-% \end{fichacatalografica}
-\include{PreTexto/fichacatalografica}
-
-% Inserir errata
-
-% Inserir folha de aprovação
-
-% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
-% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
-% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
-% imagem da página assinada pela banca com o comando abaixo:
-% \includepdf{folhadeaprovacao_final.pdf}
-\include{PreTexto/folhadeaprovacao}
-
-% Dedicatória
-\begin{dedicatoria}
-    \vspace*{\fill}
-    \centering
-    \noindent
-    \textit{ Este trabalho é dedicado às crianças adultas que,\\
-        quando pequenas, sonharam em se tornar cientistas.} \vspace*{\fill}
-\end{dedicatoria}
-
-% Agradecimentos
-\include{PreTexto/agradecimentos}
-
-% Epígrafe
-\ifthenelse{ \equal{\WriteEpigraphs}{true} }{
-\begin{epigrafe}
-
-    \vspace*{\fill}
-    \begin{flushright}
-        \textit{``Assim como aquele pecado da juventude, este documento te perseguirá pelo resto da vida.''}\\Enio Valmor Kassick
-    \end{flushright}
-    \begin{flushright}
-        \textit{``Estupidez trará mais autoconfiança do que o conhecimento e a bravura juntas.''}\\
-        Adriano Ruseler
-    \end{flushright}
-    \begin{flushright}
-        \textit{``Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning.''}\\ Albert Einstein
-    \end{flushright}
-    \begin{flushright}
-        \textit{``The true sign of intelligence is not knowledge but imagination.''}\\  Albert Einstein
-    \end{flushright}
-    \begin{flushright}
-        \textit{``Peace cannot be kept by force; it can only be achieved by understanding.''}\\ Albert Einstein
-    \end{flushright}
-    \begin{flushright}
-        \textit{``Whoever is careless with the truth in small matters cannot be trusted with important matters.''}\\    Albert Einstein
-    \end{flushright}
-    \begin{flushright}
-        \textit{``Extraordinary claims require extraordinary evidence''}\\
-        Carl Sagan
-    \end{flushright}
-    \begin{flushright}
-        \textit{``Catholic, which I was until I reached the age of reason.''}\\
-        George Carlin
-    \end{flushright}
-    \begin{flushright}
-        \textit{``We made too many wrong mistakes.''}\\
-        Yogi Berra
-    \end{flushright}
-
-\end{epigrafe}
-}{
-    % do something different..
-}
-
-% RESUMOS
-%
-% Ajusta o espaçamento dos parágrafos do resumo
-\setlength{\absparsep}{18pt}
-\include{PreTexto/resumos}
-
-% inserir lista de ilustrações
-\pdfbookmark[0]{\listfigurename}{lof}
-\listoffigures*
-\cleardoublepage
-
-% inserir lista de tabelas
-\pdfbookmark[0]{\listtablename}{lot}
-\listoftables*
-\cleardoublepage
-
-% inserir códigos fonte
-% ---
-\pdfbookmark[0]{\lstlistingname}{lol}
-\lstlistoflistings*
-\cleardoublepage
-
-% inserir lista de abreviaturas e siglas
-\include{PreTexto/siglas}
-
-% Inserir lista de símbolos
-\include{PreTexto/simbolos}
-
-% Inserir o sumario
-\pdfbookmark[0]{\contentsname}{toc}
-\tableofcontents*
-\cleardoublepage
-
-% How to fix destination with the same identifier (name{page.A}) has been already used, duplicate ignored?
-% https://tex.stackexchange.com/questions/386446/how-to-fix-destination-with-the-same-identifier-namepage-a-has-been-already
-\hypersetup{pageanchor=true}
+\input{pretexto/pretexto}
 
 
 
