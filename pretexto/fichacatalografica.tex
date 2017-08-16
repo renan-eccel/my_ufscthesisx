@@ -1,73 +1,54 @@
 
 
-
+% http://portalbu.ufsc.br/ficha
+% http://portal.bu.ufsc.br/servicos/ficha-de-identificacao-da-obra/
 \begin{fichacatalografica}
-	\vspace*{\fill}					% Posição vertical
-%	\hrule							% Linha horizontal
-	\begin{center}					% Minipage Centralizado
+    \vspace*{\fill}
 
+    \begin{center}
 
-		\hspace*{1cm}
-{Catalogação na fonte pela Biblioteca Universitária da
-	Universidade Federal de Santa Catarina.}
+        Catalogação na fonte pela Biblioteca Universitária da Universidade Federal de Santa Catarina.
 
-		Arquivo compilado às \currenttime h do dia \today.
+        Arquivo compilado às \currenttime h do dia \today.
 
-	\framebox[12.5cm]{
-	\begin{minipage}{\textwidth}		% Largura
-	\ttfamily
-	\imprimirautor
+        \framebox[\textwidth]
+        {
+            \begin{minipage}{\textwidth}
 
-	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
-	\imprimirlocal, \imprimirdata-
+                \ttfamily
+                \imprimirautor
 
-	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+                \hspace{0.5cm} \imprimirtitulo : \imprimirsubtitulo, / \imprimirautor;
+                orientador(a), \imprimirorientador;
+                co-orientador(a) -- \imprimirlocal, \currenttime, \imprimirdata.
 
-	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+                % Prints how much pages there are on the document and links to the last page
+                \hspace{0.5cm} \pageref{LastPage} p.
+                \bigskip
 
-	\hspace{0.5cm}
-	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
-	\imprimirdata.}\\
+                \hspace{0.5cm} \imprimirtipotrabalho -- \imprimirinstituicao,
+                \imprimircentro, \imprimirprograma.
+                \bigskip
 
-	\hspace{0.5cm}
-		1. Palavra-chave1.
-		2. Palavra-chave2.
-		I. Orientador.
-		II. Universidade xxx.
-		III. Faculdade de xxx.
-		IV. Título\\
+                \hspace{0.5cm} Inclui referências
+                \bigskip
 
-	\hspace{7.75cm} CDU 02:141:005.7\\
+                \hspace{0.5cm}
+                    1. Uma Palavra-chave ~
+                    2. Outra Palavra-chave ~
+                    2. Mais Palavras-chave ~
+                    I. \imprimirorientador ~
+                    II. \imprimircoorientador ~
+                    III. \imprimirprograma ~
+                    IV. \imprimirtitulo ~
+                \bigskip
 
-	\end{minipage}
-}
-	\end{center}
-%	\hrule
+                \hspace{7.75cm} CDU 02:141:005.7
+
+            \end{minipage}
+        }
+
+    \end{center}
+
 \end{fichacatalografica}
-
-
-%% Ficha catalográfica
-%\newcounter{ufscthesis@indiceficha}
-%
-%\newcommand{\imprimirfichacatalografica}{%
-%  \setcounter{ufscthesis@indiceficha}{1}
-%  \begin{fichacatalografica}
-%  \vspace*{\fill}
-%  \fbox{%
-%    \ttfamily%
-%    \begin{minipage}[b][][t]{\textwidth}
-%      \indent\ufscthesis@inverter{\imprimirautor} \newline%
-%      \indent~\imprimirtitulo~:~/ \imprimirautor ; orientador, \imprimirorientador%
-%      \ifnotempty{\imprimircoorientador}{~; co-orientador, \imprimircoorientador}.~-~\imprimirlocal~\the\year. \newline%
-%      \indent~\pageref{LastPage} p. \newline \newline%
-%      \indent- \imprimirinstituicao, \imprimircentro. \imprimirprograma. \newline \newline%
-%      \indent Inclui Refer\^{e}ncias \newline \newline%
-%      \indent \imprimirassuntos
-%      \Roman{ufscthesis@indiceficha}. \ufscthesis@inverter{\imprimirorientador}. \stepcounter{ufscthesis@indiceficha}
-%      \ifnotempty{\imprimircoorientador}{\Roman{ufscthesis@indiceficha}. \ufscthesis@inverter{\imprimircoorientador}.\stepcounter{ufscthesis@indiceficha}}
-%      \Roman{ufscthesis@indiceficha}. \imprimirinstituicao. \imprimirprograma.
-%      \Roman{ufscthesis@indiceficha}. \imprimirtitulo.
-%    \end{minipage}
-%  }
-%  \end{fichacatalografica}
 
