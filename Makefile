@@ -14,7 +14,7 @@ THESIS_MAIN_FILE   = modelo-ufsc-main.tex
 THESIS_OUTPUT_NAME   = thesis
 
 # This is the folder where the temporary files are going to be
-CACHE_FOLDER = cache
+CACHE_FOLDER = setup/cache
 
 # GNU Make silent by default
 # https://stackoverflow.com/questions/24005166/gnu-make-silent-by-default
