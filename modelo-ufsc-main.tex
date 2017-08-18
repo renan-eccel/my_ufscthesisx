@@ -147,6 +147,47 @@ Federal de Santa Catarina para a obtenção do Grau de Doutor em Engenharia Elé
 % https://tex.stackexchange.com/questions/310493/memoir-warnings-the-material-used-in-the-headers-is-too-large-w-accented-ti
 \setlength{\headheight}{14.0pt}
 
+
+
+% Bad Boxes settings
+%
+% Bad formatting using URLs in bibtex
+% https://tex.stackexchange.com/questions/22888/bad-formatting-using-urls-in-bibtex
+\usepackage{etoolbox}
+
+% Underfull \hbox in bibliography
+% https://tex.stackexchange.com/questions/10924/underfull-hbox-in-bibliography
+\apptocmd{\thebibliography}{\raggedright}{}{}
+
+% How to avoid overfull error with url package?
+% See also the `\usepackage{url}` declarationon the file `basic.tex`.
+% Set this to 2mu or 3mu if URL start troubling again.
+% https://tex.stackexchange.com/questions/261776/how-to-avoid-overfull-error-with-url-package
+\Urlmuskip=0mu plus 1mu
+
+% How to fix URL overfull & underfull on emumeration?
+% https://tex.stackexchange.com/questions/366803/how-to-fix-url-overfull-underfull-on-emumeration
+%
+% Forcing linebreaks in \url
+% https://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url/10401
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+% How to fix this url bad box for stackoverflow link?
+% https://tex.stackexchange.com/questions/384427/how-to-fix-this-url-bad-box-for-stackoverflow-link
+\makeatletter
+\g@addto@macro{\UrlBreaks}{%
+  \do\/\do\a\do\b\do\c\do\d\do\e\do\f%
+  \do\g\do\h\do\i\do\j\do\k\do\l\do\m%
+  \do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+  \do\u\do\v\do\w\do\x\do\y\do\z%
+  \do\A\do\B\do\C\do\D\do\E\do\F\do\G%
+  \do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+  \do\O\do\P\do\Q\do\R\do\S\do\T\do\U%
+  \do\V\do\W\do\X\do\Y\do\Z}
+\makeatother
+
 % When writing a large document, it is sometimes useful to work on selected sections of the document
 % to speed up compilation time: https://en.wikibooks.org/wiki/TeX/includeonly
 % \includeonly{pretexto/agradecimentos}
