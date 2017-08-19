@@ -69,8 +69,11 @@
 
     % Back references translation
     \ifenglish
-        % The default language for backref is already English
+        \usepackage[hyperpageref]{backref}
     \else
+        % Configurações do pacote backref, paginas com as citações na bibliografia
+        \usepackage[brazilian,hyperpageref]{backref}
+
         % Usado sem a opção hyperpageref de backref
         \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
 
