@@ -1,3 +1,6 @@
 [submodule "imagens"]
 	path = pictures
 	url = https://github.com/evandrocoan/abntex2-ufsc-imagens.git
+[submodule "utilities"]
+	path = utilities
+	url = https://github.com/evandrocoan/latex_utilities
