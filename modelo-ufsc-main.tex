@@ -43,149 +43,165 @@
 
 % Thesis settings
 %
-% Informações de dados para CAPA e FOLHA DE ROSTO
-\titulo{Modelo Canônico de TCC, Monografia,  Dissertação, Tese ou Relatório}
-\subtitulo{Pós--Doutorado da UFSC com \abnTeX{}}
-\autor{Nome do Autor}
-\local{Florianópolis, Santa Catarina -- Brasil}
-%\local{Florianópolis}
-\data{\today}
-\orientador{Prof. Dr. Nome do Orientador}
-\coorientador{Prof. Dr. Nome do Coorientador}
-\instituicao{Universidade Federal de Santa Catarina -- UFSC}
-\tipotrabalho{Tese de Doutorado}
-\programa{Programa de Pós--Graduação em Engenharia Elétrica -- PGEEL}
-\centro{Departamento de Engenharia Elétrica e Eletrônica -- EEL}
-
-% O preambulo deve conter o tipo do trabalho, o objetivo. O nome da instituição e a área de
-% concentração.
-\preambulo{Tese submetida ao Programa de Pós--Graduação em Engenharia Elétrica da Universidade
-Federal de Santa Catarina para a obtenção do Grau de Doutor em Engenharia Elétrica.}
-
-% Back references translation
-\ifenglish
-    % The default language for backref is already English
-\else
-    % Usado sem a opção hyperpageref de backref
-    \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
-
-    % Texto padrão antes do número das páginas
-    \renewcommand{\backref}{}
-
-    % Define os textos da citação
-    \renewcommand*{\backrefalt}[4]{
-        \ifcase #1 %
-            Nenhuma citação no texto.%
-        \or
-            Citado na página #2.%
-        \else
-            Citado #1 vezes nas páginas #2.%
-        \fi}%
-\fi
-
-% Configurações de aparência do PDF final
-\definecolor{figcolor}{rgb}{1,0.4,0}  % orange
-\definecolor{tabcolor}{rgb}{1,0.4,0}  % orange
-\definecolor{eqncolor}{rgb}{1,0.4,0}  % orange
-\definecolor{linkcolor}{rgb}{1,0.4,0} % orange
-\definecolor{citecolor}{rgb}{1,0.4,0} % orange
-\definecolor{seccolor}{rgb}{0,0,1}    % blue
-\definecolor{abscolor}{rgb}{0,0,1}    % blue
-\definecolor{titlecolor}{rgb}{0,0,1}  % blue
-\definecolor{biocolor}{rgb}{0,0,1}    % blue
-
-% Alterando o aspecto da cor azul
-\definecolor{blue}{RGB}{41,5,195}
-
-% Informações do PDF
+% ifpackageloaded question
+% https://tex.stackexchange.com/questions/70212/ifpackageloaded-question
 \makeatletter
-\hypersetup{
-    % pagebackref=true, % Package hyperref Warning: Option `pagebackref' has already been used
-    pdftitle={\@title},
-    pdfauthor={Autores},
-    pdfsubject={Resumo do artigo},
-    pdfcreator={LaTeX with abnTeX2},
-    pdfkeywords={abnt}{latex}{UFSC}{abntex2}{tese},
-    colorlinks=true,            % false: boxed links; true: colored links
-    linkcolor=linkcolor,        % color of internal links
-    citecolor=citecolor,        % color of links to bibliography
-    filecolor=black,            % color of file links
-    urlcolor=linkcolor,
-    bookmarksdepth=4
-}
+\@ifpackageloaded{setup/ufscthesis}
+{
+    % Informações de dados para CAPA e FOLHA DE ROSTO
+    \titulo{Modelo Canônico de TCC, Monografia,  Dissertação, Tese ou Relatório}
+    \subtitulo{Pós--Doutorado da UFSC com \abnTeX{}}
+    \autor{Nome do Autor}
+    \local{Florianópolis, Santa Catarina -- Brasil}
+    %\local{Florianópolis}
+    \data{\today}
+    \orientador{Prof. Dr. Nome do Orientador}
+    \coorientador{Prof. Dr. Nome do Coorientador}
+    \instituicao{Universidade Federal de Santa Catarina -- UFSC}
+    \tipotrabalho{Tese de Doutorado}
+    \programa{Programa de Pós--Graduação em Engenharia Elétrica -- PGEEL}
+    \centro{Departamento de Engenharia Elétrica e Eletrônica -- EEL}
+
+    % O preambulo deve conter o tipo do trabalho, o objetivo. O nome da instituição e a área de
+    % concentração.
+    \preambulo{Tese submetida ao Programa de Pós--Graduação em Engenharia Elétrica da Universidade
+    Federal de Santa Catarina para a obtenção do Grau de Doutor em Engenharia Elétrica.}
+
+    % Back references translation
+    \ifenglish
+        % The default language for backref is already English
+    \else
+        % Usado sem a opção hyperpageref de backref
+        \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+
+        % Texto padrão antes do número das páginas
+        \renewcommand{\backref}{}
+
+        % Define os textos da citação
+        \renewcommand*{\backrefalt}[4]{
+            \ifcase #1 %
+                Nenhuma citação no texto.%
+            \or
+                Citado na página #2.%
+            \else
+                Citado #1 vezes nas páginas #2.%
+            \fi}%
+    \fi
+
+    % Configurações de aparência do PDF final
+    \definecolor{figcolor}{rgb}{1,0.4,0}  % orange
+    \definecolor{tabcolor}{rgb}{1,0.4,0}  % orange
+    \definecolor{eqncolor}{rgb}{1,0.4,0}  % orange
+    \definecolor{linkcolor}{rgb}{1,0.4,0} % orange
+    \definecolor{citecolor}{rgb}{1,0.4,0} % orange
+    \definecolor{seccolor}{rgb}{0,0,1}    % blue
+    \definecolor{abscolor}{rgb}{0,0,1}    % blue
+    \definecolor{titlecolor}{rgb}{0,0,1}  % blue
+    \definecolor{biocolor}{rgb}{0,0,1}    % blue
+
+    % Alterando o aspecto da cor azul
+    \definecolor{blue}{RGB}{41,5,195}
+
+    % Informações do PDF
+    \makeatletter
+    \hypersetup{
+        % pagebackref=true, % Package hyperref Warning: Option `pagebackref' has already been used
+        pdftitle={\@title},
+        pdfauthor={Autores},
+        pdfsubject={Resumo do artigo},
+        pdfcreator={LaTeX with abnTeX2},
+        pdfkeywords={abnt}{latex}{UFSC}{abntex2}{tese},
+        colorlinks=true,            % false: boxed links; true: colored links
+        linkcolor=linkcolor,        % color of internal links
+        citecolor=citecolor,        % color of links to bibliography
+        filecolor=black,            % color of file links
+        urlcolor=linkcolor,
+        bookmarksdepth=4
+    }
+    \makeatother
+
+    % Espaçamentos entre linhas e parágrafos
+    %
+    % Estilo de capítulos, ver classe para maiores detalhes.Veja outros estilos em:
+    % http://www.tex.ac.uk/tex-archive/info/MemoirChapStyles/MemoirChapStyles.pdf
+    %
+    % \chapterstyle{default}
+    % \chapterstyle{pedersen}
+    % \chapterstyle{lyhne}
+    % \chapterstyle{madsen}
+    % \chapterstyle{veelo}
+    % \chapterstyle{companion}
+    % \chapterstyle{thatcher}
+    % \chapterstyle{verville}
+    \chapterstyle{VZ14}
+    \setlength\beforechapskip{0pt}
+    \setlength\midchapskip{15pt}
+    \setlength\afterchapskip{15pt}
+
+    % O tamanho do parágrafo é dado por:
+    \setlength{\parindent}{1.3cm}
+
+    % Controle do espaçamento entre um parágrafo e outro. Tente também
+    % \onelineskip
+    \setlength{\parskip}{0.2cm}
+
+    % Compila o índice
+    \makeindex
+
+    % Memoir : Warnings “The material used in the headers is too large” w/ accented titles
+    % https://tex.stackexchange.com/questions/310493/memoir-warnings-the-material-used-in-the-headers-is-too-large-w-accented-ti
+    \setlength{\headheight}{14.0pt}
+}{}
 \makeatother
-
-% Espaçamentos entre linhas e parágrafos
-%
-% Estilo de capítulos, ver classe para maiores detalhes.Veja outros estilos em:
-% http://www.tex.ac.uk/tex-archive/info/MemoirChapStyles/MemoirChapStyles.pdf
-%
-% \chapterstyle{default}
-% \chapterstyle{pedersen}
-% \chapterstyle{lyhne}
-% \chapterstyle{madsen}
-% \chapterstyle{veelo}
-% \chapterstyle{companion}
-% \chapterstyle{thatcher}
-% \chapterstyle{verville}
-\chapterstyle{VZ14}
-\setlength\beforechapskip{0pt}
-\setlength\midchapskip{15pt}
-\setlength\afterchapskip{15pt}
-
-% O tamanho do parágrafo é dado por:
-\setlength{\parindent}{1.3cm}
-
-% Controle do espaçamento entre um parágrafo e outro. Tente também
-% \onelineskip
-\setlength{\parskip}{0.2cm}
-
-% Compila o índice
-\makeindex
-
-% Memoir : Warnings “The material used in the headers is too large” w/ accented titles
-% https://tex.stackexchange.com/questions/310493/memoir-warnings-the-material-used-in-the-headers-is-too-large-w-accented-ti
-\setlength{\headheight}{14.0pt}
 
 
 
 % Bad Boxes settings
 %
-% Bad formatting using URLs in bibtex
-% https://tex.stackexchange.com/questions/22888/bad-formatting-using-urls-in-bibtex
-\usepackage{etoolbox}
-
-% Underfull \hbox in bibliography
-% https://tex.stackexchange.com/questions/10924/underfull-hbox-in-bibliography
-\apptocmd{\thebibliography}{\raggedright}{}{}
-
-% How to avoid overfull error with url package?
-% See also the `\usepackage{url}` declarationon the file `basic.tex`.
-% Set this to 2mu or 3mu if URL start troubling again.
-% https://tex.stackexchange.com/questions/261776/how-to-avoid-overfull-error-with-url-package
-\Urlmuskip=0mu plus 1mu
-
-% How to fix URL overfull & underfull on emumeration?
-% https://tex.stackexchange.com/questions/366803/how-to-fix-url-overfull-underfull-on-emumeration
-%
-% Forcing linebreaks in \url
-% https://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url/10401
+% Why Latex is hyphenating some words automatically, but others dont?
+% https://tex.stackexchange.com/questions/387076/why-latex-is-hyphenating-some-words-automatically-but-others-dont
 \makeatletter
-\g@addto@macro{\UrlBreaks}{\UrlOrds}
-\makeatother
+\@ifpackagewith{babel}{brazil,english}
+{
+    \renewcommand\brazilhyphenmins{22} %left=2, right=2
+    \renewcommand\englishhyphenmins{22} %left=2, right=2
+}{}
 
-% How to fix this url bad box for stackoverflow link?
-% https://tex.stackexchange.com/questions/384427/how-to-fix-this-url-bad-box-for-stackoverflow-link
-\makeatletter
-\g@addto@macro{\UrlBreaks}{%
-  \do\/\do\a\do\b\do\c\do\d\do\e\do\f%
-  \do\g\do\h\do\i\do\j\do\k\do\l\do\m%
-  \do\n\do\o\do\p\do\q\do\r\do\s\do\t%
-  \do\u\do\v\do\w\do\x\do\y\do\z%
-  \do\A\do\B\do\C\do\D\do\E\do\F\do\G%
-  \do\H\do\I\do\J\do\K\do\L\do\M\do\N%
-  \do\O\do\P\do\Q\do\R\do\S\do\T\do\U%
-  \do\V\do\W\do\X\do\Y\do\Z}
+\@ifpackageloaded{url}
+{
+    % Bad formatting using URLs in bibtex
+    % https://tex.stackexchange.com/questions/22888/bad-formatting-using-urls-in-bibtex
+    \usepackage{etoolbox}
+
+    % Underfull \hbox in bibliography
+    % https://tex.stackexchange.com/questions/10924/underfull-hbox-in-bibliography
+    \apptocmd{\thebibliography}{\raggedright}{}{}
+
+    % How to avoid overfull error with url package?
+    % See also the `\usepackage{url}` declarationon the file `basic.tex`.
+    % Set this to 2mu or 3mu if URL start troubling again.
+    % https://tex.stackexchange.com/questions/261776/how-to-avoid-overfull-error-with-url-package
+    \Urlmuskip=0mu plus 1mu
+
+    % How to fix URL overfull & underfull on emumeration?
+    % https://tex.stackexchange.com/questions/366803/how-to-fix-url-overfull-underfull-on-emumeration
+    %
+    % Forcing linebreaks in \url
+    % https://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url/10401
+    \g@addto@macro{\UrlBreaks}{\UrlOrds}
+
+    % How to fix this url bad box for stackoverflow link?
+    % https://tex.stackexchange.com/questions/384427/how-to-fix-this-url-bad-box-for-stackoverflow-link
+    \g@addto@macro{\UrlBreaks}{%
+      \do\/\do\a\do\b\do\c\do\d\do\e\do\f%
+      \do\g\do\h\do\i\do\j\do\k\do\l\do\m%
+      \do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+      \do\u\do\v\do\w\do\x\do\y\do\z%
+      \do\A\do\B\do\C\do\D\do\E\do\F\do\G%
+      \do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+      \do\O\do\P\do\Q\do\R\do\S\do\T\do\U%
+      \do\V\do\W\do\X\do\Y\do\Z}
+}{}
 \makeatother
 
 % When writing a large document, it is sometimes useful to work on selected sections of the document
