@@ -146,8 +146,11 @@ A Tabela~\ref{tab:a} mostra mais informações do template BU.
 %
 % How to make the longtable to work with centering & caption on memoir class?
 % https://tex.stackexchange.com/questions/386541/how-to-make-the-longtable-to-work-with-centering-caption-on-memoir-class
+%
+% How to fix this Package array Error: Only one column-spec allowed?
+% https://tex.stackexchange.com/questions/367069/how-to-fix-this-package-array-error-only-one-column-spec-allowed
 \clearpage
-\begin{longtable}[!ht]{ | p{3cm} | p{6cm} | }
+\begin{longtable}[!ht]{ | >{\RaggedRight}p{3cm} | p{6cm} | }
 
         \hline
         Cor                          & Branco - \showfont                                               \\ \hline
