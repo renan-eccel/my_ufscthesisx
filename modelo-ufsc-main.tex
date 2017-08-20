@@ -124,16 +124,16 @@
     % Informações do PDF
     \makeatletter
     \hypersetup{
-        % pagebackref=true, % Package hyperref Warning: Option `pagebackref' has already been used
+        % backref,pagebackref=true, % Package hyperref Warning: Option `pagebackref' has already been used
         pdftitle={\@title},
         pdfauthor={Autores},
         pdfsubject={Resumo do artigo},
         pdfcreator={LaTeX with abnTeX2},
         pdfkeywords={abnt}{latex}{UFSC}{abntex2}{tese},
-        colorlinks=true,            % false: boxed links; true: colored links
-        linkcolor=linkcolor,        % color of internal links
-        citecolor=citecolor,        % color of links to bibliography
-        filecolor=black,            % color of file links
+        colorlinks=true, % false: boxed links; true: colored links
+        linkcolor=link_color, % color of internal links
+        citecolor=dkgreen, % color of links to bibliography
+        filecolor=black, % color of file links
         urlcolor=linkcolor,
         bookmarksdepth=4
     }
@@ -211,15 +211,17 @@
 
     % How to fix this url bad box for stackoverflow link?
     % https://tex.stackexchange.com/questions/384427/how-to-fix-this-url-bad-box-for-stackoverflow-link
-    \g@addto@macro{\UrlBreaks}{%
-      \do\/\do\a\do\b\do\c\do\d\do\e\do\f%
-      \do\g\do\h\do\i\do\j\do\k\do\l\do\m%
-      \do\n\do\o\do\p\do\q\do\r\do\s\do\t%
-      \do\u\do\v\do\w\do\x\do\y\do\z%
-      \do\A\do\B\do\C\do\D\do\E\do\F\do\G%
-      \do\H\do\I\do\J\do\K\do\L\do\M\do\N%
-      \do\O\do\P\do\Q\do\R\do\S\do\T\do\U%
-      \do\V\do\W\do\X\do\Y\do\Z}
+    \g@addto@macro{\UrlBreaks}
+    {%
+        \do\/\do\a\do\b\do\c\do\d\do\e\do\f%
+        \do\g\do\h\do\i\do\j\do\k\do\l\do\m%
+        \do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+        \do\u\do\v\do\w\do\x\do\y\do\z%
+        \do\A\do\B\do\C\do\D\do\E\do\F\do\G%
+        \do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+        \do\O\do\P\do\Q\do\R\do\S\do\T\do\U%
+        \do\V\do\W\do\X\do\Y\do\Z
+    }
 }{}
 \makeatother
 
