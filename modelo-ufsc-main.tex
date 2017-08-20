@@ -76,6 +76,12 @@
     \ifenglish
         \usepackage[hyperpageref]{backref}
     \else
+        % Listing -> Codigo fonte
+        \renewcommand{\lstlistingname}{Código--fonte }
+
+        % List of Listings -> Lista de códigos-fonte
+        \renewcommand{\lstlistlistingname}{Lista de códigos--fonte}
+
         % Configurações do pacote backref, paginas com as citações na bibliografia
         \usepackage[brazilian,hyperpageref]{backref}
 
