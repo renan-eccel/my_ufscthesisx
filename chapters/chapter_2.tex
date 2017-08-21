@@ -311,7 +311,6 @@ dividi-los no corpo do texto.}.
 \index{tabelas}A \autoref{tab-nivinv} é um exemplo de tabela construída em
 \LaTeX{}.
 
-\ifdebug\else
 \begin{table}[htb]
 \ABNTEXfontereduzida
 \caption[Níveis de investigação]{Níveis de investigação.}
@@ -333,13 +332,13 @@ dividi-los no corpo do texto.}.
 }
 \legend{Fonte: \citeonline{van86}}
 \end{table}
-\fi
+
 
 Já a \autoref{tabela-ibge} apresenta uma tabela criada conforme o padrão do
 \citeonline{ibge1993} requerido pelas normas da ABNT para documentos técnicos e
 acadêmicos.
 
-\ifdebug\else
+
 \begin{table}[htb]
 \IBGEtab{%
   \caption{Um Exemplo de tabela alinhada que pode ser longa
@@ -365,7 +364,7 @@ acadêmicos.
   outras.}%
   }
 \end{table}
-\fi
+
 
 
 % What does [t] and [ht] mean?
@@ -902,8 +901,8 @@ Exemplo de hifenização em inglês\footnote{Extraído de:
 \url{http://en.wikibooks.org/wiki/LaTeX/Internationalization}}:
 
 \begin{otherlanguage*}{english}
-\textit{Text in English language. This environment switches all language-related
-definitions, like the language specific names for figures, tables etc. to the other
+\textit{Text in English language. This environment switches all language\hyp{}definitions,
+like the language specific names for figures, tables etc. to the other
 language. The starred version of this environment typesets the main text
 according to the rules of the other language, but keeps the language specific
 string for ancillary things like figures, in the main language of the document.
