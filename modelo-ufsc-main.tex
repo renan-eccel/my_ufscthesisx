@@ -34,9 +34,15 @@
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 
+% When disabling packages to find out incompatibilities, comment the line `\debugfalse`
+\newif\ifdebug
+\debugtrue
+% \debugfalse
+
 % To fix the warning `LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right`,
 % open the file `D:\User\Documents\latex\texmfs\install\tex\latex\abntex2\abntex2cite.sty` and
 % comment out these two lines:
+%
 % 547: % \renewcommand{\bibcite}[2]{%
 % 548: %   \@newl@bel{b}{#1}{\hyper@@link[cite]{}{cite.#1}{#2}}}%
 \input{setup/setup}
@@ -48,6 +54,9 @@
 
 % Thesis settings
 %
+% Input a empty list of commands when on debug mode
+\input{utilities/commands_list}
+
 % ifpackageloaded question
 % https://tex.stackexchange.com/questions/70212/ifpackageloaded-question
 \makeatletter
@@ -76,11 +85,14 @@
     \ifenglish
         \usepackage[hyperpageref]{backref}
     \else
-        % Listing -> Codigo fonte
-        \renewcommand{\lstlistingname}{Código--fonte }
+        \@ifpackageloaded{listings}
+        {
+            % Listing -> Codigo fonte
+            \renewcommand{\lstlistingname}{Código--fonte}
 
-        % List of Listings -> Lista de códigos-fonte
-        \renewcommand{\lstlistlistingname}{Lista de códigos--fonte}
+            % List of Listings -> Lista de códigos-fonte
+            \renewcommand{\lstlistlistingname}{Lista de códigos--fonte}
+        }
 
         % Configurações do pacote backref, paginas com as citações na bibliografia
         \usepackage[brazilian,hyperpageref]{backref}
@@ -102,42 +114,47 @@
             \fi}%
     \fi
 
-    % Definição de cores
-    \definecolor{mygreen}{rgb}{0,0.6,0}
-    \definecolor{mygray}{rgb}{0.5,0.5,0.5}
-    \definecolor{mymauve}{rgb}{0.58,0,0.82}
+    \@ifpackageloaded{definecolor}
+    {
+        % RGB colors in absolute values from 0 to 255 by using `RGB` tag
+        \definecolor{darkblue}{RGB}{26,13,178}
 
-    % Configurações de aparência do PDF final
-    \definecolor{figcolor}{rgb}{1,0.4,0}  % orange
-    \definecolor{tabcolor}{rgb}{1,0.4,0}  % orange
-    \definecolor{eqncolor}{rgb}{1,0.4,0}  % orange
-    \definecolor{linkcolor}{rgb}{1,0.4,0} % orange
-    \definecolor{citecolor}{rgb}{1,0.4,0} % orange
-    \definecolor{seccolor}{rgb}{0,0,1}    % blue
-    \definecolor{abscolor}{rgb}{0,0,1}    % blue
-    \definecolor{titlecolor}{rgb}{0,0,1}  % blue
-    \definecolor{biocolor}{rgb}{0,0,1}    % blue
+        % Definição de cores, RGB colors in percentage notation by using `rgb` tag
+        \definecolor{mygreen}{rgb}{0,0.6,0}
+        \definecolor{mygray}{rgb}{0.5,0.5,0.5}
+        \definecolor{mymauve}{rgb}{0.58,0,0.82}
 
-    % Alterando o aspecto da cor azul
-    \definecolor{blue}{RGB}{41,5,195}
+        % Configurações de aparência do PDF final
+        \definecolor{figcolor}{rgb}{1,0.4,0}  % orange
+        \definecolor{tabcolor}{rgb}{1,0.4,0}  % orange
+        \definecolor{eqncolor}{rgb}{1,0.4,0}  % orange
+        \definecolor{linkcolor}{rgb}{1,0.4,0} % orange
+        \definecolor{citecolor}{rgb}{1,0.4,0} % orange
+        \definecolor{seccolor}{rgb}{0,0,1}    % blue
+        \definecolor{abscolor}{rgb}{0,0,1}    % blue
+        \definecolor{titlecolor}{rgb}{0,0,1}  % blue
+        \definecolor{biocolor}{rgb}{0,0,1}    % blue
 
-    % Informações do PDF
-    \makeatletter
-    \hypersetup{
-        % backref,pagebackref=true, % Package hyperref Warning: Option `pagebackref' has already been used
-        pdftitle={\@title},
-        pdfauthor={Autores},
-        pdfsubject={Resumo do artigo},
-        pdfcreator={LaTeX with abnTeX2},
-        pdfkeywords={abnt}{latex}{UFSC}{abntex2}{tese},
-        colorlinks=true, % false: boxed links; true: colored links
-        linkcolor=link_color, % color of internal links
-        citecolor=dkgreen, % color of links to bibliography
-        filecolor=black, % color of file links
-        urlcolor=linkcolor,
-        bookmarksdepth=4
-    }
-    \makeatother
+        % Alterando o aspecto da cor azul
+        \definecolor{blue}{RGB}{41,5,195}
+
+        % Informações do PDF
+        \hypersetup
+        {
+            % backref,pagebackref=true, % Package hyperref Warning: Option `pagebackref' has already been used
+            pdftitle={\@title},
+            pdfauthor={Autores},
+            pdfsubject={Resumo do artigo},
+            pdfcreator={LaTeX with abnTeX2},
+            pdfkeywords={abnt}{latex}{UFSC}{abntex2}{tese},
+            colorlinks=true, % false: boxed links; true: colored links
+            linkcolor=darkblue, % color of internal links
+            citecolor=darkgreen, % color of links to bibliography
+            filecolor=black, % color of file links
+            urlcolor=linkcolor,
+            bookmarksdepth=4
+        }
+    }{}
 
     % Espaçamentos entre linhas e parágrafos
     %

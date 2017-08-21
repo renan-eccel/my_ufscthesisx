@@ -311,6 +311,7 @@ dividi-los no corpo do texto.}.
 \index{tabelas}A \autoref{tab-nivinv} é um exemplo de tabela construída em
 \LaTeX{}.
 
+\ifdebug\else
 \begin{table}[htb]
 \ABNTEXfontereduzida
 \caption[Níveis de investigação]{Níveis de investigação.}
@@ -332,11 +333,13 @@ dividi-los no corpo do texto.}.
 }
 \legend{Fonte: \citeonline{van86}}
 \end{table}
+\fi
 
 Já a \autoref{tabela-ibge} apresenta uma tabela criada conforme o padrão do
 \citeonline{ibge1993} requerido pelas normas da ABNT para documentos técnicos e
 acadêmicos.
 
+\ifdebug\else
 \begin{table}[htb]
 \IBGEtab{%
   \caption{Um Exemplo de tabela alinhada que pode ser longa
@@ -362,11 +365,12 @@ acadêmicos.
   outras.}%
   }
 \end{table}
-
+\fi
 
 
 % What does [t] and [ht] mean?
 % https://tex.stackexchange.com/questions/8652/what-does-t-and-ht-mean
+\ifdebug\else
 \begin{table}[!ht]
     \caption{Exemplo de tabela utilizando o pacote \emph{siunitx} e \emph{resizebox}.}
     \label{tab:SimulationResults}
@@ -394,7 +398,7 @@ acadêmicos.
             \bottomrule
         \end{tabular}}
 \end{table}
-
+\fi
 
 
 
