@@ -131,7 +131,7 @@ mathcal - calligraphic: $\mathcal{XYZ}$
 
 
 
-A Tabela~\ref{tab:a} mostra mais informações do template BU.
+A Tabela~\ref{tab:a_table_formatacao_de_texto} mostra mais informações do template BU.
 
 % What does [t] and [ht] mean?
 % https://tex.stackexchange.com/questions/8652/what-does-t-and-ht-mean
@@ -150,33 +150,50 @@ A Tabela~\ref{tab:a} mostra mais informações do template BU.
 %
 % How to fix this Package array Error: Only one column-spec allowed?
 % https://tex.stackexchange.com/questions/367069/how-to-fix-this-package-array-error-only-one-column-spec-allowed
-\clearpage
-\begin{longtable}[!ht]{ | >{\RaggedRight}p{3cm} | p{6cm} | }
+%
+% How to auto adjust my last table column width, and why is there Underfull \vbox badness on this table?
+% https://tex.stackexchange.com/questions/387238/how-to-auto-adjust-my-last-table-column-width-and-why-is-there-underfull-vbox/387251
+\setlength\extrarowheight{2pt}
+\begin{tabularx}{\linewidth}{|>{\RaggedRight}p{3cm}|>{\arraybackslash}X|}
 
-        \hline
-        Cor                          & Branco - \showfont                                               \\ \hline
-        Formato do papel             & A5                                                               \\ \hline
-        Gramatura                    & 75                                                               \\ \hline
-        Impressão                    & Frente e verso                                                   \\ \hline
-        Margens                      & Espelhadas: superior 2, Inferior: 1,5, Externa 1,5 e Externa: 2. \\ \hline
-        Cabeçalho                    & 0,7                                                              \\ \hline
-        Rodapé                       & 0,7                                                              \\ \hline
-        Paginação                    & Externa                                                          \\ \hline
-        Alinhamento vertical         & Superior                                                         \\ \hline
-        Alinhamento do texto         & Justificado                                                      \\ \hline
-        Fonte sugerida               & Times New Roman                                                  \\ \hline
-        Tamanho da fonte             & 10,5 para o texto incluindo os títulos das seções e subseções.
-                                       As citações com mais de três linhas as legendas das ilustrações
-                                       e tabelas, fonte 9,5.                                            \\ \hline
-        Espaçamento entre linhas     & Um (1) simples                                                   \\ \hline
-        Espaçamento entre parágrafos & Anterior 0,0; Posterior 0,0                                      \\ \hline
-        Numeração da seção           & As seções  primárias devem  começar  sempre em páginas ímpares.
-                                       Deixar um espaço (simples) entre o título da seção e o texto e
-                                       entre o texto e o título da subseção.                            \\ \hline
+\caption{Formatação do texto}
+\label{tab:a_table_formatacao_de_texto} \\
+\hline
+\endfirsthead
 
-    \caption{Formatação do texto, Fonte: Universidade Federal de Santa Catarina (2011) \showfont}
-    \label{tab:a}
-\end{longtable}
+\multicolumn{2}{c}{\tablename~\thetable: Formatação do texto (continued)} \\
+\hline
+\endhead
+
+\hline
+\multicolumn{2}{r}{\footnotesize to be continued}
+\endfoot
+
+\hline
+\endlastfoot
+
+    Cor                          & Branco - \showfont                                               \\ \hline
+    Formato do papel             & A5                                                               \\ \hline
+    Gramatura                    & 75                                                               \\ \hline
+    Impressão                    & Frente e verso                                                   \\ \hline
+    Margens                      & Espelhadas: superior 2, Inferior: 1,5, Externa 1,5 e Externa: 2. \\ \hline
+    Cabeçalho                    & 0,7                                                              \\ \hline
+    Rodapé                       & 0,7                                                              \\ \hline
+    Paginação                    & Externa                                                          \\ \hline
+    Alinhamento vertical         & Superior                                                         \\ \hline
+    Alinhamento do texto         & Justificado                                                      \\ \hline
+    Fonte sugerida               & Times New Roman                                                  \\ \hline
+    Tamanho da fonte             & 10,5 para o texto incluindo os títulos das seções e subseções.
+                                   As citações com mais de três linhas as legendas das ilustrações
+                                   e tabelas, fonte 9,5.                                            \\ \hline
+    Espaçamento entre linhas     & Um (1) simples                                                   \\ \hline
+    Espaçamento entre parágrafos & Anterior 0,0; Posterior 0,0                                      \\ \hline
+    Numeração da seção           & As seções  primárias devem  começar  sempre em páginas ímpares.
+                                   Deixar um espaço (simples) entre o título da seção e o texto e
+                                   entre o texto e o título da subseção.                            \\ \hline
+
+\end{tabularx}
+
 
 
 
