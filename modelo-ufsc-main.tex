@@ -45,6 +45,17 @@
 %
 % 547: % \renewcommand{\bibcite}[2]{%
 % 548: %   \@newl@bel{b}{#1}{\hyper@@link[cite]{}{cite.#1}{#2}}}%
+%
+% You need to run `pdfTeX` 5 times on the following order:
+% 1. `pdfTeX`,
+% 2. `bibtex`,
+% 3. `pdfTeX`
+% 4. `pdfTeX`
+% 5. `pdfTeX`
+% 6. `pdfTeX`
+%
+% Because the bibliography includes a cyclic reference to another bibliography, so we need a last
+% pass to fix the bibliography undefined references:
 \input{setup/setup}
 
 % Load General Packages
