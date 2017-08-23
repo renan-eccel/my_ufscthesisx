@@ -10,7 +10,18 @@
 %\addcontentsline{toc}{chapter}{Introdução}
 %\texorpdfstring{\MakeTextUppercase{Capítulo 1}}{Capítulo 1}
 % ----------------------------------------------------------
+How to display the font size in use in the final output
+\url{https://tex.stackexchange.com/questions/20451/how-to-display-the-font-size-in-use-in-the-final-output}
 
+\begin{verbatim}
+\makeatletter
+original: \f@size
+\verb+\small+ \small \f@size
+\verb+\normalsize+ \normalsize \f@size
+\verb+\large+ \large \f@size
+\verb+\Huge+ \Huge \f@size
+\makeatother
+\end{verbatim}
 
 
 
