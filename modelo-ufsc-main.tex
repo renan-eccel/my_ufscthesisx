@@ -41,32 +41,13 @@
 % To fix the warning `LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right`,
 % open the file `D:\User\Documents\latex\texmfs\install\tex\latex\abntex2\abntex2cite.sty` and
 % comment out these two lines:
-%
 % 547: % \renewcommand{\bibcite}[2]{%
 % 548: %   \@newl@bel{b}{#1}{\hyper@@link[cite]{}{cite.#1}{#2}}}%
-%
-% You need to run `pdfTeX` 5 times on the following order:
-% 1. `pdfTeX`,
-% 2. `bibtex`,
-% 3. `pdfTeX`
-% 4. `pdfTeX`
-% 5. `pdfTeX`
-% 6. `pdfTeX`
-%
-% Because the bibliography includes a cyclic reference to another bibliography, so we need a last
-% pass to fix the bibliography undefined references:
 \input{setup/setup}
-
-% Load General Packages
-\input{utilities/basic}
-\input{utilities/commands}
-\input{utilities/programming}
+\input{utilities/utilities}
 
 % Thesis settings
 %
-% Input a empty list of commands when on debug mode
-\input{utilities/commands_list}
-
 % ifpackageloaded question
 % https://tex.stackexchange.com/questions/70212/ifpackageloaded-question
 \makeatletter
