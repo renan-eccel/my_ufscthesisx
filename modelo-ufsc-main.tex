@@ -34,11 +34,10 @@
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 
-% When disabling packages to find out incompatibilities, comment the line `\debugfalse`
-\newif\ifdebug
-\debugtrue
-% \debugfalse
-
+% You need to run `pdfTeX` 5 times on the following order: 1. `pdfTeX`, 2. `bibtex`, 3. `pdfTeX` 4.
+% `pdfTeX` 5. `pdfTeX` 6. `pdfTeX`, because the bibliography includes a cyclic reference to another
+% bibliography, so we need a last pass to fix the bibliography undefined references:
+%
 % To fix the warning `LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right`,
 % open the file `D:\User\Documents\latex\texmfs\install\tex\latex\abntex2\abntex2cite.sty` and
 % comment out these two lines:
