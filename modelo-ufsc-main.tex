@@ -211,10 +211,7 @@
 
 % \includeonly{postexto/anexo_a}
 % \includeonly{postexto/anexo_b}
-% \includeonly{postexto/anexo_c}
 % \includeonly{postexto/apendice_a}
-% \includeonly{postexto/apendice_b}
-% \includeonly{postexto/apendice_c}
 
 
 
@@ -225,10 +222,98 @@
     \frenchspacing
 
     \input{pretexto/pretexto}
-    \input{chapters/chapters}
 
-    \input{postexto/bibliography}
-    \input{postexto/postexto}
+
+    % ELEMENTOS TEXTUAIS
+    %
+    % Configura estilo das páginas.
+    \textual
+
+    \setlength\beforechapskip{50pt}
+    \setlength\midchapskip{20pt}
+    \setlength\afterchapskip{20pt}
+
+    % Configura estilo das páginas com logos
+    % \textualINEPUFSC
+
+    % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
+    \include{chapters/chapter_1}
+
+    % PARTE
+    % \part{Preparação da pesquisa}
+
+    % Capitulo com exemplos de comandos inseridos de arquivo externo
+    \include{chapters/chapter_2}
+
+    % PARTE
+    % \part{Referenciais teóricos}
+
+    % Capitulo de revisão de literatura
+    % \include{chapters/chapter_3}
+
+    % PARTE
+    % \part{Resultados}
+
+    % Primeiro capitulo de Resultados
+    % \include{chapters/chapter_4}
+
+    % Segundo capitulo de Resultados
+    %\include{chapters/chapter_5}
+
+    % Finaliza a parte no bookmark do PDF
+    % para que se inicie o bookmark na raiz
+    % e adiciona espaço de parte no Sumário
+    \phantompart
+
+    % Conclusão (outro exemplo de capítulo sem numeração e presente no sumário)
+    \include{chapters/conclusion}
+
+
+    % ELEMENTOS PÓS-TEXTUAIS
+    %
+    \postextual
+    \setlength\beforechapskip{0pt}
+    \setlength\midchapskip{15pt}
+    \setlength\afterchapskip{15pt}
+
+    % Referências bibliográficas
+    \bibliography{modelo-ufsc-references}
+
+    % Glossário, consulte o manual da classe abntex2 para orientações sobre o glossário.
+    % \glossary
+
+    % Apêndices, inicia os apêndices
+    \begin{apendicesenv}
+
+        % Imprime uma página indicando o início dos apêndices
+        \partapendices
+
+        \setlength\beforechapskip{50pt}
+        \setlength\midchapskip{20pt}
+        \setlength\afterchapskip{20pt}
+
+        \include{postexto/apendice_a}
+
+    \end{apendicesenv}
+
+    % Anexos, inicia os anexos
+    \begin{anexosenv}
+
+        % Imprime uma página indicando o início dos anexos
+        \partanexos
+
+        \setlength\beforechapskip{50pt}
+        \setlength\midchapskip{20pt}
+        \setlength\afterchapskip{20pt}
+
+        \include{postexto/anexo_a}
+        \include{postexto/anexo_b}
+
+    \end{anexosenv}
+
+    % INDICE REMISSIVO
+    \phantompart
+    \printindex
 
 \end{document}
 
