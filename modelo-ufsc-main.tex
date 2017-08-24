@@ -106,6 +106,9 @@
                 Citado #1 vezes nas páginas #2.
             \fi
         }
+
+        % Calculate the size of the header
+        \calculatelisteningsheader
     \fi
 }{}
 \makeatother
@@ -224,6 +227,7 @@
     \input{pretexto/pretexto}
 
 
+
     % ELEMENTOS TEXTUAIS
     %
     % Configura estilo das páginas.
@@ -267,6 +271,7 @@
 
     % Conclusão (outro exemplo de capítulo sem numeração e presente no sumário)
     \include{chapters/conclusion}
+
 
 
     % ELEMENTOS PÓS-TEXTUAIS
