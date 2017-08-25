@@ -167,17 +167,22 @@ A Tabela~\ref{tab:a_table_formatacao_de_texto} mostra mais informações do temp
 \setlength\extrarowheight{2pt}
 \begin{tabularx}{\linewidth}{|>{\RaggedRight}p{3cm}|>{\arraybackslash}X|}
 
-\caption{Formatação do texto}
+\caption{Formatação do texto \protect\showfont}
 \label{tab:a_table_formatacao_de_texto} \\
 \hline
 \endfirsthead
 
-\multicolumn{2}{c}{\tablename~\thetable: Formatação do texto (continued)} \\
+% How to set font size of footnotes correctly in memoir?
+% https://tex.stackexchange.com/questions/213927/how-to-set-font-size-of-footnotes-correctly-in-memoir
+\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\tabletitlesize\tablename~\thetable:
+Formatação do texto (continued) \protect\showfont} \\
 \hline
 \endhead
 
+% Set multicolumn width to default table width
+% https://tex.stackexchange.com/questions/99326/set-multicolumn-width-to-default-table-width
 \hline
-\multicolumn{2}{r}{\footnotesize to be continued}
+\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\footnotesize to be continued \protect\showfont}
 \endfoot
 
 \hline
