@@ -73,8 +73,8 @@
 
     % Back references translation
     \ifenglish
-        \usepackage[hyperpageref]{backref}
     \else
+        % Configurações de códigos fonte no documento
         \makeatletter
         \@ifpackageloaded{listings}
         {
@@ -83,32 +83,35 @@
 
             % List of Listings -> Lista de códigos-fonte
             \renewcommand{\lstlistlistingname}{Lista de códigos--fonte}
+
+            % Calculate the size of the header
+            \calculatelisteningsheader
         }
         \makeatother
 
         % Configurações do pacote backref, paginas com as citações na bibliografia
-        \usepackage[brazilian,hyperpageref]{backref}
-
-        % Usado sem a opção hyperpageref de backref
-        \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
-
-        % Texto padrão antes do número das páginas
-        \renewcommand{\backref}{}
-
-        % Define os textos da citação
-        \renewcommand*{\backrefalt}[4]
+        \makeatletter
+        \@ifpackageloaded{backref}
         {
-            \ifcase #1
-                Nenhuma citação no texto.
-            \or
-                Citado na página #2.
-            \else
-                Citado #1 vezes nas páginas #2.
-            \fi
-        }
+            % Usado sem a opção hyperpageref de backref
+            \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
 
-        % Calculate the size of the header
-        \calculatelisteningsheader
+            % Texto padrão antes do número das páginas
+            \renewcommand{\backref}{}
+
+            % Define os textos da citação
+            \renewcommand*{\backrefalt}[4]
+            {
+                \ifcase #1
+                    Nenhuma citação no texto.
+                \or
+                    Citado na página #2.
+                \else
+                    Citado #1 vezes nas páginas #2.
+                \fi
+            }
+        }{}
+        \makeatother
     \fi
 }{}
 \makeatother
