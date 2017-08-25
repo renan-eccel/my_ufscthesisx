@@ -8,6 +8,9 @@
 % ELEMENTOS PRÉ-TEXTUAIS
 % \includepdf{pictures/FrenteCapaUFSC.pdf}
 
+% To automatically put a [Go To Top] on each section
+\addGoToSummary
+
 \pretextual
 
 % Capa
@@ -84,10 +87,16 @@
 % Inserir lista de símbolos
 \include{pretexto/simbolos}
 
+% Disable the [Go To Top] on the table of contents section
+\removeGoToSummary
+
 % Inserir o sumario
 \pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents*
 \cleardoublepage
+
+% To automatically put a [Go To Top] on each section
+\addGoToSummary
 
 
 % How to fix destination with the same identifier (name{page.A}) has been already used, duplicate ignored?
