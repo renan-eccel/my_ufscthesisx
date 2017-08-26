@@ -2,75 +2,72 @@
 
 % Thesis settings
 %
-% ifpackageloaded question
-% https://tex.stackexchange.com/questions/70212/ifpackageloaded-question
-\makeatletter
-\@ifpackageloaded{setup/ufscthesis}
-{
-    % Informações de dados para CAPA e FOLHA DE ROSTO
-    \titulo{Modelo Canônico de TCC, Monografia,  Dissertação, Tese ou Relatório}
-    \subtitulo{Pós--Doutorado da UFSC com \abnTeX{}}
-    \autor{Nome do Autor}
-    \local{Florianópolis, Santa Catarina -- Brasil}
-    \data{\today}
-    \orientador{Prof. Dr. Nome do Orientador}
-    \coorientador{Prof. Dr. Nome do Coorientador}
-    \instituicao{Universidade Federal de Santa Catarina -- UFSC}
-    \tipotrabalho{Tese de Doutorado}
-    \programa{Programa de Pós--Graduação em Engenharia Elétrica -- PGEEL}
-    \centro{Departamento de Engenharia Elétrica e Eletrônica -- EEL}
 
-    % O preambulo deve conter o tipo do trabalho, o objetivo. O nome da instituição e a área de
-    % concentração.
-    \preambulo{Tese submetida ao Programa de Pós--Graduação em Engenharia Elétrica da Universidade
-    Federal de Santa Catarina para a obtenção do Grau de Doutor em Engenharia Elétrica.}
+% Informações de dados para CAPA e FOLHA DE ROSTO
+\titulo{Modelo Canônico de TCC, Monografia,  Dissertação, Tese ou Relatório}
+\subtitulo{Pós--Doutorado da UFSC com \abnTeX{}}
+\autor{Nome do Autor}
+\local{Florianópolis, Santa Catarina -- Brasil}
+\data{\today}
+\orientador{Prof. Dr. Nome do Orientador}
+\coorientador{Prof. Dr. Nome do Coorientador}
+\instituicao{Universidade Federal de Santa Catarina -- UFSC}
+\tipotrabalho{Tese de Doutorado}
+\programa{Programa de Pós--Graduação em Engenharia Elétrica -- PGEEL}
+\centro{Departamento de Engenharia Elétrica e Eletrônica -- EEL}
 
-    % Back references translation
-    \ifenglish
-    \else
-        % Configurações de códigos fonte no documento
-        \makeatletter
-        \@ifpackageloaded{listings}
+% O preambulo deve conter o tipo do trabalho, o objetivo. O nome da instituição e a área de
+% concentração.
+\preambulo{Tese submetida ao Programa de Pós--Graduação em Engenharia Elétrica da Universidade
+Federal de Santa Catarina para a obtenção do Grau de Doutor em Engenharia Elétrica.}
+
+% Back references translation
+\ifenglish
+\else
+    % Configurações de códigos fonte no documento
+    \makeatletter
+    \@ifpackageloaded{listings}
+    {
+        % Listing -> Codigo fonte
+        \renewcommand{\lstlistingname}{Código--fonte}
+
+        % List of Listings -> Lista de códigos-fonte
+        \renewcommand{\lstlistlistingname}{Lista de códigos--fonte}
+
+        % Calculate the size of the header
+        \calculatelisteningsheader
+    }
+    \makeatother
+
+    % Configurações do pacote backref, paginas com as citações na bibliografia
+    \makeatletter
+    \@ifpackageloaded{backref}
+    {
+        % Usado sem a opção hyperpageref de backref
+        \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+
+        % Texto padrão antes do número das páginas
+        \renewcommand{\backref}{}
+
+        % Define os textos da citação
+        \renewcommand*{\backrefalt}[4]
         {
-            % Listing -> Codigo fonte
-            \renewcommand{\lstlistingname}{Código--fonte}
-
-            % List of Listings -> Lista de códigos-fonte
-            \renewcommand{\lstlistlistingname}{Lista de códigos--fonte}
-
-            % Calculate the size of the header
-            \calculatelisteningsheader
+            \ifcase #1
+                Nenhuma citação no texto.
+            \or
+                Citado na página #2.
+            \else
+                Citado #1 vezes nas páginas #2.
+            \fi
         }
-        \makeatother
-
-        % Configurações do pacote backref, paginas com as citações na bibliografia
-        \makeatletter
-        \@ifpackageloaded{backref}
-        {
-            % Usado sem a opção hyperpageref de backref
-            \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
-
-            % Texto padrão antes do número das páginas
-            \renewcommand{\backref}{}
-
-            % Define os textos da citação
-            \renewcommand*{\backrefalt}[4]
-            {
-                \ifcase #1
-                    Nenhuma citação no texto.
-                \or
-                    Citado na página #2.
-                \else
-                    Citado #1 vezes nas páginas #2.
-                \fi
-            }
-        }{}
-        \makeatother
-    \fi
-}{}
-\makeatother
+    }{}
+    \makeatother
+\fi
 
 % Espaçamentos entre linhas e parágrafos
+%
+% ifpackageloaded question
+% https://tex.stackexchange.com/questions/70212/ifpackageloaded-question
 \makeatletter
 \@ifclassloaded{memoir}
 {
