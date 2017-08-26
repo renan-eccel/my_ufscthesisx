@@ -28,6 +28,44 @@ disponibilizado pela Biblioteca Universitária da UFSC no presente momento da cr
 buscar um modelo de seja baseado na última versão do `abntex2 1.9.6`, no qual trata este trabalho.
 
 
+
+# Instalação
+
+Para poder utilizar a classe é necessário instalar uma longa lista de pacotes além do pacote abnTeX2
+na sua distribuição LaTeX, as configurações específicas para cada sistema, podem ser encontradas no
+link abaixo para o pacote `abnTeX2`:
+
+1. [abntex2 CTAN](http://www.ctan.org/pkg/abntex2)
+1. [abnTeX2 Instalação](https://github.com/abntex/abntex2/wiki/Instalacao)
+
+Depois no diretório do seu projeto faça um clone dos arquivos do repositório:
+```bash
+git clone --recursive https://github.com/evandrocoan/ufscthesis
+```
+
+Este repositório já contém um exemplo de tese com uso avançado de conceitos e latex. Se você tive
+interesse em utilizar esse template, você somente precisa preencher corretamente os seus dados como
+nome do orientador, coorientador, seu nome, nome da sua instituição, do seu curso, departamento,
+etc.
+
+Para isso abra o arquivo `settings.tex` no diretório principal e altere os dados fictícios para os
+corretos. O arquivo `modelo-ufsc-main.tex` é o arquivo principal do template utilizado, ele trata de
+carregar todos os pacotes necessários e incluir os arquivos latex que contém as partes da sua
+monografia.
+
+
+
+# Uso
+
+A ideia desse projeto é fazer com que você utilize a classe abnTeX2, mas com customizações voltadas
+para as teses da UFSC, fazendo com que o seu uso seja idêntico ao uso direto da classe abnTeX2.
+
+A documentação dessa classe pode ser encontrada nos link a seguir e também é possível encontrar
+modelos de documentos que utilizam a classe para tomar como base:
+
+1. [Documentação e Modelos abnTeX2](https://www.ctan.org/pkg/abntex2)
+
+
 #### Normas da UFSC para trabalhos acadêmicos
 
 1. [Geral](http://portal.bu.ufsc.br/normalizacao/)
@@ -43,34 +81,48 @@ buscar um modelo de seja baseado na última versão do `abntex2 1.9.6`, no qual 
 1. https://github.com/abntex/abntex2
 
 
-#### Instalação
 
-Para poder utilizar a classe é necessário instalar o pacote abnTeX2 na sua
-distribuição LaTeX, as configurações específicas para cada sistema, podem ser
-encontradas no link abaixo.
+# Mudanças
 
-1. [abntex2 CTAN](http://www.ctan.org/pkg/abntex2)
-1. [abnTeX2 Instalação](https://github.com/abntex/abntex2/wiki/Instalacao)
+Para ver as mudanças, acesse o histórico do git no endereço:
 
-Depois no diretório do seu projeto faça um clone dos arquivos do repositório.
+1. https://github.com/evandrocoan/ufscthesis/commits/master
 
-```bash
-git clone --recursive https://github.com/evandrocoan/ufscthesis
+Ou clone reste repositório e execute seguinte comando do cliente git:
+
+1. `git log`
+1. https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
+
+
+# Licença
+
+```
+Copyright (c) 2012-2014 by abnTeX2 group at http://abntex2.googlecode.com/
+Copyright (c) 2014-2015 Mateus Dubiela Oliveira
+Copyright (c) 2015-2016 Adriano Ruseler
+Copyright (c) 2017 Evandro Coan
+
+É concedida permissão, gratuitamente, a qualquer pessoa que obtenha uma cópia deste modelo e
+software e arquivos de documentação associados (o "Software"), para ter estes arquivos com os
+direitos de uso, cópia, modificação, mesclagem, publicar, distribuir, e permitir que as pessoas a
+quem o Software seja fornecido tenham estes mesmos direitos, ambos sujeitos às seguintes condições:
+
+O aviso de direitos autorais acima e este aviso de permissão devem ser incluídos em todas as cópias
+ou partes substanciais do Software.
+
+Os arquivos `chapters/chapter_1.tex`, `chapters/chapter_2.tex` e `setup/ufscthesis.sty` estão
+licenciados sobre a licença LPPL (The Latex Project License). Portanto você deve respeitar essa
+licença para esses arquivos ao invés dessa. Entretanto a condição a seguir continuará valendo sobre
+esses arquivos licenciados pela licença LPPL:
+
+OS ARQUIVOS NESTE REPOSITÓRIO SÃO FORNECIDOS "NO ESTADO EM QUE SE ENCONTRAM", SEM GARANTIA DE
+QUALQUER TIPO, EXPRESSA OU IMPLÍCITA, INCLUINDO, MAS NÃO SE LIMITANDO ÀS GARANTIAS DE
+COMERCIALIZAÇÃO, APTIDÃO PARA UM PROPÓSITO ESPECÍFICO E NÃO INFRACÇÃO. EM NENHUMA CIRCUNSTÂNCIA, OS
+AUTORES OU TITULARES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR QUALQUER RECLAMAÇÃO, DANOS OU OUTRA
+RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, DELITO OU DE OUTRA FORMA, DECORRENTE, DESTE OU
+RELACIONADO COM DOS ARQUIVOS DESTE REPOSITÓRIO OU O USO OU OUTRAS NEGOCIAÇÕES NO MODELO E SOFTWARE.
 ```
 
-
-#### Uso
-
-A ideia desse projeto é fazer com que você utilize a classe abnTeX2, mas com customizações voltadas
-para as teses da UFSC, fazendo com que o seu uso seja idêntico ao uso direto da classe abnTeX2.
-
-A documentação dessa classe pode ser encontrada aqui:
-
-[Documentação](https://www.ctan.org/pkg/abntex2)
-
-Também é possível encontrar modelos de documentos que utilizam a classe para tomar como base:
-
-[Modelos abnTeX2](https://www.ctan.org/pkg/abntex2)
 
 
 

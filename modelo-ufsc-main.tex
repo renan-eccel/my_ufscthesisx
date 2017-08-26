@@ -1,38 +1,4 @@
-%% modelo-ufsc-main.tex
-%%
-%% Copyright 2017 Evandro Coan
-%% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/
-%%
-%% This work may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in
-%%   http://www.latex-project.org/lppl.txt
-%% and version 1.3 or later is part of all distributions of LaTeX
-%% version 2005/12/01 or later.
-%%
-%% This work has the LPPL maintenance status `maintained'.
-%% The Current Maintainer of this work is the Evandro Coan.
-%%
-%% The last Maintainer of this work was the abnTeX2 team, led
-%% by Lauro César Araujo. Further information are available on
-%% https://www.abntex.net.br/
-%%
-%% This work consists of a bunch of files. But originally there ware 3 files
-%% which are renamed as follows:
-%% Renamed the `abntex2-modelo-references.bib` to `modelo-ufsc-references.bib`
-%% Renamed the `abntex2-modelo-include-comandos` to `Capitulos\01\CH01.tex`
-%% Renamed the `abntex2-modelo-trabalho-academico.tex` to `modelo-ufsc-main.tex`
-%%
 
-% ------------------------------------------------------------------------
-% ------------------------------------------------------------------------
-% abnTeX2: Modelo de Trabalho Academico (tese de doutorado, dissertacao de
-% mestrado e trabalhos monograficos em geral) em conformidade com
-% ABNT NBR 14724:2011: Informacao e documentacao - Trabalhos academicos -
-% Apresentacao
-% ------------------------------------------------------------------------
-% ------------------------------------------------------------------------
 
 % Uncomment the line `\englishtrue` to set the document default language to english.
 %
@@ -40,7 +6,7 @@
 % https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
 \newif\ifenglish
 \englishfalse
-% \englishtrue % Will show Portuguese text only
+% \englishtrue
 
 \ifenglish
     % How to make \PassOptionsToPackage add the option as the last option?
@@ -50,8 +16,8 @@
     \PassOptionsToPackage{main=brazil,english,spanish,french}{babel}
 \fi
 
-% You need to run `pdfTeX` 5 times on the following order: 1. `pdfTeX`, 2. `bibtex`, 3. `pdfTeX` 4.
-% `pdfTeX` 5. `pdfTeX` 6. `pdfTeX`, because the bibliography includes a cyclic reference to another
+% You need to run `pdfTeX` 5 times on the following order: 1. `pdfTeX`, 2. `bibtex`, 3. `pdfTeX`
+% 4. `pdfTeX` 5. `pdfTeX` 6. `pdfTeX`, because the bibliography includes a cyclic reference to
 % bibliography, so we need a last pass to fix the bibliography undefined references.
 %
 % Fix recurring LaTeX Warning
