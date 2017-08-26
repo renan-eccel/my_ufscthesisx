@@ -1,11 +1,8 @@
 
-% Changing babel package inside a single chapter
-% https://tex.stackexchange.com/questions/20987/changing-babel-package-inside-a-single-chapter
-%
-% Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
-% https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
-\begin{otherlanguage*}{brazil}
-\begin{resumo}
+
+% Is it possible to keep my translation together with original text?
+% https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
+\begin{abntcomment}
 
     Segundo a \citeonline[3.1-3.2]{NBR6028:2003}, o resumo deve ressaltar o
     objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão
@@ -14,7 +11,24 @@
     precedido da referência do documento, com exceção do resumo inserido no
     próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do
     resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
-    ponto e finalizadas também por ponto. \showfont
+    ponto e finalizadas também por ponto.
+
+\end{abntcomment}
+
+
+% Changing babel package inside a single chapter
+% https://tex.stackexchange.com/questions/20987/changing-babel-package-inside-a-single-chapter
+%
+% Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
+% https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
+\begin{otherlanguage*}{brazil}
+\begin{resumo}
+
+    O texto do resumo deve ser digitado, em um único bloco, sem espaço de parágrafo. O resumo deve
+    ser significativo, composto de uma sequência de frases concisas, afirmativas e não de uma
+    enumeração de tópicos. Não deve conter citações. Deve usar o verbo na voz passiva. Abaixo do
+    resumo, deve-se informar as palavras-chave (palavras ou expressões significativas retiradas do
+    texto) ou, termos retirados de thesaurus da área. \showfont
 
 \vspace{\onelineskip}
 \noindent \textbf{Palavras-chaves}: latex. abntex. editoração de texto.
