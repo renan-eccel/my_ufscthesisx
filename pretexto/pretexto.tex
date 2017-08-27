@@ -8,9 +8,6 @@
 % ELEMENTOS PRÉ-TEXTUAIS
 % \includepdf{pictures/FrenteCapaUFSC.pdf}
 
-% To automatically put a [Go To Top] on each section
-\addGoToSummary
-
 \pretextual
 
 % Capa
@@ -59,8 +56,8 @@
 % Epígrafe
 \include{pretexto/epigrafe}
 
+
 % RESUMOS
-%
 % Ajusta o espaçamento dos parágrafos do resumo
 \setlength{\absparsep}{18pt}
 \include{pretexto/resumos}
@@ -81,22 +78,21 @@
 \lstlistoflistings*
 \cleardoublepage
 
+
 % inserir lista de abreviaturas e siglas
 \include{pretexto/siglas}
 
 % Inserir lista de símbolos
 \include{pretexto/simbolos}
 
-% Disable the [Go To Top] on the table of contents section
-\removeGoToSummary
+% How to remove the self-reference of the ToC from the ToC?
+% https://tex.stackexchange.com/questions/10943/how-to-remove-the-self-reference-of-the-toc-from-the-toc
+\begin{KeepFromToc}
+    \pdfbookmark[0]{\contentsname}{toc}
+    \tableofcontents*
+    \cleardoublepage
+\end{KeepFromToc}
 
-% Inserir o sumario
-\pdfbookmark[0]{\contentsname}{toc}
-\tableofcontents*
-\cleardoublepage
-
-% To automatically put a [Go To Top] on each section
-\addGoToSummary
 
 
 % How to fix destination with the same identifier (name{page.A}) has been already used, duplicate ignored?
