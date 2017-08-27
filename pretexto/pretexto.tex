@@ -89,7 +89,16 @@
 % https://tex.stackexchange.com/questions/10943/how-to-remove-the-self-reference-of-the-toc-from-the-toc
 \begin{KeepFromToc}
     \pdfbookmark[0]{\contentsname}{toc}
-    \tableofcontents*
+
+    % Hyperref: Changing the linkcolor locally in the TOC
+    % https://tex.stackexchange.com/questions/88400/hyperref-changing-the-linkcolor-locally-in-the-toc
+    %
+    % underfull vbox (badness 10000) has occurred while \output is active with memoir
+    % https://tex.stackexchange.com/questions/65711/underfull-vbox-badness-10000-with-memoir
+    {\raggedbottom
+    \hypersetup{linkcolor=black}
+    \tableofcontents*}
+
     \cleardoublepage
 \end{KeepFromToc}
 
