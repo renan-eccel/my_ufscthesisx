@@ -5,6 +5,9 @@ Modelo Canônico de TCC, Monografia,  Dissertação, Tese ou Relatório de Pós-
 abnTeX2. Originado de endereço https://github.com/AdrianoRuseler/abntex2-ufsc com o nome
 `abntex2-ufsc`, este projeto foi renomeado para `ufscthesisx`.
 
+Esse projeto não está vinculado a nenhum orgão da UFSC, eu estou fazendo isso porque precisei para a
+minha tese e mais pessoas podem estar precisando também.
+
 Entretanto, diferente do original e do modelos disponível pela Biblioteca Universitária UFSC, este
 modelo não é uma classe latex, mas um pacote. Portanto para usá-lo, você deve utilizar a classe
 `abntex2` como classe do seu documento e então incluir este trabalho como um pacote latex na
