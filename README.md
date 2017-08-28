@@ -1,9 +1,9 @@
-ufscthesis
+ufscthesisx
 =================
 
 Modelo Canônico de TCC, Monografia,  Dissertação, Tese ou Relatório de Pós--Doutorado da UFSC com
 abnTeX2. Originado de endereço https://github.com/AdrianoRuseler/abntex2-ufsc com o nome
-`abntex2-ufsc`, este projeto foi renomeado para `ufscthesis`.
+`abntex2-ufsc`, este projeto foi renomeado para `ufscthesisx`.
 
 Entretanto, diferente do original e do modelos disponível pela Biblioteca Universitária UFSC, este
 modelo não é uma classe latex, mas um pacote. Portanto para usá-lo, você deve utilizar a classe
@@ -19,7 +19,7 @@ section=TITLE  % Título de seções em caixa alta
 ]{abntex2}
 
 \usepackage[alf]{abntex2cite}
-\usepackage{setup/ufscthesis}
+\usepackage{setup/ufscthesisx}
 ```
 
 Se você inverter a ordem de inclusão, as citações bibliográficas não irão funcionar. O modelo
@@ -40,7 +40,7 @@ link abaixo para o pacote `abnTeX2`:
 
 Depois no diretório do seu projeto faça um clone dos arquivos do repositório:
 ```bash
-git clone --recursive https://github.com/evandrocoan/ufscthesis
+git clone --recursive https://github.com/evandrocoan/ufscthesisx
 ```
 
 Este repositório já contém um exemplo de tese com uso avançado de conceitos e latex. Se você tive
@@ -86,7 +86,7 @@ modelos de documentos que utilizam a classe para tomar como base:
 
 Para ver as mudanças, acesse o histórico do git no endereço:
 
-1. https://github.com/evandrocoan/ufscthesis/commits/master
+1. https://github.com/evandrocoan/ufscthesisx/commits/master
 
 Ou clone reste repositório e execute seguinte comando do cliente git:
 
@@ -110,7 +110,7 @@ quem o Software seja fornecido tenham estes mesmos direitos, ambos sujeitos às 
 O aviso de direitos autorais acima e este aviso de permissão devem ser incluídos em todas as cópias
 ou partes substanciais do Software.
 
-Os arquivos `chapters/chapter_1.tex`, `chapters/chapter_2.tex` e `setup/ufscthesis.sty` estão
+Os arquivos `chapters/chapter_1.tex`, `chapters/chapter_2.tex` e `setup/ufscthesisx.sty` estão
 licenciados sobre a licença LPPL (The Latex Project License). Portanto você deve respeitar essa
 licença para esses arquivos ao invés dessa. Entretanto a condição a seguir continuará valendo sobre
 esses arquivos licenciados pela licença LPPL:
