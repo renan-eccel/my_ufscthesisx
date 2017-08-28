@@ -48,4 +48,5 @@
 *.mtc1
 *.sublime-workspace
 *.pdf
+*.synctex(busy)
 *.synctex.gz(busy)
