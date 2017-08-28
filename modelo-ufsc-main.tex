@@ -1,5 +1,14 @@
 
+%
+% Monograph LaTeX Template based on:
+%
+% 1. https://github.com/royertiago/tcc
+% 2. http://portal.bu.ufsc.br/normalizacao/
+% 3. https://github.com/AdrianoRuseler/abntex2-ufsc
+%
 
+
+%
 % Uncomment the line `\englishtrue` to set the document default language to english.
 %
 % Is it possible to keep my translation together with original text?
@@ -16,6 +25,7 @@
     \PassOptionsToPackage{main=brazil,english,spanish,french}{babel}
 \fi
 
+%
 % You need to run `pdfTeX` 5 times on the following order: 1. `pdfTeX`, 2. `bibtex`, 3. `pdfTeX`
 % 4. `pdfTeX` 5. `pdfTeX` 6. `pdfTeX`, because the bibliography includes a cyclic reference to
 % bibliography, so we need a last pass to fix the bibliography undefined references.
@@ -44,6 +54,7 @@
 % Thesis settings
 \input{settings}
 
+%
 % When writing a large document, it is sometimes useful to work on selected sections of the document
 % to speed up compilation time: https://en.wikibooks.org/wiki/TeX/includeonly
 %
