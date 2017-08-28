@@ -68,6 +68,94 @@ modelos de documentos que utilizam a classe para tomar como base:
 
 1. [Documentação e Modelos abnTeX2](https://www.ctan.org/pkg/abntex2)
 
+Entretanto, apesar das instruções iniciais do projeto serem para utilizar diretamente a classe
+`abntex2`, ela contém algums problemas com o latex que precisam ser corrigidos. Para isso
+você pode utilizar ao invés da classe `abntex2`, você pode incluir o arquivo `setup` que faz o
+carregamento da classe `abntex2` com essas correções:
+
+```latex
+\input{setup/setup}
+\usepackage{setup/ufscthesisx}
+```
+
+Assim a maneira usual de utilizar esse template é fazer o clone dele como um submodule de sua tese,
+e em seu arquivo principal incluir o seguinte cabeçalho para carregar os pacotes básicos:
+```latex
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+% Uncomment the line `\englishtrue` to set the document default language to english.
+%
+% Is it possible to keep my translation together with original text?
+% https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
+\newif\ifenglish
+\englishfalse
+% \englishtrue
+
+\ifenglish
+    % How to make \PassOptionsToPackage add the option as the last option?
+    % https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last
+    \PassOptionsToPackage{brazil,main=english,spanish,french}{babel}
+\else
+    \PassOptionsToPackage{main=brazil,english,spanish,french}{babel}
+\fi
+
+% You need to run `pdfTeX` 5 times on the following order: 1. `pdfTeX`, 2. `bibtex`, 3. `pdfTeX` 4.
+% `pdfTeX` 5. `pdfTeX` 6. `pdfTeX`, because the bibliography includes a cyclic reference to another
+% bibliography, so we need a last pass to fix the bibliography undefined references.
+%
+% Fix recurring LaTeX Warning
+% https://github.com/abntex/abntex2/pull/189
+%
+% To fix the warning `LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right`,
+% open the file `D:\User\Documents\latex\texmfs\install\tex\latex\abntex2\abntex2cite.sty` and
+% comment out these two lines:
+% 547: % \renewcommand{\bibcite}[2]{%
+% 548: %   \@newl@bel{b}{#1}{\hyper@@link[cite]{}{cite.#1}{#2}}}%
+\input{ufscthesisx/setup/setup}
+
+% Load the UFSC thesis settings
+\usepackage{ufscthesisx/setup/ufscthesisx}
+
+% Load all required basic packages
+\input{ufscthesisx/utilities/basic}
+\input{ufscthesisx/utilities/commands}
+
+% Bad boxes settings and programming environments
+\input{ufscthesisx/utilities/badboxes}
+\input{ufscthesisx/utilities/programming}
+
+% Input a empty list of commands when on debug mode
+\input{ufscthesisx/utilities/commands_list}
+```
+
+Você também pode copiar o arquivo de configuração `settings.tex` para o seu diretório principal da
+sua tese e então incluir essas configurações:
+```latex
+%----------------------------------------------------------------------------------------
+%   File settings
+%----------------------------------------------------------------------------------------
+
+% Print page margins of a document
+% https://tex.stackexchange.com/questions/14508/print-page-margins-of-a-document
+\usepackage[showframe,pass]{geometry}
+
+% To use the font Times New Roman, instead of the default LaTeX font
+% more up-to-date than '\usepackage{mathptmx}'
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+
+% Always use it as should improve full justification
+% https://tex.stackexchange.com/questions/10377/texttt-overfull-hbox-problem
+% https://tex.stackexchange.com/questions/66052/should-i-load-microtype-with-pdflatex
+\usepackage{microtype}
+
+% Thesis settings
+\input{settings}
+```
+
+
 
 #### Normas da UFSC para trabalhos acadêmicos
 
