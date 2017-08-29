@@ -34,7 +34,13 @@ Federal de Santa Catarina para a obtenção do Grau de Doutor em Engenharia Elé
 
 % Back references translation
 \ifenglish
+    % Remove the colon appended to theses variables
+    \renewcommand{\orientadorname}{Supervisor}
+    \renewcommand{\coorientadorname}{Co-supervisor}
 \else
+    \renewcommand{\orientadorname}{Orientador}
+    \renewcommand{\coorientadorname}{Coorientador}
+
     % Configurações de códigos fonte no documento
     \makeatletter
     \@ifpackageloaded{listings}
