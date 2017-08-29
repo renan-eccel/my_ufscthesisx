@@ -51,8 +51,41 @@
 }
 
 % Remove the colon appended to theses variables, allowing us to use other separators
-\renewcommand{\orientadorname}{\chooselang{Supervisor}{Orientador}}
-\renewcommand{\coorientadorname}{\chooselang{Co-supervisor}{Coorientador}}
+\addto\captionsbrazil
+{
+    \renewcommand{\orientadorname}{Orientador}
+    \renewcommand{\coorientadorname}{Coorientador}
+}
+
+% Create caption English translations as the sections headers
+% https://tex.stackexchange.com/questions/8564/what-is-the-right-way-to-redefine-macros-defined-by-babel
+\addto\captionsenglish
+{
+    %% adjusts names from abnTeX2
+    \renewcommand{\folhaderostoname}{Title page}
+    \renewcommand{\epigraphname}{Epigraph}
+    \renewcommand{\dedicatorianame}{Dedication}
+    \renewcommand{\errataname}{Errata sheet}
+    \renewcommand{\agradecimentosname}{Acknowledgements}
+    \renewcommand{\anexoname}{ANNEX}
+    \renewcommand{\anexosname}{Annex}
+    \renewcommand{\apendicename}{APPENDIX}
+    \renewcommand{\apendicesname}{Appendix}
+    \renewcommand{\orientadorname}{Supervisor}
+    \renewcommand{\coorientadorname}{Co-supervisor}
+    \renewcommand{\folhadeaprovacaoname}{Approval}
+    \renewcommand{\resumoname}{Abstract}
+    \renewcommand{\listadesiglasname}{List of abbreviations and acronyms}
+    \renewcommand{\listadesimbolosname}{List of symbols}
+    \renewcommand{\fontename}{Source}
+    \renewcommand{\notaname}{Note}
+    %% adjusts names used by \autoref
+    \renewcommand{\pageautorefname}{page}
+    \renewcommand{\sectionautorefname}{section}
+    \renewcommand{\subsectionautorefname}{subsection}
+    \renewcommand{\subsubsectionautorefname}{subsubsection}
+    \renewcommand{\paragraphautorefname}{subsubsubsection}
+}
 
 % References translation
 \ifenglish
@@ -180,4 +213,5 @@
     }
 }{}
 \makeatother
+
 
