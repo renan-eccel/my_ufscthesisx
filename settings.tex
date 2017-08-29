@@ -4,43 +4,60 @@
 \renewcommand{\mythesispreliminarylistname}{\chooselang{Brief Table of Contents}{Breve Sumário}}
 
 % Informações de dados para CAPA e FOLHA DE ROSTO
-\titulo{Modelo Canônico de TCC, Monografia,  Dissertação, Tese ou Relatório}
-\subtitulo{Pós--Doutorado da UFSC com \abnTeX{}}
-\autor{Nome do Autor}
-\local{Florianópolis, Santa Catarina -- Brasil}
+\titulo
+{
+    \chooselang
+    {Canonical Model of Monograph, Dissertation, Thesis or Report}
+    {Modelo Canônico de Monografia,  Dissertação, Tese ou Relatório}
+}
+\subtitulo
+{
+    \chooselang
+    {Post\hyp{}Doctorate of UFSC with \abnTeX{}}
+    {Pós--Doutorado da UFSC com \abnTeX{}}
+}
 \data{\today}
-\orientador{Prof. Dr. Nome do Orientador}
-\coorientador{Prof. Dr. Nome do Coorientador}
-\instituicao{Universidade Federal de Santa Catarina \newline Biblioteca Universitária}
-\tipotrabalho{Tese de Doutorado}
-\programa{Programa de Pós\hyp{}Graduação em Engenharia Elétrica -- PGEEL}
-\centro{Departamento de Engenharia Elétrica e Eletrônica -- EEL}
+\autor{\chooselang{Author's name}{Nome do Autor}}
+\local{\chooselang{Florianópolis, Santa Catarina -- Brazil}{Florianópolis, Santa Catarina -- Brasil}}
 
-% O preambulo deve conter o tipo do trabalho, o objetivo. O nome da instituição e a área de
-% concentração.
-\preambulo{Tese submetida ao Programa de Pós--Graduação em Engenharia Elétrica da Universidade
-Federal de Santa Catarina para a obtenção do Grau de Doutor em Engenharia Elétrica. \showfont}
+\orientador{\chooselang{Prof. Md. Supervisor Name}{Prof. Dr. Nome do Coorientador}}
+\coorientador{\chooselang{Prof. Md. Co-supervisor Name}{Prof. Dr. Nome do Coorientador}}
+
+\instituicaosigla{UFSC}
+\instituicao{\chooselang{Federal University of Santa Catarina}{Universidade Federal de Santa Catarina}}
+\tipotrabalho{\chooselang{Doctoral Thesis}{Tese de Doutorado}}
+
+\programa{\chooselang{Postgraduate Program in Electrical Engineering}{Programa de Pós\hyp{}Graduação em Engenharia Elétrica}}
+\centro{\chooselang{Department of Electrical and Electronic Engineering}{Departamento de Engenharia Elétrica e Eletrônica}}
+
+% O preambulo deve conter tipo do trabalho, objetivo, nome da instituição e a área de concentração.
+\preambulo
+{
+    \chooselang
+    {Thesis submitted to the Post\hyp{}Graduate Program in Electrical Engineering of the University
+    Federal University of Santa Catarina to obtain the Doctor's Degree in Electrical Engineering. \showfont}
+    {Tese submetida ao Programa de Pós--Graduação em Engenharia Elétrica da Universidade
+    Federal de Santa Catarina para a obtenção do Grau de Doutor em Engenharia Elétrica. \showfont}
+}
 
 % Keywords
 \newcommand{\palavraschaveingles}
 {
     \item latex. \item abntex. \item text publishing.
 }
-
 \newcommand{\palavraschaveportugues}
 {
     \item latex. \item abntex. \item editoração de texto.
 }
 
-% Back references translation
-\ifenglish
-    % Remove the colon appended to theses variables
-    \renewcommand{\orientadorname}{Supervisor}
-    \renewcommand{\coorientadorname}{Co-supervisor}
-\else
-    \renewcommand{\orientadorname}{Orientador}
-    \renewcommand{\coorientadorname}{Coorientador}
+% Remove the colon appended to theses variables, allowing us to use other separators
+\renewcommand{\orientadorname}{\chooselang{Supervisor}{Orientador}}
+\renewcommand{\coorientadorname}{\chooselang{Co-supervisor}{Coorientador}}
 
+% References translation
+\ifenglish
+    % These default values are already in English
+\else
     % Configurações de códigos fonte no documento
     \makeatletter
     \@ifpackageloaded{listings}
