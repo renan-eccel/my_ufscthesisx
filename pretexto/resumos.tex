@@ -23,49 +23,50 @@
 \end{comment}
 
 
-% Changing babel package inside a single chapter
-% https://tex.stackexchange.com/questions/20987/changing-babel-package-inside-a-single-chapter
-%
-% Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
-% https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
-\addtotextpreliminarycontent{Resumo em Português}
-\begin{otherlanguage*}{brazil}
-\begin{resumo}[Resumo]
+\swapcontents
+{
+    % Changing babel package inside a single chapter
+    % https://tex.stackexchange.com/questions/20987/changing-babel-package-inside-a-single-chapter
+    %
+    % Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
+    % https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
+    \addtotextpreliminarycontent{English's Abstract}
+    \begin{otherlanguage*}{english}
+    \begin{resumo}[Abstract]
 
-    Segundo a \citeonline[3.1-3.2]{NBR6028:2003}, o resumo deve ressaltar o
-    objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão
-    destes itens dependem do tipo de resumo (informativo ou indicativo) e do
-    tratamento que cada item recebe no documento original. O resumo deve ser
-    precedido da referência do documento, com exceção do resumo inserido no
-    próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do
-    resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
-    ponto e finalizadas também por ponto.
+        This is the english abstract.
 
-    ufscthesisx:
-    O texto do resumo deve ser digitado, em um único bloco, sem espaço de parágrafo. O resumo deve
-    ser significativo, composto de uma sequência de frases concisas, afirmativas e não de uma
-    enumeração de tópicos. Não deve conter citações. Deve usar o verbo na voz passiva. Abaixo do
-    resumo, deve-se informar as palavras-chave (palavras ou expressões significativas retiradas do
-    texto) ou, termos retirados de thesaurus da área. \showfont
+        \imprimirpalavraschave{Keywords}{\wordslistunlabled{\palavraschaveingles}}
 
-    \imprimirpalavraschave{Palavras-chaves}{\wordslistunlabled{\palavraschaveportugues}}
+    \end{resumo}
+    \end{otherlanguage*}
+}
+{
+    \addtotextpreliminarycontent{Resumo em Português}
+    \begin{otherlanguage*}{brazil}
+    \begin{resumo}[Resumo]
 
-\end{resumo}
-\end{otherlanguage*}
+        Segundo a \citeonline[3.1-3.2]{NBR6028:2003}, o resumo deve ressaltar o
+        objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão
+        destes itens dependem do tipo de resumo (informativo ou indicativo) e do
+        tratamento que cada item recebe no documento original. O resumo deve ser
+        precedido da referência do documento, com exceção do resumo inserido no
+        próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do
+        resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
+        ponto e finalizadas também por ponto.
 
+        ufscthesisx:
+        O texto do resumo deve ser digitado, em um único bloco, sem espaço de parágrafo. O resumo deve
+        ser significativo, composto de uma sequência de frases concisas, afirmativas e não de uma
+        enumeração de tópicos. Não deve conter citações. Deve usar o verbo na voz passiva. Abaixo do
+        resumo, deve-se informar as palavras-chave (palavras ou expressões significativas retiradas do
+        texto) ou, termos retirados de thesaurus da área. \showfont
 
-% resumo em inglês
-\addtotextpreliminarycontent{English's Abstract}
-\begin{otherlanguage*}{english}
-\begin{resumo}[Abstract]
+        \imprimirpalavraschave{Palavras-chaves}{\wordslistunlabled{\palavraschaveportugues}}
 
-    This is the english abstract.
-
-    \imprimirpalavraschave{Keywords}{\wordslistunlabled{\palavraschaveingles}}
-
-\end{resumo}
-\end{otherlanguage*}
-
+    \end{resumo}
+    \end{otherlanguage*}
+}
 
 
 

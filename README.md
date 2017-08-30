@@ -97,8 +97,10 @@ e em seu arquivo principal incluir o seguinte cabeçalho para carregar os pacote
     % How to make \PassOptionsToPackage add the option as the last option?
     % https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last
     \PassOptionsToPackage{brazil,main=english,spanish,french}{babel}
+    \newcommand{\swapcontents}[2]{#1 #2}
 \else
     \PassOptionsToPackage{main=brazil,english,spanish,french}{babel}
+    \newcommand{\swapcontents}[2]{#2 #1}
 \fi
 
 % You need to run `pdfTeX` 5 times on the following order: 1. `pdfTeX`, 2. `bibtex`, 3. `pdfTeX` 4.
