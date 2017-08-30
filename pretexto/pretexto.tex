@@ -33,7 +33,7 @@
 
 % Custom list throw LaTeX Error: Command \mycustomfiction already defined?
 % https://tex.stackexchange.com/questions/388489/custom-list-throw-latex-error-command-mycustomfiction-already-defined/
-\thesispreliminarycontents
+\textpreliminarycontents
 \cleardoublepage
 
 % Inserir errata
@@ -46,7 +46,7 @@
 \include{pretexto/folhadeaprovacao}
 
 % Dedicatória
-\addtothesispreliminarycontent{\chooselang{Dedication}{Dedicatória}}
+\addtotextpreliminarycontent{\chooselang{Dedication}{Dedicatória}}
 \begin{dedicatoria}
     \vspace*{\fill}
     \centering
@@ -76,19 +76,19 @@
 \include{pretexto/resumos}
 
 % inserir lista de ilustrações
-\addtothesispreliminarycontent{\chooselang{List of Figures}{Lista de Figuras}}
+\addtotextpreliminarycontent{\chooselang{List of Figures}{Lista de Figuras}}
 \pdfbookmark[0]{\listfigurename}{lof}
 \listoffigures*
 \cleardoublepage
 
 % inserir lista de tabelas
-\addtothesispreliminarycontent{\chooselang{List of Tables}{Lista de Tabelas}}
+\addtotextpreliminarycontent{\chooselang{List of Tables}{Lista de Tabelas}}
 \pdfbookmark[0]{\listtablename}{lot}
 \listoftables*
 \cleardoublepage
 
 % inserir códigos fonte
-\addtothesispreliminarycontent{\chooselang{List of Source Codes}{Lista de Códigos Fonte}}
+\addtotextpreliminarycontent{\chooselang{List of Source Codes}{Lista de Códigos Fonte}}
 \pdfbookmark[0]{\lstlistingname}{lol}
 \lstlistoflistings*
 \cleardoublepage
@@ -102,7 +102,7 @@
 
 % How to remove the self-reference of the ToC from the ToC?
 % https://tex.stackexchange.com/questions/10943/how-to-remove-the-self-reference-of-the-toc-from-the-toc
-\addtothesispreliminarycontent{\chooselang{Table of Contents}{Sumário}}
+\addtotextpreliminarycontent{\chooselang{Table of Contents}{Sumário}}
 \begin{KeepFromToc}
     \pdfbookmark[0]{\contentsname}{toc}
 
