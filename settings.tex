@@ -1,6 +1,8 @@
 
 
 % Thesis settings
+\newcommand{\brazil}[1]{\foreignlanguage{brazil}{#1}}
+\newcommand{\english}[1]{\foreignlanguage{english}{#1}}
 \renewcommand{\mythesispreliminarylistname}{\chooselang{Brief Table of Contents}{Breve Sumário}}
 
 % Informações de dados para CAPA e FOLHA DE ROSTO
@@ -13,18 +15,19 @@
 \subtitulo
 {
     \chooselang
-    {Post\hyp{}Doctorate of UFSC with \abnTeX{}}
+    {Post\hyp{}Doctorate from UFSC with \abnTeX{}}
     {Pós--Doutorado da UFSC com \abnTeX{}}
 }
+
 \data{\today}
 \autor{\chooselang{Author's name}{Nome do Autor}}
-\local{\chooselang{Florianópolis, Santa Catarina -- Brazil}{Florianópolis, Santa Catarina -- Brasil}}
+\local{\chooselang{\brazil{Florianópolis, Santa Catarina} -- Brazil}{Florianópolis, Santa Catarina -- Brasil}}
 
 \orientador{\chooselang{Prof. Md. Supervisor Name}{Prof. Dr. Nome do Coorientador}}
-\coorientador{\chooselang{Prof. Md. Co-supervisor Name}{Prof. Dr. Nome do Coorientador}}
+\coorientador{\chooselang{Prof. Md. Co\hyp{}supervisor Name}{Prof. Dr. Nome do Coorientador}}
 
 \instituicaosigla{UFSC}
-\instituicao{\chooselang{Federal University of Santa Catarina}{Universidade Federal de Santa Catarina}}
+\instituicao{\chooselang{Federal University of \brazil{Santa Catarina}}{Universidade Federal de Santa Catarina}}
 \tipotrabalho{\chooselang{Doctoral Thesis}{Tese de Doutorado}}
 
 \programa{\chooselang{Postgraduate Program in Electrical Engineering}{Programa de Pós\hyp{}Graduação em Engenharia Elétrica}}
@@ -34,10 +37,10 @@
 \preambulo
 {
     \chooselang
-    {Thesis submitted to the Post\hyp{}Graduate Program in Electrical Engineering of the University
-    Federal University of Santa Catarina to obtain the Doctor's Degree in Electrical Engineering. \showfont}
-    {Tese submetida ao Programa de Pós--Graduação em Engenharia Elétrica da Universidade
-    Federal de Santa Catarina para a obtenção do Grau de Doutor em Engenharia Elétrica. \showfont}
+    {Thesis submitted to the~\imprimirprograma~of the~\imprimirinstituicao~to obtain the Doctor's
+    Degree in Electrical Engineering. \showfont}
+    {Tese submetida ao~\imprimirprograma~da~\imprimirinstituicao~para a obtenção do Grau de Doutor
+    em Engenharia Elétrica. \showfont}
 }
 
 % Keywords
@@ -72,7 +75,7 @@
     \renewcommand{\apendicename}{APPENDIX}
     \renewcommand{\apendicesname}{Appendix}
     \renewcommand{\orientadorname}{Supervisor}
-    \renewcommand{\coorientadorname}{Co-supervisor}
+    \renewcommand{\coorientadorname}{Co\hyp{}supervisor}
     \renewcommand{\folhadeaprovacaoname}{Approval}
     \renewcommand{\resumoname}{Abstract}
     \renewcommand{\listadesiglasname}{List of abbreviations and acronyms}
