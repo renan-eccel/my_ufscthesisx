@@ -8,7 +8,6 @@
 %
 
 
-%
 % Uncomment the line `\englishtrue` to set the document default language to english.
 %
 % Is it possible to keep my translation together with original text?
@@ -31,7 +30,6 @@
     \newcommand{\swapcontents}[2]{#2 #1}
 \fi
 
-%
 % You need to run `pdfTeX` 5 times on the following order: 1. `pdfTeX`, 2. `bibtex`, 3. `pdfTeX`
 % 4. `pdfTeX` 5. `pdfTeX` 6. `pdfTeX`, because the bibliography includes a cyclic reference to
 % bibliography, so we need a last pass to fix the bibliography undefined references.
@@ -48,6 +46,8 @@
 
 % Load the UFSC thesis settings
 \usepackage{setup/ufscthesisx}
+
+% Load all required basic packages
 \input{utilities/utilities}
 
 % Print page margins of a document
@@ -60,7 +60,6 @@
 % Thesis settings
 \input{settings}
 
-%
 % When writing a large document, it is sometimes useful to work on selected sections of the document
 % to speed up compilation time: https://en.wikibooks.org/wiki/TeX/includeonly
 %
