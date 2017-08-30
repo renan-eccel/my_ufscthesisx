@@ -46,11 +46,18 @@
 
 % \MakeUppercase in \section and \chapter with hyperref cause trouble
 % https://tex.stackexchange.com/questions/199374/makeuppercase-in-section-and-chapter-with-hyperref-cause-trouble
-\addcontentsline{toc}{chapter}{\HyperrefUppercase{Capítulo 1}}
+\addcontentsline{toc}{chapter}{\HyperrefUppercase{\chooselang{Chapter 1}{Capítulo 1}}}
 
 
 
-\chapter[Introdução]{Introdução \showfont}
+\chooselang
+{\chapter[Introduction]{Introduction \showfont}}
+{\chapter[Introdução]{Introdução \showfont}}
+
+
+% Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
+% https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
+\begin{otherlanguage*}{english}
 
 How to display the font size in use in the final output
 \url{https://tex.stackexchange.com/questions/20451/how-to-display-the-font-size-in-use-in-the-final-output}
@@ -180,6 +187,8 @@ mathcal - calligraphic: $\mathcal{XYZ}$
     % \tocvalues
     \caption{Table of Contents entry parameters}\label{fig:tocp}
 \end{figure}
+
+\end{otherlanguage*}
 
 
 

@@ -1,7 +1,14 @@
 
+% The \phantomsection command is needed to create a link to a place in the document that is not a
+% figure, equation, table, section, subsection, chapter, etc.
 \cleardoublepage
-\phantomsection %The \phantomsection command is needed to create a link to a place in the document that is not a figure, equation, table, section, subsection, chapter, etc.
+\phantomsection
+
+
+% \MakeUppercase in \section and \chapter with hyperref cause trouble
+% https://tex.stackexchange.com/questions/199374/makeuppercase-in-section-and-chapter-with-hyperref-cause-trouble
 \addcontentsline{toc}{chapter}{\HyperrefUppercase{Capítulo 5}}
+
 
 \chapter[Nam sed tellus sit amet lectus]{Nam sed tellus sit amet lectus urna ullamcorper tristique interdum
 elementum}
