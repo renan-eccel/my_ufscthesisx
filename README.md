@@ -52,7 +52,7 @@ nome do orientador, coorientador, seu nome, nome da sua instituição, do seu cu
 etc.
 
 Para isso abra o arquivo `settings.tex` no diretório principal e altere os dados fictícios para os
-corretos. O arquivo `modelo-ufsc-main.tex` é o arquivo principal do template utilizado, ele trata de
+corretos. O arquivo `modelomain.tex` é o arquivo principal do template utilizado, ele trata de
 carregar todos os pacotes necessários e incluir os arquivos latex que contém as partes da sua
 monografia.
 
