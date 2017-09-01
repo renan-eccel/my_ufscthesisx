@@ -1,28 +1,30 @@
 
 % The \phantomsection command is needed to create a link to a place in the document that is not a
 % figure, equation, table, section, subsection, chapter, etc.
+%
+% When do I need to invoke \phantomsection?
+% https://tex.stackexchange.com/questions/44088/when-do-i-need-to-invoke-phantomsection
 \cleardoublepage
 \phantomsection
 
 
-% \MakeUppercase in \section and \chapter with hyperref cause trouble
-% https://tex.stackexchange.com/questions/199374/makeuppercase-in-section-and-chapter-with-hyperref-cause-trouble
-\addcontentsline{toc}{chapter}{\HyperrefUppercase\chooselang{Chapter 3}{Capítulo 3}}
+% Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
+% https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
+\begin{otherlanguage*}{brazil}
+
+    \chapter{Titulo do Capitulo}
+
+    \begin{flushright}
+        \showfont
+    \end{flushright}
 
 
-\chapter{Lorem ipsum dolor sit amet}
+    % \newpage
 
-\begin{flushright}
-    \showfont
-\end{flushright}
+    \section{Título da Seção}
 
-\newpage
+    Lipsum me [1]
 
+    Lipsum me [2-3]
 
-% ---
-\section{Aliquam vestibulum fringilla lorem}
-% ---
-
-Lipsum me [1]
-
-Lipsum me [2-3]
+\end{otherlanguage*}

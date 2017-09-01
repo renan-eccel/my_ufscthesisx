@@ -31,26 +31,36 @@
 
 % The \phantomsection command is needed to create a link to a place in the document that is not a
 % figure, equation, table, section, subsection, chapter, etc.
+%
+% When do I need to invoke \phantomsection?
+% https://tex.stackexchange.com/questions/44088/when-do-i-need-to-invoke-phantomsection
 \cleardoublepage
 \phantomsection
 
-% \MakeUppercase in \section and \chapter with hyperref cause trouble
-% https://tex.stackexchange.com/questions/199374/makeuppercase-in-section-and-chapter-with-hyperref-cause-trouble
-\addcontentsline{toc}{chapter}{\HyperrefUppercase{\chooselang{Chapter 2}{Capítulo 2}}}
 
+% Is it possible to keep my translation together with original text?
+% https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
+\chapter[\chooselang{Abbreviation for the Table of Contents}{Abreviação para o Sumário}]
+{
+    \chooselang
+    {Long title to present in the chapter, Axioms, Theorems, Postulates, corollaries, lemmas}
+    {Longo título apresentar no capitulo, Axiomas, Teoremas, Postulados, corolários, lemas}
+}
+
+\label{cap_exemplos}
+
+
+\begin{flushright}
+    \english{\showfont}
+\end{flushright}
+
+
+% \newpage
 
 % Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
 % https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
 \begin{otherlanguage*}{brazil}
 
-\chapter{Axiomas, Teoremas, Postulados, corolários, lemas}
-\label{cap_exemplos}
-
-\begin{flushright}
-    \showfont
-\end{flushright}
-
-\newpage
 
 
 \section{Axiomas ou postulados}
@@ -180,17 +190,19 @@ Theorem styles
 
 trecho de código para rotacionar e reduzir a fonte de equações.
 
-%\begin{sideways}%
-%   \parbox{1\textheight}{%
-%       \begin{tiny}
-%           \begin{equation}
-%
-%           \end{equation}
-%       \end{tiny}}
-%\end{sideways}
+\begin{verbatim}
+\begin{sideways}%
+  \parbox{1\textheight}{%
+      \begin{tiny}
+          \begin{equation}
+
+          \end{equation}
+      \end{tiny}}
+\end{sideways}
+\end{verbatim}
 
 
-Segue um exemplo de rotação de páginas:
+Segue um exemplo de rotação de páginas: \newpage
 
 \begin{sideways}%
     \parbox{1\textheight}{%
