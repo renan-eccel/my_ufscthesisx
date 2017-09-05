@@ -62,7 +62,10 @@
 
 % When writing a large document, it is sometimes useful to work on selected sections of the document
 % to speed up compilation time: https://en.wikibooks.org/wiki/TeX/includeonly
-%
+\newif\ifforcedinclude
+\forcedincludefalse
+% \forcedincludetrue
+
 % \includeonly{pretexto/agradecimentos}
 % \includeonly{pretexto/epigrafe}
 % \includeonly{pretexto/fichacatalografica}
@@ -115,19 +118,19 @@
     \include{chapters/chapter_1}
 
     % PARTE
-    \part{Preparação da pesquisa}
+    \ifforcedinclude\else\part{Preparação da pesquisa}\fi
 
     % Capitulo com exemplos de comandos inseridos de arquivo externo
     \include{chapters/chapter_2}
 
     % PARTE
-    \part{Referenciais teóricos}
+    \ifforcedinclude\else\part{Referenciais teóricos}\fi
 
     % Capitulo de revisão de literatura
     \include{chapters/chapter_3}
 
     % PARTE
-    \part{Resultados}
+    \ifforcedinclude\else\part{Resultados}\fi
 
     % Primeiro capitulo de Resultados
     \include{chapters/chapter_4}
@@ -159,11 +162,10 @@
     \bibliography{postexto/modelo-ufsc-references}
 
     % Glossário, consulte o manual da classe abntex2 para orientações sobre o glossário.
-    % \glossary
+    % \ifforcedinclude\else\glossary\fi
 
     % Apêndices, inicia os apêndices
-    \begin{apendicesenv}
-
+    \ifforcedinclude\else\begin{apendicesenv}
         % Imprime uma página indicando o início dos apêndices
         \partapendices
 
@@ -172,12 +174,10 @@
         \setlength\afterchapskip{20pt}
 
         \include{postexto/apendice_a}
-
-    \end{apendicesenv}
+    \end{apendicesenv}\fi
 
     % Anexos, inicia os anexos
-    \begin{anexosenv}
-
+    \ifforcedinclude\else\begin{anexosenv}
         % Imprime uma página indicando o início dos anexos
         \partanexos
 
@@ -187,12 +187,13 @@
 
         \include{postexto/anexo_a}
         \include{postexto/anexo_b}
-
-    \end{anexosenv}
+    \end{anexosenv}\fi
 
     % INDICE REMISSIVO
-    \phantompart
-    \printindex
+    \ifforcedinclude\else
+        \phantompart
+        \printindex
+    \fi
 
 \end{document}
 
