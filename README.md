@@ -161,8 +161,9 @@ sua tese e então incluir essas configurações:
 #### Normas da UFSC para trabalhos acadêmicos
 
 1. [Geral](http://portal.bu.ufsc.br/normalizacao/)
-1. [Capa](http://www.bu.ufsc.br/design/Guia_Rapido_Diagramacao_Trabalhos_Academicos.pdf)
+1. [Normas de Citação](http://www.bu.ufsc.br/design/Citacao1.htm)
 1. [Normas em docx](http://www.bu.ufsc.br/design/TemplateTrabalhoAcademico.docx)
+1. [Capa](http://www.bu.ufsc.br/design/Guia_Rapido_Diagramacao_Trabalhos_Academicos.pdf)
 1. [Dados da ficha](http://ficha.bu.ufsc.br/)
 1. [Ficha de identificação da obra](http://portal.bu.ufsc.br/servicos/ficha-de-identificacao-da-obra/)
 
