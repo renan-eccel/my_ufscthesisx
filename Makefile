@@ -39,13 +39,16 @@ help:
 TEST_SRCS:=$(wildcard *main.tex)
 TEST_PDFS:=$(TEST_SRCS:.tex=.pdf)
 
-
+#
+# Where to find official (!) and extended documentation for tex/latex's commandline options (especially -interaction modes)?
+# https://tex.stackexchange.com/questions/91592/where-to-find-official-and-extended-documentation-for-tex-latexs-commandlin
+#
 #LATEX:=lualatex --time-statistics --shell-escape -interaction=batchmode
 #LATEX:=pdflatex --time-statistics --shell-escape -interaction=batchmode
 #LATEX:=pdflatex --time-statistics --synctex=1 -interaction=nonstopmode
 LATEX:=pdflatex --time-statistics --shell-escape --synctex=1 --interaction=batchmode\
 -output-directory="$(CACHE_FOLDER)" -aux-directory="$(CACHE_FOLDER)"\
--jobname="$(THESIS_OUTPUT_NAME)"
+-halt-on-error -file-line-error -jobname="$(THESIS_OUTPUT_NAME)"
 
 thesis: $(TEST_PDFS)
 
@@ -90,7 +93,7 @@ thesis_verbose: $(THESIS_MAIN_FILE)
 	-jobname="$(THESIS_OUTPUT_NAME)" \
 	-output-directory="$(CACHE_FOLDER)" \
 	-aux-directory="$(CACHE_FOLDER)" \
-	-pdflatex="pdflatex --synctex=1 --interaction=nonstopmode" \
+	-pdflatex="pdflatex --synctex=1 --interaction=nonstopmode -halt-on-error -file-line-error" \
 	-use-make $(THESIS_MAIN_FILE)
 
 	# Copy the generated PDF file from the cache folder
