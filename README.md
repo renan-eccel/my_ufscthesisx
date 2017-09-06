@@ -89,8 +89,7 @@ e em seu arquivo principal incluir o seguinte cabeçalho para carregar os pacote
 %
 % Is it possible to keep my translation together with original text?
 % https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
-\newif\ifenglish
-\englishfalse
+\newif\ifenglish\englishfalse
 % \englishtrue
 
 \ifenglish
