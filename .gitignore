@@ -12,6 +12,8 @@
 *.idx
 *.ilg
 *.ind
+*.mw
+*.tpc
 *.ist
 *.lof
 *.log
