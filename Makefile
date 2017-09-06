@@ -3,10 +3,10 @@
 ECHOCMD:=/bin/echo -e
 
 # The main latex file
-THESIS_MAIN_FILE   = modelo-ufsc-main.tex
+THESIS_MAIN_FILE = modelomain.tex
 
 # This will be the pdf generated
-THESIS_OUTPUT_NAME   = thesis
+THESIS_OUTPUT_NAME = thesis
 
 # This is the folder where the temporary files are going to be
 CACHE_FOLDER = setup/cache
@@ -36,7 +36,7 @@ help:
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
 
-TEST_SRCS:=$(wildcard *.tex)
+TEST_SRCS:=$(wildcard *main.tex)
 TEST_PDFS:=$(TEST_SRCS:.tex=.pdf)
 
 
@@ -66,7 +66,7 @@ thesis: $(TEST_PDFS)
 GARBAGE_TYPES := "*.gz(busy)" *.aux *.log *.pdf *.aux *.bbl *.log *.out *.toc *.dvi *.blg\
 *.synctex.gz *.fdb_latexmk *.fls *.lot *.lol *.lof *.idx
 
-DIRECTORIES_TO_CLEAN  := $(shell find -not -path "./.git**" -not -path "./pictures**" -type d)
+DIRECTORIES_TO_CLEAN  := $(shell /bin/find -not -path "./**.git**" -not -path "./pictures**" -type d)
 GARBAGE_TYPED_FOLDERS := $(foreach DIR, $(DIRECTORIES_TO_CLEAN), $(addprefix $(DIR)/,$(GARBAGE_TYPES)))
 
 clean:

@@ -33,7 +33,7 @@
         },
         {
             "name": "Build Monograph - Thesis Verbose",
-            "cmd": ["make", "verbose"],
+            "cmd": ["make", "thesis_verbose"],
 
             "osx":     { "file_regex": "^(...*?):([0-9]+): ([0-9]*)([^\\.]+)" },
             "windows": { "file_regex": "^((?:.:)?[^:\n\r]*):([0-9]+):?([0-9]+)?:? (.*)$" },
