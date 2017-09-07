@@ -17,7 +17,7 @@ MAKEFLAGS += --silent
 .PHONY: clean
 
 # Default target
-all: thesis
+all: thesis_verbose
 
 
 ##
@@ -26,7 +26,7 @@ all: thesis
 ##
 ## Targets:
 ##   all               generate all assets
-##   thesis            build the `$THESIS_MAIN_FILE` to the `$THESIS_OUTPUT_NAME` file
+##   thesis            build the `$THESIS_MAIN_FILE` to the `$THESIS_OUTPUT_NAME` file with no bibliography pass
 ##   verbose           build the `$THESIS_MAIN_FILE` to the `$THESIS_OUTPUT_NAME` file with maximum output logs
 ##
 
@@ -46,9 +46,14 @@ TEST_PDFS:=$(TEST_SRCS:.tex=.pdf)
 #LATEX:=lualatex --time-statistics --shell-escape -interaction=batchmode
 #LATEX:=pdflatex --time-statistics --shell-escape -interaction=batchmode
 #LATEX:=pdflatex --time-statistics --synctex=1 -interaction=nonstopmode
-LATEX:=pdflatex --time-statistics --shell-escape --synctex=1 --interaction=batchmode\
--output-directory="$(CACHE_FOLDER)" -aux-directory="$(CACHE_FOLDER)"\
--halt-on-error -file-line-error -jobname="$(THESIS_OUTPUT_NAME)"
+PDF_LATEX_COMMAND = pdflatex --time-statistics --synctex=1 -halt-on-error -file-line-error
+LATEX =	$(PDF_LATEX_COMMAND)\
+--interaction=batchmode\
+-jobname="$(THESIS_OUTPUT_NAME)"\
+-output-directory="$(CACHE_FOLDER)"\
+-aux-directory="$(CACHE_FOLDER)"
+
+
 
 thesis: $(TEST_PDFS)
 
@@ -93,7 +98,7 @@ thesis_verbose: $(THESIS_MAIN_FILE)
 	-jobname="$(THESIS_OUTPUT_NAME)" \
 	-output-directory="$(CACHE_FOLDER)" \
 	-aux-directory="$(CACHE_FOLDER)" \
-	-pdflatex="pdflatex --synctex=1 --interaction=nonstopmode -halt-on-error -file-line-error" \
+	-pdflatex="$(PDF_LATEX_COMMAND) --interaction=nonstopmode" \
 	-use-make $(THESIS_MAIN_FILE)
 
 	# Copy the generated PDF file from the cache folder
