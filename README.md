@@ -13,6 +13,12 @@ modelo não é uma classe latex, mas um pacote. Portanto para usá-lo, você dev
 `abntex2` como classe do seu documento e então incluir este trabalho como um pacote latex na
 seguinte ordem:
 ```latex
+\PassOptionsToPackage{style=abnt,backref=true,backend=biber}{biblatex}
+\AfterClass{memoir}
+{
+    \RequirePackage{biblatex}
+}
+
 \documentclass[
 10pt,
 a5paper,
@@ -21,7 +27,6 @@ chapter=TITLE, % Título de capítulos em caixa alta
 section=TITLE  % Título de seções em caixa alta
 ]{abntex2}
 
-\usepackage[alf]{abntex2cite}
 \usepackage{setup/ufscthesisx}
 ```
 
@@ -92,15 +97,20 @@ e em seu arquivo principal incluir o seguinte cabeçalho para carregar os pacote
 \newif\ifenglish\englishfalse
 % \englishtrue
 
+% How to make \PassOptionsToPackage add the option as the last option?
+% https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last
 \ifenglish
-    % How to make \PassOptionsToPackage add the option as the last option?
-    % https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last
-    \PassOptionsToPackage{brazil,main=english,spanish,french}{babel}
     \newcommand{\swapcontents}[2]{#1 #2}
+
+    \PassOptionsToPackage{language=english}{biblatex}
+    \PassOptionsToPackage{brazil,main=english,spanish,french}{babel}
 \else
-    \PassOptionsToPackage{main=brazil,english,spanish,french}{babel}
     \newcommand{\swapcontents}[2]{#2 #1}
+
+    \PassOptionsToPackage{language=brazil}{biblatex}
+    \PassOptionsToPackage{main=brazil,english,spanish,french}{babel}
 \fi
+
 
 % You need to run `pdfTeX` 5 times on the following order: 1. `pdfTeX`, 2. `bibtex`, 3. `pdfTeX` 4.
 % `pdfTeX` 5. `pdfTeX` 6. `pdfTeX`, because the bibliography includes a cyclic reference to another
@@ -154,6 +164,7 @@ sua tese e então incluir essas configurações:
 
 % Thesis settings
 \input{settings}
+\addbibresource{modeloreferences.bib}
 ```
 
 
