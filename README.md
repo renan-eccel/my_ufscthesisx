@@ -87,8 +87,8 @@ Assim a maneira usual de utilizar esse template é fazer o clone dele como um su
 e em seu arquivo principal incluir o seguinte cabeçalho para carregar os pacotes básicos:
 ```latex
 % You need to run `pdfTeX` 5 times on the following order: 1. `pdfTeX`, 2. `biber`, 3. `pdfTeX` 4.
-% `pdfTeX` 5. `pdfTeX` 6. `pdfTeX`, when the bibliography includes a cyclic reference to another
-% bibliography, so we need a last pass to fix the bibliography undefined references.
+% `pdfTeX` 5. `pdfTeX` 6. `biber` 7. `pdfTeX`, when the bibliography includes a cyclic reference to
+% another bibliography, so we need a last pass to fix the bibliography undefined references.
 
 %----------------------------------------------------------------------------------------
 %   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
@@ -141,6 +141,15 @@ sua tese e então incluir essas configurações:
 %   File settings
 %----------------------------------------------------------------------------------------
 
+% Comment this, unless you are debugging pages' badness Underfull & Overflow
+% https://tex.stackexchange.com/questions/115908/geometry-showframe-landscape
+%
+% What is the difference between \usepackage{showframe} and \usepackage[showframe]{geometry}?
+% https://tex.stackexchange.com/questions/387077/what-is-the-difference-between-usepackageshowframe-and
+%
+% How to do the memoir headings fix but not have my text going over the page bottom margins?
+% https://tex.stackexchange.com/questions/387257/how-to-do-the-memoir-headings-fix-but-not-have-my-text-going-over
+%
 % Print page margins of a document, for debugging bad boxes
 % https://tex.stackexchange.com/questions/14508/print-page-margins-of-a-document
 % \usepackage[showframe,pass]{geometry}
