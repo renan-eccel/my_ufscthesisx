@@ -16,6 +16,10 @@ CACHE_FOLDER = setup/cache
 MAKEFLAGS += --silent
 .PHONY: clean
 
+# How do I write the 'cd' command in a makefile?
+# http://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-makefile
+.ONESHELL:
+
 # Default target
 all: thesis_verbose
 
@@ -59,11 +63,17 @@ thesis: $(TEST_PDFS)
 
 %.pdf: %.tex
 
+	# Start counting the compilation time and import its shell functions
+	. ./setup/scripts/timer_calculator.sh
+
 	# Creates the shell variable `current_dir` within the current folder path
 	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
 
 	@$(LATEX) $<
 	cp $(CACHE_FOLDER)/$(THESIS_OUTPUT_NAME).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
+
+	# Calculate the elapsed seconds and print them to the screen
+	showTheElapsedSeconds "$(current_dir)"
 
 
 # Using Makefile to clean subdirectories
@@ -85,6 +95,9 @@ clean:
 
 thesis_verbose: $(THESIS_MAIN_FILE)
 
+	# Start counting the compilation time and import its shell functions
+	. ./setup/scripts/timer_calculator.sh
+
 	# Creates the shell variable `current_dir` within the current folder path
 	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
 
@@ -103,3 +116,8 @@ thesis_verbose: $(THESIS_MAIN_FILE)
 
 	# Copy the generated PDF file from the cache folder
 	cp $(CACHE_FOLDER)/$(THESIS_OUTPUT_NAME).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
+
+	# Calculate the elapsed seconds and print them to the screen
+	showTheElapsedSeconds "$(current_dir)"
+
+
