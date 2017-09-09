@@ -33,6 +33,7 @@
 *.xdy
 *.tdo
 *.fls
+
 .DS_Store
 /.settings
 /.project
@@ -52,3 +53,7 @@
 *.pdf
 *.synctex(busy)
 *.synctex.gz(busy)
+
+*.run.xml
+*.bcf
+
