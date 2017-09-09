@@ -13,7 +13,7 @@ modelo não é uma classe latex, mas um pacote. Portanto para usá-lo, você dev
 `abntex2` como classe do seu documento e então incluir este trabalho como um pacote latex na
 seguinte ordem:
 ```latex
-\PassOptionsToPackage{style=abnt,backref=true,backend=biber}{biblatex}
+\PassOptionsToPackage{style=abnt,backref=true,backend=biber,citecounter=true}{biblatex}
 \AfterClass{memoir}
 {
     \RequirePackage{biblatex}
@@ -86,6 +86,10 @@ carregamento da classe `abntex2` com essas correções:
 Assim a maneira usual de utilizar esse template é fazer o clone dele como um submodule de sua tese,
 e em seu arquivo principal incluir o seguinte cabeçalho para carregar os pacotes básicos:
 ```latex
+% You need to run `pdfTeX` 5 times on the following order: 1. `pdfTeX`, 2. `biber`, 3. `pdfTeX` 4.
+% `pdfTeX` 5. `pdfTeX` 6. `pdfTeX`, when the bibliography includes a cyclic reference to another
+% bibliography, so we need a last pass to fix the bibliography undefined references.
+
 %----------------------------------------------------------------------------------------
 %   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
@@ -112,18 +116,7 @@ e em seu arquivo principal incluir o seguinte cabeçalho para carregar os pacote
 \fi
 
 
-% You need to run `pdfTeX` 5 times on the following order: 1. `pdfTeX`, 2. `bibtex`, 3. `pdfTeX` 4.
-% `pdfTeX` 5. `pdfTeX` 6. `pdfTeX`, because the bibliography includes a cyclic reference to another
-% bibliography, so we need a last pass to fix the bibliography undefined references.
-%
-% Fix recurring LaTeX Warning
-% https://github.com/abntex/abntex2/pull/189
-%
-% To fix the warning `LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right`,
-% open the file `D:\User\Documents\latex\texmfs\install\tex\latex\abntex2\abntex2cite.sty` and
-% comment out these two lines:
-% 547: % \renewcommand{\bibcite}[2]{%
-% 548: %   \@newl@bel{b}{#1}{\hyper@@link[cite]{}{cite.#1}{#2}}}%
+% Includes and fixes several `abntex2` class problems
 \input{ufscthesisx/setup/setup}
 
 % Load the UFSC thesis settings
@@ -148,9 +141,9 @@ sua tese e então incluir essas configurações:
 %   File settings
 %----------------------------------------------------------------------------------------
 
-% Print page margins of a document
+% Print page margins of a document, for debugging bad boxes
 % https://tex.stackexchange.com/questions/14508/print-page-margins-of-a-document
-\usepackage[showframe,pass]{geometry}
+% \usepackage[showframe,pass]{geometry}
 
 % To use the font Times New Roman, instead of the default LaTeX font
 % more up-to-date than '\usepackage{mathptmx}'
@@ -183,6 +176,9 @@ sua tese e então incluir essas configurações:
 
 1. [abnTeX2](http://www.abntex.net.br/)
 1. https://github.com/abntex/abntex2
+1. https://github.com/abntex/biblatex-abnt
+1. http://mirrors.rit.edu/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf
+1. http://ftp.math.purdue.edu/mirrors/ctan.org/macros/latex/contrib/abntex2/doc/abntex2cite.pdf
 
 
 
