@@ -60,7 +60,7 @@ LATEX =	$(PDF_LATEX_COMMAND)\
 
 
 # Run pdflatex, biber, pdflatex
-biber: start_timer pdflatex_hook1 biber_hook pdflatex_hook2
+biber: start_timer biber_hook pdflatex_hook2
 
 	# Creates the shell variable `current_dir` within the current folder path
 	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
@@ -86,7 +86,10 @@ biber_hook:
 	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
 
 	# Call biber to process the bibliography
-	biber "$(CACHE_FOLDER)/$(THESIS_OUTPUT_NAME)"
+	echo "Running biber quietly..."
+
+	# https://www.mankier.com/1/biber
+	biber --quiet "$(CACHE_FOLDER)/$(THESIS_OUTPUT_NAME)"
 
 
 # How to call Makefile recipe/rule multiple times?
@@ -98,6 +101,9 @@ pdflatex_hook1 pdflatex_hook2:
 
 # This rule will be called for every latex file and pdf associated
 latex: $(LATEX_PDF_FILES)
+
+	# Creates the shell variable `current_dir` within the current folder path
+	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
 
 	# Calculate the elapsed seconds and print them to the screen
 	. ./setup/scripts/timer_calculator.sh
