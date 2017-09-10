@@ -123,7 +123,7 @@ latex: $(LATEX_PDF_FILES)
 	cp $(CACHE_FOLDER)/$(THESIS_OUTPUT_NAME).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
 
 
-thesis: $(THESIS_MAIN_FILE)
+thesis:
 
 	# Start counting the compilation time and import its shell functions
 	. ./setup/scripts/timer_calculator.sh
@@ -152,7 +152,7 @@ thesis: $(THESIS_MAIN_FILE)
 	showTheElapsedSeconds "$(current_dir)"
 
 
-verbose: $(THESIS_MAIN_FILE)
+verbose:
 
 	# Start counting the compilation time and import its shell functions
 	. ./setup/scripts/timer_calculator.sh
