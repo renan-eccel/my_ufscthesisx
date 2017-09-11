@@ -32,8 +32,8 @@
             "syntax": "Packages/Text/Plain text.tmLanguage",
         },
         {
-            "name": "Build Monograph - Call pdflatex",
-            "cmd": ["make", "pdflatex"],
+            "name": "Build Monograph - Call latex",
+            "cmd": ["make", "latex"],
 
             "osx":     { "file_regex": "^(...*?):([0-9]+): ([0-9]*)([^\\.]+)" },
             "windows": { "file_regex": "^((?:.:)?[^:\n\r]*):([0-9]+):?([0-9]+)?:? (.*)$" },

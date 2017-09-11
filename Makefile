@@ -3,7 +3,7 @@
 ECHOCMD:=/bin/echo -e
 
 # The main latex file
-THESIS_MAIN_FILE = modelomain.tex
+THESIS_MAIN_FILE = modelomain
 
 # This will be the pdf generated
 THESIS_OUTPUT_NAME = thesis
@@ -54,7 +54,6 @@ help:
 PDF_LATEX_COMMAND = pdflatex --time-statistics --synctex=1 -halt-on-error -file-line-error
 LATEX =	$(PDF_LATEX_COMMAND)\
 --interaction=batchmode\
--jobname="$(THESIS_OUTPUT_NAME)"\
 -output-directory="$(CACHE_FOLDER)"\
 -aux-directory="$(CACHE_FOLDER)"
 
@@ -66,7 +65,7 @@ biber: start_timer biber_hook pdflatex_hook2
 	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
 
 	# Copies the PDF to the current folder
-	cp $(CACHE_FOLDER)/$(THESIS_OUTPUT_NAME).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
+	cp $(CACHE_FOLDER)/$(THESIS_MAIN_FILE).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
 
 	# Calculate the elapsed seconds and print them to the screen
 	. ./setup/scripts/timer_calculator.sh
@@ -85,11 +84,14 @@ biber_hook:
 	# Creates the shell variable `current_dir` within the current folder path
 	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
 
+	# Enters to the thesis folder to build the files
+	cd ./$(THESIS_FOLDER)
+
 	# Call biber to process the bibliography
 	echo "Running biber quietly..."
 
-	# https://www.mankier.com/1/biber
-	biber --quiet "$(CACHE_FOLDER)/$(THESIS_OUTPUT_NAME)"
+	# https://www.mankier.com/1/biber --debug
+	biber --quiet --input-directory="$(CACHE_FOLDER)" --output-directory="$(CACHE_FOLDER)" $(THESIS_MAIN_FILE).bcf
 
 
 # How to call Makefile recipe/rule multiple times?
@@ -120,7 +122,7 @@ latex: $(LATEX_PDF_FILES)
 	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
 
 	@$(LATEX) $<
-	cp $(CACHE_FOLDER)/$(THESIS_OUTPUT_NAME).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
+	cp $(CACHE_FOLDER)/$(THESIS_MAIN_FILE).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
 
 
 thesis:
@@ -137,16 +139,15 @@ thesis:
 	# What reasons (if any) are there for compiling in interactive mode?
 	# https://tex.stackexchange.com/questions/25267/what-reasons-if-any-are-there-for-compiling-in-interactive-mode
 	latexmk \
-	-pdf \
-	-silent \
-	-jobname="$(THESIS_OUTPUT_NAME)" \
-	-output-directory="$(CACHE_FOLDER)" \
-	-aux-directory="$(CACHE_FOLDER)" \
-	-pdflatex="$(PDF_LATEX_COMMAND) --interaction=batchmode" \
-	-use-make $(THESIS_MAIN_FILE)
+	--pdf \
+	--silent \
+	--output-directory="$(CACHE_FOLDER)" \
+	--aux-directory="$(CACHE_FOLDER)" \
+	--pdflatex="$(PDF_LATEX_COMMAND) --interaction=batchmode" \
+	--use-make $(THESIS_MAIN_FILE).tex
 
 	# Copy the generated PDF file from the cache folder
-	cp $(CACHE_FOLDER)/$(THESIS_OUTPUT_NAME).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
+	cp $(CACHE_FOLDER)/$(THESIS_MAIN_FILE).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
 
 	# Calculate the elapsed seconds and print them to the screen
 	showTheElapsedSeconds "$(current_dir)"
@@ -166,15 +167,14 @@ verbose:
 	# What reasons (if any) are there for compiling in interactive mode?
 	# https://tex.stackexchange.com/questions/25267/what-reasons-if-any-are-there-for-compiling-in-interactive-mode
 	latexmk \
-	-pdf \
-	-jobname="$(THESIS_OUTPUT_NAME)" \
-	-output-directory="$(CACHE_FOLDER)" \
-	-aux-directory="$(CACHE_FOLDER)" \
-	-pdflatex="$(PDF_LATEX_COMMAND) --interaction=nonstopmode" \
-	-use-make $(THESIS_MAIN_FILE)
+	--pdf \
+	--output-directory="$(CACHE_FOLDER)" \
+	--aux-directory="$(CACHE_FOLDER)" \
+	--pdflatex="$(PDF_LATEX_COMMAND) --interaction=nonstopmode" \
+	--use-make $(THESIS_MAIN_FILE).tex
 
 	# Copy the generated PDF file from the cache folder
-	cp $(CACHE_FOLDER)/$(THESIS_OUTPUT_NAME).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
+	cp $(CACHE_FOLDER)/$(THESIS_MAIN_FILE).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
 
 	# Calculate the elapsed seconds and print them to the screen
 	showTheElapsedSeconds "$(current_dir)"
