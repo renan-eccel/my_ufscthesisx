@@ -6,7 +6,7 @@
 
 % What is the difference between \def and \newcommand?
 % https://tex.stackexchange.com/questions/655/what-is-the-difference-between-def-and-newcommand
-\def\mytextpreliminarylistname{\chooselang{Brief Table of Contents}{Breve Sumário}}
+\def\mytextpreliminarylistname{\lang{Brief Table of Contents}{Breve Sumário}}
 
 % How to manually set where a word is split?
 % https://tex.stackexchange.com/questions/182569/how-to-manually-set-where-a-word-is-split
@@ -15,38 +15,38 @@
 % Informações de dados para CAPA e FOLHA DE ROSTO
 \titulo
 {%
-    \chooselang
+    \lang
     {Canonical Model of Monograph, Dissertation, Thesis or Report}
     {Modelo Canônico de Monografia,  Dissertação, Tese ou Relatório}
 }
 \subtitulo
 {%
-    \chooselang
+    \lang
     {Post\hyp{}Doctorate from UFSC with \abnTeX{}}
     {Pós--Doutorado da UFSC com \abnTeX{}}
 }
 
 \data{\today}
-\autor{\chooselang{Author's name}{Nome do Autor}}
-\local{\chooselang{\brazil{Florianópolis, Santa Catarina} -- Brazil}{Florianópolis, Santa Catarina -- Brasil}}
+\autor{\lang{Author's name}{Nome do Autor}}
+\local{\lang{\brazil{Florianópolis, Santa Catarina} -- Brazil}{Florianópolis, Santa Catarina -- Brasil}}
 
-\biblioteca{\chooselang{University Library}{Biblioteca Universitária}}
-\orientador{\chooselang{Prof. PhD. Supervisor Name}{Prof. Dr. Nome do Coorientador}}
-\coorientador{\chooselang{Prof. PhD. Co\hyp{}supervisor Name}{Prof. Dr. Nome do Coorientador}}
+\biblioteca{\lang{University Library}{Biblioteca Universitária}}
+\orientador{\lang{Prof. PhD. Supervisor Name}{Prof. Dr. Nome do Coorientador}}
+\coorientador{\lang{Prof. PhD. Co\hyp{}supervisor Name}{Prof. Dr. Nome do Coorientador}}
 
 \instituicaosigla{UFSC}
-\instituicao{\chooselang{Federal University of \brazil{Santa Catarina}}{Universidade Federal de Santa Catarina}}
-\tipotrabalho{\chooselang{Doctoral Thesis}{Tese de Doutorado}}
+\instituicao{\lang{Federal University of \brazil{Santa Catarina}}{Universidade Federal de Santa Catarina}}
+\tipotrabalho{\lang{Doctoral Thesis}{Tese de Doutorado}}
 
-\area{\chooselang{concentration in Power Electronics and Electrical Drive}{concentração em Eletrônica de Potência e Acionamento Elétrico}}
-\formacao{\chooselang{Doctor's Degree in Electrical Engineering}{Grau de Doutor em Engenharia Elétrica}}
-\programa{\chooselang{Postgraduate Program in Electrical Engineering}{Programa de Pós\hyp{}Graduação em Engenharia Elétrica}}
-\centro{\chooselang{Department of Electrical and Electronic Engineering}{Departamento de Engenharia Elétrica e Eletrônica}}
+\area{\lang{concentration in Power Electronics and Electrical Drive}{concentração em Eletrônica de Potência e Acionamento Elétrico}}
+\formacao{\lang{Doctor's Degree in Electrical Engineering}{Grau de Doutor em Engenharia Elétrica}}
+\programa{\lang{Postgraduate Program in Electrical Engineering}{Programa de Pós\hyp{}Graduação em Engenharia Elétrica}}
+\centro{\lang{Department of Electrical and Electronic Engineering}{Departamento de Engenharia Elétrica e Eletrônica}}
 
 % O preambulo deve conter tipo do trabalho, objetivo, nome da instituição e a área de concentração.
 \preambulo
 {%
-    \chooselang
+    \lang
     {Thesis submitted to the~\imprimirprograma~of the~\imprimirinstituicao~to obtain the \imprimirformacao. \showfont}
     {Tese submetida ao \imprimirprograma da \imprimirinstituicao para a obtenção do Título de \imprimirformacao. \showfont}
 }
@@ -125,13 +125,13 @@
     \renewbibmacro*{pageref}
     {
         \iflistundef{pageref}
-        {\printtext{\chooselang{\autocap{n}o citation in the text}{\autocap{n}enhuma citação no texto}.}}
+        {\printtext{\lang{\autocap{n}o citation in the text}{\autocap{n}enhuma citação no texto}.}}
         {%
             \printtext
             {%
                 \ifnumgreater{\value{citecounter}}{1}
-                    {\chooselang{\autocap{c}ited}{\autocap{c}itado} \arabic{citecounter} \chooselang{times}{vezes}}
-                    {\chooselang{\autocap{c}ited}{\autocap{c}itado} \arabic{citecounter} \chooselang{time}{vez}}
+                    {\lang{\autocap{c}ited}{\autocap{c}itado} \arabic{citecounter} \lang{times}{vezes}}
+                    {\lang{\autocap{c}ited}{\autocap{c}itado} \arabic{citecounter} \lang{time}{vez}}
             }%
             \setunit{\addspace}%
             \ifnumgreater{\value{pageref}}{1}
