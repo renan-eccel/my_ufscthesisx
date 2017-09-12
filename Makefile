@@ -21,7 +21,7 @@ LATEX_PDF_FILES := $(LATEX_SOURCE_FILES:.tex=.pdf)
 # GNU Make silent by default
 # https://stackoverflow.com/questions/24005166/gnu-make-silent-by-default
 MAKEFLAGS += --silent
-.PHONY: clean biber pdflatex_hook1 pdflatex_hook2
+.PHONY: all help biber start_timer biber_hook pdflatex_hook1 pdflatex_hook2 latex thesis verbose clean
 
 # How do I write the 'cd' command in a makefile?
 # http://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-makefile
