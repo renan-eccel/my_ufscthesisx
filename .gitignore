@@ -56,4 +56,5 @@
 
 *.run.xml
 *.bcf
+*.cut
 

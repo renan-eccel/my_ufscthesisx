@@ -4,6 +4,10 @@
 \newcommand{\brazilword}[1]{\foreignlanguage{brazil}{#1}}
 \newcommand{\englishword}[1]{\foreignlanguage{english}{#1}}
 
+\lang % Switch between english and brazil for big text blocks
+{\includecomment{englishtext}\excludecomment{braziltext}}
+{\includecomment{braziltext}\excludecomment{englishtext}}
+
 % What is the difference between \def and \newcommand?
 % https://tex.stackexchange.com/questions/655/what-is-the-difference-between-def-and-newcommand
 \def\mytextpreliminarylistname{\lang{Brief Table of Contents}{Breve Sumário}}
