@@ -210,7 +210,8 @@ DIRECTORIES_TO_CLEAN  := $(shell /bin/find -not -path "./**.git**" -not -path ".
 GARBAGE_TYPED_FOLDERS := $(foreach DIR, $(DIRECTORIES_TO_CLEAN), $(addprefix $(DIR)/,$(GARBAGE_TYPES)))
 
 clean:
-	rm -rfv $(GARBAGE_TYPED_FOLDERS)
+	$(RM) -rv $(CACHE_FOLDER)
+	$(RM) -v $(GARBAGE_TYPED_FOLDERS)
 
 
 # veryclean:
