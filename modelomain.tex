@@ -86,7 +86,6 @@
 % When writing a large document, it is sometimes useful to work on selected sections of the document
 % to speed up compilation time: https://en.wikibooks.org/wiki/TeX/includeonly
 \newif\ifforcedinclude\forcedincludefalse
-% \forcedincludetrue
 
 % \addtoincludeonly{pretexto/agradecimentos}
 % \addtoincludeonly{pretexto/epigrafe}
@@ -108,12 +107,15 @@
 % \addtoincludeonly{postexto/anexo_b}
 % \addtoincludeonly{postexto/apendice_a}
 
+% Control whether the full document will be generated
+% \doincludeonly
+% \forcedincludetrue
+
 
 
 % %----------------------------------------------------------------------------------------
 % %   DOCUMENT CONTENTS
 % %----------------------------------------------------------------------------------------
-\doincludeonly
 \begin{document}
 
     % Comment this after finishing the thesis, so you can start fixing the \flushbottom vs \raggedbottom
