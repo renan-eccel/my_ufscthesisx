@@ -197,7 +197,7 @@ Para ver as mudanças, acesse o histórico do git no endereço:
 
 1. https://github.com/evandrocoan/ufscthesisx/commits/master
 
-Ou clone reste repositório e execute seguinte comando do cliente git:
+Ou clone este repositório e execute seguinte comando do cliente git:
 
 1. `git log`
 1. https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
