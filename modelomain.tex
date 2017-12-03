@@ -81,6 +81,13 @@
 % https://tex.stackexchange.com/questions/66052/should-i-load-microtype-with-pdflatex
 \usepackage{microtype}
 
+% How to auto adjust my last table column width, and why is there Underfull \vbox badness on this table?
+% https://tex.stackexchange.com/questions/387238/how-to-auto-adjust-my-last-table-column-width-and-why-is-there-underfull-vbox/387251
+%
+% Why ltablex package breaks the changepage package?
+% https://tex.stackexchange.com/questions/404339/why-ltablex-package-breaks-the-changepage-package
+\usepackage{ltablex}\keepXColumns
+
 % Thesis settings
 \input{settings}
 \addbibresource{modeloreferences.bib}
