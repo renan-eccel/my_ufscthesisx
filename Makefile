@@ -203,8 +203,8 @@ verbose:
 #
 # Exclude directory from find . command
 # https://stackoverflow.com/questions/4210042/exclude-directory-from-find-command
-GARBAGE_TYPES := "*.gz(busy)" *.aux *.log *.pdf *.aux *.bbl *.log *.out *.toc *.dvi *.blg\
-*.synctex.gz *.fdb_latexmk *.fls *.lot *.lol *.lof *.idx
+GARBAGE_TYPES := "*.gz(busy)" *.aux *.log *.aux *.bbl *.log *.out *.toc *.dvi *.blg\
+*.synctex.gz *.fdb_latexmk *.fls *.lot *.lol *.lof *.idx *.bcf *.mw
 
 DIRECTORIES_TO_CLEAN  := $(shell /bin/find -not -path "./**.git**" -not -path "./pictures**" -type d)
 GARBAGE_TYPED_FOLDERS := $(foreach DIR, $(DIRECTORIES_TO_CLEAN), $(addprefix $(DIR)/,$(GARBAGE_TYPES)))
@@ -212,9 +212,6 @@ GARBAGE_TYPED_FOLDERS := $(foreach DIR, $(DIRECTORIES_TO_CLEAN), $(addprefix $(D
 clean:
 	$(RM) -rv $(CACHE_FOLDER)
 	$(RM) -v $(GARBAGE_TYPED_FOLDERS)
-
-
-# veryclean:
-# 	git clean -dxf
+	$(RM) -v $(THESIS_OUTPUT_NAME).pdf
 
 
