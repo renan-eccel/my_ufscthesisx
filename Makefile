@@ -3,7 +3,7 @@
 ECHOCMD:=/bin/echo -e
 
 # The main latex file
-THESIS_MAIN_FILE = modelomain
+THESIS_MAIN_FILE = main
 
 # This will be the pdf generated
 THESIS_OUTPUT_NAME = thesis
