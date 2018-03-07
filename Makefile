@@ -3,7 +3,7 @@
 ECHOCMD:=/bin/echo -e
 
 # The main latex file
-THESIS_MAIN_FILE = modelomain
+THESIS_MAIN_FILE = main
 
 # This will be the pdf generated
 THESIS_OUTPUT_NAME = thesis
@@ -41,6 +41,9 @@ all: thesis
 ##   latex      build the main file with no bibliography pass
 ##   thesis     completely build the main file with minimum output logs
 ##   verbose    completely build the main file with maximum output logs
+##   clean      remove all cache folders and generated pdf files
+##   veryclean  same as `clean`, but searches for all generated files outside
+##              the cache folders.
 ##
 
 # Print the usage instructions
@@ -198,23 +201,23 @@ verbose:
 	showTheElapsedSeconds "$(current_dir)"
 
 
+clean:
+	$(RM) -rv $(CACHE_FOLDER)
+	$(RM) -v $(THESIS_OUTPUT_NAME).pdf
+
+
 # Using Makefile to clean subdirectories
 # https://stackoverflow.com/questions/26007005/using-makefile-to-clean-subdirectories
 #
 # Exclude directory from find . command
 # https://stackoverflow.com/questions/4210042/exclude-directory-from-find-command
-GARBAGE_TYPES := "*.gz(busy)" *.aux *.log *.pdf *.aux *.bbl *.log *.out *.toc *.dvi *.blg\
-*.synctex.gz *.fdb_latexmk *.fls *.lot *.lol *.lof *.idx
+GARBAGE_TYPES := "*.gz(busy)" *.aux *.log *.aux *.bbl *.log *.out *.toc *.dvi *.blg\
+*.synctex.gz *.fdb_latexmk *.fls *.lot *.lol *.lof *.idx *.bcf *.mw *.run.xml
 
 DIRECTORIES_TO_CLEAN  := $(shell /bin/find -not -path "./**.git**" -not -path "./pictures**" -type d)
 GARBAGE_TYPED_FOLDERS := $(foreach DIR, $(DIRECTORIES_TO_CLEAN), $(addprefix $(DIR)/,$(GARBAGE_TYPES)))
 
-clean:
-	$(RM) -rv $(CACHE_FOLDER)
+veryclean:
 	$(RM) -v $(GARBAGE_TYPED_FOLDERS)
-
-
-# veryclean:
-# 	git clean -dxf
 
 

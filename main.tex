@@ -90,20 +90,20 @@
 
 % Thesis settings
 \input{settings}
-\addbibresource{modeloreferences.bib}
+\addbibresource{aftertext/references.bib}
 
 
 % When writing a large document, it is sometimes useful to work on selected sections of the document
 % to speed up compilation time: https://en.wikibooks.org/wiki/TeX/includeonly
 \newif\ifforcedinclude\forcedincludefalse
 
-% \addtoincludeonly{pretexto/agradecimentos}
-% \addtoincludeonly{pretexto/epigrafe}
-% \addtoincludeonly{pretexto/fichacatalografica}
-% \addtoincludeonly{pretexto/folhadeaprovacao}
-% \addtoincludeonly{pretexto/resumos}
-% \addtoincludeonly{pretexto/siglas}
-% \addtoincludeonly{pretexto/simbolos}
+% \addtoincludeonly{beforetext/agradecimentos}
+% \addtoincludeonly{beforetext/epigrafe}
+% \addtoincludeonly{beforetext/fichacatalografica}
+% \addtoincludeonly{beforetext/folhadeaprovacao}
+% \addtoincludeonly{beforetext/resumos}
+% \addtoincludeonly{beforetext/siglas}
+% \addtoincludeonly{beforetext/simbolos}
 
 % \addtoincludeonly{chapters/chapter_1}
 % \addtoincludeonly{chapters/chapter_2}
@@ -113,9 +113,9 @@
 % \addtoincludeonly{chapters/chapter_6}
 % \addtoincludeonly{chapters/conclusion}
 
-% \addtoincludeonly{postexto/anexo_a}
-% \addtoincludeonly{postexto/anexo_b}
-% \addtoincludeonly{postexto/apendice_a}
+% \addtoincludeonly{aftertext/anexo_a}
+% \addtoincludeonly{aftertext/anexo_b}
+% \addtoincludeonly{aftertext/apendice_a}
 
 % Control whether the full document will be generated
 % \doincludeonly
@@ -137,7 +137,7 @@
     \frenchspacing
 
     % ELEMENTOS PRÉ-TEXTUAIS
-    \input{setup/pretexto}
+    \input{setup/beforetext}
 
 
 
@@ -218,7 +218,7 @@
         \setlength\midchapskip{20pt}
         \setlength\afterchapskip{20pt}
 
-        \include{postexto/apendice_a}
+        \include{aftertext/apendice_a}
     \end{apendicesenv}
 
     % Anexos, inicia os anexos
@@ -230,8 +230,8 @@
         \setlength\midchapskip{20pt}
         \setlength\afterchapskip{20pt}
 
-        \include{postexto/anexo_a}
-        \include{postexto/anexo_b}
+        \include{aftertext/anexo_a}
+        \include{aftertext/anexo_b}
     \end{anexosenv}
 
     % INDICE REMISSIVO
