@@ -10,48 +10,66 @@
 % `pdfTeX` 5. `pdfTeX` 6. `biber` 7. `pdfTeX`, when the bibliography includes a cyclic reference to
 % another bibliography, so we need a last pass to fix the bibliography undefined references.
 
-%----------------------------------------------------------------------------------------
-%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-
-% Uncomment the line `\englishtrue` to set the document default language to english.
-%
-% Is it possible to keep my translation together with original text?
-% https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
-\newif\ifenglish\englishfalse
-% \englishtrue
-
-% How to expand \ifthenelse so that it can be used in \parshape?
-% https://tex.stackexchange.com/questions/131002/how-to-expand-ifthenelse-so-that-it-can-be-used-in-parshape
-\newcommand{\lang}[2]{\ifenglish#1\else#2\fi}
-
-% Disable the empty pages automatically put by memoir class, except the ones by \cleardoublepage
-% \PassOptionsToClass{openany}{memoir}
-
-% How to make \PassOptionsToPackage add the option as the last option?
-% https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last
-\ifenglish
-    \newcommand{\swapcontents}[2]{#1 #2}
-
-    \PassOptionsToPackage{language=english}{biblatex}
-    \PassOptionsToPackage{brazil,main=english,spanish,french}{babel}
-\else
-    \newcommand{\swapcontents}[2]{#2 #1}
-
-    \PassOptionsToPackage{language=brazil}{biblatex}
-    \PassOptionsToPackage{main=brazil,english,spanish,french}{babel}
-\fi
-
-
 % Includes and fixes several `abntex2` class problems
+% Must be included before loading class
 \input{setup/setup}
 
-% Load the UFSC thesis settings
+% Uses abntex2 class
+\documentclass[
+10pt,
+a5paper, %Padrão UFSC
+twoside, % Impressão nos dois lados da folha
+chapter=TITLE, % Título de capítulos em caixa alta
+section=TITLE  % Título de seções em caixa alta
+]{abntex2}
+% The UFSC font size is 10.5, but memoir embbeded on `abntex2` only accepts 10 and 11pt. However
+% this will be fixed later by the abntex2-ufsc package.
+% You can see whether the font sizes are correct with the \f@size at the `\begin{document}`.
+
+
+%----------------------------------------------------------------------------------------
+%   MINOR CORRECTIONS BEFORE LOADING UFSCThesis settings
+%----------------------------------------------------------------------------------------
+% How can I put more space between bibliography entries (biblatex)
+% https://tex.stackexchange.com/questions/19105/how-can-i-put-more-space-between-bibliography-entries-biblatex
+\setlength\bibitemsep{2.1\itemsep}
+
+% Backward compatibility with `abntex2cite` package `\citeonline` command with the new `biblatex` package
+\let\citeonline\textcite
+
+% Reduce font size of bibliography; overfull bibliography
+% https://tex.stackexchange.com/questions/203764/reduce-font-size-of-bibliography-overfull-bibliography
+\newcommand{\bibliographyfontsize}{\fontsize{10.0pt}{10.5pt}\selectfont}
+\renewcommand*{\bibfont}{\bibliographyfontsize}
+
+% How to correctly insert and justify abstract paragraph on my bibliography?
+% https://tex.stackexchange.com/questions/398666/how-to-correctly-insert-and-justify-abstract
+\DeclareFieldFormat{abstract}%
+{%
+    \vspace*{-0.5mm}\par\justifying
+    \begin{adjustwidth}{1cm}{}
+        \textbf{\bibsentence\bibstring{abstract}:} #1
+    \end{adjustwidth}
+}
+
+\renewbibmacro*{finentry}%
+{%
+    \iffieldundef{abstract}
+    {\finentry}
+    {\finentrypunct
+        \printfield{abstract}%
+        \renewcommand*{\finentrypunct}{}%
+        \finentry
+    }
+}
+
+%----------------------------------------------------------------------------------------
+%   LOAD UFSCThesis settings
+%----------------------------------------------------------------------------------------
 \usepackage{setup/ufscthesisx}
 
 % Load all required basic packages
 \input{setup/utilities}
-
 
 
 %----------------------------------------------------------------------------------------
@@ -76,19 +94,8 @@
 % \usepackage{newtxtext}
 % \usepackage{newtxmath}
 
-% Always use it as should improve full justification
-% https://tex.stackexchange.com/questions/10377/texttt-overfull-hbox-problem
-% https://tex.stackexchange.com/questions/66052/should-i-load-microtype-with-pdflatex
-\usepackage{microtype}
 
-% How to auto adjust my last table column width, and why is there Underfull \vbox badness on this table?
-% https://tex.stackexchange.com/questions/387238/how-to-auto-adjust-my-last-table-column-width-and-why-is-there-underfull-vbox/387251
-%
-% Why ltablex package breaks the changepage package?
-% https://tex.stackexchange.com/questions/404339/why-ltablex-package-breaks-the-changepage-package
-\usepackage{ltablex}\keepXColumns
-
-% Thesis settings
+% Altere o arquivo settings.tex para incluir os dados de seu trabalho como Nome do Autor, Título, Tipo de trabalho, etc.
 \input{settings}
 \addbibresource{aftertext/references.bib}
 
