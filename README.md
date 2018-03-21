@@ -9,8 +9,8 @@ Esse projeto não está vinculado a nenhum orgão da UFSC, eu estou fazendo isso
 minha tese e mais pessoas podem estar precisando também.
 
 Entretanto, diferente do original e do modelos disponível pela Biblioteca Universitária UFSC, este
-modelo não é uma classe latex, mas um pacote. Portanto para usá-lo, você deve utilizar a classe
-`abntex2` como classe do seu documento e então incluir este trabalho como um pacote latex na
+modelo não é uma classe LaTeX, mas um pacote. Portanto para usá-lo, você deve utilizar a classe
+`abntex2` como classe do seu documento e então incluir este trabalho como um pacote LaTeX na
 seguinte ordem:
 ```latex
 \PassOptionsToPackage{style=abnt,backref=true,backend=biber,citecounter=true}{biblatex}
@@ -43,25 +43,33 @@ Para poder utilizar a classe é necessário instalar uma longa lista de pacotes 
 na sua distribuição LaTeX, as configurações específicas para cada sistema, podem ser encontradas no
 link abaixo para o pacote `abnTeX2`:
 
+
+
 1. [abntex2 CTAN](http://www.ctan.org/pkg/abntex2)
 1. [abnTeX2 Instalação](https://github.com/abntex/abntex2/wiki/Instalacao)
 
-Depois no diretório do seu projeto faça um clone dos arquivos do repositório:
+
+## Utilizando `git`
+
+No diretório do seu projeto faça um clone (recursivo) dos arquivos do repositório:
 ```bash
-git clone --recursive https://github.com/evandrocoan/ufscthesisx
+git clone --recursive https://github.com/ufsc/ufscthesisx
 ```
 
-Este repositório já contém um exemplo de tese com uso avançado de conceitos e latex. Se você tive
-interesse em utilizar esse template, você somente precisa preencher corretamente os seus dados como
+Este repositório já contém um exemplo de tese com uso avançado de conceitos e LaTeX. Se você tive
+interesse em utilizar esse *template*, você somente precisa preencher corretamente os seus dados como
 nome do orientador, coorientador, seu nome, nome da sua instituição, do seu curso, departamento,
 etc.
 
 Para isso abra o arquivo `settings.tex` no diretório principal e altere os dados fictícios para os
-corretos. O arquivo `modelomain.tex` é o arquivo principal do template utilizado, ele trata de
-carregar todos os pacotes necessários e incluir os arquivos latex que contém as partes da sua
+corretos. O arquivo `main.tex` é o arquivo principal do *template* utilizado, ele trata de
+carregar todos os pacotes necessários e incluir os arquivos LaTeX que contém as partes da sua
 monografia.
 
+## Baixando diretamente
 
+Caso queria, pode baixar diretamente o arquivo `zip` clique 
+[aqui](https://github.com/UFSC/ufscthesisx/releases/download/v1.0/ufscthesisx.zip) e descompacte o arquivo.
 
 # Uso
 
@@ -74,7 +82,7 @@ modelos de documentos que utilizam a classe para tomar como base:
 1. [Documentação e Modelos abnTeX2](https://www.ctan.org/pkg/abntex2)
 
 Entretanto, apesar das instruções iniciais do projeto serem para utilizar diretamente a classe
-`abntex2`, ela contém algums problemas com o latex que precisam ser corrigidos. Para isso
+`abntex2`, ela contém alguns problemas com o LaTeX que precisam ser corrigidos. Para isso
 você pode utilizar ao invés da classe `abntex2`, você pode incluir o arquivo `setup` que faz o
 carregamento da classe `abntex2` com essas correções:
 
@@ -83,7 +91,7 @@ carregamento da classe `abntex2` com essas correções:
 \usepackage{setup/ufscthesisx}
 ```
 
-Assim a maneira usual de utilizar esse template é fazer o clone dele como um submodule de sua tese,
+Assim a maneira usual de utilizar esse *template* é fazer o clone dele como um submodule de sua tese,
 e em seu arquivo principal incluir o seguinte cabeçalho para carregar os pacotes básicos:
 ```latex
 % You need to run `pdfTeX` 5 times on the following order: 1. `pdfTeX`, 2. `biber`, 3. `pdfTeX` 4.
@@ -195,7 +203,7 @@ sua tese e então incluir essas configurações:
 
 Para ver as mudanças, acesse o histórico do git no endereço:
 
-1. https://github.com/evandrocoan/ufscthesisx/commits/master
+1. https://github.com/ufsc/ufscthesisx/commits/master
 
 Ou clone este repositório e execute seguinte comando do cliente git:
 
@@ -209,7 +217,7 @@ Ou clone este repositório e execute seguinte comando do cliente git:
 Copyright (c) 2012-2014 by abnTeX2 group at http://abntex2.googlecode.com/
 Copyright (c) 2014-2015 Mateus Dubiela Oliveira
 Copyright (c) 2015-2016 Adriano Ruseler
-Copyright (c) 2017 Evandro Coan
+Copyright (c) 2017 Evandro Coan, Luiz Rafael dos Santos
 
 É concedida permissão, gratuitamente, a qualquer pessoa que obtenha uma cópia deste modelo e
 software e arquivos de documentação associados (o "Software"), para ter estes arquivos com os
