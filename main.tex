@@ -14,7 +14,7 @@
 
 % Uses abntex2 class
 \documentclass[
-10pt,
+10pt, %Padrão UFSC para versão final
 a5paper, %Padrão UFSC para versão final
 % 12pt, %Pode usar tamanho 12pt para defesa
 % a4paper, %Pode usar a4 para defesa
@@ -32,36 +32,34 @@ section=TITLE  % Título de seções em caixa alta
 %----------------------------------------------------------------------------------------
 % How can I put more space between bibliography entries (biblatex)
 % https://tex.stackexchange.com/questions/19105/how-can-i-put-more-space-between-bibliography-entries-biblatex
-\setlength\bibitemsep{2.1\itemsep}
+% \setlength\bibitemsep{2.1\itemsep}
 
-% Backward compatibility with `abntex2cite` package `\citeonline` command with the new `biblatex` package
-\let\citeonline\textcite
 
-% Reduce font size of bibliography; overfull bibliography
-% https://tex.stackexchange.com/questions/203764/reduce-font-size-of-bibliography-overfull-bibliography
-\newcommand{\bibliographyfontsize}{\fontsize{10.0pt}{10.5pt}\selectfont}
-\renewcommand*{\bibfont}{\bibliographyfontsize}
+% % Reduce font size of bibliography; overfull bibliography
+% % https://tex.stackexchange.com/questions/203764/reduce-font-size-of-bibliography-overfull-bibliography
+% \newcommand{\bibliographyfontsize}{\fontsize{10.0pt}{10.5pt}\selectfont}
+% \renewcommand*{\bibfont}{\bibliographyfontsize}
 
-% How to correctly insert and justify abstract paragraph on my bibliography?
-% https://tex.stackexchange.com/questions/398666/how-to-correctly-insert-and-justify-abstract
-\DeclareFieldFormat{abstract}%
-{%
-    \vspace*{-0.5mm}\par\justifying
-    \begin{adjustwidth}{1cm}{}
-        \textbf{\bibsentence\bibstring{abstract}:} #1
-    \end{adjustwidth}
-}
+% % How to correctly insert and justify abstract paragraph on my bibliography?
+% % https://tex.stackexchange.com/questions/398666/how-to-correctly-insert-and-justify-abstract
+% \DeclareFieldFormat{abstract}%
+% {%
+%     \vspace*{-0.5mm}\par\justifying
+%     \begin{adjustwidth}{1cm}{}
+%         \textbf{\bibsentence\bibstring{abstract}:} #1
+%     \end{adjustwidth}
+% }
 
-\renewbibmacro*{finentry}%
-{%
-    \iffieldundef{abstract}
-    {\finentry}
-    {\finentrypunct
-        \printfield{abstract}%
-        \renewcommand*{\finentrypunct}{}%
-        \finentry
-    }
-}
+% \renewbibmacro*{finentry}%
+% {%
+%     \iffieldundef{abstract}
+%     {\finentry}
+%     {\finentrypunct
+%         \printfield{abstract}%
+%         \renewcommand*{\finentrypunct}{}%
+%         \finentry
+%     }
+% }
 
 %----------------------------------------------------------------------------------------
 %   LOAD UFSCThesis style
@@ -159,55 +157,7 @@ section=TITLE  % Título de seções em caixa alta
 }
 
 
-%----------------------------------------------------------------------------------------
-%   File settings
-%----------------------------------------------------------------------------------------
-
-% Comment this, unless you are debugging pages' badness Underfull & Overflow
-% https://tex.stackexchange.com/questions/115908/geometry-showframe-landscape
-%
-% What is the difference between \usepackage{showframe} and \usepackage[showframe]{geometry}?
-% https://tex.stackexchange.com/questions/387077/what-is-the-difference-between-usepackageshowframe-and-usepackageshowframe
-%
-% How to do the memoir headings fix but not have my text going over the page bottom margins?
-% https://tex.stackexchange.com/questions/387257/how-to-do-the-memoir-headings-fix-but-not-have-my-text-going-over-the-page-botto
-%
-% Print page margins of a document, for debugging bad boxes
-% https://tex.stackexchange.com/questions/14508/print-page-margins-of-a-document
-% \usepackage[showframe,pass]{geometry}
-
-% To use the font Times New Roman, instead of the default LaTeX font
-% more up-to-date than '\usepackage{mathptmx}'
-% \usepackage{newtxtext}
-% \usepackage{newtxmath}
-
-
-% Novo list of (listings) para QUADROS usando newfloat
-\usepackage{newfloat}
-\makeatletter
-%% we define a helper macro for adjusting lists of new floats to
-%% accept a * behind them for not being shown in the TOC, like
-%% the other list printing commands in memoir
-% https://tex.stackexchange.com/questions/176418/remove-list-of-newfloat-from-toc
-\newcommand{\AdjustForMemoir}[1]{%
-  \csletcs{kept@listof#1}{listof#1}%
-  \csdef{listof#1}{%
-    \@ifstar
-     {\csappto{newfloat@listof#1@hook}{\append@star}%
-      \csuse{kept@listof#1}}%
-     {\csuse{kept@listof#1}}%
-  }
-}
-\def\append@star#1{#1*}
-\makeatother
-% \newcommand{\quadroname}{Quadro}
-% \newcommand{\listofquadrosname}{Lista de Quadros}
-\DeclareFloatingEnvironment[fileext=loq,placement={!hbtp},name=Quadro,within=chapter,listname=Lista de Quadros]{quadro}
-\AdjustForMemoir{quadro}
-\newlistentry{quadro}{loq}{0}
-
-
-% Altere o arquivo settings.tex para incluir os dados de seu trabalho como Nome do Autor, Título, Tipo de trabalho, etc.
+% Altere o arquivo settings.tex para incluir suas configurações.
 \input{settings}
 
 
