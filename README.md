@@ -58,7 +58,7 @@ configurações específicas para cada sistema, podem ser encontradas no link ab
 ## Baixando diretamente
 
 Caso queria, pode baixar diretamente o arquivo `zip` clique 
-[aqui](https://github.com/UFSC/ufscthesisx/releases/download/v1.0/ufscthesisx.zip) e descompacte o arquivo.
+[aqui](https://github.com/UFSC/ufscthesisx/releases/download/v1.0.1/ufscthesisx.zip) e descompacte o arquivo.
 
 
 ## Utilizando `git`
