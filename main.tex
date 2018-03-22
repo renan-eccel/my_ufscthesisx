@@ -15,7 +15,8 @@
 % Uses abntex2 class
 \documentclass[
 10pt,
-a5paper, %Padrão UFSC
+% a5paper, %Padrão UFSC para versão final
+a4paper, %Pode usar a4 para defesa
 twoside, % Impressão nos dois lados da folha
 chapter=TITLE, % Título de capítulos em caixa alta
 section=TITLE  % Título de seções em caixa alta
@@ -272,31 +273,30 @@ section=TITLE  % Título de seções em caixa alta
     \setlength\afterchapskip{20pt}
 
     % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
-    \include{chapters/chapter_1}
+    \include{chapters/intro}
 
     % PARTE
     % \ifforcedinclude\else\part{Preparação da pesquisa}\fi
 
     % Capitulo com exemplos de comandos inseridos de arquivo externo
-    \include{chapters/chapter_2}
+    \include{chapters/chapter_1}
 
     % PARTE
     % \ifforcedinclude\else\part{Referenciais teóricos}\fi
 
     % Capitulo de revisão de literatura
-    \include{chapters/chapter_3}
+    \include{chapters/chapter_2}
 
     % PARTE
     % \ifforcedinclude\else\part{Resultados}\fi
 
     % Primeiro capitulo de Resultados
-    \include{chapters/chapter_4}
+    \include{chapters/chapter_3}
 
     % Segundo capitulo de Resultados
-    \include{chapters/chapter_5}
+    \include{chapters/chapter_4}
 
-    % Terceiro capitulo de Resultados
-    \include{chapters/chapter_6}
+
 
     % Finaliza a parte no bookmark do PDF
     % para que se inicie o bookmark na raiz
