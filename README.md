@@ -82,8 +82,8 @@ monografia.
 ## Utilizando Overleaf
 
 Se você quiser, pode utilizar o [Overleaf](www.overleaf.com), um sistema de editoração *online* de textos em LaTeX. 
-Se você já tiver uma conta no Overleaf pode fazer o *upload* do arquivo `.zip` baixado acima ou então faça automaticamente clicando 
-[aqui](http://overleaf.com/docs?snip_uri=https://github.com/UFSC/ufscthesisx/releases/download/v1.0/ufscthesisx.zip)
+Se você já tiver uma conta no Overleaf pode fazer o *upload* do arquivo `.zip` baixado acima ou então faça o *upload* automaticamente com a 
+última versa clicando [aqui](http://overleaf.com/docs?snip_uri=https://github.com/UFSC/ufscthesisx/releases/download/v1.0.1/ufscthesisx.zip)
 
 
 # Uso
