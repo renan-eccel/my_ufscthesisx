@@ -49,7 +49,9 @@
 
 % Is it possible to keep my translation together with original text?
 % https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
-\chapter{\lang{Introduction}{Intro} \showfont}
+\chapter*{\lang{Introduction}{Introdução}}
+\phantomsection
+\addcontentsline{toc}{chapter}{INTRODUÇÃO}%
 
 
 % Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
@@ -79,14 +81,14 @@
 
     \newpage
 
-    \showfont
+     
 
-    \section[Some encoding tests]{\showfont}
+    \section*[Some encoding tests]{Some encoding tests}
 
     % Why latex is letting my text goes out of the screen?
     % https://tex.stackexchange.com/questions/386762/why-latex-is-letting-my-text-goes-out-of-the-screen
     \sloppy
-    \textbf{textbf: \showfont}
+    \textbf{textbf:  }
     \fussy
 
 \end{otherlanguage*}
@@ -117,9 +119,9 @@ A Tabela~\ref{tab:a_table_formatacao_de_texto} mostra mais informações do temp
 % How to auto adjust my last table column width, and why is there Underfull \vbox badness on this table?
 % https://tex.stackexchange.com/questions/387238/how-to-auto-adjust-my-last-table-column-width-and-why-is-there-underfull-vbox/387251
 \setlength\extrarowheight{2pt}
-\begin{tabularx}{\linewidth}{|>{\RaggedRight}p{3cm}|>{\arraybackslash}X|}
+\begin{tabularx}{\linewidth}{>{\RaggedRight}p{3cm}|>{\arraybackslash}X}
 
-\caption{Formatação do texto \protect\showfont}
+\caption{Formatação do texto \protect }
 \label{tab:a_table_formatacao_de_texto} \\
 \hline
 \endfirsthead
@@ -127,20 +129,20 @@ A Tabela~\ref{tab:a_table_formatacao_de_texto} mostra mais informações do temp
 % How to set font size of footnotes correctly in memoir?
 % https://tex.stackexchange.com/questions/213927/how-to-set-font-size-of-footnotes-correctly-in-memoir
 \multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\ufsccaptionsize\tablename~\thetable:
-Formatação do texto (continued) \protect\showfont} \\
+Formatação do texto (continuação) \protect } \\
 \hline
 \endhead
 
 % Set multicolumn width to default table width
 % https://tex.stackexchange.com/questions/99326/set-multicolumn-width-to-default-table-width
 \hline
-\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\footnotesize to be continued \protect\showfont}
+\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\footnotesize continua na próxima página\protect }
 \endfoot
 
 \hline
 \endlastfoot
 
-    Cor                          & Branco - \showfont                                               \\ \hline
+    Cor                          & Branco -                                                 \\ \hline
     Formato do papel             & A5                                                               \\ \hline
     Gramatura                    & 75                                                               \\ \hline
     Impressão                    & Frente e verso                                                   \\ \hline
