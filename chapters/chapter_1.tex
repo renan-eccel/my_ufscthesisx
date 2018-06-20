@@ -43,7 +43,7 @@
 {
     \lang
     {Long title to present in the chapter, Axioms, Theorems, Postulates, corollaries, lemmas}
-    {Longo título apresentar no capitulo, Axiomas, Teoremas, Postulados, corolários, lemas}
+    {Longo título apresentar no capítulo, Axiomas, Teoremas, Postulados, corolários, lemas}
 }
 
 \label{cap_exemplos}
@@ -90,6 +90,9 @@ Na matemática, um teorema é uma afirmação que pode ser provada como verdadei
 \end{teorema}
 
 
+\begin{proposicao}
+Em qualquer proposição a hipótese é considerada verdadeira.
+\end{proposicao}
 \subsection{Terminologia}
 
 
@@ -98,7 +101,7 @@ Usualmente deixa-se o termo ``teorema'' apenas para as afirmações que podem se
 
 \begin{description}
     \item[Proposição:] Uma Proposição é uma sentença não associada a algum outro teorema, de simples prova e de importância matemática menor.
-    \item[Lema:] Um Lema é um "pré-teorema", um teorema que serve para ajudar na prova de outro teorema maior. A distinção entre teoremas e lemas é um tanto quanto arbitrária, uma vez que grandes resultados são usados para provar outros. Por exemplo, o Lema de Gauss e o Lema de Zorn são muito interessantes de per se, e muitos autores os denominam de Lemas, mesmo que não os usem para provar alguma outra coisa.
+    \item[Lema:] Um Lema é um ``pré-teorema'', um teorema que serve para ajudar na prova de outro teorema maior. A distinção entre teoremas e lemas é um tanto quanto arbitrária, uma vez que grandes resultados são usados para provar outros. Por exemplo, o Lema de Gauss e o Lema de Zorn são muito interessantes de per se, e muitos autores os denominam de Lemas, mesmo que não os usem para provar alguma outra coisa.
     \item[Corolário:] Um Corolário é uma consequência direta de outro teorema ou de uma definição, muitas vezes tendo suas demonstrações omitidas, por serem simples.
 \end{description}
 
@@ -107,7 +110,7 @@ Usualmente deixa-se o termo ``teorema'' apenas para as afirmações que podem se
     Em qualquer triângulo retângulo, a hipotenusa é maior que qualquer um dos catetos, mas menor que a soma deles.
 \end{corolario}
 
-Alguns outros termos também são usados, por mais que raros e com definição menos rigorosa, basicamente sendo usadas quando não se quer usar a a palavra "teorema":
+Alguns outros termos também são usados, por mais que raros e com definição menos rigorosa, basicamente sendo usadas quando não se quer usar a a palavra ``teorema'':
 
 Regra.
 Lei, que também pode se referir a axiomas, regras de dedução e a distribuições de Probabilidade.
@@ -322,7 +325,7 @@ separadas do texto por um espaço simples de entre as linhas e por filete de 5
 cm, a partir da margem esquerda. Devem ser alinhadas, a partir da segunda linha
 da mesma nota, abaixo da primeira letra da primeira palavra, de forma a destacar
 o expoente, sem espaço entre elas e com fonte menor
-\citeonline[5.2.1]{NBR14724:2011}.}\footnote{Caso uma série de notas sejam
+\textcite[5.2.1]{NBR14724:2011}.}\footnote{Caso uma série de notas sejam
 criadas sequencialmente, o \abnTeX{} instrui o \LaTeX{} para que uma vírgula seja
 colocada após cada número do expoente que indica a nota de rodapé no corpo do
 texto.}\footnote{Verifique se os números do expoente possuem uma vírgula para
@@ -337,30 +340,27 @@ dividi-los no corpo do texto.}.
 \LaTeX{}.
 
 \begin{table}[htb]
-\ABNTEXfontereduzida
 \caption[Níveis de investigação]{Níveis de investigação.}
 \label{tab-nivinv}
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{p{2.6cm}|p{6.0cm}|p{2.25cm}|p{3.40cm}}
-  %\hline
+\begin{tabular}{p{2.6cm}p{6.0cm}p{2.25cm}p{3.40cm}}
+  \toprule
    \textbf{Nível de Investigação} & \textbf{Insumos}  & \textbf{Sistemas de Investigação}  & \textbf{Produtos}  \\
-    \hline
+    \midrule
     Meta-nível & Filosofia\index{filosofia} da Ciência  & Epistemologia &
     Paradigma  \\
-    \hline
     Nível do objeto & Paradigmas do metanível e evidências do nível inferior &
     Ciência  & Teorias e modelos \\
-    \hline
     Nível inferior & Modelos e métodos do nível do objeto e problemas do nível inferior & Prática & Solução de problemas  \\
-   % \hline
+   \bottomrule
 \end{tabular}
 }
-\legend{Fonte: \citeonline{van86}}
+\fonte{\textcite{van86}}
 \end{table}
 
 
 Já a \autoref{tabela-ibge} apresenta uma tabela criada conforme o padrão do
-\citeonline{ibge1993} requerido pelas normas da ABNT para documentos técnicos e
+\textcite{ibge1993} requerido pelas normas da ABNT para documentos técnicos e
 acadêmicos.
 
 
@@ -372,8 +372,8 @@ acadêmicos.
 }{%
   \begin{tabular}{ccc}
   \toprule
-   Nome & Nascimento & Documento \\
-  \midrule \midrule
+   \textbf{Nome} & \textbf{Nascimento} & \textbf{Documento} \\
+  \midrule 
    Maria da Silva & 11/11/1111 & 111.111.111-11 \\
   \midrule
    João Souza & 11/11/2111 & 211.111.111-11 \\
@@ -420,6 +420,7 @@ acadêmicos.
             $I_{Ca3}$&$\SI{1.2598194e+000}{\A}$&  $I_{Cb3}$&$\SI{1.4708279e+000}{\A}$& $I_{Cc3}$&$\SI{1.3017673e+000}{\A}$ \\
             \bottomrule
         \end{tabular}}
+\fonte{O autor}
 \end{table}
 
 
@@ -465,7 +466,7 @@ como o exemplo da \autoref{fig_circulo}.
         \put(0,0){\line(6,5){1}}
         \end{picture}
     \end{center}
-    \legend{Fonte: os autores}
+    \fonte{os autores}
 \end{figure}
 
 
@@ -498,7 +499,7 @@ Photoshop\index{Adobe Photoshop}.
     \begin{center}
         \includegraphics[scale=0.35]{pictures/abntex2-modelo-img-grafico.pdf}
     \end{center}
-    \legend{Fonte: \citeonline[p. 24]{araujo2012}}
+    \fonte{\textcite[p. 24]{araujo2012}}
 \end{figure}
 
 % ---
@@ -516,20 +517,20 @@ com tamanhos e posições controladas. Veja o exemplo da
    \centering
    \caption{Imagem 1 da minipage} \label{fig_minipage_imagem1}
    \includegraphics[width=\textwidth]{pictures/abntex2-modelo-img-marca.pdf}
-   \legend{Fonte: Produzido pelos autores}
+   \fonte{Produzido pelos autores}
  \end{minipage}
  \hfill
  \begin{minipage}{0.49\textwidth}
    \centering
-   \caption{Grafico 2 da minipage} \label{fig_minipage_grafico2}
+   \caption{Gráfico 2 da minipage} \label{fig_minipage_grafico2}
    \includegraphics[width=\textwidth]{pictures/abntex2-modelo-img-grafico.pdf}
-   \legend{Fonte: \citeonline[p. 24]{araujo2012}}
+   \fonte{\textcite[p. 24]{araujo2012}}
  \end{minipage}
 \end{figure}
 
 
 
-Observe que, segundo a \citeonline[seções 4.2.1.10 e 5.8]{NBR14724:2011}, as
+Observe que, segundo a \textcite[seções 4.2.1.10 e 5.8]{NBR14724:2011}, as
 ilustrações devem sempre ter numeração contínua e única em todo o documento:
 
 \begin{citacao}
@@ -559,6 +560,7 @@ Depois de definir o ambiente \texttt{quadro} podemos ter um quadro:
 Este é o conteúdo do primeiro quadro.\\
 \hline
 \end{tabular}
+\fonte{Teste.}
 \end{quadro}
 
 
@@ -572,7 +574,7 @@ Além do \autoref{quad:quadro_modelo1}, também é possível especificar outra o
 Este é o conteúdo do segundo quadro.\\
 \hline
 \end{tabular}
-\legend{Fonte: O autor.}
+\fonte{O autor.}
 \end{quadro}
 
 
@@ -605,9 +607,6 @@ matemática que não é numerada.
 
 Consulte mais informações sobre expressões matemáticas em
 \url{https://code.google.com/p/abntex2/wiki/Referencias}.
-
-
-\subsection{Expressões matemáticas em títulos e subtítulos: \texorpdfstring{$\boldsymbol{\gamma_x}$}{Gammax}}
 
 
 
@@ -726,7 +725,7 @@ Para isso, também estão disponíveis os ambientes:
   \begin{DoubleSpace*} ... \end{DoubleSpace*}
 \end{lstlisting}
 
-Para mais informações, consulte \citeonline[p. 47-52 e 135]{memoir}.
+Para mais informações, consulte \textcite[p. 47-52 e 135]{memoir}.
 
 % ---
 \section{Inclusão de código fonte}\label{sec-codeinsert}
@@ -903,8 +902,8 @@ alinhado à esquerda e a segunda e demais linhas devem iniciar logo abaixo da
 primeira palavra da primeira linha}
 % ---
 
-Isso atende à norma \citeonline[seções de 5.2.2 a 5.2.4]{NBR14724:2011}
- e \citeonline[seções de 3.1 a 3.8]{NBR6024:2012}.
+Isso atende à norma \textcite[seções de 5.2.2 a 5.2.4]{NBR14724:2011}
+ e \textcite[seções de 3.1 a 3.8]{NBR6024:2012}.
 
 % ---
 \section{Diferentes idiomas e hifenizações}
@@ -950,7 +949,7 @@ citações em português e em francês, você deveria usar o preâmbulo como aba
 \end{verbatim}
 
 A lista completa de idiomas suportados, bem como outras opções de hifenização,
-estão disponíveis em \citeonline[p.~5-6]{babel}.
+estão disponíveis em \textcite[p.~5-6]{babel}.
 
 Exemplo de hifenização em inglês\footnote{Extraído de:
 \url{http://en.wikibooks.org/wiki/LaTeX/Internationalization}}:
@@ -1010,7 +1009,7 @@ referência completa das macros e ambientes disponíveis.
 
 Além disso, o manual possui informações adicionais sobre as normas ABNT
 observadas pelo \abnTeX{} e considerações sobre eventuais requisitos específicos
-não atendidos, como o caso da \citeonline[seção 5.2.2]{NBR14724:2011}, que
+não atendidos, como o caso da \textcite[seção 5.2.2]{NBR14724:2011}, que
 especifica o espaçamento entre os capítulos e o início do texto, regra
 propositalmente não atendida pelo presente modelo.
 
@@ -1020,7 +1019,7 @@ propositalmente não atendida pelo presente modelo.
 
 A formatação das referências bibliográficas conforme as regras da ABNT são um
 dos principais objetivos do \abnTeX{}. Consulte os manuais
-\citeonline{abntex2cite} e \citeonline{abntex2cite-alf} para obter informações
+\textcite{abntex2cite} e \textcite{abntex2cite-alf} para obter informações
 sobre como utilizar as referências bibliográficas.
 
 %-
@@ -1038,8 +1037,7 @@ neste modo quando houver conversão para letras maiúsculas.
 \begin{table}[htbp]
 \caption{Tabela de conversão de acentuação.}
 \label{tabela-acentos}
-
-\begin{center}
+\centering
 \begin{tabular}{ll}\hline\hline
 acento & \textsf{bibtex}\\
 à á ã & \verb+\`a+ \verb+\'a+ \verb+\~a+\\
@@ -1047,7 +1045,7 @@ acento & \textsf{bibtex}\\
 ç & \verb+{\c c}+\\
 \hline\hline
 \end{tabular}
-\end{center}
+\fonte{Manual do LaTeX \cite{memoir}}
 \end{table}
 
 

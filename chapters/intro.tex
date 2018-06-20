@@ -49,54 +49,13 @@
 
 % Is it possible to keep my translation together with original text?
 % https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
-\chapter*{\lang{Introduction}{Introdução}}
+\chapter{\lang{Introduction}{Introdução}}
 \phantomsection
-\addcontentsline{toc}{chapter}{INTRODUÇÃO}%
-
-
-% Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
-% https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
-\begin{otherlanguage*}{english}
-
-    How to display the font size in use in the final output
-    \url{https://tex.stackexchange.com/questions/20451/how-to-display-the-font-size-in-use-in-the-final-output}
-
-    \begin{verbatim}
-    \makeatletter
-    original: \f@size
-    \verb+\small+ \small \f@size
-    \verb+\normalsize+ \normalsize \f@size
-    \verb+\large+ \large \f@size
-    \verb+\Huge+ \Huge \f@size
-    \makeatother
-    \end{verbatim}
-
-
-
-    % Write epigraphs
-    \begin{flushright}
-        \textit{``The curious paradox is that when I accept myself just as I am, then I can change.''} \\
-        Carl Rogers
-    \end{flushright}
-
-    \newpage
-
-     
-
-    \section*[Some encoding tests]{Some encoding tests}
-
-    % Why latex is letting my text goes out of the screen?
-    % https://tex.stackexchange.com/questions/386762/why-latex-is-letting-my-text-goes-out-of-the-screen
-    \sloppy
-    \textbf{textbf:  }
-    \fussy
-
-\end{otherlanguage*}
 
 
 
 
-A Tabela~\ref{tab:a_table_formatacao_de_texto} mostra mais informações do template BU.
+A Tabela~\ref{tab:a_table_formatacao_de_texto} mostra  informações do modelo de teses da Biblioteca Universitária da UFSC (BU-UFSC).
 
 % What does [t] and [ht] mean?
 % https://tex.stackexchange.com/questions/8652/what-does-t-and-ht-mean
@@ -140,6 +99,7 @@ Formatação do texto (continuação) \protect } \\
 \endfoot
 
 \hline
+\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\fonte{O autor} }
 \endlastfoot
 
     Cor                          & Branco -                                                 \\ \hline
@@ -172,6 +132,7 @@ Formatação do texto (continuação) \protect } \\
     \caption{Exemplo de figura}
     \includegraphics[width=\linewidth]{pictures/ex01}
     \label{fig:ex01}
+\fonte{o autor}
 \end{figure}
 
 Por exemplo, na \figref{fig:ex01}, tem-se...
@@ -179,9 +140,10 @@ Por exemplo, na \figref{fig:ex01}, tem-se...
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{pictures/tek0009}
     \caption{Exemplo de aquisição}
+    \includegraphics[width=0.9\linewidth]{pictures/tek0009}
     \label{fig:tek0009}
+    \fonte{o autor}
 \end{figure}
 
 Este documento e seu código-fonte são exemplos de referência de uso da classe
@@ -193,7 +155,7 @@ gênero) produzido conforme a ABNT NBR 14724:2011 \emph{Informação e documenta
 A expressão ``Modelo Canônico'' é utilizada para indicar que \abnTeX{} não é
 modelo específico de nenhuma universidade ou instituição, mas que implementa tão
 somente os requisitos das normas da ABNT. Uma lista completa das normas
-observadas pelo \abnTeX{} é apresentada em \citeonline{abntex2classe}.
+observadas pelo \abnTeX{} é apresentada em \textcite{abntex2classe}.
 
 Sinta-se convidado a participar do projeto \abnTeX{}! Acesse o site do projeto em
 \url{http://abntex2.googlecode.com/}. Também fique livre para conhecer,
@@ -208,7 +170,7 @@ Porém, recomendamos que ao invés de se alterar diretamente os arquivos do
 \abnTeX{}, distribua-se arquivos com as respectivas customizações.
 Isso permite que futuras versões do \abnTeX{}~não se tornem automaticamente
 incompatíveis com as customizações promovidas. Consulte
-\citeonline{abntex2-wiki-como-customizar} par mais informações.
+\textcite{abntex2-wiki-como-customizar} par mais informações.
 
 Este documento deve ser utilizado como complemento dos manuais do \abnTeX{}
 \cite{abntex2classe,abntex2cite,abntex2cite-alf} e da classe \textsf{memoir}

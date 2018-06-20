@@ -164,21 +164,24 @@
 \newtheorem{postulado}{Postulado}[chapter]
 \newtheorem{teorema}{Teorema}[chapter]
 \newtheorem{conjectura}{Conjectura}[chapter]
-\newtheorem{corolario}{Coral\'ario}[teorema]
+\newtheorem{corolario}[teorema]{Corol\'ario}
 \newtheorem{lema}[teorema]{Lema}
-\newtheorem{proposicao}{Proposi\c{c}\~ao}[teorema]
+\newtheorem{proposicao}[teorema]{Proposi\c{c}\~ao}
 
 
 % Commonly used in definitions, conditions, problems and examples.
 \theoremstyle{definition}
-\newtheorem{definicao}{Defini\c{c}\~ao}[section]
+\newtheorem{definicao}{Defini\c{c}\~ao}[chapter]
 \newtheorem{exemplo}{Exemplo}[section]
 \newtheorem{exercicio}{Exerc\'icio}[section]
-\newtheorem{condicao}{Condi\c{c}\~ao}[section]
+\newtheorem{condicao}{Condi\c{c}\~ao}[chapter]
 
 
 \theoremstyle{remark}
-\newtheorem*{observacao}{Observa\c{c}\~ao}
+\newtheorem{observacao}{Observa\c{c}\~ao}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
 
 
 % Margens
@@ -346,7 +349,7 @@
 \setlength{\cftnumberboxnumberwidth}{2em}
 \renewcommand{\tocprintchapter}
 {%
-    \addtocontents{toc}{\cftsetindents{chapter}{1em}{\cftlastnumwidth}}
+    \addtocontents{toc}{\cftsetindents{chapter}{0em}{\cftlastnumwidth}}
 }
 %
 \renewcommand{\tocinnonumchapter}
@@ -361,20 +364,20 @@
 %
 \renewcommand{\tocpartapendices}
 {%
-    \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{\cftnumberboxnumberwidth}}
+    \addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{\cftnumberboxnumberwidth}}
     \cftinserthook{toc}{A}
 }
 %
 \renewcommand{\tocpartanexos}
 {%
-    \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{\cftnumberboxnumberwidth}}
+    \addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{\cftnumberboxnumberwidth}}
     \cftinserthook{toc}{A}
 }
 
 \renewcommand{\cftpartfont}{\ABNTEXpartfont}
 \renewcommand{\cftpartpagefont}{\cftpartfont}
 
-%\renewcommand{\cftchapterfont}{\ABNTEXchapterfont}
+\renewcommand{\cftchapterfont}{\ABNTEXchapterfont}
 \renewcommand{\cftchapterpagefont}{\cftchapterfont}
 
 \renewcommand{\cftsectionfont}{\ABNTEXsectionfont}
@@ -500,39 +503,39 @@
 % ------------------------------------------------------------------------
 
 % % Custom settings
-\makeatletter
-\newcommand\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
+% \makeatletter
+% \newcommand\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
 
-\makechapterstyle{VZ14}
-{%
-    % \thispagestyle{empty}
-    \setlength\beforechapskip{50pt}
-    \setlength\midchapskip{20pt}
-    \setlength\afterchapskip{20pt}
-    \renewcommand\chapternamenum{}
-    \renewcommand\printchaptername{}
-    \renewcommand\chapnamefont{\Huge\scshape}
-    \renewcommand\printchapternum
-    {%
-        \chapnamefont\null\thickhrulefill\quad
-        \@chapapp\space\thechapter\quad\thickhrulefill
-    }
-    \renewcommand\printchapternonum
-    {%
-        \par\thickhrulefill\par\vskip\midchapskip
-        \hrule\vskip\midchapskip
-    }
-    \renewcommand\chaptitlefont{\huge\scshape\centering}
-    \renewcommand\afterchapternum
-    {%
-        \par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip
-    }
-    \renewcommand\afterchaptertitle
-    {%
-        \par\vskip\midchapskip\hrule\nobreak\vskip\afterchapskip
-    }
-}
-\makeatother
+% \makechapterstyle{VZ14}
+% {%
+%     % \thispagestyle{empty}
+%     \setlength\beforechapskip{50pt}
+%     \setlength\midchapskip{20pt}
+%     \setlength\afterchapskip{20pt}
+%     \renewcommand\chapternamenum{}
+%     \renewcommand\printchaptername{}
+%     \renewcommand\chapnamefont{\Huge\scshape}
+%     \renewcommand\printchapternum
+%     {%
+%         \chapnamefont\null\thickhrulefill\quad
+%         \@chapapp\space\thechapter\quad\thickhrulefill
+%     }
+%     \renewcommand\printchapternonum
+%     {%
+%         \par\thickhrulefill\par\vskip\midchapskip
+%         \hrule\vskip\midchapskip
+%     }
+%     \renewcommand\chaptitlefont{\huge\scshape\centering}
+%     \renewcommand\afterchapternum
+%     {%
+%         \par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip
+%     }
+%     \renewcommand\afterchaptertitle
+%     {%
+%         \par\vskip\midchapskip\hrule\nobreak\vskip\afterchapskip
+%     }
+% }
+% \makeatother
 
 % Veja outros estilos em:
 % http://repositorios.cpai.unb.br/ctan/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf
@@ -615,12 +618,9 @@
         \center
         {%
             \ABNTEXchapterfont\ufsccaptionsize\MakeTextUppercase{\imprimirinstituicao}
-            \par\MakeTextUppercase{\imprimirbiblioteca}
+            \par\MakeTextUppercase{\imprimirautor}
         }
 
-        \vfill
-
-        {\ufsccaptionsize\imprimirautor}
 
         \vfill
         {%
