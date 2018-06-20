@@ -43,47 +43,46 @@ para que possa escrever seu trabalho.
 
 # Instalação
 
-## Instalar `LaTeX` e `abnTeX2` 
+### Instalar `LaTeX` e `abnTeX2` 
 
-Para poder utilizar a classe é necessário ter uma distribuição atual do LaTeX, incluindo o pacote abnTeX2. As
-configurações específicas para cada sistema, podem ser encontradas no link abaixo para o pacote `abnTeX2`:
+Para poder utilizar a classe é necessário ter uma distribuição atual do LaTeX, incluindo o pacote abnTeX2. *Sugerimos formtemente a utilização da distribiução TeX Live para Windows e Linux e MacTeX para macOS*. 
 
+As configurações específicas para cada sistema podem ser encontradas nos link abaixo para o pacote `abnTeX2`:
 
 
 1. [abntex2 CTAN](http://www.ctan.org/pkg/abntex2)
 1. [abnTeX2 Instalação](https://github.com/abntex/abntex2/wiki/Instalacao)
 
+ 
 
 
-## Baixando diretamente
+## Baixando diretamente modelo UFSC
 
 Caso queria, pode baixar diretamente o arquivo `zip` clique 
-[aqui](https://github.com/UFSC/ufscthesisx/releases/download/v1.0.1/ufscthesisx.zip) e descompacte o arquivo.
+[aqui](https://github.com/UFSC/ufscthesisx/releases/download/v1.1/ufscthesisx.zip) e descompacte o arquivo.
 
 
-## Utilizando `git`
+## Utilizando `git` para baixar o modelo USFC
 
 No diretório do seu projeto faça um clone (recursivo) dos arquivos do repositório:
 ```bash
 git clone --recursive https://github.com/ufsc/ufscthesisx
 ```
 
-Este repositório já contém um exemplo de tese com uso avançado de conceitos e LaTeX. Se você tive
-interesse em utilizar esse *template*, você somente precisa preencher corretamente os seus dados como
+Este repositório já contém um exemplo de tese com uso avançado de conceitos e LaTeX. Se você tiver
+interesse em utilizar esse *template*, você  precisa preencher  os seus dados como
 nome do orientador, coorientador, seu nome, nome da sua instituição, do seu curso, departamento,
 etc.
 
-Para isso abra o arquivo `settings.tex` no diretório principal e altere os dados fictícios para os
-corretos. O arquivo `main.tex` é o arquivo principal do *template* utilizado, ele trata de
-carregar todos os pacotes necessários e incluir os arquivos LaTeX que contém as partes da sua
+Para isso altere os dados fictícios para os corretos no arquivo `main.tex`, que é o arquivo principal do *template* utilizado, e carrega todos os pacotes necessários e incluir os arquivos LaTeX que contém as partes da sua
 monografia.
 
 
-## Utilizando Overleaf
+## Utilizando Overleaf para digitar sua tese com modelo UFSC
 
 Se você quiser, pode utilizar o [Overleaf](www.overleaf.com), um sistema de editoração *online* de textos em LaTeX. 
 Se você já tiver uma conta no Overleaf pode fazer o *upload* do arquivo `.zip` baixado acima ou então faça o *upload* automaticamente com a 
-última versa clicando [aqui](http://overleaf.com/docs?snip_uri=https://github.com/UFSC/ufscthesisx/releases/download/v1.0.1/ufscthesisx.zip)
+última versa clicando [aqui](http://overleaf.com/docs?snip_uri=https://github.com/UFSC/ufscthesisx/releases/download/v1.1/ufscthesisx.zip)
 
 
 # Uso
