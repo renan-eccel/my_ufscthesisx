@@ -20,7 +20,7 @@ a5paper, %Padrão UFSC para versão final
 % a4paper, %Pode usar a4 para defesa
 twoside, % Impressão nos dois lados da folha
 chapter=TITLE, % Título de capítulos em caixa alta
-section=TITLE  % Título de seções em caixa alta
+section=TITLE,  % Título de seções em caixa alta
 ]{abntex2}
 % The UFSC font size is 10.5, but memoir embbeded on `abntex2` only accepts 10 and 11pt. However
 % this will be fixed later by the ufscthesisx package.
@@ -159,6 +159,12 @@ section=TITLE  % Título de seções em caixa alta
 % Altere o arquivo settings.tex para incluir suas configurações.
 \input{settings}
 
+% Configurações do estilo de citação ABNT
+\PassOptionsToPackage{style=abnt,backend=biber}{biblatex}
+
+% Descomente a linha a seguir e comente a anterior se desejar utilizar outras configurações 
+% do biblatex como por exemplo, style=numeric, entre outros. 
+% \PassOptionsToPackage{backend=biber,style=numeric,backref=false}{biblatex}
 
 % Utilize o arquivo aftertext/references.bib para incluir sua bibliografia.
 \addbibresource{aftertext/references.bib}
@@ -193,6 +199,9 @@ section=TITLE  % Título de seções em caixa alta
 
 
 
+
+
+
 % %----------------------------------------------------------------------------------------
 % %   DOCUMENT CONTENTS
 % %----------------------------------------------------------------------------------------
@@ -224,20 +233,14 @@ section=TITLE  % Título de seções em caixa alta
     % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
     \include{chapters/intro}
 
-    % PARTE
-    % \ifforcedinclude\else\part{Preparação da pesquisa}\fi
+
 
     % Capitulo com exemplos de comandos inseridos de arquivo externo
     \include{chapters/chapter_1}
 
-    % PARTE
-    % \ifforcedinclude\else\part{Referenciais teóricos}\fi
 
     % Capitulo de revisão de literatura
     \include{chapters/chapter_2}
-
-    % PARTE
-    % \ifforcedinclude\else\part{Resultados}\fi
 
     % Primeiro capitulo de Resultados
     \include{chapters/chapter_3}
@@ -269,10 +272,7 @@ section=TITLE  % Título de seções em caixa alta
         % https://tex.stackexchange.com/questions/17128/using-bibtex-to-make-a-list-of-references-without
         % \nocite{*}
 
-        % How to modify line spacing per entry of bibliography?
-        % https://tex.stackexchange.com/questions/163559/how-to-modify-line-spacing-per-entry-of-bibliography
-        \linespread{1.18}\selectfont
-        \printbibliography
+        \printbibliography[title=REFERÊNCIAS]
     \endgroup
 
     % Glossário, consulte o manual da classe abntex2 para orientações sobre o glossário.
