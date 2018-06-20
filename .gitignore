@@ -58,4 +58,4 @@
 *.run.xml
 *.bcf
 *.cut
-
+*.sublime*
