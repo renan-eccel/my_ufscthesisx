@@ -40,6 +40,10 @@ Está disponibilizado, além o pacote `ufscthesisx.sty`, um *template* (arquivo 
 para que possa escrever seu trabalho.
 
 
+## Modelo em PDF
+
+Se você quer ter uma ideia de como é o modelo, a compialção deve resultar no seguinte [PDF](https://dl.dropbox.com/s/kevxtvs7bx9c8f7/main.pdf)
+
 
 # Instalação
 
