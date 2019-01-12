@@ -34,6 +34,21 @@
 % Now we'll execute any options passed in
 \ProcessOptions\relax
 
+
+% Custom list throw LaTeX Error: Command \mycustomfiction already defined?
+% https://tex.stackexchange.com/questions/388489/custom-list-throw-latex-error-command-mycustomfiction-already-defined
+\RequirePackage{morewrites}
+
+
+
+% Package csquotes Warning: Load 'inputenc' before 'csquotes'
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+
+% Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing
+% https://tex.stackexchange.com/questions/229638/package-biblatex-warning-babel-polyglossia-detected-but-csquotes-missing
+\RequirePackage{csquotes}
+
 % Indent the first section paragraphs
 % https://tex.stackexchange.com/questions/39227/no-indent-in-the-first-paragraph-in-a-section
 \RequirePackage{indentfirst}
@@ -74,9 +89,22 @@
 % \RequirePackage{layouts}
 
 
+% Always use it as should improve full justification
+% https://tex.stackexchange.com/questions/10377/texttt-overfull-hbox-problem
+% https://tex.stackexchange.com/questions/66052/should-i-load-microtype-with-pdflatex
+\RequirePackage{microtype}
+
+% How to auto adjust my last table column width, and why is there Underfull \vbox badness on this table?
+% https://tex.stackexchange.com/questions/387238/how-to-auto-adjust-my-last-table-column-width-and-why-is-there-underfull-vbox/387251
+%
+% Why ltablex package breaks the changepage package?
+% https://tex.stackexchange.com/questions/404339/why-ltablex-package-breaks-the-changepage-package
+\RequirePackage{ltablex}\keepXColumns
+
 
 % CONFIGURAÇÕES DE PACOTES
 \newcommand{\ifnotempty}[2]{\ifthenelse{\not\equal{#1}{}}{#2}{}}
+\newcommand{\ifnotdefined}[3]{\ifdefined #1 #3 \else #2 \fi}
 
 % Comandos de dados - programa
 \providecommand{\imprimirprograma}{}
@@ -93,6 +121,19 @@
 
 \providecommand{\imprimirinstituicaosigla}{}
 \newcommand{\instituicaosigla}[1]{\renewcommand{\imprimirinstituicaosigla}{#1}}
+
+\providecommand{\imprimirano}{}
+\newcommand{\ano}[1]{\renewcommand{\imprimirano}{#1}}
+
+
+% Comandos de dados - Coordenador
+\newcommand{\coordenadorname}{Coordenador}
+\providecommand{\imprimircoordenadorRotulo}{}
+\providecommand{\imprimircoordenador}{}
+\newcommand{\coordenador}[2][\coordenadorname]%
+  {\renewcommand{\imprimircoordenadorRotulo}{#1}%
+   \renewcommand{\imprimircoordenador}{#2}}
+
 
 % inclui subtitulo na capa, folha de rosto e ficha catalografica
 % https://github.com/lrsantos11/abntex2-ufsc/commit/fd30245353dcc49e193d281c78104afe54df9fe7
@@ -123,21 +164,24 @@
 \newtheorem{postulado}{Postulado}[chapter]
 \newtheorem{teorema}{Teorema}[chapter]
 \newtheorem{conjectura}{Conjectura}[chapter]
-\newtheorem{corolario}{Coral\'ario}[teorema]
+\newtheorem{corolario}[teorema]{Corol\'ario}
 \newtheorem{lema}[teorema]{Lema}
-\newtheorem{proposicao}{Proposi\c{c}\~ao}[teorema]
+\newtheorem{proposicao}[teorema]{Proposi\c{c}\~ao}
 
 
 % Commonly used in definitions, conditions, problems and examples.
 \theoremstyle{definition}
-\newtheorem{definicao}{Defini\c{c}\~ao}[section]
+\newtheorem{definicao}{Defini\c{c}\~ao}[chapter]
 \newtheorem{exemplo}{Exemplo}[section]
 \newtheorem{exercicio}{Exerc\'icio}[section]
-\newtheorem{condicao}{Condi\c{c}\~ao}[section]
+\newtheorem{condicao}{Condi\c{c}\~ao}[chapter]
 
 
 \theoremstyle{remark}
-\newtheorem*{observacao}{Observa\c{c}\~ao}
+\newtheorem{observacao}{Observa\c{c}\~ao}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
 
 
 % Margens
@@ -305,7 +349,7 @@
 \setlength{\cftnumberboxnumberwidth}{2em}
 \renewcommand{\tocprintchapter}
 {%
-    \addtocontents{toc}{\cftsetindents{chapter}{1em}{\cftlastnumwidth}}
+    \addtocontents{toc}{\cftsetindents{chapter}{0em}{\cftlastnumwidth}}
 }
 %
 \renewcommand{\tocinnonumchapter}
@@ -320,20 +364,20 @@
 %
 \renewcommand{\tocpartapendices}
 {%
-    \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{\cftnumberboxnumberwidth}}
+    \addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{\cftnumberboxnumberwidth}}
     \cftinserthook{toc}{A}
 }
 %
 \renewcommand{\tocpartanexos}
 {%
-    \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{\cftnumberboxnumberwidth}}
+    \addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{\cftnumberboxnumberwidth}}
     \cftinserthook{toc}{A}
 }
 
 \renewcommand{\cftpartfont}{\ABNTEXpartfont}
 \renewcommand{\cftpartpagefont}{\cftpartfont}
 
-%\renewcommand{\cftchapterfont}{\ABNTEXchapterfont}
+\renewcommand{\cftchapterfont}{\ABNTEXchapterfont}
 \renewcommand{\cftchapterpagefont}{\cftchapterfont}
 
 \renewcommand{\cftsectionfont}{\ABNTEXsectionfont}
@@ -459,39 +503,39 @@
 % ------------------------------------------------------------------------
 
 % % Custom settings
-\makeatletter
-\newcommand\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
+% \makeatletter
+% \newcommand\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
 
-\makechapterstyle{VZ14}
-{%
-    % \thispagestyle{empty}
-    \setlength\beforechapskip{50pt}
-    \setlength\midchapskip{20pt}
-    \setlength\afterchapskip{20pt}
-    \renewcommand\chapternamenum{}
-    \renewcommand\printchaptername{}
-    \renewcommand\chapnamefont{\Huge\scshape}
-    \renewcommand\printchapternum
-    {%
-        \chapnamefont\null\thickhrulefill\quad
-        \@chapapp\space\thechapter\quad\thickhrulefill
-    }
-    \renewcommand\printchapternonum
-    {%
-        \par\thickhrulefill\par\vskip\midchapskip
-        \hrule\vskip\midchapskip
-    }
-    \renewcommand\chaptitlefont{\huge\scshape\centering}
-    \renewcommand\afterchapternum
-    {%
-        \par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip
-    }
-    \renewcommand\afterchaptertitle
-    {%
-        \par\vskip\midchapskip\hrule\nobreak\vskip\afterchapskip
-    }
-}
-\makeatother
+% \makechapterstyle{VZ14}
+% {%
+%     % \thispagestyle{empty}
+%     \setlength\beforechapskip{50pt}
+%     \setlength\midchapskip{20pt}
+%     \setlength\afterchapskip{20pt}
+%     \renewcommand\chapternamenum{}
+%     \renewcommand\printchaptername{}
+%     \renewcommand\chapnamefont{\Huge\scshape}
+%     \renewcommand\printchapternum
+%     {%
+%         \chapnamefont\null\thickhrulefill\quad
+%         \@chapapp\space\thechapter\quad\thickhrulefill
+%     }
+%     \renewcommand\printchapternonum
+%     {%
+%         \par\thickhrulefill\par\vskip\midchapskip
+%         \hrule\vskip\midchapskip
+%     }
+%     \renewcommand\chaptitlefont{\huge\scshape\centering}
+%     \renewcommand\afterchapternum
+%     {%
+%         \par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip
+%     }
+%     \renewcommand\afterchaptertitle
+%     {%
+%         \par\vskip\midchapskip\hrule\nobreak\vskip\afterchapskip
+%     }
+% }
+% \makeatother
 
 % Veja outros estilos em:
 % http://repositorios.cpai.unb.br/ctan/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf
@@ -574,17 +618,15 @@
         \center
         {%
             \ABNTEXchapterfont\ufsccaptionsize\MakeTextUppercase{\imprimirinstituicao}
-            \newline\MakeTextUppercase{\imprimirbiblioteca}
+            \par\MakeTextUppercase{\imprimirautor}
         }
 
-        \vfill
-
-        {\ufsccaptionsize\imprimirautor}
 
         \vfill
         {%
+        \center
             {\ABNTEXchapterfont\MakeUppercase{\imprimirtitulo}}
-            \ifnotempty{\imprimirsubtitulo}{{\ABNTEXchapterfont:} \newline \imprimirsubtitulo}
+            \ifnotempty{\imprimirsubtitulo}{{\ABNTEXchapterfont\!:} \par \imprimirsubtitulo}
         }
         \vfill
 
@@ -592,7 +634,7 @@
             \ufsccaptionsize
             \imprimirlocal
 
-            \imprimirdata
+            \imprimirano
         }
         \vspace*{1cm}
 
@@ -621,7 +663,7 @@
         \begin{center}
 
             {\ABNTEXchapterfont\MakeUppercase{\imprimirtitulo}}
-            \abntex@ifnotempty{\imprimirsubtitulo}{{\ABNTEXchapterfont:} \\ \imprimirsubtitulo}
+            \abntex@ifnotempty{\imprimirsubtitulo}{{\ABNTEXchapterfont\!:} \\ \imprimirsubtitulo}
 
         \end{center}
         \vspace*{\fill}
@@ -653,11 +695,21 @@
             \ufsccaptionsize
             \imprimirlocal
 
-            \imprimirdata
+            \imprimirano
         }
 
     \end{center}
 }
 \makeatother
 
+% If document class is equal to something then do not use package
+% https://tex.stackexchange.com/questions/46223/if-document-class-is-equal-to-something-then-do-not-use-package
+\makeatletter
+\@ifclassloaded{abntex2}
+{
+    % Package hyperref Warning: Token not allowed in a PDF string?
+    % https://tex.stackexchange.com/questions/384885/package-hyperref-warning-token-not-allowed-in-a-pdf-string
+    \pdfstringdefDisableCommands{\let\uppercase\relax}
+}{}
+\makeatother
 

@@ -1,3 +1,50 @@
+%----------------------------------------------------------------------------------------
+%   File settings
+%----------------------------------------------------------------------------------------
+
+% Comment this, unless you are debugging pages' badness Underfull & Overflow
+% https://tex.stackexchange.com/questions/115908/geometry-showframe-landscape
+%
+% What is the difference between \usepackage{showframe} and \usepackage[showframe]{geometry}?
+% https://tex.stackexchange.com/questions/387077/what-is-the-difference-between-usepackageshowframe-and-usepackageshowframe
+%
+% How to do the memoir headings fix but not have my text going over the page bottom margins?
+% https://tex.stackexchange.com/questions/387257/how-to-do-the-memoir-headings-fix-but-not-have-my-text-going-over-the-page-botto
+%
+% Print page margins of a document, for debugging bad boxes
+% https://tex.stackexchange.com/questions/14508/print-page-margins-of-a-document
+% \usepackage[showframe,pass]{geometry}
+
+
+% To use the font Times New Roman, instead of the default LaTeX font
+% more up-to-date than '\usepackage{mathptmx}'
+% \usepackage{newtxtext}
+% \usepackage{newtxmath}
+
+% Novo list of (listings) para QUADROS usando newfloat
+\usepackage{newfloat}
+\makeatletter
+%% we define a helper macro for adjusting lists of new floats to
+%% accept a * behind them for not being shown in the TOC, like
+%% the other list printing commands in memoir
+% https://tex.stackexchange.com/questions/176418/remove-list-of-newfloat-from-toc
+\newcommand{\AdjustForMemoir}[1]{%
+  \csletcs{kept@listof#1}{listof#1}%
+  \csdef{listof#1}{%
+    \@ifstar
+     {\csappto{newfloat@listof#1@hook}{\append@star}%
+      \csuse{kept@listof#1}}%
+     {\csuse{kept@listof#1}}%
+  }
+}
+\def\append@star#1{#1*}
+\makeatother
+% \newcommand{\quadroname}{Quadro}
+% \newcommand{\listofquadrosname}{Lista de Quadros}
+\DeclareFloatingEnvironment[fileext=loq,placement={!hbtp},name=Quadro,within=chapter,listname=Lista de Quadros]{quadro}
+\AdjustForMemoir{quadro}
+\newlistentry{quadro}{loq}{0}
+
 
 
 % Thesis settings
@@ -16,54 +63,6 @@
 % https://tex.stackexchange.com/questions/182569/how-to-manually-set-where-a-word-is-split
 \hyphenation{Ge-la-im}
 
-% Informações de dados para CAPA e FOLHA DE ROSTO
-\titulo
-{%
-    \lang
-    {Canonical Model of Monograph, Dissertation, Thesis or Report}
-    {Modelo Canônico de Monografia,  Dissertação, Tese ou Relatório}
-}
-\subtitulo
-{%
-    \lang
-    {Post\hyp{}Doctorate from UFSC with \abnTeX{}}
-    {Pós--Doutorado da UFSC com \abnTeX{}}
-}
-
-\data{\today}
-\autor{\lang{Author's name}{Nome do Autor}}
-\local{\lang{\brazilword{Florianópolis, Santa Catarina} -- Brazil}{Florianópolis, Santa Catarina -- Brasil}}
-
-\biblioteca{\lang{University Library}{Biblioteca Universitária}}
-\orientador{\lang{Prof. PhD. Supervisor Name}{Prof. Dr. Nome do Coorientador}}
-\coorientador{\lang{Prof. PhD. Co\hyp{}supervisor Name}{Prof. Dr. Nome do Coorientador}}
-
-\instituicaosigla{UFSC}
-\instituicao{\lang{Federal University of \brazilword{Santa Catarina}}{Universidade Federal de Santa Catarina}}
-\tipotrabalho{\lang{Doctoral Thesis}{Tese de Doutorado}}
-
-\area{\lang{concentration in Power Electronics and Electrical Drive}{concentração em Eletrônica de Potência e Acionamento Elétrico}}
-\formacao{\lang{Doctor's Degree in Electrical Engineering}{Grau de Doutor em Engenharia Elétrica}}
-\programa{\lang{Postgraduate Program in Electrical Engineering}{Programa de Pós\hyp{}Graduação em Engenharia Elétrica}}
-\centro{\lang{Department of Electrical and Electronic Engineering}{Departamento de Engenharia Elétrica e Eletrônica}}
-
-% O preambulo deve conter tipo do trabalho, objetivo, nome da instituição e a área de concentração.
-\preambulo
-{%
-    \lang
-    {Thesis submitted to the~\imprimirprograma~of the~\imprimirinstituicao~to obtain the \imprimirformacao. \showfont}
-    {Tese submetida ao \imprimirprograma da \imprimirinstituicao para a obtenção do Título de \imprimirformacao. \showfont}
-}
-
-% Keywords
-\newcommand{\palavraschaveingles}
-{%
-    \item latex. \item abntex. \item text publishing.
-}
-\newcommand{\palavraschaveportugues}
-{%
-    \item latex. \item abntex. \item editoração de texto.
-}
 
 % Patch the `abntex2` citacao environment
 \xpatchcmd{\citacao}

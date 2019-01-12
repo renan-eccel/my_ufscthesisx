@@ -33,6 +33,7 @@
 *.xdy
 *.tdo
 *.fls
+*.loq
 
 .DS_Store
 /.settings
@@ -57,4 +58,4 @@
 *.run.xml
 *.bcf
 *.cut
-
+*.sublime*
