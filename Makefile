@@ -61,6 +61,13 @@ LATEX =	$(PDF_LATEX_COMMAND)\
 -aux-directory="$(CACHE_FOLDER)"
 
 
+# Calculate the elapsed seconds and print them to the screen
+define print_results =
+. ./setup/scripts/timer_calculator.sh
+showTheElapsedSeconds "$(current_dir)"
+echo "$(CACHE_FOLDER)/main.log:10 "
+endef
+
 # Run pdflatex, biber, pdflatex
 biber: start_timer biber_hook pdflatex_hook2
 
@@ -69,10 +76,7 @@ biber: start_timer biber_hook pdflatex_hook2
 
 	# Copies the PDF to the current folder
 	cp $(CACHE_FOLDER)/$(THESIS_MAIN_FILE).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
-
-	# Calculate the elapsed seconds and print them to the screen
-	. ./setup/scripts/timer_calculator.sh
-	showTheElapsedSeconds "$(current_dir)"
+	$(print_results)
 
 
 start_timer:
@@ -111,8 +115,7 @@ latex: $(LATEX_PDF_FILES)
 	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
 
 	# Calculate the elapsed seconds and print them to the screen
-	. ./setup/scripts/timer_calculator.sh
-	showTheElapsedSeconds "$(current_dir)"
+	$(print_results)
 
 
 # Dynamically generated recipes for all PDF and latex files
@@ -171,7 +174,7 @@ thesis:
 	cp $(CACHE_FOLDER)/$(THESIS_MAIN_FILE).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
 
 	# Calculate the elapsed seconds and print them to the screen
-	showTheElapsedSeconds "$(current_dir)"
+	$(print_results)
 
 
 verbose:
@@ -198,7 +201,7 @@ verbose:
 	cp $(CACHE_FOLDER)/$(THESIS_MAIN_FILE).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
 
 	# Calculate the elapsed seconds and print them to the screen
-	showTheElapsedSeconds "$(current_dir)"
+	$(print_results)
 
 
 clean:
