@@ -61,6 +61,12 @@ LATEX =	$(PDF_LATEX_COMMAND)\
 -aux-directory="$(CACHE_FOLDER)"
 
 
+# Copies the PDF to the current folder
+define copy_resulting_pdf=
+cp $(CACHE_FOLDER)/$(THESIS_MAIN_FILE).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
+# cp $(CACHE_FOLDER)/$(THESIS_MAIN_FILE).pdf /cygdrive/D/User/Downloads/$(THESIS_OUTPUT_NAME).pdf
+endef
+
 # Calculate the elapsed seconds and print them to the screen
 define print_results =
 . ./setup/scripts/timer_calculator.sh
@@ -74,8 +80,7 @@ biber: start_timer biber_hook pdflatex_hook2
 	# Creates the shell variable `current_dir` within the current folder path
 	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
 
-	# Copies the PDF to the current folder
-	cp $(CACHE_FOLDER)/$(THESIS_MAIN_FILE).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
+	$(copy_resulting_pdf)
 	$(print_results)
 
 
@@ -128,7 +133,7 @@ latex: $(LATEX_PDF_FILES)
 	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
 
 	@$(LATEX) $<
-	cp $(CACHE_FOLDER)/$(THESIS_MAIN_FILE).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
+	$(copy_resulting_pdf)
 
 
 # MAIN LATEXMK RULE
@@ -170,10 +175,7 @@ thesis:
 	--pdflatex="$(PDF_LATEX_COMMAND) --interaction=batchmode" \
 	$(THESIS_MAIN_FILE).tex
 
-	# Copy the generated PDF file from the cache folder
-	cp $(CACHE_FOLDER)/$(THESIS_MAIN_FILE).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
-
-	# Calculate the elapsed seconds and print them to the screen
+	$(copy_resulting_pdf)
 	$(print_results)
 
 
@@ -197,10 +199,7 @@ verbose:
 	--pdflatex="$(PDF_LATEX_COMMAND) --interaction=nonstopmode" \
 	$(THESIS_MAIN_FILE).tex
 
-	# Copy the generated PDF file from the cache folder
-	cp $(CACHE_FOLDER)/$(THESIS_MAIN_FILE).pdf $(current_dir)/$(THESIS_OUTPUT_NAME).pdf
-
-	# Calculate the elapsed seconds and print them to the screen
+	$(copy_resulting_pdf)
 	$(print_results)
 
 
