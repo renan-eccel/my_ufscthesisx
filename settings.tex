@@ -23,11 +23,16 @@
 
 % Novo list of (listings) para QUADROS usando newfloat
 \usepackage{newfloat}
+
+% https://tex.stackexchange.com/questions/329631/creating-new-captions-and-caption-counters
+\def\listofboardsname{List of Frames}
+\DeclareFloatingEnvironment[fileext=loq,placement={!hbtp},name=Frame,within=chapter,listname=\listofboardsname]{board}
+
+% https://tex.stackexchange.com/questions/482886/how-to-add-babel-captions-to-newfloat-package-environments
+\addto\captionsbrazil{\renewcommand{\boardname}{Quadro}}
+\addto\captionsbrazil{\renewcommand{\listofboardsname}{Lista de Quadros}}
+
 \makeatletter
-%% we define a helper macro for adjusting lists of new floats to
-%% accept a * behind them for not being shown in the TOC, like
-%% the other list printing commands in memoir
-% https://tex.stackexchange.com/questions/176418/remove-list-of-newfloat-from-toc
 \newcommand{\AdjustForMemoir}[1]{%
   \csletcs{kept@listof#1}{listof#1}%
   \csdef{listof#1}{%
@@ -39,11 +44,10 @@
 }
 \def\append@star#1{#1*}
 \makeatother
-% \newcommand{\quadroname}{Quadro}
-% \newcommand{\listofquadrosname}{Lista de Quadros}
-\DeclareFloatingEnvironment[fileext=loq,placement={!hbtp},name=Quadro,within=chapter,listname=Lista de Quadros]{quadro}
-\AdjustForMemoir{quadro}
-\newlistentry{quadro}{loq}{0}
+
+% https://tex.stackexchange.com/questions/176418/remove-list-of-newfloat-from-toc
+\AdjustForMemoir{board}
+\newlistentry{board}{loq}{0}
 
 
 
