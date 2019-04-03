@@ -71,7 +71,7 @@ endef
 define print_results =
 . ./setup/scripts/timer_calculator.sh
 showTheElapsedSeconds "$(current_dir)"
-echo "$(CACHE_FOLDER)/main.log:10 "
+echo "$(CACHE_FOLDER)/main.log:10000000 "
 endef
 
 # Run pdflatex, biber, pdflatex
