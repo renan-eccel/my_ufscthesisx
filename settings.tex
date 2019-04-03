@@ -21,35 +21,6 @@
 % \usepackage{newtxtext}
 % \usepackage{newtxmath}
 
-% Novo list of (listings) para QUADROS usando newfloat
-\usepackage{newfloat}
-
-% https://tex.stackexchange.com/questions/329631/creating-new-captions-and-caption-counters
-\def\listofboardsname{List of Frames}
-\DeclareFloatingEnvironment[fileext=loq,placement={!hbtp},name=Frame,within=chapter,listname=\listofboardsname]{board}
-
-% https://tex.stackexchange.com/questions/482886/how-to-add-babel-captions-to-newfloat-package-environments
-\addto\captionsbrazil{\renewcommand{\boardname}{Quadro}}
-\addto\captionsbrazil{\renewcommand{\listofboardsname}{Lista de Quadros}}
-
-\makeatletter
-\newcommand{\AdjustForMemoir}[1]{%
-  \csletcs{kept@listof#1}{listof#1}%
-  \csdef{listof#1}{%
-    \@ifstar
-     {\csappto{newfloat@listof#1@hook}{\append@star}%
-      \csuse{kept@listof#1}}%
-     {\csuse{kept@listof#1}}%
-  }
-}
-\def\append@star#1{#1*}
-\makeatother
-
-% https://tex.stackexchange.com/questions/176418/remove-list-of-newfloat-from-toc
-\AdjustForMemoir{board}
-\newlistentry{board}{loq}{0}
-
-
 
 % Thesis settings
 \newcommand{\brazilword}[1]{\foreignlanguage{brazil}{#1}}

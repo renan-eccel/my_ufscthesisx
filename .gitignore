@@ -33,7 +33,7 @@
 *.xdy
 *.tdo
 *.fls
-*.loq
+*.lob
 
 .DS_Store
 /.settings
