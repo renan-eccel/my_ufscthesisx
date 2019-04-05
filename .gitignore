@@ -1,3 +1,23 @@
+.DS_Store
+/.settings
+/.project
+/.texlipse
+/.gitignore
+/example.pdf
+/tmp
+
+*.sublime-workspace
+*.pdf
+
+# Latex files related
+*.brf
+*.lol
+*.mtc1
+*.synctex(busy)
+*.synctex.gz(busy)
+*.run.xml
+*.bcf
+*.cut
 *.acn
 *.acr
 *.alg
@@ -34,28 +54,3 @@
 *.tdo
 *.fls
 *.lob
-
-.DS_Store
-/.settings
-/.project
-/.texlipse
-/.gitignore
-/example.pdf
-/tmp
-
-
-# =========================
-# Latex files related
-# =========================
-*.brf
-*.lol
-*.mtc1
-*.sublime-workspace
-*.pdf
-*.synctex(busy)
-*.synctex.gz(busy)
-
-*.run.xml
-*.bcf
-*.cut
-
