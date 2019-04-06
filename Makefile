@@ -3,13 +3,13 @@
 ECHOCMD:=/bin/echo -e
 
 # The main latex file
-THESIS_MAIN_FILE = main
+THESIS_MAIN_FILE := main
 
 # This will be the pdf generated
-THESIS_OUTPUT_NAME = thesis
+THESIS_OUTPUT_NAME := thesis
 
 # This is the folder where the temporary files are going to be
-CACHE_FOLDER = setup/cache
+CACHE_FOLDER := setup/cache
 
 # Find all files ending with `main.tex`
 LATEX_SOURCE_FILES := $(wildcard *main.tex)
@@ -21,6 +21,7 @@ LATEX_PDF_FILES := $(LATEX_SOURCE_FILES:.tex=.pdf)
 # GNU Make silent by default
 # https://stackoverflow.com/questions/24005166/gnu-make-silent-by-default
 MAKEFLAGS += --silent
+GITIGNORE_PATH := .gitignore
 .PHONY: all help biber start_timer biber_hook pdflatex_hook1 pdflatex_hook2 latex thesis verbose clean
 
 # How do I write the 'cd' command in a makefile?
@@ -208,18 +209,42 @@ clean:
 	$(RM) -v $(THESIS_OUTPUT_NAME).pdf
 
 
-# Using Makefile to clean subdirectories
-# https://stackoverflow.com/questions/26007005/using-makefile-to-clean-subdirectories
-#
-# Exclude directory from find . command
 # https://stackoverflow.com/questions/4210042/exclude-directory-from-find-command
+DIRECTORIES_TO_CLEAN := $(shell /bin/find -not -path "./**.git**" -not -path "./pictures**" -type d)
 GARBAGE_TYPES := "*.gz(busy)" *.aux *.log *.aux *.bbl *.log *.out *.toc *.dvi *.blg\
-*.synctex.gz *.fdb_latexmk *.fls *.lot *.lol *.lof *.idx *.bcf *.mw *.run.xml
+*.synctex.gz *.fdb_latexmk *.fls *.lot *.lol *.lof *.idx *.bcf *.mw *.run.xml .*loq
 
-DIRECTORIES_TO_CLEAN  := $(shell /bin/find -not -path "./**.git**" -not -path "./pictures**" -type d)
 GARBAGE_TYPED_FOLDERS := $(foreach DIR, $(DIRECTORIES_TO_CLEAN), $(addprefix $(DIR)/,$(GARBAGE_TYPES)))
 
-veryclean:
+veryclean: veryclean_broke veryclean_bugged clean
+veryclean_bugged:
 	$(RM) -v $(GARBAGE_TYPED_FOLDERS)
 
+# https://stackoverflow.com/questions/55527923/how-to-stop-makefile-from-expanding-my-shell-output
+RAW_GITIGNORE_CONTENTS := $(shell while read -r line; do printf "$$line "; done < "$(GITIGNORE_PATH)")
+GITIGNORE_CONTENTS := $(shell echo "$(RAW_GITIGNORE_CONTENTS)" | sed -E $$'s/[^\#]+\# //g')
+
+# https://stackoverflow.com/questions/55545253/how-to-expand-wildcard-inside-shell-code-block-in-a-makefile
+veryclean_broke:
+# 	https://stackoverflow.com/questions/10586153/split-string-into-an-array-in-bash
+# 	https://stackoverflow.com/questions/11289551/argument-list-too-long-error-for-rm-cp-mv-commands
+	readarray -td' ' GARBAGE_DIRECTORIES <<<"$(DIRECTORIES_TO_CLEAN) "; \
+	unset 'GARBAGE_DIRECTORIES[-1]'; \
+	declare -p GARBAGE_DIRECTORIES; \
+	readarray -td' ' GARBAGE_EXTENSIONS <<<"$(GITIGNORE_CONTENTS) "; \
+	unset 'GARBAGE_EXTENSIONS[-1]'; \
+	declare -p GARBAGE_EXTENSIONS; \
+	for filename in "$${GARBAGE_DIRECTORIES[@]}"; \
+	do \
+		arraylength="$${#GARBAGE_EXTENSIONS[@]}"; \
+		printf 'Cleaning %s extensions on %s\n' "$${arraylength}" "$$filename"; \
+		for extension in "$${GARBAGE_EXTENSIONS[@]}"; \
+		do \
+			[[ ! -z "$$filename" ]] || continue; \
+			[[ ! -z "$$extension" ]] || continue; \
+			full_expression="$${filename}/$${extension}" ;\
+# 			printf '%s\n' "$$full_expression"; \
+			rm -vf "$$full_expression"; \
+		done; \
+	done;
 
