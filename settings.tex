@@ -2,16 +2,10 @@
 %   File settings
 %----------------------------------------------------------------------------------------
 
-% Comment this, unless you are debugging pages' badness Underfull & Overflow
+% Uncomment this if you are debugging pages' badness Underfull & Overflow
 % https://tex.stackexchange.com/questions/115908/geometry-showframe-landscape
-%
-% What is the difference between \usepackage{showframe} and \usepackage[showframe]{geometry}?
 % https://tex.stackexchange.com/questions/387077/what-is-the-difference-between-usepackageshowframe-and-usepackageshowframe
-%
-% How to do the memoir headings fix but not have my text going over the page bottom margins?
 % https://tex.stackexchange.com/questions/387257/how-to-do-the-memoir-headings-fix-but-not-have-my-text-going-over-the-page-botto
-%
-% Print page margins of a document, for debugging bad boxes
 % https://tex.stackexchange.com/questions/14508/print-page-margins-of-a-document
 % \usepackage[showframe,pass]{geometry}
 
@@ -22,19 +16,18 @@
 % \usepackage{newtxmath}
 
 
-% Thesis settings
+% Simple alias for English and Portuguese words
 \newcommand{\brazilword}[1]{\foreignlanguage{brazil}{#1}}
 \newcommand{\englishword}[1]{\foreignlanguage{english}{#1}}
 
-\lang % Switch between english and brazil for big text blocks
+% Switch between english and brazil for big text blocks
+\lang
 {\includecomment{englishtext}\excludecomment{braziltext}}
 {\includecomment{braziltext}\excludecomment{englishtext}}
 
-% What is the difference between \def and \newcommand?
 % https://tex.stackexchange.com/questions/655/what-is-the-difference-between-def-and-newcommand
 \def\mytextpreliminarylistname{\lang{Brief Table of Contents}{Breve Sumário}}
 
-% How to manually set where a word is split?
 % https://tex.stackexchange.com/questions/182569/how-to-manually-set-where-a-word-is-split
 \hyphenation{Ge-la-im}
 
@@ -51,7 +44,7 @@
     \renewcommand{\coorientadorname}{Coorientador}
 }
 
-% Create caption English translations as the sections headers
+% Add English translations
 % https://tex.stackexchange.com/questions/8564/what-is-the-right-way-to-redefine-macros-defined-by-babel
 \addto\captionsenglish
 {
@@ -73,7 +66,6 @@
     \renewcommand{\listadesimbolosname}{List of symbols}
     \renewcommand{\fontename}{Source}
     \renewcommand{\notaname}{Note}
-    %% adjusts names used by \autoref
     \renewcommand{\pageautorefname}{page}
     \renewcommand{\sectionautorefname}{section}
     \renewcommand{\subsectionautorefname}{subsection}
@@ -102,8 +94,6 @@
 
 
 % Espaçamentos entre linhas e parágrafos
-%
-% ifpackageloaded question
 % https://tex.stackexchange.com/questions/70212/ifpackageloaded-question
 \makeatletter
 \@ifclassloaded{memoir}
@@ -162,10 +152,10 @@
         \hypersetup
         {
             pdftitle={\@title},
-            colorlinks=true, % false: boxed links; true: colored links
-            linkcolor=darkblue, % color of internal links
+            colorlinks=true,     % false: boxed links; true: colored links
+            linkcolor=darkblue,  % color of internal links
             citecolor=darkgreen, % color of links to bibliography
-            filecolor=black, % color of file links
+            filecolor=black,     % color of file links
             urlcolor=linkcolor,
             bookmarksdepth=4
         }
@@ -190,8 +180,6 @@
 }{}
 \makeatother
 
-
-% Changing the font of the numbers in the ToC in the memoir class
 % https://tex.stackexchange.com/questions/14314/changing-the-font-of-the-numbers-in-the-toc-in-the-memoir-class
 \renewcommand{\cftpartfont}{\ABNTEXpartfont\color{ultramarine}}
 \renewcommand{\cftpartpagefont}{\ABNTEXpartfont\color{black}}
@@ -210,7 +198,6 @@
 
 \renewcommand{\cftparagraphfont}{\ABNTEXsubsubsubsectionfont\color{ultramarine}}
 \renewcommand{\cftparagraphpagefont}{\ABNTEXsubsubsubsectionfont\color{black}}
-
 
 % Backref package settings, pages with citations in bibliography
 \makeatletter
