@@ -211,23 +211,16 @@ clean:
 
 # https://stackoverflow.com/questions/4210042/exclude-directory-from-find-command
 DIRECTORIES_TO_CLEAN := $(shell /bin/find -not -path "./**.git**" -not -path "./pictures**" -type d)
-GARBAGE_TYPES := "*.gz(busy)" *.aux *.log *.aux *.bbl *.log *.out *.toc *.dvi *.blg\
-*.synctex.gz *.fdb_latexmk *.fls *.lot *.lol *.lof *.idx *.bcf *.mw *.run.xml .*loq
-
-GARBAGE_TYPED_FOLDERS := $(foreach DIR, $(DIRECTORIES_TO_CLEAN), $(addprefix $(DIR)/,$(GARBAGE_TYPES)))
-
-veryclean: veryclean_broke veryclean_bugged clean
-veryclean_bugged:
-	$(RM) -v $(GARBAGE_TYPED_FOLDERS)
 
 # https://stackoverflow.com/questions/55527923/how-to-stop-makefile-from-expanding-my-shell-output
 RAW_GITIGNORE_CONTENTS := $(shell while read -r line; do printf "$$line "; done < "$(GITIGNORE_PATH)")
 GITIGNORE_CONTENTS := $(shell echo "$(RAW_GITIGNORE_CONTENTS)" | sed -E $$'s/[^\#]+\# //g')
 
+# https://stackoverflow.com/questions/10586153/split-string-into-an-array-in-bash
+# https://stackoverflow.com/questions/11289551/argument-list-too-long-error-for-rm-cp-mv-commands
 # https://stackoverflow.com/questions/55545253/how-to-expand-wildcard-inside-shell-code-block-in-a-makefile
-veryclean_broke:
-# 	https://stackoverflow.com/questions/10586153/split-string-into-an-array-in-bash
-# 	https://stackoverflow.com/questions/11289551/argument-list-too-long-error-for-rm-cp-mv-commands
+veryclean: veryclean_hidden clean
+veryclean_hidden:
 	readarray -td' ' GARBAGE_DIRECTORIES <<<"$(DIRECTORIES_TO_CLEAN) "; \
 	unset 'GARBAGE_DIRECTORIES[-1]'; \
 	declare -p GARBAGE_DIRECTORIES; \
@@ -243,8 +236,7 @@ veryclean_broke:
 			[[ ! -z "$$filename" ]] || continue; \
 			[[ ! -z "$$extension" ]] || continue; \
 			full_expression="$${filename}/$${extension}" ;\
-# 			printf '%s\n' "$$full_expression"; \
-			rm -vf "$$full_expression"; \
+			rm -vf $${full_expression}; \
 		done; \
 	done;
 
