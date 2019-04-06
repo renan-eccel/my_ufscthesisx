@@ -17,14 +17,11 @@ LATEX_SOURCE_FILES := $(wildcard *main.tex)
 # Create a new variable within all `LATEX_SOURCE_FILES` file names ending with `.pdf`
 LATEX_PDF_FILES := $(LATEX_SOURCE_FILES:.tex=.pdf)
 
-
-# GNU Make silent by default
 # https://stackoverflow.com/questions/24005166/gnu-make-silent-by-default
 MAKEFLAGS += --silent
 GITIGNORE_PATH := .gitignore
 .PHONY: all help biber start_timer biber_hook pdflatex_hook1 pdflatex_hook2 latex thesis verbose clean
 
-# How do I write the 'cd' command in a makefile?
 # http://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-makefile
 .ONESHELL:
 
@@ -53,9 +50,9 @@ help:
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
 
-# Where to find official (!) and extended documentation for tex/latex's commandline options (especially -interaction modes)?
 # https://tex.stackexchange.com/questions/91592/where-to-find-official-and-extended-documentation-for-tex-latexs-commandlin
-PDF_LATEX_COMMAND = pdflatex --time-statistics --synctex=1 -halt-on-error -file-line-error
+# https://tex.stackexchange.com/questions/52988/avoid-linebreaks-in-latex-console-log-output-or-increase-columns-in-terminal
+PDF_LATEX_COMMAND = pdflatex --time-statistics --synctex=1 -halt-on-error -file-line-error --max-print-line=10000
 LATEX =	$(PDF_LATEX_COMMAND)\
 --interaction=batchmode\
 -output-directory="$(CACHE_FOLDER)"\
@@ -75,27 +72,26 @@ showTheElapsedSeconds "$(current_dir)"
 echo "$(CACHE_FOLDER)/main.log:10000000 "
 endef
 
+define setup_envinronment =
+. ./setup/scripts/timer_calculator.sh
+$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
+endef
+
 # Run pdflatex, biber, pdflatex
 biber: start_timer biber_hook pdflatex_hook2
-
-	# Creates the shell variable `current_dir` within the current folder path
-	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
-
+	$(setup_envinronment)
 	$(copy_resulting_pdf)
 	$(print_results)
 
 
 start_timer:
-
 	# Start counting the elapsed seconds to print them to the screen later
 	. ./setup/scripts/timer_calculator.sh
 
 
 # Internally called rule which does not attempt to show the elapsed time
 biber_hook:
-
-	# Creates the shell variable `current_dir` within the current folder path
-	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
+	$(setup_envinronment)
 
 	# Enters to the thesis folder to build the files
 	cd ./$(THESIS_FOLDER)
@@ -107,18 +103,14 @@ biber_hook:
 	biber --quiet --input-directory="$(CACHE_FOLDER)" --output-directory="$(CACHE_FOLDER)" $(THESIS_MAIN_FILE).bcf
 
 
-# How to call Makefile recipe/rule multiple times?
 # https://stackoverflow.com/questions/46135614/how-to-call-makefile-recipe-rule-multiple-times
 pdflatex_hook1 pdflatex_hook2:
-
 	@$(LATEX) $(LATEX_SOURCE_FILES)
 
 
 # This rule will be called for every latex file and pdf associated
 latex: $(LATEX_PDF_FILES)
-
-	# Creates the shell variable `current_dir` within the current folder path
-	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
+	$(setup_envinronment)
 
 	# Calculate the elapsed seconds and print them to the screen
 	$(print_results)
@@ -126,12 +118,7 @@ latex: $(LATEX_PDF_FILES)
 
 # Dynamically generated recipes for all PDF and latex files
 %.pdf: %.tex
-
-	# Start counting the compilation time and import its shell functions
-	. ./setup/scripts/timer_calculator.sh
-
-	# Creates the shell variable `current_dir` within the current folder path
-	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
+	$(setup_envinronment)
 
 	@$(LATEX) $<
 	$(copy_resulting_pdf)
@@ -156,17 +143,9 @@ latex: $(LATEX_PDF_FILES)
 # https://www.ctan.org/pkg/latexmk
 # http://docs.miktex.org/manual/texfeatures.html#auxdirectory
 thesis:
+	$(setup_envinronment)
 
-	# Start counting the compilation time and import its shell functions
-	. ./setup/scripts/timer_calculator.sh
-
-	# Creates the shell variable `current_dir` within the current folder path
-	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
-
-	# What is the difference between “-interaction=nonstopmode” and “-halt-on-error”?
 	# https://tex.stackexchange.com/questions/258814/what-is-the-difference-between-interaction-nonstopmode-and-halt-on-error
-	#
-	# What reasons (if any) are there for compiling in interactive mode?
 	# https://tex.stackexchange.com/questions/25267/what-reasons-if-any-are-there-for-compiling-in-interactive-mode
 	latexmk \
 	--pdf \
@@ -181,17 +160,9 @@ thesis:
 
 
 verbose:
+	$(setup_envinronment)
 
-	# Start counting the compilation time and import its shell functions
-	. ./setup/scripts/timer_calculator.sh
-
-	# Creates the shell variable `current_dir` within the current folder path
-	$(eval current_dir := $(shell pwd)) echo $(current_dir) > /dev/null
-
-	# What is the difference between “-interaction=nonstopmode” and “-halt-on-error”?
 	# https://tex.stackexchange.com/questions/258814/what-is-the-difference-between-interaction-nonstopmode-and-halt-on-error
-	#
-	# What reasons (if any) are there for compiling in interactive mode?
 	# https://tex.stackexchange.com/questions/25267/what-reasons-if-any-are-there-for-compiling-in-interactive-mode
 	latexmk \
 	--pdf \
