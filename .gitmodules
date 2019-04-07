@@ -1,9 +1,6 @@
 [submodule "imagens"]
 	path = pictures
 	url = https://github.com/evandrocoan/abntex2-ufsc-imagens.git
-[submodule "utilities"]
-	path = setup/utilities
-	url = https://github.com/evandrocoan/latex_utilities
-[submodule "setup/scripts"]
-	path = setup/scripts
-	url = https://github.com/evandrocoan/script_utilities
+[submodule "setup"]
+	path = setup
+	url = https://github.com/evandrocoan/ufscthesisx-setup
