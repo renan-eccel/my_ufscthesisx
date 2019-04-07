@@ -3,172 +3,106 @@
 % 1. https://github.com/royertiago/tcc
 % 2. http://portal.bu.ufsc.br/normalizacao/
 % 3. https://github.com/AdrianoRuseler/abntex2-ufsc
+%
+% When the bibliography includes a cyclic reference to another bibliography,
+% you need to run `pdfTeX` 5 times on the following order:
+% 1. `pdfTeX`,
+% 2. `biber`,
+% 3. `pdfTeX`
+% 4. `pdfTeX`
+% 5. `pdfTeX`
+% 6. `biber`
+% 7. `pdfTeX`
 
-% You need to run `pdfTeX` 5 times on the following order: 1. `pdfTeX`, 2. `biber`, 3. `pdfTeX` 4.
-% `pdfTeX` 5. `pdfTeX` 6. `biber` 7. `pdfTeX`, when the bibliography includes a cyclic reference to
-% another bibliography, so we need a last pass to fix the bibliography undefined references.
+% Allows you to write your thesis both in English and Portuguese
+% https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
+\newif\ifenglish\englishfalse
 
-% Includes and fixes several `abntex2` class problems
-% Must be included before loading class
-\input{setup/setup}
+% Uncomment the line `\englishtrue` to set the document default language to English
+% \englishtrue
 
-% Uses abntex2 class
+% https://tex.stackexchange.com/questions/131002/how-to-expand-ifthenelse-so-that-it-can-be-used-in-parshape
+\newcommand{\lang}[2]{\ifenglish#1\else#2\fi}
+
+% https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last
+\ifenglish
+    \newcommand{\swapcontents}[2]{#1 #2}
+    \PassOptionsToPackage{brazil,main=english,spanish,french}{babel}
+\else
+    \newcommand{\swapcontents}[2]{#2 #1}
+    \PassOptionsToPackage{main=brazil,english,spanish,french}{babel}
+\fi
+
+% Uncomment the following line if you want to use other biblatex settings
+% \PassOptionsToPackage{style=numeric,backend=biber,backref=true,citecounter=true}{biblatex}
+
+% Disable the empty pages automatically put by memoir class, except the ones by \cleardoublepage
+% \PassOptionsToClass{openany}{memoir}
+
+% Fixes several `abntex2` class problems
+\input{setup/setup.tex}
+
+% The UFSC font size is 10.5, but memoir embedded by `abntex2` only accepts 10 and 11pt.
+% However, problem will be fixed the `ufscthesisx` package.
 \documentclass[
-10pt, %Padrão UFSC para versão final
-a5paper, %Padrão UFSC para versão final
-% 12pt, %Pode usar tamanho 12pt para defesa
-% a4paper, %Pode usar a4 para defesa
-twoside, % Impressão nos dois lados da folha
+10pt,          % Padrão UFSC para versão final
+a5paper,       % Padrão UFSC para versão final
+% 12pt,        % Pode usar tamanho 12pt para defesa
+% a4paper,     % Pode usar a4 para defesa
+twoside,       % Impressão nos dois lados da folha
 chapter=TITLE, % Título de capítulos em caixa alta
-section=TITLE,  % Título de seções em caixa alta
+section=TITLE, % Título de seções em caixa alta
 ]{abntex2}
-% The UFSC font size is 10.5, but memoir embbeded on `abntex2` only accepts 10 and 11pt. However
-% this will be fixed later by the ufscthesisx package.
-% You can see whether the font sizes are correct with the \f@size at the `\begin{document}`.
 
-
-%----------------------------------------------------------------------------------------
-%   MINOR CORRECTIONS BEFORE LOADING UFSCThesis settings
-%----------------------------------------------------------------------------------------
-% How can I put more space between bibliography entries (biblatex)
-% https://tex.stackexchange.com/questions/19105/how-can-i-put-more-space-between-bibliography-entries-biblatex
-% \setlength\bibitemsep{2.1\itemsep}
-
-
-% % Reduce font size of bibliography; overfull bibliography
-% % https://tex.stackexchange.com/questions/203764/reduce-font-size-of-bibliography-overfull-bibliography
-% \newcommand{\bibliographyfontsize}{\fontsize{10.0pt}{10.5pt}\selectfont}
-% \renewcommand*{\bibfont}{\bibliographyfontsize}
-
-% % How to correctly insert and justify abstract paragraph on my bibliography?
-% % https://tex.stackexchange.com/questions/398666/how-to-correctly-insert-and-justify-abstract
-% \DeclareFieldFormat{abstract}%
-% {%
-%     \vspace*{-0.5mm}\par\justifying
-%     \begin{adjustwidth}{1cm}{}
-%         \textbf{\bibsentence\bibstring{abstract}:} #1
-%     \end{adjustwidth}
-% }
-
-% \renewbibmacro*{finentry}%
-% {%
-%     \iffieldundef{abstract}
-%     {\finentry}
-%     {\finentrypunct
-%         \printfield{abstract}%
-%         \renewcommand*{\finentrypunct}{}%
-%         \finentry
-%     }
-% }
-
-%----------------------------------------------------------------------------------------
-%   LOAD UFSCThesis style
-%----------------------------------------------------------------------------------------
 \usepackage{setup/ufscthesisx}
-
-% Load all required basic packages
 \input{setup/utilities}
 
+% FIXME: Descomente a linha correspondente ao seu tipo de trabalho
+% \def\tcc{}
+% \def\mestrado{}
+% \def\doutorado{}
 
+% FIXME: Descomente as linhas '\coorientador', '\subtitulo' e '\area', quando houver
+\autor{Nome completo do autor/Nome completo da autora}
+\orientador[Orientador/Orientadora]{Nome do orientador/Nome da orientadora, Dr./Dra.}
+\coordenador[Coordenador/Coordenadora]{Nome do Coordenador/Nome da Coordenadora, Dr./Dra.}
 
-
-% FIXME Substituir 'Nome completo do autor' pelo seu nome.
-\autor{Nome completo do autor(a)}
-
-% FIXME Substituir 'Título do trabalho' pelo título da trabalho.
+% \coorientador[Coorientador/Coorientadora]{Nome do coorientador/Nome da coorientadora, Dr./Dra.}
 \titulo{Título do trabalho}
-% FIXME Substituir 'Subtítulo (se houver)' pelo subtítulo da trabalho.  
-% Caso não tenha substítulo, comente a linha a seguir.
-\subtitulo{Subtítulo (se houver)}
-% FIXME Se estiver defendendo uma dissertação de mestrado, descomente a linha a seguir.
 
-
-
-% FIXME Substituir 'Nome do orientador' pelo nome do seu
-% orientador.
-\orientador{Nome do orientador, Dr.}
-% FIXME Se for orientado por uma mulher, descomente a linha acima e comente a linha a seguir.
-% \orientador[Orientadora]{Nome da orientadora, Dra.}
-
-
-% FIXME Substituir 'Nome do coorientador' pelo nome do seu
-% coorientador. Caso não tenha coorientador, comente a linha a seguir.
-\coorientador{Nome do coorientador, Dr.}
-% FIXME Se for coorientado por uma mulher, comente a linha acima e descomente a linha a seguir.
-% \coorientador[Coorientadora]{Nome da coorientadora, Dra.}
-
-
-% FIXME Se for coorientado por uma mulher, descomente a linha a seguir.
-
-% FIXME Substituir 'Nome do Coordenador' pelo nome do Coordenador do 
-% programa/curso.
-\coordenador{Nome do Coordenador, Dr.}
-% FIXME Se for coordenadora mulher, comente a linha acima e descomente a linha a seguir.
-% \coordenador[Coordenadora]{Nome da Coordenadora, Dra.}
-
-% FIXME Substituir '2018' pelo ano (ou mês e ano) em que seu trabalho foi defendido.
-\ano{2018}
-
-% FIXME Substituir '\today' pela data em que ocorreu sua defesa.
-\data{\today}
-
-% FIXME Substituir 'Local' pela cidade em que ocorreu sua defesa.
-\local{Local}
-
-\instituicaosigla{UFSC}
+% \subtitulo{Subtítulo (se houver)}
+\ano{Ano da sua defesa}
+\local{Local da sua Defesa}
+\instituicaosigla{Sigla da sua instituição}
 \instituicao{Universidade Federal de Santa Catarina}
 \biblioteca{Biblioteca Universitária}
+\tipotrabalho{Tese/Dissertação/Monografia/Trabalho de Conclusão de Curso}
 
-
-% FIXME Substituir 'Tese' pelo tipo de trabalho (Tese, Dissertação, Monografia, Trabalho de Conclusão de Curso). 
-\tipotrabalho{Tese}
-% FIXME Se estiver apresentando um Trabalho de Conclusão de Curso, descomente a linha a seguir.
-% \def\tcc{}
-
-% FIXME Substituir 'Área de Concentração' pela área de concentração. 
-% Caso não tenha área de concentração, comente a linha a seguir.
 % \area{Área de Concentração}
-
-
-% FIXME Substituir 'Doutor em XXXXXX' pela grau adequado.
-\formacao{Doutor em XXXXXX}
-
-% FIXME Substituir 'Programa de Pós-Graduação em XXXXXX' pela curso adequado.
+\formacao{Doutor/Bacharel/Mestrando em XXXXXX}
 \programa{Programa de Pós-Graduação em XXXXXX}
-
-% FIXME Substituir 'Departamento de XXXXXX, Centro de XXXXXX' pela departamento e centro adequado.
 \centro{Departamento de XXXXXX, Centro de XXXXXX}
+\data{\today}
 
-
-%----------------------------------------------------------------------------------------
-%   Inserir palavras-chave aqui para aparecer na ficha-catalográfica.
-%----------------------------------------------------------------------------------------
-
-% Coloque aqui as palavras-chave em portugues
 \newcommand{\palavraschaveportugues}
 {%
-    \item Palavra Chave 1. \item Palavra Chave 2. \item Palavra Chave 3.
+    \item Palavra Chave 1.
+    \item Palavra Chave 2.
+    \item Palavra Chave 3.
 }
-% Insert here the keyworkds in english
+
 \newcommand{\palavraschaveingles}
 {%
-    \item Keyword 1. \item Keyword 2. \item Keyword 3.
+    \item Keyword 1.
+    \item Keyword 2.
+    \item Keyword 3.
 }
 
-
-% Altere o arquivo settings.tex para incluir suas configurações.
-\input{settings}
-
-% Configurações do estilo de citação ABNT
-\PassOptionsToPackage{style=abnt,backend=biber}{biblatex}
-
-% Descomente a linha a seguir e comente a anterior se desejar utilizar outras configurações 
-% do biblatex como por exemplo, style=numeric, entre outros. 
-% \PassOptionsToPackage{backend=biber,style=numeric,backref=false}{biblatex}
+% Altere o arquivo 'settings.tex' para incluir customizações de aparência da sua tese
+\input{settings.tex}
 
 % Utilize o arquivo aftertext/references.bib para incluir sua bibliografia.
 \addbibresource{aftertext/references.bib}
-
 
 % When writing a large document, it is sometimes useful to work on selected sections of the document
 % to speed up compilation time: https://en.wikibooks.org/wiki/TeX/includeonly
@@ -203,36 +137,23 @@ section=TITLE,  % Título de seções em caixa alta
 % Uncomment these two lines, to only partially generate the document
 % \doincludeonly
 % \forcedincludetrue
-
-
-
-
-
-
-% %----------------------------------------------------------------------------------------
-% %   DOCUMENT CONTENTS
-% %----------------------------------------------------------------------------------------
 \begin{document}
 
-    % Comment this after finishing the thesis, so you can start fixing the \flushbottom vs \raggedbottom
+    % FIXME: Comment this after finishing the thesis, so you can start fixing the \flushbottom vs \raggedbottom
     % https://tex.stackexchange.com/questions/65355/flushbottom-vs-raggedbottom
     \raggedbottom
 
-    % Retira espaço extra obsoleto entre as frases `Double space between sentences`
     % https://tex.stackexchange.com/questions/4705/double-space-between-sentences
     \frenchspacing
 
     % ELEMENTOS PRÉ-TEXTUAIS
     \input{setup/beforetext}
 
-
-
     % ELEMENTOS TEXTUAIS
     \textual
 
-    % To automatically put a [Go To Top/Back] ←← | ← on each section
+    % Uncomment this to put a ←← | ← (Go To Top/Go Back) on each section header
     % \addGoToSummary
-
     \setlength\beforechapskip{50pt}
     \setlength\midchapskip{20pt}
     \setlength\afterchapskip{20pt}
@@ -240,11 +161,8 @@ section=TITLE,  % Título de seções em caixa alta
     % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
     \include{chapters/intro}
 
-
-
     % Capitulo com exemplos de comandos inseridos de arquivo externo
     \include{chapters/chapter_1}
-
 
     % Capitulo de revisão de literatura
     \include{chapters/chapter_2}
@@ -255,17 +173,12 @@ section=TITLE,  % Título de seções em caixa alta
     % Segundo capitulo de Resultados
     \include{chapters/chapter_4}
 
-
-
-    % Finaliza a parte no bookmark do PDF
-    % para que se inicie o bookmark na raiz
+    % Finaliza a parte no bookmark do PDF para que se inicie o bookmark na raiz
     % e adiciona espaço de parte no Sumário
     \phantompart
 
     % Conclusão (outro exemplo de capítulo sem numeração e presente no sumário)
     \include{chapters/conclusion}
-
-
 
     % ELEMENTOS PÓS-TEXTUAIS
     \postextual
@@ -275,21 +188,18 @@ section=TITLE,  % Título de seções em caixa alta
 
     % Referências bibliográficas
     \begingroup
-        % Using BibTeX to make a list of references without having citations in the body of the document?
         % https://tex.stackexchange.com/questions/17128/using-bibtex-to-make-a-list-of-references-without
         % \nocite{*}
-
         \printbibliography[title=REFERÊNCIAS]
     \endgroup
 
     % Glossário, consulte o manual da classe abntex2 para orientações sobre o glossário.
     % \ifforcedinclude\else\glossary\fi
 
-    % Apêndices, inicia os apêndices
+    % Inicia os apêndices
     \begin{apendicesenv}
         % Imprime uma página indicando o início dos apêndices
         \ifforcedinclude\else\partapendices\fi
-
         \setlength\beforechapskip{50pt}
         \setlength\midchapskip{20pt}
         \setlength\afterchapskip{20pt}
@@ -297,11 +207,10 @@ section=TITLE,  % Título de seções em caixa alta
         \include{aftertext/apendice_a}
     \end{apendicesenv}
 
-    % Anexos, inicia os anexos
+    % Inicia os anexos
     \begin{anexosenv}
         % Imprime uma página indicando o início dos anexos
         \ifforcedinclude\else\partanexos\fi
-
         \setlength\beforechapskip{50pt}
         \setlength\midchapskip{20pt}
         \setlength\afterchapskip{20pt}
