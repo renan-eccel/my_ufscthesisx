@@ -32,13 +32,25 @@
 % Add missing translations for Portuguese
 \addto\captionsbrazil { %
     \renewcommand{\mytextpreliminarylistname}{Breve Sumário}
+    % Remove the colon appended to variables by 'abntex2' because they show up on places they shouldn't
+    \renewcommand{\orientadorname}{Orientador}
+    \renewcommand{\coorientadorname}{Coorientador}
 }
 
 % Add English translations and fix names from abnTeX2
 % https://tex.stackexchange.com/questions/8564/what-is-the-right-way-to-redefine-macros-defined-by-babel
 \addto\captionsenglish { %
     \renewcommand{\coorientadorname}{Co\hyp{}supervisor}
+    % Remove the colon appended to variables by 'abntex2' because they show up on places they shouldn't
+    \renewcommand{\orientadorname}{Supervisor}
+    \renewcommand{\coorientadorname}{Co\hyp{}supervisor}
 }
+
+% Selects a sans serif font family
+% \renewcommand{\sfdefault}{cmss}
+
+% Selects a monospaced (“typewriter”) font family
+% \renewcommand{\ttdefault}{cmtt}
 
 % Source Code Settings in Document
 \makeatletter
