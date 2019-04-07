@@ -6,7 +6,7 @@
     "folders":
     [
         {
-            "path": ".",
+            "path": "../",
             "folder_exclude_patterns":
             [
                 "*cache*",
@@ -20,7 +20,7 @@
             "cmd": ["make", "thesis"],
 
             "shell": true,
-            "working_dir": "$project_path/",
+            "working_dir": "$project_path/../",
 
             "target": "exec",
             "syntax": "Packages/Text/Plain text.tmLanguage",
