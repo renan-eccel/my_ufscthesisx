@@ -54,8 +54,14 @@ chapter=TITLE, % Título de capítulos em caixa alta
 section=TITLE, % Título de seções em caixa alta
 ]{abntex2}
 
+% Load the UFSC thesis package
 \usepackage{setup/ufscthesisx}
-\input{setup/utilities}
+
+% Load extra commands for tables, lists, summaries, etc.
+\input{setup/utilities.tex}
+
+% % Utilize o arquivo aftertext/references.bib para incluir sua bibliografia.
+\addbibresource{aftertext/references.bib}
 
 % FIXME: Descomente a linha correspondente ao seu tipo de trabalho
 % \def\tcc{}
@@ -100,9 +106,6 @@ section=TITLE, % Título de seções em caixa alta
 
 % Altere o arquivo 'settings.tex' para incluir customizações de aparência da sua tese
 \input{settings.tex}
-
-% Utilize o arquivo aftertext/references.bib para incluir sua bibliografia.
-\addbibresource{aftertext/references.bib}
 
 % When writing a large document, it is sometimes useful to work on selected sections of the document
 % to speed up compilation time: https://en.wikibooks.org/wiki/TeX/includeonly

@@ -40,7 +40,7 @@ git clone --recursive https://github.com/ufsc/ufscthesisx
 ```
 
 Este repositório já contém um exemplo de tese com uso avançado de conceitos e LaTeX.
-Se você tiver interesse em utilizar esse *template*,
+Se você tiver interesse em utilizar esse **template**,
 você precisa preencher os seus dados como nome do orientador,
 coorientador, seu nome,
 nome da sua instituição,
@@ -48,7 +48,7 @@ do seu curso, departamento,
 etc.
 
 Para isso altere os dados fictícios para os corretos no arquivo `main.tex`,
-que é o arquivo principal do *template* utilizado,
+que é o arquivo principal do **template** utilizado,
 e carrega todos os pacotes necessários e incluir os arquivos LaTeX que contém as partes da sua monografia.
 
 
