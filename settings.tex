@@ -2,9 +2,6 @@
 %   Thesis Tweaks and Utilities
 %----------------------------------------------------------------------------------------
 
-% https://tex.stackexchange.com/questions/182569/how-to-manually-set-where-a-word-is-split
-\hyphenation{Ge-la-im}
-
 % Uncomment this if you are debugging pages' badness Underfull & Overflow
 % https://tex.stackexchange.com/questions/115908/geometry-showframe-landscape
 % https://tex.stackexchange.com/questions/387077/what-is-the-difference-between-usepackageshowframe-and-usepackageshowframe
@@ -17,11 +14,14 @@
 % \usepackage{newtxtext}
 % \usepackage{newtxmath}
 
+% https://tex.stackexchange.com/questions/182569/how-to-manually-set-where-a-word-is-split
+\hyphenation{Ge-la-im}
+
 % Simple alias for English and Portuguese words
 \newcommand{\brazilword}[1]{\foreignlanguage{brazil}{#1}}
 \newcommand{\englishword}[1]{\foreignlanguage{english}{#1}}
 
-\lang % Switch between english and brazil for big text blocks
+\lang % Environments to switch between english and brazil for big text blocks
 {\includecomment{englishtext}\excludecomment{braziltext}}
 {\includecomment{braziltext}\excludecomment{englishtext}}
 
@@ -29,41 +29,15 @@
 % https://tex.stackexchange.com/questions/655/what-is-the-difference-between-def-and-newcommand
 \let\citeonline\textcite
 
-% https://tex.stackexchange.com/questions/391695/is-possible-to-remove-the-link-color-of-the-comma-on-the-citation-link
-% \DeclareFieldFormat{citehyperref}{#1}
-
-% Add new translations and remove the colon appended to theses variables by 'abntex2', allowing us to use other separators
+% Add missing translations for Portuguese
 \addto\captionsbrazil { %
     \renewcommand{\mytextpreliminarylistname}{Breve Sumário}
-    \renewcommand{\orientadorname}{Orientador}
-    \renewcommand{\coorientadorname}{Coorientador}
 }
 
 % Add English translations and fix names from abnTeX2
 % https://tex.stackexchange.com/questions/8564/what-is-the-right-way-to-redefine-macros-defined-by-babel
 \addto\captionsenglish { %
-    \renewcommand{\folhaderostoname}{Title page}
-    \renewcommand{\epigraphname}{Epigraph}
-    \renewcommand{\dedicatorianame}{Dedication}
-    \renewcommand{\errataname}{Errata sheet}
-    \renewcommand{\agradecimentosname}{Acknowledgements}
-    \renewcommand{\anexoname}{ANNEX}
-    \renewcommand{\anexosname}{Annex}
-    \renewcommand{\apendicename}{APPENDIX}
-    \renewcommand{\apendicesname}{Appendix}
-    \renewcommand{\orientadorname}{Supervisor}
     \renewcommand{\coorientadorname}{Co\hyp{}supervisor}
-    \renewcommand{\folhadeaprovacaoname}{Approval}
-    \renewcommand{\resumoname}{Abstract}
-    \renewcommand{\listadesiglasname}{List of abbreviations and acronyms}
-    \renewcommand{\listadesimbolosname}{List of symbols}
-    \renewcommand{\fontename}{Source}
-    \renewcommand{\notaname}{Note}
-    \renewcommand{\pageautorefname}{page}
-    \renewcommand{\sectionautorefname}{section}
-    \renewcommand{\subsectionautorefname}{subsection}
-    \renewcommand{\subsubsectionautorefname}{subsubsection}
-    \renewcommand{\paragraphautorefname}{subsubsubsection}
 }
 
 % Source Code Settings in Document
@@ -217,43 +191,6 @@
 \renewcommand{\cftparagraphfont}{\ABNTEXsubsubsubsectionfont\color{ultramarine}}
 \renewcommand{\cftparagraphpagefont}{\ABNTEXsubsubsubsectionfont\color{black}}
 
-% Backref package settings, pages with citations in bibliography
-\makeatletter
-\@ifpackageloaded{biblatex}
-{
-    \renewbibmacro*{pageref}
-    {
-        \iflistundef{pageref}
-        {\printtext{\lang{\autocap{n}o citation in the text}{\autocap{n}enhuma citação no texto}.}}
-        {%
-            \printtext
-            {%
-                \ifnumgreater{\value{citecounter}}{1}
-                    {\lang{\autocap{c}ited}{\autocap{c}itado} \arabic{citecounter} \lang{times}{vezes}}
-                    {\lang{\autocap{c}ited}{\autocap{c}itado} \arabic{citecounter} \lang{time}{vez}}
-            }%
-            \setunit{\addspace}%
-            \ifnumgreater{\value{pageref}}{1}
-                {\bibstring{backrefpages}\ppspace}
-                {\bibstring{backrefpage}\ppspace}%
-            \printlist[pageref][-\value{listtotal}]{pageref}%
-        }%
-    }
-
-    \DefineBibliographyStrings{brazil}
-    {
-        backrefpage  = {na página},
-        backrefpages = {nas páginas},
-    }
-
-    \DefineBibliographyStrings{english}
-    {
-        backrefpage  = {on page},
-        backrefpages = {on pages},
-    }
-}{}
-\makeatother
-
 % Memoir has another mechanism for the job: \cftsetindents{‹kind›}{indent}{numwidth}. Here kind is
 % chapter, section, or whatever; the indent specifies the ‘margin’ before the entry starts; and the
 % width is of the box into which the number is typeset (so needs to be wide enough for the largest
@@ -276,6 +213,61 @@
 \cftsetindents{subsubsection}{0em}{\cftlastnumwidth}
 \cftsetindents{paragraph}    {0em}{\cftlastnumwidth}
 \cftsetindents{subparagraph} {0em}{\cftlastnumwidth}
+
+% Backref package settings, pages with citations in bibliography
+\newcommand{\biblatexcitedntimes}{\autocap{c}ited \arabic{citecounter} times}
+\newcommand{\biblatexcitedonetime}{\autocap{c}ited one time}
+\newcommand{\biblatexcitednotimes}{\autocap{n}o citation in the text}
+
+\addto\captionsbrazil { %
+    \renewcommand{\biblatexcitedntimes}{\autocap{c}itado \arabic{citecounter} vezes}
+    \renewcommand{\biblatexcitedonetime}{\autocap{c}itado uma vez}
+    \renewcommand{\biblatexcitednotimes}{\autocap{n}enhuma citação no texto}
+}
+
+\makeatletter
+\@ifpackageloaded{biblatex}
+{%
+    % https://tex.stackexchange.com/questions/483707/how-to-detect-whether-the-option-citecounter-was-enabled-on-biblatex
+    \ifx\blx@citecounter\relax
+      \ifbacktracker
+        \renewbibmacro*{pageref}
+        {
+            \iflistundef{pageref}
+            {\printtext{\biblatexcitednotimes}}
+            {%
+                \printtext
+                {%
+                    \ifnumgreater{\value{citecounter}}{1}
+                        {\biblatexcitedntimes}
+                        {\biblatexcitedonetime}
+                }%
+                \setunit{\addspace}%
+                \ifnumgreater{\value{pageref}}{1}
+                    {\bibstring{backrefpages}\ppspace}
+                    {\bibstring{backrefpage}\ppspace}%
+                \printlist[pageref][-\value{listtotal}]{pageref}%
+            }%
+        }
+      \fi
+    \fi
+
+    \DefineBibliographyStrings{brazil}
+    {
+        backrefpage  = {na página},
+        backrefpages = {nas páginas},
+    }
+
+    \DefineBibliographyStrings{english}
+    {
+        backrefpage  = {on page},
+        backrefpages = {on pages},
+    }
+}{}
+\makeatother
+
+% https://tex.stackexchange.com/questions/391695/is-possible-to-remove-the-link-color-of-the-comma-on-the-citation-link
+% \DeclareFieldFormat{citehyperref}{#1}
 
 % https://tex.stackexchange.com/questions/19105/how-can-i-put-more-space-between-bibliography-entries-biblatex
 % \setlength\bibitemsep{2.1\itemsep}

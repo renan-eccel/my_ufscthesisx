@@ -69,14 +69,16 @@ section=TITLE, % Título de seções em caixa alta
 % \def\doutorado{}
 
 % FIXME: Descomente as linhas '\coorientador', '\subtitulo' e '\area', quando houver
-\autor{Nome completo do autor/Nome completo da autora}
-\orientador[Orientador/Orientadora]{Nome do orientador/Nome da orientadora, Dr./Dra.}
-\coordenador[Coordenador/Coordenadora]{Nome do Coordenador/Nome da Coordenadora, Dr./Dra.}
+\autor{Escreva aqui o Nome completo do Autor ou da Autora}
 
-% \coorientador[Coorientador/Coorientadora]{Nome do coorientador/Nome da coorientadora, Dr./Dra.}
+% FIXME: Siglas para grau de formação Dr./Dra., Me./Ma, Bel. Bela. (inglês: PhD., MSc., Bs.)
+\orientador{Nome completo do Orientador(a), \lang{Phd.}{Dr.}}
+\coordenador{Nome do Coordenador(a), \lang{Phd.}{Dr.}}
+
+% \coorientador[Coorientador(a)]{Nome do coorientador(a), \lang{Phd.}{Dr.}}
 \titulo{Título do trabalho}
 
-% \subtitulo{Subtítulo (se houver)}
+% \subtitulo{Subtítulo (se houver, descomente esta linha)}
 \ano{Ano da sua defesa}
 \local{Local da sua Defesa}
 \instituicaosigla{Sigla da sua instituição}
@@ -84,11 +86,13 @@ section=TITLE, % Título de seções em caixa alta
 \biblioteca{Biblioteca Universitária}
 \tipotrabalho{Tese/Dissertação/Monografia/Trabalho de Conclusão de Curso}
 
-% \area{Área de Concentração}
+% \area{Área de Concentração, (se houver, descomente esta linha)}
 \formacao{Doutor/Bacharel/Mestrando em XXXXXX}
 \programa{Programa de Pós-Graduação em XXXXXX}
 \centro{Departamento de XXXXXX, Centro de XXXXXX}
-\data{\today}
+
+% FIXME: Data da sua defesa
+\data{30 de março de 2001}
 
 \newcommand{\palavraschaveportugues}
 {%
