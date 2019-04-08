@@ -17,33 +17,10 @@
 % https://tex.stackexchange.com/questions/182569/how-to-manually-set-where-a-word-is-split
 \hyphenation{Ge-la-im}
 
-% Simple alias for English and Portuguese words
-\newcommand{\brazilword}[1]{\foreignlanguage{brazil}{#1}}
-\newcommand{\englishword}[1]{\foreignlanguage{english}{#1}}
-
-\lang % Environments to switch between english and brazil for big text blocks
-{\includecomment{englishtext}\excludecomment{braziltext}}
-{\includecomment{braziltext}\excludecomment{englishtext}}
-
-% Backward compatibility with `abntex2cite` package `\citeonline` command with the new `biblatex` package
-% https://tex.stackexchange.com/questions/655/what-is-the-difference-between-def-and-newcommand
-\let\citeonline\textcite
-
 % Add missing translations for Portuguese
+% https://tex.stackexchange.com/questions/8564/what-is-the-right-way-to-redefine-macros-defined-by-babel
 \addto\captionsbrazil { %
     \renewcommand{\mytextpreliminarylistname}{Breve Sumário}
-    % Remove the colon appended to variables by 'abntex2' because they show up on places they shouldn't
-    \renewcommand{\orientadorname}{Orientador}
-    \renewcommand{\coorientadorname}{Coorientador}
-}
-
-% Add English translations and fix names from abnTeX2
-% https://tex.stackexchange.com/questions/8564/what-is-the-right-way-to-redefine-macros-defined-by-babel
-\addto\captionsenglish { %
-    \renewcommand{\coorientadorname}{Co\hyp{}supervisor}
-    % Remove the colon appended to variables by 'abntex2' because they show up on places they shouldn't
-    \renewcommand{\orientadorname}{Supervisor}
-    \renewcommand{\coorientadorname}{Co\hyp{}supervisor}
 }
 
 % Selects a sans serif font family
@@ -51,26 +28,6 @@
 
 % Selects a monospaced (“typewriter”) font family
 % \renewcommand{\ttdefault}{cmtt}
-
-% Source Code Settings in Document
-\makeatletter
-\@ifpackageloaded{listings}
-{
-\ifenglish
-    % These default values are already in English
-
-\else
-    % Listing -> Codigo fonte
-    \renewcommand{\lstlistingname}{Código--fonte}
-
-    % List of Listings -> Lista de códigos-fonte
-    \renewcommand{\lstlistlistingname}{Lista de códigos--fonte}
-
-    % Recalculate the size of the header
-    \calculatelisteningsheader
-\fi
-}{}
-\makeatother
 
 % Spacing between lines and paragraphs
 % https://tex.stackexchange.com/questions/70212/ifpackageloaded-question
@@ -163,23 +120,6 @@
             urlcolor=linkcolor,
             bookmarksdepth=4
         }
-        \ifenglish
-            \hypersetup
-            {
-                pdfauthor={Author},
-                pdfsubject={Thesis' Abstract},
-                pdfcreator={LaTeX with abnTeX2 for UFSC},
-                pdfkeywords={abnt}{latex}{UFSC}{abntex2}{thesis},
-            }
-        \else
-            \hypersetup
-            {
-                pdfauthor={Autores},
-                pdfsubject={Resumo da tese},
-                pdfcreator={LaTeX com abnTeX2 para UFSC},
-                pdfkeywords={abnt}{latex}{UFSC}{abntex2}{tese},
-            }
-        \fi
     }
 }{}
 \makeatother
