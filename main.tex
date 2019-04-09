@@ -149,10 +149,6 @@ section=TITLE, % Título de seções em caixa alta
 \newcommand{\brazilword}[1]{\foreignlanguage{brazil}{#1}}
 \newcommand{\englishword}[1]{\foreignlanguage{english}{#1}}
 
-\lang % Environments to switch between english and brazil for big text blocks
-{\includecomment{englishtext}\excludecomment{braziltext}}
-{\includecomment{braziltext}\excludecomment{englishtext}}
-
 % Backward compatibility with `abntex2cite` package `\citeonline` command with the new `biblatex` package
 % https://tex.stackexchange.com/questions/655/what-is-the-difference-between-def-and-newcommand
 \let\citeonline\textcite
