@@ -31,13 +31,9 @@
 
 % The \phantomsection command is needed to create a link to a place in the document that is not a
 % figure, equation, table, section, subsection, chapter, etc.
-%
-% When do I need to invoke \phantomsection?
 % https://tex.stackexchange.com/questions/44088/when-do-i-need-to-invoke-phantomsection
 \phantomsection
 
-
-% Is it possible to keep my translation together with original text?
 % https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
 \chapter[\lang{Abbreviation for the Table of Contents}{Abreviação para o Sumário}]
 {
@@ -55,12 +51,7 @@
 
 
 % \newpage
-
-% Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
-% https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
-\begin{otherlanguage*}{brazil}
-
-
+\begin{braziltext}
 
 \section{Axiomas ou postulados}
 
@@ -82,7 +73,6 @@ Supondo $\mathfrak{L}$, uma linguagem de primeira ordem. para cada variável $x$
 
 \section{Teorema}
 
-
 Na matemática, um teorema é uma afirmação que pode ser provada como verdadeira através de outras afirmações já demonstradas, como outros teoremas, juntamente com afirmações anteriormente aceitas, como axiomas. Prova é o processo de mostrar que um teorema está correto. O termo teorema foi introduzido por Euclides, em Elementos, para significar "afirmação que pode ser provada". Em grego, originalmente significava "espetáculo" ou "festa". Atualmente, é mais comum deixar o termo "teorema" apenas para certas afirmações que podem ser provadas e de grande "importância matemática", o que torna a definição um tanto subjetiva.
 
 \begin{teorema}[Teorema de Pitágoras]
@@ -93,9 +83,9 @@ Na matemática, um teorema é uma afirmação que pode ser provada como verdadei
 \begin{proposicao}
 Em qualquer proposição a hipótese é considerada verdadeira.
 \end{proposicao}
+
+
 \subsection{Terminologia}
-
-
 
 Usualmente deixa-se o termo ``teorema'' apenas para as afirmações que podem ser provadas de grande importância. Assim, são dados outros nomes para os outros tipos dessas afirmações:
 
@@ -231,7 +221,6 @@ Segue um exemplo de rotação de páginas: \newpage
 
 Outra forma é utilizar o pacote pdflscape
 
-% Reducing font size in equation
 % https://tex.stackexchange.com/questions/60453/reducing-font-size-in-equation
 \tiny
 \begin{equation}
@@ -252,13 +241,9 @@ Outra forma é utilizar o pacote pdflscape
 \end{landscape}
 
 
-
-
 % ---
 \section{Codificação dos arquivos: UTF8}
 % ---
-
-
 
 
 A codificação de todos os arquivos do \abnTeX{} é \texttt{UTF8}. É necessário que
@@ -424,8 +409,6 @@ acadêmicos.
 \end{table}
 
 
-
-
 \clearpage
 % ---
 \section{Figuras}
@@ -468,10 +451,6 @@ como o exemplo da \autoref{fig_circulo}.
     \end{center}
     \fonte{os autores}
 \end{figure}
-
-
-
-
 
 
 Ou então figuras podem ser incorporadas de arquivos externos, como é o caso da
@@ -607,10 +586,6 @@ matemática que não é numerada.
 
 Consulte mais informações sobre expressões matemáticas em
 \url{https://code.google.com/p/abntex2/wiki/Referencias}.
-
-
-
-
 
 
 % ---
@@ -1072,11 +1047,7 @@ Sua contribuição é muito importante! Você pode ajudar na divulgação, no
 desenvolvimento e de várias outras formas. Veja como contribuir com o \abnTeX{}
 em \url{https://code.google.com/p/abntex2/wiki/ComoContribuir}.
 
-%
-% Invisible Overfull \hbox in toc
 % https://tex.stackexchange.com/questions/264586/invisible-overfull-hbox-in-toc
-%
-% Hyperref - Token not allowed
 % https://tex.stackexchange.com/questions/53513/hyperref-token-not-allowed
 \section{Quer customizar os modelos do \texorpdfstring{\newline}{}\abnTeX{} para sua instituição ou
 universidade?}
@@ -1085,7 +1056,5 @@ Veja como customizar o \abnTeX{} em:
 \url{https://code.google.com/p/abntex2/wiki/ComoCustomizar}.
 
 
-
-\end{otherlanguage*}
-
+\end{braziltext}
 
