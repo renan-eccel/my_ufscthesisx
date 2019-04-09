@@ -93,19 +93,19 @@
 
     % inserir lista de quadros
     \ifforcedinclude\else\cleardoublepage\fi
-    \addtotextpreliminarycontent{\lang{List of Data Frames}{Lista de Quadros}}
-    \pdfbookmark[0]{Lista de Quadros}{lob}
+    \addtotextpreliminarycontent{\listofquadrosname}
+    \pdfbookmark[0]{\listofquadrosname}{lob}
     \listofquadros*
 
     % inserir lista de tabelas
     \ifforcedinclude\else\cleardoublepage\fi
-    \addtotextpreliminarycontent{\lang{List of Tables}{Lista de Tabelas}}
+    \addtotextpreliminarycontent{\listtablename}
     \pdfbookmark[0]{\listtablename}{lot}
     \listoftables*
 
     % inserir códigos fonte (List of Listings `lol`)
     \ifforcedinclude\else\cleardoublepage\fi
-    \addtotextpreliminarycontent{\lang{List of Source Codes}{Lista de Códigos Fonte}}
+    \addtotextpreliminarycontent{\lstlistingname}
     \pdfbookmark[0]{\lstlistingname}{lol}
     \lstlistoflistings*
 \fi
