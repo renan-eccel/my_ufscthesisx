@@ -71,9 +71,6 @@ section=TITLE, % Título de seções em caixa alta
 % % Utilize o arquivo aftertext/references.bib para incluir sua bibliografia.
 \addbibresource{aftertext/references.bib}
 
-% FIXME: Descomente a linha abaixo se seu trabalho for um TCC
-\def\tcc{}
-
 % FIXME: Preencha com seus dados
 \autor{Escreva aqui o Nome completo do Autor ou da Autora}
 \titulo{Título do trabalho}
@@ -94,9 +91,11 @@ section=TITLE, % Título de seções em caixa alta
 \local{Local da sua Defesa}
 
 % FIXME: Ano da sua defesa
-\ano{Ano da sua defesa}
+\ano{2001}
 \biblioteca{Biblioteca Universitária}
-\instituicaosigla{Sigla da sua instituição}
+
+% FIXME: Sigla da sua instituição
+\instituicaosigla{UFSC}
 \instituicao{Universidade Federal de Santa Catarina}
 
 % FIXME: Preencha com Tese, Dissertação, Monografia ou Trabalho de Conclusão de Curso, Bachelor's Thesis, etc
@@ -115,15 +114,18 @@ section=TITLE, % Título de seções em caixa alta
 % FIXME: Data da sua defesa
 \data{30 de março de 2001}
 
-\newcommand{\palavraschaveportugues}
-{%
+% O preambulo deve conter tipo do trabalho, objetivo, nome da instituição e a área de concentração.
+\preambulo{%
+   \imprimirtipotrabalho submetido ao \imprimirprograma da \imprimirinstituicao para a obtenção do Grau de \imprimirformacao.
+}
+
+\newcommand{\palavraschaveportugues}{%
     \item Palavra Chave 1.
     \item Palavra Chave 2.
     \item Palavra Chave 3.
 }
 
-\newcommand{\palavraschaveingles}
-{%
+\newcommand{\palavraschaveingles}{%
     \item Keyword 1.
     \item Keyword 2.
     \item Keyword 3.
