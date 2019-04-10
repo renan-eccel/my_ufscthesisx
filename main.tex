@@ -26,10 +26,8 @@
 
 % https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last
 \ifenglish
-    \newcommand{\swapcontents}[2]{#1 #2}
     \PassOptionsToPackage{brazil,main=english,spanish,french}{babel}
 \else
-    \newcommand{\swapcontents}[2]{#2 #1}
     \PassOptionsToPackage{main=brazil,english,spanish,french}{babel}
 \fi
 

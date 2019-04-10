@@ -1,22 +1,6 @@
-\swapcontents
-{
-    % Changing babel package inside a single chapter
-    % https://tex.stackexchange.com/questions/20987/changing-babel-package-inside-a-single-chapter
-    %
-    % Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
-    % https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
-    \addtotextpreliminarycontent{English's Abstract}
-    \begin{otherlanguage*}{english}
-    \begin{resumo}[Abstract]
 
-        This is the english abstract.
 
-        \imprimirpalavraschave{Keywords}{\begin{inparaitem}[]\palavraschaveingles\end{inparaitem}}
-
-    \end{resumo}
-    \end{otherlanguage*}
-}
-{
+\newcommand{\imprimirbrazilabstract}{%
     \addtotextpreliminarycontent{Resumo em Português}
     \begin{otherlanguage*}{brazil}
     \begin{resumo}[Resumo]
@@ -34,7 +18,7 @@
         ser significativo, composto de uma sequência de frases concisas, afirmativas e não de uma
         enumeração de tópicos. Não deve conter citações. Deve usar o verbo na voz passiva. Abaixo do
         resumo, deve-se informar as palavras-chave (palavras ou expressões significativas retiradas do
-        texto) ou, termos retirados de thesaurus da área. 
+        texto) ou, termos retirados de thesaurus da área.
 
         \imprimirpalavraschave{Palavras-chaves}{\begin{inparaitem}[]\palavraschaveportugues\end{inparaitem}}
 
@@ -43,27 +27,60 @@
 }
 
 
+\newcommand{\imprimirenglishabstract}{%
+    % https://tex.stackexchange.com/questions/20987/changing-babel-package-inside-a-single-chapter
+    % https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
+    \addtotextpreliminarycontent{English's Abstract}
+    \begin{otherlanguage*}{english}
+    \begin{resumo}[Abstract]
 
-% % resumo em francês
-% \addtotextpreliminarycontent{Français Résumé}
-% \begin{resumo}[Résumé]
-%   \begin{otherlanguage*}{french}
-%       Il s'agit d'un résumé en français.
+        This is the English abstract.
 
-%       \imprimirpalavraschave{Mots-clés}{latex. abntex. publication de textes.}
-%   \end{otherlanguage*}
-% \end{resumo}
+        \imprimirpalavraschave{Keywords}{\begin{inparaitem}[]\palavraschaveingles\end{inparaitem}}
 
-
-% % resumo em espanhol
-% \addtotextpreliminarycontent{Español Resumen}
-% \begin{resumo}[Resumen]
-%   \begin{otherlanguage*}{spanish}
-%       Este es el resumen en español.
-
-%       \imprimirpalavraschave{Palabras clave}{latex. abntex. publicación de textos.}
-%   \end{otherlanguage*}
-% \end{resumo}
+    \end{resumo}
+    \end{otherlanguage*}
+}
 
 
+% \newcommand{\imprimirfrenchabstract}{%
+%     \addtotextpreliminarycontent{Français Résumé}
+%     \begin{resumo}[Résumé]
+%       \begin{otherlanguage*}{french}
+%           Il s'agit d'un résumé en français.
+
+%           \imprimirpalavraschave{Mots-clés}{latex. abntex. publication de textes.}
+%       \end{otherlanguage*}
+%     \end{resumo}
+% }
+
+
+% \newcommand{\imprimirspanishabstract}{%
+%     \addtotextpreliminarycontent{Español Resumen}
+%     \begin{resumo}[Resumen]
+%       \begin{otherlanguage*}{spanish}
+%           Este es el resumen en español.
+
+%           \imprimirpalavraschave{Palabras clave}{latex. abntex. publicación de textos.}
+%       \end{otherlanguage*}
+%     \end{resumo}
+% }
+
+
+\makeatletter
+
+
+\ifenglish
+    \@ifundefined{imprimirenglishabstract}{}{\imprimirenglishabstract}
+    \@ifundefined{imprimirbrazilabstract}{}{\imprimirbrazilabstract}
+\else
+    \@ifundefined{imprimirbrazilabstract}{}{\imprimirbrazilabstract}
+    \@ifundefined{imprimirenglishabstract}{}{\imprimirenglishabstract}
+\fi
+
+\@ifundefined{imprimirfrenchabstract}{}{\imprimirfrenchabstract}
+\@ifundefined{imprimirspanishabstract}{}{\imprimirspanishabstract}
+
+
+\makeatother
 
