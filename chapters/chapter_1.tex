@@ -324,13 +324,15 @@ dividi-los no corpo do texto.}.
 \index{tabelas}A \autoref{tab-nivinv} é um exemplo de tabela construída em
 \LaTeX{}.
 
+% https://tex.stackexchange.com/questions/2441/how-to-add-a-forced-line-break-inside-a-table-cell
+% https://tex.stackexchange.com/questions/484039/how-to-use-thead-with-left-align-locally-instead-of-globally/
 \begin{table}[htb]
 \caption[Níveis de investigação]{Níveis de investigação.}
 \label{tab-nivinv}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{p{2.6cm}p{6.0cm}p{2.25cm}p{3.40cm}}
   \toprule
-   \textbf{Nível de Investigação} & \textbf{Insumos}  & \textbf{Sistemas de Investigação}  & \textbf{Produtos}  \\
+   {\raggedright \bfseries Nível de \\ Investigação} & \textbf{Insumos}  & \textbf{Sistemas de Investigação}  & \textbf{Produtos}  \\
     \midrule
     Meta-nível & Filosofia\index{filosofia} da Ciência  & Epistemologia &
     Paradigma  \\
