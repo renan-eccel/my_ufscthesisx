@@ -76,7 +76,7 @@ você pode utilizar seu editor git favorito,
 e pedir para ele compilar o documento a partir do arquivo `main.tex` no diretório principal.
 
 Por conveniência,
-você também pode executar o arquivo `build.cmd` caso você esteja no Windows,
+você também pode executar o arquivo `build.bat` caso você esteja no Windows,
 ou executar o comando `make` caso você esteja no Linux.
 
 
