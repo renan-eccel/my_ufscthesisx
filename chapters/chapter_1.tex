@@ -46,9 +46,14 @@
 
 
 \begin{flushright}
-    \englishword{ }
+    \englishword{\showfont}
 \end{flushright}
 
+% Why latex is letting my text goes out of the screen?
+% https://tex.stackexchange.com/questions/386762/why-latex-is-letting-my-text-goes-out-of-the-screen
+\sloppy
+\textbf{textbf: \englishword{\showfont}}
+\fussy
 
 % \newpage
 \begin{otherlanguage*}{brazil}
@@ -245,6 +250,7 @@ Outra forma é utilizar o pacote pdflscape
 \section{Codificação dos arquivos: UTF8}
 % ---
 
+\englishword{\showfont}
 
 A codificação de todos os arquivos do \abnTeX{} é \texttt{UTF8}. É necessário que
 você utilize a mesma codificação nos documentos que escrever, inclusive nos
@@ -264,10 +270,10 @@ destacadas com recuo de 4 cm da margem esquerda, com letra menor que a do texto
 utilizado e sem as aspas. No caso de documentos datilografados, deve-se
 observar apenas o recuo \cite[5.3]{NBR10520:2002}.
 
-
+\englishword{\showfont}
 \end{citacao}
 
-
+\englishword{\showfont}
 Use o ambiente assim:
 
 \begin{lstlisting}[language=tex]
