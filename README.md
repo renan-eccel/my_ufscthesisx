@@ -11,7 +11,7 @@ Esse projeto não está vinculado a nenhum órgão da UFSC.
 ## Modelo em PDF
 
 Se você quer ter uma ideia de como é o modelo,
-a compialção deve resultar no seguinte [PDF](https://dl.dropbox.com/s/kevxtvs7bx9c8f7/main.pdf)
+a compilação deve resultar no seguinte [PDF](https://github.com/evandroforks/abntex2-ufsc-imagens/blob/master/pdf_exemplo_completo.pdf)
 
 
 ### Instalar `LaTeX` e `abnTeX2`
