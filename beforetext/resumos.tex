@@ -75,6 +75,7 @@
 \ifenglish
     \@ifundefined{imprimirbrazilabstract}{}{\imprimirbrazilabstract}
 
+    % https://tex.stackexchange.com/questions/331108/times-new-roman-in-latex-just-some-text
     % https://tex.stackexchange.com/questions/11707/how-to-force-output-to-a-left-or-right-page
     % https://tex.stackexchange.com/questions/132966/do-not-display-chapter-title-in-memoir-class
     \cleardoublepage\phantomsection
@@ -84,6 +85,7 @@
     \begin{otherlanguage*}{brazil}
         \setlength{\parskip}{0.2cm}
         \setlength{\parindent}{0.0cm}
+        \fontfamily{ptm}\selectfont
 
         \section*{Introdução}
         O resumo expandido é previsto na Resolução Normativa nº 95/CUn/2017, Art. 55, § 2, de 4 de
