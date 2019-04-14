@@ -14,7 +14,13 @@ Se você quer ter uma ideia de como é o modelo,
 a compilação deve resultar no seguinte [PDF](https://github.com/evandroforks/abntex2-ufsc-imagens/blob/master/pdf_exemplo_completo.pdf)
 
 
-### Instalar `LaTeX` e `abnTeX2`
+## Instalar `LaTeX` e `abnTeX2`
+
+Para Linux,
+é necessário ter a instalação TeXLive 2018,
+e não TeXLive 2017.
+Veja a sua versão do TeXLive com o comando:
+1. `tex --version`
 
 Para poder utilizar a classe é necessário ter uma distribuição atual do LaTeX,
 incluindo o pacote abnTeX2.
@@ -23,6 +29,20 @@ incluindo o pacote abnTeX2.
 As configurações específicas para cada sistema podem ser encontradas nos link abaixo para o pacote `abnTeX2`:
 1. [abntex2 CTAN](http://www.ctan.org/pkg/abntex2)
 1. [abnTeX2 Instalação](https://github.com/abntex/abntex2/wiki/Instalacao)
+
+
+### Instalação Ubuntu/Linux Mint and others
+
+```
+sudo apt-get install texlive-full
+sudo apt-get install xzdec
+```
+
+
+### Instalação Windows
+
+1. Download the Installer on: https://miktex.org/download
+1. When installing, select for it to install all latex packages.
 
 
 ## Baixando diretamente modelo UFSC
