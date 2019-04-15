@@ -41,8 +41,9 @@ sudo apt-get install xzdec
 
 ### Instalação Windows
 
-1. Download the Installer on: https://miktex.org/download
-1. When installing, select for it to install all latex packages.
+1. Baixe o arquivo do instalador em: https://miktex.org/download
+1. Enquando seguindo dos passas do instalador,
+   assegure-se de marcar para instalar todos os pacotes latex (full install).
 
 
 ## Baixando diretamente modelo UFSC
