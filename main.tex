@@ -224,6 +224,10 @@ section=TITLE, % Título de seções em caixa alta
     \setlength\midchapskip{20pt}
     \setlength\afterchapskip{20pt}
 
+    % PARTE
+    % \ifforcedinclude\else\part{\lang{Research}{Pesquisa}}\fi
+    % \label{sec:primeira_parte}
+
     % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
     \include{chapters/intro}
 
@@ -235,6 +239,10 @@ section=TITLE, % Título de seções em caixa alta
 
     % Primeiro capitulo de Resultados
     \include{chapters/chapter_3}
+
+    % PARTE
+    % \ifforcedinclude\else\part{\lang{Implementation}{Implementação}}\fi
+    % \label{sec:segunda_parte}
 
     % Segundo capitulo de Resultados
     \include{chapters/chapter_4}
