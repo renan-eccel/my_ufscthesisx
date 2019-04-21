@@ -19,9 +19,11 @@
 
 % Add missing translations for Portuguese
 % https://tex.stackexchange.com/questions/8564/what-is-the-right-way-to-redefine-macros-defined-by-babel
+\makeatletter
 \@ifpackageloaded{babel}{\@ifpackagewith{babel}{brazil}{\addto\captionsbrazil{%
     \renewcommand{\mytextpreliminarylistname}{Breve Sumário}
 }}{}}{}
+\makeatother
 
 % Selects a sans serif font family
 % \renewcommand{\sfdefault}{cmss}
@@ -171,11 +173,13 @@
 \newcommand{\biblatexcitedonetime}{\autocap{c}ited one time}
 \newcommand{\biblatexcitednotimes}{\autocap{n}o citation in the text}
 
+\makeatletter
 \@ifpackageloaded{babel}{\@ifpackagewith{babel}{brazil}{\addto\captionsbrazil{%
     \renewcommand{\biblatexcitedntimes}{\autocap{c}itado \arabic{citecounter} vezes}
     \renewcommand{\biblatexcitedonetime}{\autocap{c}itado uma vez}
     \renewcommand{\biblatexcitednotimes}{\autocap{n}enhuma citação no texto}
 }}{}}{}
+\makeatother
 
 \makeatletter
 \@ifpackageloaded{biblatex}
