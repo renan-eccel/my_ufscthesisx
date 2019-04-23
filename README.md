@@ -101,6 +101,27 @@ você também pode executar o arquivo `build.bat` caso você esteja no Windows,
 ou executar o comando `make` caso você esteja no Linux.
 
 
+## Compilação
+
+Se você quiser saber quais são todos os comandos de compilação disponíveis,
+basta chamar utilizar o comando `make help`
+
+Caso você tenha problemas,
+error ou algo não funcione,
+execute o make file em modo debug.
+Para isso,
+basta chamar ele como você normalmente faz,
+mas passando o parâmetro `debug=true`.
+Por exemplo,
+`make latex debug=true`.
+
+Por conveniência,
+você também pode chamar `make latex debug=a` qualquer outra coisa desde que não seja vazio.
+Por exemplo,
+`make latex debug=` Você também pode diretamente editar o arquivo `setup/makefile.mk` e
+descomentar a linha `# ENABLE_DEBUG_MODE := true` para ativar o modo debug permanentemente.
+
+
 ##  Normas da UFSC para trabalhos acadêmicos
 
 Na UFSC,
