@@ -16,12 +16,6 @@ a compilação deve resultar no seguinte [PDF](https://github.com/evandroforks/a
 
 ## Instalar `LaTeX` e `abnTeX2`
 
-Para Linux,
-é necessário ter a instalação TeXLive 2018,
-e não TeXLive 2017.
-Veja a sua versão do TeXLive com o comando:
-1. `tex --version`
-
 Para poder utilizar a classe é necessário ter uma distribuição atual do LaTeX,
 incluindo o pacote abnTeX2.
 *Sugerimos formtemente a utilização da distribiução TeX Live para Windows e Linux e MacTeX para macOS*.
