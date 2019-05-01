@@ -72,55 +72,65 @@ section=TITLE, % Título de seções em caixa alta
 
 % FIXME: Preencha com seus dados
 \autor{\brazilword{Escreva aqui o Nome completo do Autor ou da Autora}}
-\titulo{Título do trabalho}
+\titulo{\lang{Work Title}{Título do trabalho}}
 
 % FIXME: Se houver subtítulo, descomente a linha abaixo
 % \subtitulo{\lang{Subtitle}{Subtítulo}}
 
 % FIXME: Siglas para grau de formação Dr./Dra., Me./Ma, Bel. Bela. (inglês: PhD., MSc., Bs.)
-\orientador[Orientador(a)]{\brazilword{Nome completo do Orientador(a)}, Dr.}
+\orientador[\lang{Supervisor}{Orientador(a)}]{\brazilword{Nome completo do Orientador(a)}, \lang{Phd.}{Dr.}}
 
 % FIXME: Se houver coorientador, descomente a linha abaixo
 % \coorientador[\lang{Co-supervisor}{Coorientador(a)}]{\brazilword{Nome do coorientador(a)}, \lang{Phd.}{Dr.}}
 
 % FIXME: Preencher com o nome do Coordenador de TCCs/Teses do seu curso
-\coordenador[Coordenador(a)]{\brazilword{Nome do Coordenador(a)}, Dr.}
+\coordenador[\lang{Coordinator}{Coordenador(a)}]{\brazilword{Nome do Coordenador(a)}, \lang{Phd.}{Dr.}}
 
 % FIXME: Local da sua defesa
 \local{\brazilword{Local da sua Defesa}}
 
 % FIXME: Ano da sua defesa
 \ano{2001}
-\biblioteca{Biblioteca Universitária}
+\biblioteca{\lang{University Library}{Biblioteca Universitária}}
 
 % FIXME: Sigla da sua instituição
 \instituicaosigla{UFSC}
-\instituicao{Universidade Federal de \brazilword{Santa Catarina}}
+\instituicao{\lang{Federal University of}{Universidade Federal de} \brazilword{Santa Catarina}}
 
 % FIXME: Preencha com Tese, Dissertação, Monografia ou Trabalho de Conclusão de Curso, Bachelor's Thesis, etc
-\tipotrabalho{Monografia}
+\tipotrabalho{\lang{Monograph}{Monografia}}
 
 % FIXME: Se houver Área de Concentração, descomente a linha abaixo
 % \area{\lang{Concentration Area}{Área de Concentração}}
 
 % FIXME: Preencha com Doutor, Bacharel ou Mestrando
-\formacao{Doutor em XXXXXX%
+\formacao{\lang
+    {Doctorate in XXXXXX}
+    {Doutor em XXXXXX}%
 }
-\programa{Programa de Pós-Graduação em XXXXXX%
+\programa{\lang
+    {Postgraduate Program in XXXXXX}
+    {Programa de Pós-Graduação em XXXXXX}%
 }
 
 % FIXME: Preencha com Departamento de XXXXXX, Centro de XXXXXX
-\centro{Departamento de XXXXXX, Centro de XXXXXX%
+\centro{\lang
+    {Department of XXXXXX, Center of XXXXXX}
+    {Departamento de XXXXXX, Centro de XXXXXX}%
 }
 
 % FIXME: Data da sua defesa
-\data{30 de março de 2001}
+\data{\lang{30 of march of}{30 de março de} 2001}
 
 % O preambulo deve conter tipo do trabalho, objetivo, nome da instituição e a área de concentração.
-\preambulo{%
+\preambulo{\lang%
+    {%
+        \imprimirtipotrabalho~submitted to the \imprimirprograma~of
+        \imprimirinstituicao~for degree acquirement in \imprimirformacao.%
+    }{%
         \imprimirtipotrabalho~submetido ao \imprimirprograma~da
         \imprimirinstituicao~para a obtenção do Grau de \imprimirformacao.%
-    %
+    }%
 }
 
 \palavraschaveufsc{palavraschaveingles}   {Keyword 1}
