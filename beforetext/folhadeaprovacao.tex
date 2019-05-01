@@ -1,6 +1,6 @@
 
 
-\addtotextpreliminarycontent{Folha de Aprovação}
+\addtotextpreliminarycontent{\lang{Approval Sheet}{Folha de Aprovação}}
 
 \begin{folhadeaprovacao}
 
@@ -12,12 +12,18 @@
         \end{center}
 
         \begin{minipage}{\textwidth}
-            
+            \lang
+            {
+                This \imprimirtipotrabalho~was considered appropriate to get the \imprimirformacao,
+                \ifnotempty{\imprimirarea}{in the area of \imprimirarea,}
+                and it was approved by the \imprimirprograma~of \imprimircentro~of \imprimirinstituicao.
+            }
+            {
                 Este(a) \imprimirtipotrabalho~foi julgado adequado(a) para obtenção do Título de \imprimirformacao,
                 \ifnotempty{\imprimirarea}{na área de concentração \imprimirarea,}
                 e foi aprovado em sua forma final pelo \imprimirprograma~
                 do \imprimircentro~da \imprimirinstituicao.
-            
+            }
          \end{minipage}%
     \end{center}
 
@@ -27,12 +33,12 @@
 
     \assinatura{%
         \textbf{\imprimircoordenador} \\
-        \imprimircoordenadorRotulo~do \imprimirprograma
+        \imprimircoordenadorRotulo~\lang{of}{do} \imprimirprograma
     }
 
     % \newpage
     \begin{flushleft}
-        \textbf{Banca Examinadora:}
+        \textbf{\lang{Examination Board}{Banca Examinadora}:}
     \end{flushleft}
 
     \assinatura{%
