@@ -1,0 +1,66 @@
+% lista de símbolos
+\newcommand{\numberOfRequests}{n}
+\newcommand{\graph}{G}
+\newcommand{\nodes}{V}
+\newcommand{\arcs}{A}
+\newcommand{\pickupNodes}{C}
+\newcommand{\deliveryNodes}{E}
+\newcommand{\startIndex}{0}
+\newcommand{\lastIndex}{2\numberOfRequests + 1}
+\newcommand{\startNode}{\node{\startIndex}}
+\newcommand{\lastNode}{\node{\lastIndex}}
+\newcommand{\originIndex}{\request}
+\newcommand{\destinationIndex}{\numberOfRequests + \request}
+\newcommand{\request}{i}
+\newcommand{\node}[1]{v_{#1}}
+\newcommand{\requests}{P}
+\newcommand{\originNode}{\node{\originIndex}}
+\newcommand{\destinationNode}{\node{\destinationIndex}}
+\newcommand{\vehiclesSet}{K}
+\newcommand{\vehiclesSetSize}{|K|}
+\newcommand{\vehicle}{k}
+\newcommand{\capacity}{Q}
+\newcommand{\vehicleCapacity}{\capacity_{\vehicle}}
+\newcommand{\maxRouteTime}{T}
+\newcommand{\vehicleMaxRouteTime}{\maxRouteTime_\vehicle}
+\newcommand{\load}{q}
+\newcommand{\nodeLoad}[1]{\load_{#1}}
+\newcommand{\requestLoad}{\load_\request}
+\newcommand{\originNodeLoad}{\load_{0}}
+\newcommand{\destinationNodeLoad}{\load_{2n + 1}}
+\newcommand{\serviceTime}{s}
+\newcommand{\nodeServiceTime}[1]{\serviceTime_{#1}}
+\newcommand{\startNodeServiceTime}{\serviceTime_{0}}
+\newcommand{\lastNodeServiceTime}{\serviceTime_{2n + 1}}
+\newcommand{\earliestTimeWindow}{e}
+\newcommand{\latestTimeWindow}{l}
+\newcommand{\cost}{c}
+\newcommand{\travelTime}{t}
+\newcommand{\arcTravelTime}[2]{\travelTime_{\arc{#1}{#2}}}
+\newcommand{\maxRideTime}{L}
+\newcommand{\arrivalTime}{a}
+\newcommand{\planingHorizon}{H}
+\newcommand{\arc}[2]{(#1,#2)}
+\newcommand{\arcCost}[2]{\cost_{\arc{#1}{#2}}}
+\newcommand{\uniformDistribution}[2]{\mathcal{U}(#1;\ #2)}
+\newcommand{\timeWindowWidth}{W}
+\newcommand{\staticPercentage}{\alpha}
+\newcommand{\maneuverTime}{\beta}
+\newcommand{\requestLatestArrivalTime}{\arrivalTime{}_{\request{}}^{\mathrm{latest}}}
+\newcommand{\intervalsBetweenArrivals}{\Delta}
+\newcommand{\intervalBetweenArrivals}{\delta}
+\newcommand{\perfectInterval}{\theta}
+\newcommand{\deviationFromPerfectInterval}{\sigma}
+\newcommand{\urgency}{u}
+\newcommand{\normalDistribution}[2]{\mathcal{N}(#1,#2)}
+\newcommand{\midTimeWindow}{m}
+\newcommand{\requestArrivalTime}{\arrivalTime_{\request}}
+\newcommand{\speed}{v}
+\newcommand{\degreeOfDynamism}{\delta}
+\newcommand{\eDegreeOfDynamism}{\degreeOfDynamism^e}
+\newcommand{\eDegreeOfDynamismTW}{\degreeOfDynamism^e_{TW}}
+\newcommand{\reactionTime}{r}
+\newcommand{\deviation}{\gamma}
+\newcommand{\maxDeviation}{\overline{\gamma}}
+\newcommand{\dynamism}{d}
+\newcommand{\expDistribution}[1]{\text{Exp}(#1)}

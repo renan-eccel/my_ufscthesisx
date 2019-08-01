@@ -1,0 +1,95 @@
+% TODO: verificar a necessidade de colocar o número de instâncias na tabela
+\newpage
+\begin{table}[]
+\newcommand{\firstColumnWidth}{1.52cm}
+\newcommand{\columnWidth}{2.25cm}
+\newcommand{\numberOfRows}{2}
+\footnotesize
+\caption{Características estáticas dos conjuntos de instâncias de 
+         \textit{benchmark}}
+\label{tab:instancias}
+\begin{tabular}{lrrrrr}
+\toprule
+\multirow{3}{\columnWidth}{} & 
+  \multirow{\numberOfRows}{\columnWidth}{\cite{ropke_models_2007}} & 
+  \multirow{\numberOfRows}{\columnWidth}{\cite{cordeau_tabu_2003}} & 
+  \multirow{\numberOfRows}{\columnWidth}{\cite{li_metaheuristic_2003}} & 
+  \multirow{\numberOfRows}{\columnWidth}{
+    \cite{gendreau_neighborhood_2006}} & 
+  \multirow{\numberOfRows}{\columnWidth}{
+    \cite{mitrovic-minic_waiting_2004}}
+\\ & & & & & \\ & & & & & \\   
+\midrule
+\multirow{\numberOfRows}{\firstColumnWidth}{N. de instâncias} & 
+  \multirow{\numberOfRows}{\columnWidth}{42} & 
+  \multirow{\numberOfRows}{\columnWidth}{20} & 
+  \multirow{\numberOfRows}{\columnWidth}{354} & 
+  \multirow{\numberOfRows}{\columnWidth}{15} & 
+  \multirow{\numberOfRows}{\columnWidth}{220}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$\planingHorizon$ (min)} & 
+  \multirow{\numberOfRows}{\columnWidth}{1440} & 
+  \multirow{\numberOfRows}{\columnWidth}{1440} & 
+  \multirow{\numberOfRows}{\columnWidth}{[1236, 3693]} & 
+  \multirow{\numberOfRows}{\columnWidth}{240 ou 450} & 
+  \multirow{\numberOfRows}{\columnWidth}{600}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{Geometria (km $\times$ km)} & 
+  \multirow{\numberOfRows}{\columnWidth}{10 $\times$ 10} & 
+  \multirow{\numberOfRows}{\columnWidth}{10 $\times$ 10} & 
+  \multirow{\numberOfRows}{\columnWidth}{100 $\times$ 100} & 
+  \multirow{\numberOfRows}{\columnWidth}{5 $\times$ 5} & 
+  \multirow{\numberOfRows}{\columnWidth}{60 $\times$ 60}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$\numberOfRequests$} & 
+  \multirow{\numberOfRows}{\columnWidth}{[16, 96]} & 
+  \multirow{\numberOfRows}{\columnWidth}{[24, 144]} & 
+  \multirow{\numberOfRows}{\columnWidth}{[50, 500]} & 
+  \multirow{\numberOfRows}{\columnWidth}{[84, 217]} & 
+  \multirow{\numberOfRows}{\columnWidth}{[100, 1000]}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$|\vehiclesSet|$}  &
+  \multirow{\numberOfRows}{\columnWidth}{[2, 8]} & 
+  \multirow{\numberOfRows}{\columnWidth}{[3, 13]} & 
+  \multirow{\numberOfRows}{\columnWidth}{[25, 500]} & 
+  \multirow{\numberOfRows}{\columnWidth}{10 ou 20} & 
+  \multirow{\numberOfRows}{\columnWidth}{[20, 80]}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$\vehicleCapacity$}  &  
+  \multirow{\numberOfRows}{\columnWidth}{3 ou 6 } & 
+  \multirow{\numberOfRows}{\columnWidth}{6} & 
+  \multirow{\numberOfRows}{\columnWidth}{[200, 1000]} & 
+  \multirow{\numberOfRows}{\columnWidth}{$\infty$} & 
+  \multirow{\numberOfRows}{\columnWidth}{$\infty$}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$\nodeLoad_\request$} &
+  \multirow{\numberOfRows}{\columnWidth}{[1, 6]} & 
+  \multirow{\numberOfRows}{\columnWidth}{1} & 
+  \multirow{\numberOfRows}{\columnWidth}{[3, 36]} & 
+  \multirow{\numberOfRows}{\columnWidth}{1} & 
+  \multirow{\numberOfRows}{\columnWidth}{1}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$\serviceTime_\request$ (min)} & 
+  \multirow{\numberOfRows}{\columnWidth}{[1, 6]} & 
+  \multirow{\numberOfRows}{\columnWidth}{10} & 
+  \multirow{\numberOfRows}{\columnWidth}{90} & 
+  \multirow{\numberOfRows}{\columnWidth}{5} & 
+  \multirow{\numberOfRows}{\columnWidth}{0}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$\vehicleMaxRouteTime$  (min)}  &
+  \multirow{\numberOfRows}{\columnWidth}{[480, 720]} & 
+  \multirow{\numberOfRows}{\columnWidth}{480} & 
+  \multirow{\numberOfRows}{\columnWidth}{[1236, 3693]} & 
+  \multirow{\numberOfRows}{\columnWidth}{240 ou 450} & 
+  \multirow{\numberOfRows}{\columnWidth}{600}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$\maxRideTime_\request$ (min)}  &
+  \multirow{\numberOfRows}{\columnWidth}{30 ou 45} & 
+  \multirow{\numberOfRows}{\columnWidth}{90} & 
+  \multirow{\numberOfRows}{\columnWidth}{[1236, 3693]} & 
+  \multirow{\numberOfRows}{\columnWidth}{240 ou 450} & 
+  \multirow{\numberOfRows}{\columnWidth}{600}
+\\ & & & & & \\
+\bottomrule
+\end{tabular}
+\end{table}

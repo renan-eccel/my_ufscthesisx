@@ -1,0 +1,221 @@
+
+%% README.md
+%% Copyright 2017 Evandro Coan
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is M. Y. Name.
+%
+% This work consists of the files:
+% 1. `README.md`,
+% 2. `basic.tex`,
+% 3. `commands.tex`,
+% 4. `commands_list.tex`
+% 5. `programming.tex`
+% 6. `badboxes.tex`
+
+
+
+% Writing code in latex document. Usage: \begin & \end {lstlisting}
+% http://stackoverflow.com/questions/3175105/writing-code-in-latex-document
+\usepackage{listings}
+
+% How to insert code with accents with listings?
+% https://tex.stackexchange.com/questions/30512/how-to-insert-code-with-accents-with-listings
+\usepackage{listingsutf8}
+
+% set the font family for lstlisting
+% https://tex.stackexchange.com/questions/33685/set-the-font-family-for-lstlisting
+\usepackage{courier}
+
+% Latex: Listings with monospace fonts
+% https://stackoverflow.com/questions/2913141/latex-listings-with-monospace-fonts
+% https://tex.stackexchange.com/questions/145416/how-to-have-straight-single-quotes-in-lstlistings
+% https://tex.stackexchange.com/questions/252443/double-quote-charater-with-listings-create-problem
+\lstset{frame=,
+  language=Python,% default language
+  upquote=true,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{darkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=4,
+  morestring=[b]',
+  morestring=[b]",
+  literate = {---}{{\ProcessThreeDashes}}3
+             {>}{{\textcolor{red}\textgreater}}1
+             {|}{{\textcolor{red}\textbar}}1
+             {\ -\ }{{\mdseries\ -\ }}3,
+  inputencoding=utf8, % http://stackoverflow.com/questions/1116266/listings-in-latex-with-utf-8-or-at-least-german-umlauts
+  extendedchars=true, % https://tex.stackexchange.com/questions/24528/having-problems-with-listings-and-utf-8-can-it-be-fixed
+  literate=%
+  {£}{{\pounds}}1
+  {ß}{{\ss}}1
+  {à}{{\`a}}1
+  {À}{{\`A}}1
+  {à}{{\`{a}}}1
+  {á}{{\'a}}1
+  {Á}{{\'A}}1
+  {á}{{\'{a}}}1
+  {Á}{{\'{A}}}1
+  {â}{{\^a}}1
+  {Â}{{\^A}}1
+  {â}{{\^{a}}}1
+  {Â}{{\^{A}}}1
+  {ã}{{\~a}}1
+  {Ã}{{\~A}}1
+  {ã}{{\~{a}}}1
+  {Ã}{{\~{A}}}1
+  {ä}{{\"a}}1
+  {Ä}{{\"A}}1
+  {å}{{\r a}}1
+  {Å}{{\r A}}1
+  {æ}{{\ae}}1
+  {Æ}{{\AE}}1
+  {ç}{{\c c}}1
+  {Ç}{{\c C}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {È}{{\'E}}1
+  {è}{{\`e}}1
+  {è}{{\`{e}}}1
+  {é}{{\'e}}1
+  {É}{{\'E}}1
+  {é}{{\'{e}}}1
+  {É}{{\'{E}}}1
+  {ê}{{\^e}}1
+  {Ê}{{\^E}}1
+  {ê}{{\^{e}}}1
+  {Ê}{{\^{E}}}1
+  {ë}{{\"e}}1
+  {Ë}{{\"E}}1
+  {ë}{{\¨{e}}}1
+  {ì}{{\`i}}1
+  {Ì}{{\`I}}1
+  {í}{{\'i}}1
+  {Í}{{\'I}}1
+  {í}{{\'{i}}}1
+  {Í}{{\~{Í}}}1
+  {î}{{\^i}}1
+  {Î}{{\^I}}1
+  {î}{{\^{i}}}1
+  {Î}{{\^{I}}}1
+  {ï}{{\"i}}1
+  {Ï}{{\"I}}1
+  {ò}{{\`o}}1
+  {Ò}{{\`O}}1
+  {ó}{{\'o}}1
+  {Ó}{{\'O}}1
+  {ó}{{\'{o}}}1
+  {Ó}{{\'{O}}}1
+  {ô}{{\^o}}1
+  {Ô}{{\^O}}1
+  {ô}{{\^{o}}}1
+  {Ô}{{\^{O}}}1
+  {õ}{{\~o}}1
+  {Õ}{{\~O}}1
+  {õ}{{\~{o}}}1
+  {Õ}{{\~{O}}}1
+  {ö}{{\"o}}1
+  {Ö}{{\"O}}1
+  {ø}{{\o}}1
+  {ù}{{\`u}}1
+  {Ù}{{\`U}}1
+  {ù}{{\`{u}}}1
+  {ú}{{\'u}}1
+  {Ú}{{\'U}}1
+  {ú}{{\'{u}}}1
+  {û}{{\^u}}1
+  {Û}{{\^U}}1
+  {û}{{\^{u}}}1
+  {ü}{{\"u}}1
+  {Ü}{{\"U}}1
+  {ő}{{\H{o}}}1
+  {Ő}{{\H{O}}}1
+  {œ}{{\oe}}1
+  {Œ}{{\OE}}1
+  {ű}{{\H{u}}}1
+  {Ű}{{\H{U}}}1
+  {€}{{\EUR}}1
+}
+
+% Defining `lstset` parameters for multiple languages & How can I highlight YAML code in a pretty way with listings?
+%
+% Usage \begin{lstlisting}[style=yaml_style] ... \end{lstlisting}
+%
+% https://tex.stackexchange.com/questions/45711/defining-lstset-parameters-for-multiple-languages
+% https://tex.stackexchange.com/questions/152829/how-can-i-highlight-yaml-code-in-a-pretty-way-with-listings
+\newcommand\YAMLcolonstyle{\color{red}}
+\newcommand\YAMLkeystyle{\color{black}}
+\newcommand\YAMLvaluestyle{\color{blue}}
+\newcommand\ProcessThreeDashes{\llap{\color{cyan}\mdseries-{-}-}}
+
+\lstdefinestyle{yaml_style}{
+  frame=,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\color{gray},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2,
+  keywords={true,false,null,y,n},
+  keywordstyle=\color{darkgray},
+  basicstyle=\YAMLkeystyle,                                 % assuming a key comes first
+  sensitive=false,
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\YAMLvaluestyle\ttfamily,
+  moredelim=[l][\color{orange}]{\&},
+  moredelim=[l][\color{magenta}]{*},
+  moredelim=**[il][\YAMLcolonstyle{:}\YAMLvaluestyle]{:}   % switch to value style at :
+}
+
+\lstdefinestyle{ufscthesisx_style}{
+    aboveskip=3mm,
+    belowskip=3mm,
+    backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+    basicstyle={\small\ttfamily},    % the size of the fonts that are used for the code
+    breakatwhitespace=true,          % sets if automatic breaks should only happen at whitespace
+    breaklines=true,                 % sets automatic line breaking
+    captionpos=t,                    % sets the caption-position to bottom
+    commentstyle=\color{mygreen},    % comment style
+    columns=flexible,
+    deletekeywords={...},            % if you want to delete keywords from the given language
+    escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+    extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+    frame=tb,                        % adds a frame around the code
+    keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+    keywordstyle=\color{blue},       % keyword style
+    language=Matlab,                 % the language of the code
+    morekeywords={*,...},            % if you want to add more keywords to the set
+    numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+    numbersep=5pt,                   % how far the line-numbers are from the code
+    numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+    rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+    showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+    showstringspaces=false,          % underline spaces within strings only
+    showtabs=false,                  % show tabs within strings adding particular underscores
+    stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+    stringstyle=\color{mymauve},     % string literal style
+    tabsize=3,                       % sets default tabsize to 3 spaces
+    texcl=true,                      % Permite o uso de acentuação no código
+    title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}

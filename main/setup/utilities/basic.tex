@@ -1,0 +1,306 @@
+
+%% README.md
+%% Copyright 2017 Evandro Coan
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is M. Y. Name.
+%
+% This work consists of the files:
+% 1. `README.md`,
+% 2. `basic.tex`,
+% 3. `commands.tex`,
+% 4. `commands_list.tex`
+% 5. `programming.tex`
+% 6. `badboxes.tex`
+\makeatletter
+
+
+
+% Please tutor the usage of patchcmd and xpatch
+% https://tex.stackexchange.com/questions/152773/please-tutor-the-usage-of-patchcmd-and-xpatch
+\usepackage{xpatch}
+
+% Incompatible color definition when using tikz with color package
+% https://tex.stackexchange.com/questions/150369/incompatible-color-definition-when-using-tikz-with-color-package
+\usepackage{xcolor}
+
+% Package setspace must be put before hyperref
+% http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/hyperref/README.pdf
+\@ifclassloaded{memoir}{}{\usepackage{setspace}}
+
+% Allows putting an [H] in \begin{figure} to specify the exact location of the figure
+% https://tex.stackexchange.com/questions/8625/force-figure-placement-in-text
+%
+% Package float must be put before hyperref
+% http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/hyperref/README.pdf
+\usepackage{float}
+
+% bigfoot.sty:61: Package hyperref Warning: Option `hyperfootnotes' has already been used
+% https://tex.stackexchange.com/questions/402652/bigfoot-sty61-package-hyperref-warning-option-hyperfootnotes-has-already-be
+\@ifpackageloaded{hyperref}{\hypersetup{hyperfootnotes=false}}{\PassOptionsToPackage{hyperfootnotes=false}{hyperref}}
+\usepackage{hyperref}
+
+
+% \lettrine{O}{nce} upon a time...
+% \lettrine[findent=2pt]{\fbox{\textbf{T}}}{ }his thesis deals with...
+%
+% https://tex.stackexchange.com/questions/164298/starting-a-paragraph-with-a-big-letter
+\usepackage{lettrine}
+
+% Required for including pictures, resizebox
+\usepackage{graphicx}
+
+% Allows in-line images such as the example fish picture
+\usepackage{wrapfig}
+
+% How to automatically force latex to not justify the text when it is not wise?
+% https://tex.stackexchange.com/questions/365801/how-to-automatically-force-latex-to-not-justify-the-text-when-it-is-not-wise
+\usepackage{array,ragged2e}
+
+% Use its macro adjustwidth* to extend tables out of outer text border.
+% https://tex.stackexchange.com/questions/366155/how-to-write-a-table-a-little-larger-than-the-paragraphs-with-centered-columns
+%
+% The `memoir` class emulates this package, so not try to load it when using `memoir`, ifpackageloaded question
+% https://tex.stackexchange.com/questions/70212/ifpackageloaded-question
+\@ifpackageloaded{changepage}{}{\usepackage[strict]{changepage}}
+
+% How to make horizontal lists?
+% https://tex.stackexchange.com/questions/146306/how-to-make-horizontal-lists
+%
+% Compilation error when including enumitem and paralist packages
+% https://tex.stackexchange.com/questions/162799/compilation-error-when-including-enumitem-and-paralist-packages
+\usepackage{paralist}
+
+% Replace the `paralist` package implementation of enumerate lists
+\usepackage{enumerate}
+
+% With the package option shortlabels you can use an enumerate-like syntax, where A, a, I, i and 1
+% stand for \Alph*, \alph*, \Roman*, \roman* and \arabic*. This is intended mainly as a sort of
+% compatibility mode with the enumerate package, and therefore the following special rule applies:
+% if the very first option (at any level) is not recognized as a valid key, then it will be
+% considered a label with the enumerate-like syntax.
+%
+% No spacing between enumerated items with \usepackage{enumerate}
+% https://tex.stackexchange.com/questions/119919/no-spacing-between-enumerated-items-with-usepackageenumerate
+\usepackage[shortlabels]{enumitem}
+
+\usepackage{tabularx}
+\usepackage{multirow}
+
+
+
+% The package supports the Text Companion fonts, which provide many text symbols (such as
+% baht, bullet, copyright, musicalnote, onequarter, section, and yen), in the TS1 encoding.
+%
+% `LaTeX Error: Option clash for package textcomp` with the package `mathcomp`, it need to be loaded before it.
+% https://tex.stackexchange.com/questions/343546/how-do-you-resolve-the-error-in-latex-option-clash-for-package-inputenc-usepa
+\usepackage[full]{textcomp}
+\usepackage{mathcomp}
+
+% Manipulação de Strings
+\usepackage{xstring}
+
+% Número da última página
+\usepackage{lastpage}
+
+% Tamanho das fontes
+\usepackage{anyfontsize}
+
+% Usa a fonte Latin Modern
+\usepackage{lmodern}
+
+% Selecao de codigos de fonte
+% https://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc
+%
+% Will allow all displayable utf8 characters to be available as input
+% https://tex.stackexchange.com/questions/13067/utf8x-vs-utf8-inputenc
+\usepackage[T1]{fontenc}
+
+% Codificacao do documento (conversão automática dos acentos)
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{rotating}
+
+% Needs to be loaded after hyperref
+% http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/hyperref/README.pdf
+%
+% Package incompatibilty between alphalph, and hyperref with amsmath subequations
+% https://tex.stackexchange.com/questions/134665/package-incompatibilty-between-alphalph-and-hyperref-with-amsmath-subequations
+\usepackage{amsmath}
+\let\equation\gather
+\let\endequation\endgather
+
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{pdflscape}
+\usepackage{epstopdf}
+\usepackage{multirow}
+\usepackage{listings}
+
+% Para incluir links
+\usepackage{url}
+
+% Pacote necessário para a lista de siglas.
+\usepackage{nomencl}
+\usepackage{booktabs}
+
+% A comprehensive (SI) units package
+\usepackage{siunitx}
+\sisetup{detect-all}
+\sisetup{scientific-notation = fixed, fixed-exponent = 0, round-mode = places,round-precision = 2,output-decimal-marker = {,} }
+\DeclareSIUnit \VA {VA} % apparent power
+
+% We need to load it after `siunitx` package, otherwise it will cause to the package `bigfoot` to throw
+% the error `input stack size=5000`
+% https://tex.stackexchange.com/questions/403651/while-loading-fancyvrb-siunitx-and-bigfoot-i-got-input-stack-size-5000-tex-st
+\usepackage{fancyvrb}
+
+% Memoir class conflict with datetime
+% https://tex.stackexchange.com/questions/162353/memoir-class-conflict-with-datetime
+% https://tex.stackexchange.com/questions/49071/difference-between-let-foo-relax-and-def-foo-for-disabling
+\let\ordinal\relax
+\usepackage{datetime}
+
+% gives you the possibility to rotate any object of an arbitrary angle.
+\usepackage{rotating}
+
+% Rotação de páginas no documento pdf.
+\usepackage{pdflscape}
+
+% Customize the look of the frame
+\usepackage{mdframed}
+
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+\usepackage{tablefootnote}
+\usepackage{longtable}
+\usepackage{tocloft}
+
+% https://tex.stackexchange.com/questions/2441/how-to-add-a-forced-line-break-inside-a-table-cell
+\usepackage{makecell}
+\usepackage{pbox}
+
+% LaTeX not hyphenating properly, text running off page
+% https://tex.stackexchange.com/questions/28136/latex-not-hyphenating-properly-text-running-off-page
+\usepackage{hyphenat}
+
+% How to use \scalebox around my environment?
+% https://tex.stackexchange.com/questions/387515/how-to-use-scalebox-around-my-environment
+\usepackage{verbatimbox}
+
+% LaTeX/Indexing
+% https://www.sharelatex.com/learn/Indices
+% https://en.wikibooks.org/wiki/LaTeX/Indexing
+\usepackage{makeidx}
+\makeindex
+
+% Is it possible to keep my translation together with original text?
+% https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
+\usepackage{comment}
+
+% Scoping \raggedbottom to a single page
+% https://tex.stackexchange.com/questions/226716/scoping-raggedbottom-to-a-single-page
+\usepackage{afterpage}
+
+% Logical String Length
+% https://tex.stackexchange.com/questions/87638/logical-string-length
+\usepackage{xstring}
+\usepackage{xifthen}
+
+% abntex2
+\usepackage{bookmark}
+\usepackage{calc}
+
+% cannot use \caption under minipage
+% https://tex.stackexchange.com/questions/57433/cannot-use-caption-under-minipage
+\usepackage{capt-of}
+
+% Custom list throw LaTeX Error: Command \mycustomfiction already defined?
+% https://tex.stackexchange.com/questions/388489/custom-list-throw-latex-error-command-mycustomfiction-already-defined
+\usepackage{morewrites}
+
+% Package csquotes Warning: Load 'inputenc' before 'csquotes'
+% Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing
+% https://tex.stackexchange.com/questions/229638/package-biblatex-warning-babel-polyglossia-detected-but-csquotes-missing
+\usepackage{csquotes}
+
+% Indent the first section paragraphs
+% https://tex.stackexchange.com/questions/39227/no-indent-in-the-first-paragraph-in-a-section
+\usepackage{indentfirst}
+
+% Why the environment ttfamily is hyphenated, but macro ttfamily is not hyphenating?
+% https://tex.stackexchange.com/questions/387678/why-the-environment-ttfamily-is-hyphenated-but-macro-ttfamily-is-not-hyphenatin
+\usepackage{letltxmacro}
+
+% Theorem packages: which to use, which conflict?
+% https://tex.stackexchange.com/questions/5599/theorem-packages-which-to-use-which-conflict
+\usepackage{amsthm}
+
+% Why is the ifthen package obsolete? (It is used by the abntex2 class)
+% https://tex.stackexchange.com/questions/13866/why-is-the-ifthen-package-obsolete
+\usepackage{ifthen}
+
+% How to make section name uppercase in ToC?
+% https://tex.stackexchange.com/questions/156916/how-to-make-section-name-uppercase-in-toc
+\usepackage{textcase}
+
+% The class memoir already provides these functionalities: Caption package and Memoir
+% https://groups.google.com/forum/#!topic/comp.text.tex/RzpI2ATMev0
+% https://tex.stackexchange.com/questions/18931/memoir-class-with-subcaption-and-hyperref-packages
+% \usepackage{subfig}
+% \usepackage{etoolbox}
+%
+% How to create my own caption type with \DeclareCaptionType on memoir class?
+% https://tex.stackexchange.com/questions/391901/how-to-create-my-own-caption-type-with-declarecaptiontype-on-memoir-class
+\usepackage{caption}
+
+% The package `layouts` causes the: Warning: layout scale set to 0.5 on input line
+% https://tex.stackexchange.com/questions/299372/warning-layout-scale-set-to-0-5-on-input-line
+% \usepackage{layouts}
+
+% Always use it as should improve full justification
+% https://tex.stackexchange.com/questions/10377/texttt-overfull-hbox-problem
+% https://tex.stackexchange.com/questions/66052/should-i-load-microtype-with-pdflatex
+\usepackage{microtype}
+
+% https://tex.stackexchange.com/questions/482886/how-to-add-babel-captions-to-newfloat-package-environments
+\usepackage{newfloat}
+
+% How to auto adjust my last table column width, and why is there Underfull \vbox badness on this table?
+% https://tex.stackexchange.com/questions/387238/how-to-auto-adjust-my-last-table-column-width-and-why-is-there-underfull-vbox/387251
+%
+% Why ltablex package breaks the changepage package?
+% https://tex.stackexchange.com/questions/404339/why-ltablex-package-breaks-the-changepage-package
+\usepackage{ltablex}\keepXColumns
+
+% Para incluir links com characteres especiais como # em URLs em `\footnote`
+% https://tex.stackexchange.com/questions/12855/getting-those-signs-in-the-footnote
+% https://tex.stackexchange.com/questions/299348/animate-gives-errors-when-i-also-use-bigfoot-or-cprotect
+%
+% Adding this will cause the warning``bigfoot.sty:61: Package hyperref Warning:
+% Option `hyperfootnotes' has 1`hyperfootnotes' has already been used
+% https://tex.stackexchange.com/questions/402652/bigfoot-sty61-package-hyperref-warning-option-hyperfootnotes-has-already-be
+\let\truehypersetup\hypersetup
+\renewcommand\hypersetup[1]{}
+\usepackage{bigfoot}
+\let\hypersetup\truehypersetup
+
+% While loading fancyvrb, siunitx and bigfoot, I got input stack size=5000, TeX STOPPED: fatal errors occurred
+% https://tex.stackexchange.com/questions/403651/while-loading-fancyvrb-siunitx-and-bigfoot-i-got-input-stack-size-5000-tex-st
+\xpatchcmd{\FN@allmarks}{266}{256}{}{}
+
+
+
+\makeatother
+
+

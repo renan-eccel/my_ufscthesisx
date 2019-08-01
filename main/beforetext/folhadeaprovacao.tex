@@ -1,0 +1,77 @@
+
+
+\addtotextpreliminarycontent{\lang{Approval Sheet}{Folha de Aprovação}}
+
+\begin{folhadeaprovacao}
+
+    \begin{center}
+        {\imprimirautor}
+
+        \begin{center}
+            \ABNTEXchapterfont\bfseries\MakeUppercase{\imprimirtitulo}\ifnotempty{\imprimirsubtitulo}{: \imprimirsubtitulo}
+        \end{center}
+
+        \begin{minipage}{\textwidth}
+            \lang
+            {
+                This \imprimirtipotrabalho~was considered appropriate to get the \imprimirformacao,
+                \ifnotempty{\imprimirarea}{in the area of \imprimirarea,}
+                and it was approved by the \imprimirprograma~of \imprimircentro~of \imprimirinstituicao.
+            }
+            {
+                Este(a) \imprimirtipotrabalho~foi julgado adequado(a) para obtenção do Título de \imprimirformacao,
+                \ifnotempty{\imprimirarea}{na área de concentração \imprimirarea,}
+                e foi aprovado em sua forma final pelo \imprimirprograma~
+                do \imprimircentro~da \imprimirinstituicao.
+            }
+         \end{minipage}%
+    \end{center}
+
+    \begin{center}
+        \imprimirlocal, \imprimirdata.
+    \end{center}
+
+    \assinatura{%
+        \textbf{\imprimircoordenador} \\
+        \imprimircoordenadorRotulo~\lang{of}{do} \imprimirprograma
+    }
+
+    % \newpage
+    \begin{flushleft}
+        \textbf{\lang{Examination Board}{Banca Examinadora}:}
+    \end{flushleft}
+
+    \assinatura{%
+        \textbf{\imprimirorientador} \\ \imprimirorientadorRotulo\\
+        \imprimirinstituicao~--~\imprimirinstituicaosigla
+    }
+
+    \ifnotempty{\imprimircoorientador}{%
+        \assinatura{%
+            \textbf{\imprimircoorientador} \\ \imprimircoorientadorRotulo \\
+            \imprimirinstituicao~--~\imprimirinstituicaosigla
+        }
+    }
+
+    \assinatura{%
+        \textbf{Prof. Convidado 1} \\
+        Instituição 1 -- Sigla 1
+    }
+
+    \assinatura{%
+        \textbf{Prof. Convidado 2} \\
+        Instituição 2 -- Sigla 2
+    }
+
+    \assinatura{%
+        \textbf{Prof. Convidado 3} \\
+        Instituição 3 -- Sigla 3
+    }
+
+    \assinatura{%
+        \textbf{Prof. Convidado 4} \\
+        Instituição 4 -- Sigla 4
+    }
+
+\end{folhadeaprovacao}
+

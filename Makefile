@@ -1,3 +1,0 @@
-
-include ./setup/makefile.mk
-

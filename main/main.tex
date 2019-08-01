@@ -1,0 +1,309 @@
+% Monograph LaTeX Template for UFSC based on:
+%
+% 1. https://github.com/royertiago/tcc
+% 2. http://portal.bu.ufsc.br/normalizacao/
+% 3. https://github.com/AdrianoRuseler/abntex2-ufsc
+%
+% When the bibliography includes a cyclic reference to another bibliography,
+% you need to run `pdfTeX` 5 times on the following order:
+% 1. `pdfTeX`,
+% 2. `biber`,
+% 3. `pdfTeX`
+% 4. `pdfTeX`
+% 5. `pdfTeX`
+% 6. `biber`
+% 7. `pdfTeX`
+
+
+% Allows you to write your thesis both in English and Portuguese
+% https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
+\newif\ifenglish\englishfalse
+
+% Uncomment the line `\englishtrue` to set the document default language to 
+% English
+% \englishtrue
+
+% https://tex.stackexchange.com/questions/131002/how-to-expand-ifthenelse-so-that-it-can-be-used-in-parshape
+\newcommand{\lang}[2]{\ifenglish#1\else#2\fi}
+
+% https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last
+\ifenglish
+    \PassOptionsToPackage{brazil,main=english,spanish,french}{babel}
+\else
+    \PassOptionsToPackage{main=brazil,english,spanish,french}{babel}
+\fi
+
+% Simple alias for English and Portuguese words
+\newcommand{\brazilword}[1]{\foreignlanguage{brazil}{#1}}
+\newcommand{\englishword}[1]{\foreignlanguage{english}{#1}}
+
+% Allow you to write `Evandro's house` in latex as `Evandro\s house` 
+% instead of `Evandro\textquotesingle{}s house`
+% https://tex.stackexchange.com/questions/31091/space-after-latex-commands
+\newcommand{\s}[0]{\textquotesingle{}s\xspace}
+\newcommand{\q}[0]{\textquotesingle{}\xspace}
+
+% Uncomment the following line if you want to use other biblatex settings
+% \PassOptionsToPackage{style=numeric,repeatfields=true,backend=biber,backref=true,citecounter=true}{biblatex}
+
+% Disable the empty pages automatically put by memoir class, except the ones by \cleardoublepage
+% \PassOptionsToClass{openany}{memoir}
+
+% Fixes several `abntex2` class problems
+\input{setup/setup.tex}
+
+% The UFSC font size is 10.5, but memoir embedded by `abntex2` only accepts 10 and 11pt.
+% However, problem will be fixed the `ufscthesisx` package.
+\documentclass[
+% 10pt,          % Padrão UFSC para versão final
+% a5paper,       % Padrão UFSC para versão final
+12pt,        % Pode usar tamanho 12pt para defesa
+a4paper,     % Pode usar a4 para defesa
+twoside,       % Impressão nos dois lados da folha
+chapter=TITLE, % Título de capítulos em caixa alta
+section=TITLE, % Título de seções em caixa alta
+]{abntex2}
+
+% Load the UFSC thesis package
+\usepackage{setup/ufscthesisx}
+
+% Load the symbols defined in symbols.sty 
+\usepackage{symbols} 
+
+% Load extra commands for tables, lists, summaries, etc.
+\input{setup/utilities.tex}
+
+% % Utilize o arquivo aftertext/references.bib para incluir sua bibliografia.
+% FIXME
+\addbibresource{aftertext/references.bib}
+
+\autor{\brazilword{Renan Artur Lopes Eccel}}
+\titulo{\lang{Work Title}{Título do trabalho}}
+
+% FIXME: Se houver subtítulo, descomente a linha abaixo
+% \subtitulo{\lang{Subtitle}{Subtítulo}}
+
+% FIXME: Siglas para grau de formação Dr./Dra., Me./Ma, Bel. Bela. (inglês: PhD., MSc., Bs.)
+\orientador[\lang{Supervisor}{Orientador(a)}]
+           {\brazilword{Rodrigo Castelan Carlson}, \lang{Phd.}{Dr.}}
+
+% FIXME: Se houver coorientador, descomente a linha abaixo
+% \coorientador[\lang{Co-supervisor}{Coorientador(a)}]{\brazilword{Nome do coorientador(a)}, \lang{Phd.}{Dr.}}
+
+% FIXME: Preencher com o nome do Coordenador de TCCs/Teses do seu curso
+\coordenador[\lang{Coordinator}
+            {Coordenador(a)}]{\brazilword{Werner Kraus Jr.}, \lang{Phd.}{Dr.}}
+
+% FIXME: Local da sua defesa
+\local{\brazilword{Florianópolis}}
+
+% FIXME: Ano da sua defesa
+\ano{2019}
+\biblioteca{\lang{University Library}{Biblioteca Universitária}}
+
+% FIXME: Sigla da sua instituição
+\instituicaosigla{UFSC}
+\instituicao{\lang{Federal University of}{Universidade Federal de} 
+             \brazilword{Santa Catarina}}
+
+% FIXME: Preencha com Tese, Dissertação, Monografia ou Trabalho de Conclusão de Curso, Bachelor's Thesis, etc
+\tipotrabalho{\lang{Monograph}{Dissertação}}
+
+% FIXME: Se houver Área de Concentração, descomente a linha abaixo
+% \area{\lang{Concentration Area}{Área de Concentração}}
+
+% FIXME: Preencha com Doutor, Bacharel ou Mestrando
+\formacao{\lang
+    {Doctorate in XXXXXX}
+    {Mestrado em Engenharia de Automação e Sistemas}%
+}
+\programa{\lang
+    {Postgraduate Program in XXXXXX}
+    {Programa de Pós-Graduação em Engenharia de Automação e Sistemas}%
+}
+
+% FIXME: Preencha com Departamento de XXXXXX, Centro de XXXXXX
+\centro{\lang
+    {Department of XXXXXX, Center of XXXXXX}
+    {Departamento de Automação e Sistemas, Centro Tecnológico}%
+}
+
+% FIXME: Data da sua defesa
+\data{\lang{30 of march of}{30 de agosto de} 2019}
+
+% O preambulo deve conter tipo do trabalho, objetivo, nome da instituição e a área de concentração.
+\preambulo{\lang%
+    {%
+        \imprimirtipotrabalho~submitted to the \imprimirprograma~of
+        \imprimirinstituicao~for degree acquirement in \imprimirformacao.%
+    }{%
+        \imprimirtipotrabalho~submetido ao \imprimirprograma~da
+        \imprimirinstituicao~para a obtenção do Grau de \imprimirformacao.%
+    }%
+}
+
+\palavraschaveufsc{palavraschaveingles}   {Keyword 1}
+\palavraschaveufsc{palavraschaveportugues}{Palavra Chave 1}
+
+\palavraschaveufsc{palavraschaveingles}   {Keyword 2}
+\palavraschaveufsc{palavraschaveportugues}{Palavra Chave 2}
+
+\palavraschaveufsc{palavraschaveingles}   {Keyword 3}
+\palavraschaveufsc{palavraschaveportugues}{Palavra Chave 3}
+
+% Altere o arquivo 'settings.tex' para incluir customizações de aparência da sua tese
+\input{settings.tex}
+
+% Allows you to use ~= instead of `\hyp{}`
+% https://tex.stackexchange.com/questions/488008/how-to-create-an-alternative-to-shortcut-or-hyp
+% \useshorthands{~}\defineshorthand{~=}{\hyp{}}
+
+% When writing a large document, it is sometimes useful to work on selected sections of the document
+% to speed up compilation time: https://en.wikibooks.org/wiki/TeX/includeonly
+\newif\ifforcedinclude\forcedincludefalse
+
+% \addtoincludeonly{beforetext/agradecimentos}
+% \addtoincludeonly{beforetext/epigrafe}
+% \addtoincludeonly{beforetext/fichacatalografica}
+% \addtoincludeonly{beforetext/folhadeaprovacao}
+% \addtoincludeonly{beforetext/resumos}
+% \addtoincludeonly{beforetext/siglas}
+% \addtoincludeonly{beforetext/simbolos}
+
+% \addtoincludeonly{chapters/intro}
+% \addtoincludeonly{chapters/chapter_1}
+% \addtoincludeonly{chapters/chapter_2}
+% \addtoincludeonly{chapters/chapter_3}
+% \addtoincludeonly{chapters/chapter_4}
+% \addtoincludeonly{chapters/conclusion}
+
+% \addtoincludeonly{aftertext/anexo_a}
+% \addtoincludeonly{aftertext/anexo_b}
+% \addtoincludeonly{aftertext/apendice_a}
+
+% Control whether the full document will be generated
+% Note: It will also generate severals errors like the following, which can be ignored
+%       Latexmk: Missing input file: 'chapters/test.aux'
+%
+% You can make latex stop generate these errors, if you generate a full version
+% of the document, before uncommenting these lines.
+%
+% Uncomment these two lines, to only partially generate the document
+% \doincludeonly
+% \forcedincludetrue
+
+\ifenglish
+    \hypersetup
+    {
+        pdfauthor={Author},
+        pdfsubject={Thesis' Abstract},
+        pdfcreator={LaTeX with abnTeX2 for UFSC},
+        pdfkeywords={abnt}{latex}{UFSC}{abntex2}{thesis},
+    }
+\else
+    \hypersetup
+    {
+        pdfauthor={Autores},
+        pdfsubject={Resumo da tese},
+        pdfcreator={LaTeX com abnTeX2 para UFSC},
+        pdfkeywords={abnt}{latex}{UFSC}{abntex2}{tese},
+    }
+\fi
+
+\begin{document}
+
+    % FIXME: Comment this after finishing the thesis, so you can start fixing the \flushbottom vs \raggedbottom
+    % https://tex.stackexchange.com/questions/65355/flushbottom-vs-raggedbottom
+    \raggedbottom
+
+    % https://tex.stackexchange.com/questions/4705/double-space-between-sentences
+    \frenchspacing
+
+    % ELEMENTOS PRÉ-TEXTUAIS
+    \input{beforetext/beforetext.tex}
+
+    % ELEMENTOS TEXTUAIS
+    \textual
+
+    % Uncomment this to put a ←← | ← (Go To Top/Go Back) on each section header
+    % \addGoToSummary
+    \setlength\beforechapskip{50pt}
+    \setlength\midchapskip{20pt}
+    \setlength\afterchapskip{20pt}
+
+    % PARTE
+    % \ifforcedinclude\else\part{\lang{Research}{Pesquisa}}\fi
+    % \label{sec:primeira_parte}
+
+    % Introdução (sem numeração, mas presente no Sumário)
+    \include{capitulos/introducao}
+
+    % Capitulo com exemplos de comandos inseridos de arquivo externo
+    \include{capitulos/formulacao_dos_problemas}
+
+    % Capitulo de revisão de literatura
+    \include{capitulos/conjunto_de_instancias}
+
+    % Primeiro capitulo de Resultados
+    %\include{capitulos/medidas}
+
+    % Segundo capitulo de Resultados
+    %\include{capitulos/analise}
+
+    % Finaliza a parte no bookmark do PDF para que se inicie o bookmark na raiz
+    % e adiciona espaço de parte no Sumário
+    \phantompart
+
+    % Conclusão (outro exemplo de capítulo sem numeração e presente no sumário)
+    \include{capitulos/conclusao}
+
+    % ELEMENTOS PÓS-TEXTUAIS
+    \postextual
+    \setlength\beforechapskip{0pt}
+    \setlength\midchapskip{15pt}
+    \setlength\afterchapskip{15pt}
+
+    % Referências bibliográficas
+    \begingroup
+        % https://tex.stackexchange.com/questions/163559/how-to-modify-line-spacing-per-entry-of-bibliography
+        % \linespread{1.18}\selectfont
+
+        % https://tex.stackexchange.com/questions/17128/using-bibtex-to-make-a-list-of-references-without
+        % \nocite{*}
+        \printbibliography[title=REFERÊNCIAS]
+    \endgroup
+
+    % Glossário, consulte o manual da classe abntex2 para orientações sobre o glossário.
+    % \ifforcedinclude\else\glossary\fi
+
+    % Inicia os apêndices
+    \begin{apendicesenv}
+        % Imprime uma página indicando o início dos apêndices
+        \ifforcedinclude\else\partapendices\fi
+        \setlength\beforechapskip{50pt}
+        \setlength\midchapskip{20pt}
+        \setlength\afterchapskip{20pt}
+
+        \include{aftertext/apendice_a}
+    \end{apendicesenv}
+
+    % Inicia os anexos
+    \begin{anexosenv}
+        % Imprime uma página indicando o início dos anexos
+        \ifforcedinclude\else\partanexos\fi
+        \setlength\beforechapskip{50pt}
+        \setlength\midchapskip{20pt}
+        \setlength\afterchapskip{20pt}
+
+        \include{aftertext/anexo_a}
+        \include{aftertext/anexo_b}
+    \end{anexosenv}
+
+    % INDICE REMISSIVO
+    \ifforcedinclude\else
+        \phantompart
+        \printindex
+    \fi
+
+\end{document}
+

@@ -1,0 +1,241 @@
+\chapter{Formulação dos Problemas}\label{ch:formulacao_problemas}
+Neste documento o termo problema refere-se a um problema de otimização.
+Neste tipo de problemas o objetivo é encontrar a melhor solução dentre o
+conjunto de todas as soluções factíveis.
+Esses problemas podem ser representados matematicamente através de um conjunto
+de equações que denotam uma função objetivo e um conjunto de restrições que
+garantam a factibilidade da solução.
+A esta representação matemática se dá o nome de modelo, ou formulação.
+
+O modelo de um problema é feito de forma abstrata, ou seja, ele não
+contém nenhum dado numérico relativo a realidade e sua formulação é baseadas em
+parâmetros não definidos.
+Podemos ver como exemplo um problema de divisão.
+Podemos modelar o problema de divisão como sendo 
+
+\begin{equation}
+  f(x, y) = x \div y,
+\end{equation}
+
+neste contexto temos os parâmetros abstratos $x$ e $y$, mas nenhum valor 
+numérico é dado a eles.
+Quando define-se os parâmetros de um modelo tem-se então uma instância do
+problema.
+Seguindo o exemplo, uma instância do problema de divisão poderia ser dada por:
+
+\begin{equation}
+  f(15, 2) = 15 \div 2,
+\end{equation}
+
+
+Um problema pode ter mais de um modelo ou formulação assim como cada modelo
+pode possuir inúmeras instâncias.
+
+O restante desse capítulo define uma formulação para o DDARP e o DPDPTW assim 
+como os elementos que comportam suas definições. 
+Para isso, começaremos definindo o DARP usando como base a formulção 
+apresentada por \textcite{cordeau_tabu_2003}. 
+Após isso, expande-se a definição do DARP para o PDPTW. 
+Por fim, define-se o que seria dinamismo para estes dois problemas e por 
+consequência apresenta-se uma definição do DDARP e do DPDPTW.
+
+\section{Formulação do DARP}\label{sec:formulacao_DARP}
+O DARP consiste em um conjunto de pedidos de transporte de passageiros entre 
+diferentes locais de coleta e entrega que devem ser atendidos por uma frota
+de veículos com capacidade para levar mais de um passageiro concomitantemente. 
+O objetivo é então encontrar um conjunto de rotas para os veículos da frota
+que minimize o tempo e/ou o custo para completar todos os pedidos de
+transporte.
+
+Cada um desses pedidos possui um local de coleta e uma janela de
+tempo associada que identifica os limites superiores e inferiores de tempo no 
+qual o usuário deseja ser coletado para viagem.
+De maneira análoga, o pedido de transporte também possui um ponto de destino do
+passageiro e janela de tempo para entrega.
+Além disso, os passageiros desejam chegar em seus destinos sem que pra isso
+precisem viajar por tempo demasiado.
+Ou seja, apesar de ter definido uma janela de tempo para o início e o fim
+desejados de sua viagem, o passageiro também espera que seu trajeto não demore
+mais que o que ele considera necessário.
+
+Para servir o conjunto de pedidos de viagens anteriormente citado, uma frota de
+veículos com capacidade de transportar diversos passageiros, de maneira
+concomitante, é posta a disposição.
+Quanto aos veículos, estes possuem também uma restrição de tempo de rota máxima
+devido a suas limitações com relação a combustível ou tempo de jornada do
+motorista.
+
+O problema então é gerar uma rota para cada veículo da frota, de maneira a
+conseguir completar todos os pedidos de viagem, respeitando as janelas de tempo
+de entrega e coleta, o tempo de viagem considerado satisfatório
+pelos usuários, assim como a restrição de tempo máximo de rota pra cada
+veículo.
+
+Portanto, podemos definir o DARP através das seguintes considerações:
+Sendo $\numberOfRequests$ o número de pedidos a serem servidos.
+O DARP pode ser definido por um grafo direcional completo 
+$\graph(\nodes,\arcs)$, em que $\nodes$ são os nós e $\arcs$ são os arcos do
+grafo.  
+$\nodes = \pickupNodes \cup \deliveryNodes \cup \{\startNode, \lastNode \}$ com
+$\pickupNodes = \{\node{1}, \ldots, \node{\numberOfRequests}\}$, e 
+$\deliveryNodes = \{\node{\numberOfRequests + 1}, \ldots,
+\node{2\numberOfRequests}\}$.
+Os subconjuntos $\pickupNodes$ e $\deliveryNodes$ contêm, respectivamente, 
+os nós de coleta e entrega dos pedidos, enquanto os nós $\startNode$ e 
+$\lastNode$ representam os nós de origem e destino dos veículos.
+Todos os veículos da frota devem iniciar suas rotas no nó $\startNode$ e
+finalizá-las no nó $\lastNode$.
+Para cada pedido $\request \in \requests = \{\request, \ldots,
+\numberOfRequests\}$ temos associado um nó de origem $\originNode$ e um 
+nó de destino $\destinationNode$.
+A cada arco $\arc{\node{i}}{\node{j}} \in \arcs$ é associado um custo $\arcCost{i}{j}$ 
+e um tempo de viagem $\arcTravelTime{i}{j}$.
+
+Cada veículo $\vehicle \in \vehiclesSet$, sendo $\vehiclesSet$ o conjunto de 
+veículos disponíveis, possui uma capacidade $\vehicleCapacity$ e um tempo 
+máximo total de rota $\vehicleMaxRouteTime$.
+Para cada nó $\node{i} \in \nodes$ existe um carregamento $\nodeLoad{i}$ 
+associado e um tempo de serviço $\nodeServiceTime{i}$, não negativo, sendo que 
+$\startNodeServiceTime = \lastNodeServiceTime = 0$, 
+$\originNodeLoad = -\destinationNodeLoad$. 
+
+As janelas de tempo dos pontos de coleta e entrega de cada pedido podem ser
+definidas por $[\earliestTimeWindow_{i},\latestTimeWindow_{i}]$ e são 
+associadas aos nós $\node{i} \in \nodes$, em que $\earliestTimeWindow_{i}$ e 
+$\latestTimeWindow_{i}$ representam, respectivamente, o limite inferior e 
+superior para o instante de tempo que o serviço deve começar no nó $\node{i}$.
+Define-se também $\timeWindowWidth_{i} = \latestTimeWindow_{i} 
+- \earliestTimeWindow_{i}$ como o tamanho das janelas de tempo 
+de cada um dos nós. Denota-se por $\maxRideTime_\request$ o tempo máximo de 
+viagem de um pedido, limitado pelo valor de tempo que o passageiro considera 
+aceitável para o seu trajeto. 
+
+Finalmente, defini-se um intervalo de tempo, denominado horizonte de
+planejamento, $[0, \planingHorizon]$, no qual o instante $0$ representa o 
+início da operação, em que todos os veículos estão localizados no nó inicial 
+($\startNode$) e todos os usuários estão aguardando ser coletados nos seus 
+respectivos pontos iniciais.
+Por conseguinte, o instante $\planingHorizon$ representa o fim da operação, 
+em que os veículos terminaram de cumprir suas rotas, levando todos os usuários 
+do seus respectivos pontos iniciais para os pontos finais, e se 
+encontram no nó final ($\lastNode$). Todas as janelas de tempo dos nós de
+coleta e entrega ($[\earliestTimeWindow_i, \latestTimeWindow_i], 
+\forall \node{i} \in \pickupNodes \cup \deliveryNodes$) devem estar contidas 
+no intervalo de tempo $[0, \planingHorizon]$.
+
+\section{Formulação do PDPTW}\label{sec:formulacao_PDPTW}
+
+O PDPTW é um problema de roteamento de pedidos muito semelhante ao DARP.
+Como no DARP, o PDPTW também possui um conjunto de pedidos de transporte com
+origens e destinos diferentes e janelas associadas.
+Também conta com uma frota de veículos com capacidade de transportar mais de um
+pedido de maneira concomitante.
+Entretanto, os pedidos contidos em um PDPTW são referentes ao transporte de
+mercadorias e não de passageiros.
+É por esse motivo que surge a única diferença entre a formulação do DARP e do
+PDPTW \cite{parragh_survey_2008}.
+
+Na formulação do DARP apresentada na Seção~\ref{sec:formulacao_DARP} definiu-se
+um parâmetro $\maxRideTime_\request$ para representar o tempo máximo de viagem
+de um pedido, o qual limita o tempo total que um passageiro deseja permanecer
+dentro do veículo.
+Entretanto, para o PDPTW essa restrição não é necessária. Como a carga não
+sofre nenhum desconforto com a demora no tempo de viagem, pode-se considerar 
+que a formulação apresentada anteriormente para o DARP pode ser usada também 
+para o PDPTW, porém, para esse último, o parâmetro 
+$\maxRideTime_\request = \infty, \forall \request \in \requests$.
+
+% bloco comentado
+% explica as diferenças entre os problemas DARP e PDPTW
+% TODO: Verificar a necessidade de adição de alguma informação presente neste
+%       bloco
+\iffalse
+Entretanto, apesar da formulação do DARP e do PDPTW ser similar, suas
+instâncias não necessariamente são.
+Como citado anteriormente, cada um desses problemas trata de um tipo de carga
+diferente e por esse motivo, os pedidos das instâncias do PDPTW podem tomar
+formas diferentes quando comparados com os pedidos de transporte de passageiros
+apresentados nas instâncias DARP.
+
+Pega-se como exemplo as janelas de tempo de coleta e de entrega.
+Em um cenário de transporte de passageiros, normalmente essas janelas são
+restritas a intervalos de tempo pequenos.
+Os usuários do sistema de transporte possuem uma flexibilidade no tempo de
+início e fim de viagem, porém limitada por outras atividades que o
+usuário tenha agendada em seu dia, como reuniões, início e fim da jornada de
+trabalho, início e fim dos horários do colégio, entre outros.
+Já no caso do transporte de cargas, como é modelado no PDPTW, esses tipo de
+restrição existem em menor escala.
+Por isso as janelas de tempo de coleta e entrega costumam ser maiores em
+instâncias PDPTW que em instâncias DARP.
+
+Outra característica que difere as instâncias PDPTW de instâncias DARP é a
+relação entra a capacidade dos veículos e o tamanho da carga de cada pedido.
+Para as instâncias DARP, normalmente os pedidos e a capacidade dos veículos 
+são, ambos, valores na ordem de grandeza $10^1$.
+Já para as instâncias PDPTW, as ordens de grandeza desses dois parâmetros podem
+ser bastante distintas.
+Isso ocorre pois as características das cargas transportadas podem variar
+bastante de instância a instância.
+\textcite{gendreau_neighborhood_2006}, por exemplo, usa instâncias em que a
+capacidade do veículo é infinita pois representa o transporte de cartas e
+envelopes cujo espaço ocupado dentro do veículo é ínfimo e portanto 
+desconsiderável.
+\fi
+
+\section{Formulação do DDARP e do DPDPTW}
+
+Nas formulações do DARP e do PDPTW, apresentadas nas
+Seções~\ref{sec:formulacao_DARP}~e~\ref{sec:formulacao_PDPTW}, respectivamente,
+os pedidos são totalmente conhecidos antes de resolver o problema e não variam 
+durante a operação das rotas determinadas pela solução do problema, ou seja, 
+são problemas estáticos \cite{psaraftis_dynamic_1988}.
+
+Em suma, \textcite{psaraftis_dynamic_2015} apontam que, 
+todo problema de roteamento que requer a determinação de um conjunto
+de rotas pré-planejadas que não serão alteradas durante sua execução e que 
+são calculadas com dados que não evoluem em tempo real é considerado estático.
+Do contrário, todo problema de roteamento que receba dados atualizados em tempo
+real concomitantemente com o processo de determinação da rota é dito um
+problema dinâmico. 
+
+Os problemas dinâmicos podem então ser catalogados de acordo com a natureza de
+seu elemento dinâmico \cite{psaraftis_dynamic_2015}.
+Sendo que esta pode ser manifestada em diversas formas, como por exemplo,
+dinamismo no conjunto de pedidos, sendo que pedidos podem surgir ou ser
+cancelados a qualquer instante.
+Outro exemplo seria dinamismo com relação aos tempos de viagem, que podem
+variar no decorrer do dia, devido a horários de trânsito intenso ou de
+acidentes veiculares.
+
+Apesar da natureza do elemento dinâmico de um problema poder surgir de qualquer
+tipo de evento dinâmico possível em uma operação de transporte, como quebra de
+veículos, perda de carga, acidentes de diversos tipos, entre outros, dos 117
+artigos estudados e catalogados por  \textcite{psaraftis_dynamic_2015}, 80\%
+deles envolvem o surgimento de novos pedidos.
+
+O restante dessa seção apresentará uma modificação para as formulações do DARP
+e PDPTW apresentadas nas 
+Seções~\ref{sec:formulacao_DARP}~e~\ref{sec:formulacao_PDPTW} para estender a
+formulação estática inicial para uma formulação dinâmica, tendo o surgimento de
+novos pedidos como a natureza de seu elemento dinâmico.
+
+Para que pedidos cheguem a qualquer instante contido dentro
+do intervalo $[0, \planingHorizon]$ define-se um instante 
+$\arrivalTime_\request, \forall \request \in \requests$ representando 
+o exato momento que o pedido $\request$ se faz conhecido pelo sistema de 
+transporte.
+O instante de chegada de um pedido implica que este será levado
+em consideração para o planejamento das rotas apenas durante a
+operação do sistema de transporte e somente quando o instante atual for
+igual ou maior que $\arrivalTime_\request$.
+Deve-se garantir que o valor $\arrivalTime_\request$ seja menor ou igual ao 
+limite inferior da janela de tempo de um pedido 
+($\earliestTimeWindow_\request$).
+
+Com a adição desse conjunto de parâmetros à formulação do DARP e do PDPTW
+anteriormente descritas obtemos uma formulação sucinta para o DDARP e o DPDPTW.
+Destaca-se que o DARP e do PDPTW podem ser considerados como simplificações do
+DDARP e do DPDPTW em que $\arrivalTime_\request = 0, \forall \request \in
+\requests$.
+

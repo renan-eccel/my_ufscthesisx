@@ -1,0 +1,28 @@
+
+% The \phantomsection command is needed to create a link to a place in the document that is not a
+% figure, equation, table, section, subsection, chapter, etc.
+% https://tex.stackexchange.com/questions/44088/when-do-i-need-to-invoke-phantomsection
+\phantomsection
+
+% Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
+% https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
+\begin{otherlanguage*}{brazil}
+
+    \chapter{Titulo do Capitulo}
+
+    \begin{flushright}
+        \englishword{\showfont}
+    \end{flushright}
+
+
+    % \newpage
+    \section{Título da Seção}
+
+    Lipsum me [1]
+
+    \englishword{\showfont}
+
+    Lipsum me [2-3]
+
+\end{otherlanguage*}
+

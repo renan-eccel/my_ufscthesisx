@@ -1,0 +1,45 @@
+
+
+%
+% How to fix the Underfull \vbox badness has occurred while \output is active on my memoir chapter style?
+% https://tex.stackexchange.com/questions/387881/how-to-fix-the-underfull-vbox-badness-has-occurred-while-output-is-active-on-m
+%
+
+% ----------------------------------------------------------
+\chapter{\lang{Article published in SOBRAEP magazine}{Artigo publicado}}
+% ----------------------------------------------------------
+
+
+% Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
+% https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
+\begin{otherlanguage*}{english}
+
+% An environment for setting \emergencystretch locally
+% https://tex.stackexchange.com/questions/84510/an-environment-for-setting-emergencystretch-locally
+{
+    \setlength{\emergencystretch}{10pt}
+    \section[English guidelines for publication]
+    {English guidelines for publication - TITLE HERE (14 PT TYPE SIZE, UPPERCASE, BOLD, CENTERED)}
+}
+    \noindent\textbf{Abstract:}
+    The objective of this document is to instruct the authors about the preparation of the
+    manuscript for its submission to the Revista Eletrônica de Potência (Brazilian Power Electronics
+    Journal).~The authors should use these guidelines for preparing both the initial and final
+    versions of their paper. Additional information about procedures and guidelines for publication
+    can be obtained directly with the editor, or through the web site
+    \url{http://www.sobraep.org.br/revista}. This text was written according to these guidelines
+
+\end{otherlanguage*}
+
+% What is a “Overfull \hbox (9.89561pt too wide)”?
+% https://tex.stackexchange.com/questions/111948/what-is-a-overfull-hbox-9-89561pt-too-wide
+interwordspace: \the\fontdimen2\font
+
+interwordstretch: \the\fontdimen3\font
+
+emergencystretch: \the\emergencystretch\par\relax
+
+
+\modifiedincludepdf{-}{ArtigoSOBRAEP}{pictures/SOBRAEP.pdf}{0.9}
+
+

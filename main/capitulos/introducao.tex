@@ -1,0 +1,133 @@
+\chapter{Introdução}\label{ch:introducao}
+
+Problemas de roteamento dinâmico de veículos são objetos de pesquisa há cerca 
+de três décadas \cite{psaraftis_dynamic_2015}.
+Derivados de problemas de roteamento de veículos (VRP - \textit{Vehicle Routing 
+Problem}) clássicos, como o problema \textit{dial-a-ride} (DARP -
+\textit{Dial-A-Ride Problem}) e o problema de coleta e entrega com
+janelas de tempo (PDPTW - \textit{Pickup and Delivery Problem with 
+Time Windows}), os problemas dinâmicos buscam modelar casos em que um 
+ou mais parâmetros do problema não são totalmente conhecidos 
+\textit{a priori} e podem variar durante o período de operação. 
+
+Dentre o grupo de problemas dinâmicos de roteamento veicular, o problema 
+\textit{dial-a-ride} dinâmico (DDARP - \textit{Dynamic Dial-A-Ride Problem}) 
+\cite{psaraftis_dynamic_1988} e o problema dinâmico de coleta e entrega com
+janelas de tempo (DPDPTW - \textit{Dynamic Pickup and Delivery Problem with 
+Time Windows}) \cite{dumas_1991} são de grande interesse para o 
+desenvolvimento de novas tecnologias de transporte urbano. 
+São esses os problemas que precisam ser solucionados quando precisa-se 
+de um serviço de transporte compartilhado dinâmico (\textit{dynamic 
+ride-sharing}) \cite{agatz_optimization_2012, 
+alonso-gonzalez_potential_2018}, ou quando necessita-se 
+fazer uma entrega imediata de encomendas \cite{pankratz_dynamic_2005}.
+Atualmente, algumas empresas fornecem serviços desse tipo (Uber Pool, Uber
+Eats, Rappi).
+Entretanto, com o esperado avanço tecnológico na área de veículos
+autônomos e a diversificação dos transportes públicos introduzida
+principalmente por sistemas de mobilidade como um serviço (MaaS -
+\textit{Mobility as a Service}), serão cada vez mais necessário algoritmos 
+para a solução dos problemas DDARP e DPDPTW em menor tempo e proporcionando 
+um melhor resultado \cite{fulton_three_2017}. 
+
+Uma pesquisa científica na área de algoritmos para soluções de problemas 
+desse tipo normalmente requer a montagem de uma simulação computacional,
+já que testes empíricos são economicamente inviáveis para
+esse tipo de pesquisa \cite{maciejewski_towards_2017}.
+A ideia do uso de simulações é poder gerar resultados de eficiência e de 
+tempo computacional dos métodos de solução dos problemas para, com isso, 
+comparar diferentes algoritmos.
+
+Entretanto, para que os resultados possam ser comparados entre artigos, sem a
+necessidade de reproduzir resultados gerados anteriormente,
+necessita-se que as simulações conduzidas usem os mesmos cenários de 
+simulação.
+Na área de VRP estáticos é comum a existência de conjuntos de cenários
+canônicos extensivamente usados que facilitam a comparação entre 
+algoritmos \cite{mendoza_vrp-rep:_2014}, chamados de
+conjunto de instâncias de \textit{benchmark}.
+
+Na área de roteamento dinâmico de veículos não existem instâncias
+de \textit{benchmark} de referência que sejam amplamente usadas 
+\cite{pillac_review_2013, maciejewski_towards_2017}. 
+Isso faz com que a comparação entre algoritmos
+propostos para resolver problemas como DPDPTW e DDARP seja difícil e custosa.
+
+O objetivo deste artigo é compilar as informações disponíveis sobre as
+instâncias de \textit{benchmark} de DDARPs e DPDPTWs que estejam acessíveis e
+disponíveis para uso, com enfoque na forma com que são feitas a distribuição
+dos pedidos ao longo do período de operação dos sistemas.
+Também faz parte do escopo uma análise de duas medidas, urgência e 
+grau de dinamismo, propostas por \citeonline{van_lon_measures_2016} que ajudam 
+a identificar as características temporais das instâncias. 
+Com isso, procura-se auxiliar o processo de busca e seleção de conjuntos de 
+instâncias interessantes para uso em simulações e teste de novos algoritmos ou,
+caso necessário, auxiliar a seleção de um método de geração de instâncias
+dinâmicas adequado ao interesse de pesquisa.
+
+% as linhas contidas entre \iffalse e \fi estão todas comentadas
+% elas descrevem em mais detalhes a dificuldades de fazer uma pesquisa na área
+% de algoritmos para problemas de roteamento, assim como algumas "dicas" para
+% quem quer fazer o mesmo.
+% Essa parte se encontra mal escrita, no entanto, pode ser interessante 
+% adicionar algo dela na introdução 
+\iffalse
+Primeiramente, se faz necessário a utilização de um simulador para rodar
+testes, já que testes empíricos são inviáveis para esse tipo de pesquisa.
+Por muitos anos os pesquisadores optaram por implementar seus próprios 
+simuladores e não disponibilizar o código de maneira aberta, isso fez com que a
+comunidade perdesse uma grande oportunidade de cooperação.
+Com um código de livre acesso outros pesquisadores possuem a possibilidade de
+reutilizar o código, facilitando as implementações de pesquisas na área, além
+de poder revisar, melhorar ou estender o código. 
+Atualmente, apesar de não serem amplamente usados, já existem simuladores de 
+problemas de roteamento dinâmico com código aberto disponíveis para livre uso
+acadêmico (\cite{van_lon_rinsim:_2012}; \cite{mayer_open-source_2016};
+\cite{maciejewski_towards_2017})
+
+Após a escolha de um simulador já disponível ou a implementação de um novo, se
+faz necessária a implementação do algoritmo a ser testado. 
+É nessa etapa que o pesquisador aplica seus conhecimentos técnicos para a 
+implementação do seu objeto de pesquisa.
+
+Após essa implementação precisa-se então da comparação de performance entre
+o novo algoritmo e os algoritmos propostos anteriormente.
+Para isso existem dois métodos.
+
+Um deles é o pesquisador implementar os algoritmos com base na descrição dada 
+nos artigos publicados, tarefa que, normalmente, toma bastante tempo do 
+pesquisador e não agrega nenhum valor.
+Atualmente, já existem pesquisadores que montam seus experimentos e deixam
+disponíveis para acesso, replicação e utilização (\cite{van_lon_towards_2015};
+\cite{van_lon_measures_2016}; \cite{van_lon_when_2017}).
+
+Uma outra forma de comparação de algoritmos é possível quando os experimentos
+são baseados em cenários cujos dados estão disponíveis para todos e
+que já foram utilizados para testes em algoritmos de outros artigos.
+A esse conjunto de dados se dá o nome de conjunto de instâncias de
+\textit{benchmark}.
+Portanto, quando usado um conjunto de instâncias de \textit{benchmark}, os
+resultados expostos nos artigos podem ser comparados diretamente, sem a
+necessidade de replicação dos experimentos.
+Entretanto, na área de roteamento dinâmico de veículos não existem instâncias
+de \textit{benchmark} de referência que sejam amplamente usadas
+\cite{pillac_review_2013}
+
+O objetivo deste artigo é compilar as informações disponíveis sobre as
+instâncias de \textit{benchmark} de DDARPs e DPDPTWs que estejam acessíveis e
+disponíveis para uso. Também faz parte do escopo a confecção de uma tabela
+comparando as principais características dos conjuntos de \textit{benchmark}
+encontrados, assim como uma análise usando duas medidas propostas por
+\textcite{van_lon_measures_2016} que ajudam a identificar as características
+temporais das instâncias.
+\fi
+
+O Capítulo~\ref{ch:formulacao_problemas} apresenta as formulações dos problemas
+de interesse.
+Logo em seguida, no Capítulo~\ref{ch:instancias} os conjuntos de instâncias de 
+\textit{benchmark} são descritos.
+O Capítulo~\ref{ch:medidas} contém a definição das métricas usadas para a 
+avaliação dos conjuntos de instâncias de \textit{benchmark} e o 
+Capítulo~\ref{ch:analise} apresenta estas análises.
+Por último, o Capítulo~\ref{ch:conclusao} encerra descrevendo as conclusões  
+e recomendações para futuras pesquisas.
