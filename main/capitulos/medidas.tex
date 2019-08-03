@@ -22,7 +22,6 @@ Em que:
   \item $\numberOfRequests_{d}$: número de pedidos dinâmicos
 \end{itemize}
 
-\iffalse
 Essa classificação proporcionou uma base para o estudo das relações entre o 
 grau de dinamismo, os tipos de métodos usados para a solução dos 
 problemas e as características das soluções obtidas.
@@ -113,7 +112,7 @@ Com isso, o grau efetivo de dinamismo, quando contabilizado o tempo de reação,
   \sum_{\request \in \requests}
   {
     \left(
-    \frac{\planingHorizon - (\latestTimeWindow_\originNode
+    \frac{\planingHorizon - (\latestTimeWindow_\originIndex
                              - \arrivalTime_\request)}
          {\planingHorizon}
     \right),
@@ -303,14 +302,12 @@ $\perfectInterval$:
             \perfectInterval - \intervalBetweenArrivals_i,
             & \text{se $i = 0$ 
                     e $\intervalBetweenArrivals_i < \perfectInterval$} \\
-            
             \perfectInterval - \intervalBetweenArrivals_i 
             + \frac{\perfectInterval-\intervalBetweenArrivals_i}
                    {\perfectInterval}
             \cdot \deviationFromPerfectInterval_{i-1},
             & \text{se $i > 0$ 
                     e $\intervalBetweenArrivals_i < \perfectInterval$} \\
-            
             0, & \text{do contrário.}
         \end{cases}
     \label{eq:van_lon_measures_2016_deviationFromPerfectInterval}
@@ -337,6 +334,7 @@ Consequentemente, o desvio total do cenário pode ser calculado por:
     \sum_{i=0}^{|\intervalsBetweenArrivals|} \deviationFromPerfectInterval_i.
     \label{eq:van_lon_measures_2016_totalDeviationFromPerfectInterval}
 \end{equation}
+
 
 Entretanto, faz-se necessária a normalização do desvio total do cenário com
 relação ao desvio máximo possível.
@@ -434,5 +432,4 @@ efetivo com janelas de tempo usando o horizonte de planejamento.
 Já \citeonline{van_lon_measures_2016} acredita que a extensão do cenário e
 a urgência devem ser independentes.
 
-\fi
 
