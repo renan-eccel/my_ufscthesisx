@@ -57,12 +57,15 @@
 \documentclass[
 % 10pt,          % Padrão UFSC para versão final
 % a5paper,       % Padrão UFSC para versão final
-12pt,        % Pode usar tamanho 12pt para defesa
-a4paper,     % Pode usar a4 para defesa
+12pt,          % Pode usar tamanho 12pt para defesa
+a4paper,       % Pode usar a4 para defesa
 twoside,       % Impressão nos dois lados da folha
 chapter=TITLE, % Título de capítulos em caixa alta
 section=TITLE, % Título de seções em caixa alta
 ]{abntex2}
+
+% Set the page size to be A4 as opposed to the default US Letter
+% \usepackage[a4paper, margin=2cm]{geometry}
 
 % Load the UFSC thesis package
 \usepackage{setup/ufscthesisx}
@@ -74,64 +77,66 @@ section=TITLE, % Título de seções em caixa alta
 \input{setup/utilities.tex}
 
 % % Utilize o arquivo aftertext/references.bib para incluir sua bibliografia.
-% FIXME
 \addbibresource{aftertext/references.bib}
 
 \autor{\brazilword{Renan Artur Lopes Eccel}}
-\titulo{\lang{Work Title}{Título do trabalho}}
+\titulo{\lang
+  {Dynamic Pickup and Delivery Problems with Time Windows}
+  {Problemas Dinâmicos de Coleta e Entrega com Janelas de Tempo}}
 
-% FIXME: Se houver subtítulo, descomente a linha abaixo
-% \subtitulo{\lang{Subtitle}{Subtítulo}}
+\subtitulo{\lang{Benchmark Instances}{Instâncias de Benchmark}}
 
-% FIXME: Siglas para grau de formação Dr./Dra., Me./Ma, Bel. Bela. (inglês: PhD., MSc., Bs.)
-\orientador[\lang{Supervisor}{Orientador(a)}]
-           {\brazilword{Rodrigo Castelan Carlson}, \lang{Phd.}{Dr.}}
+% Siglas para grau de formação Dr./Dra., Me./Ma, Bel. Bela. 
+% (inglês: PhD., MSc., Bs.)
+\orientador[\lang{Supervisor}{Orientador}]
+           {\brazilword{Rodrigo Castelan Carlson}, 
+           \lang{Phd.}{Dr.} \lang{Prof.}{Prof.}}
 
-% FIXME: Se houver coorientador, descomente a linha abaixo
-% \coorientador[\lang{Co-supervisor}{Coorientador(a)}]{\brazilword{Nome do coorientador(a)}, \lang{Phd.}{Dr.}}
+% Preencher com o nome do Coordenador de TCCs/Teses do seu curso
+\coordenador[\lang{Coordinator}{Coordenador}]
+            {\brazilword{Werner Kraus Jr.}, 
+            \lang{Phd.}{Dr.} \lang{Prof.}{Prof.}}
 
-% FIXME: Preencher com o nome do Coordenador de TCCs/Teses do seu curso
-\coordenador[\lang{Coordinator}
-            {Coordenador(a)}]{\brazilword{Werner Kraus Jr.}, \lang{Phd.}{Dr.}}
-
-% FIXME: Local da sua defesa
+% Local da sua defesa
 \local{\brazilword{Florianópolis}}
 
-% FIXME: Ano da sua defesa
+% Ano da sua defesa
 \ano{2019}
 \biblioteca{\lang{University Library}{Biblioteca Universitária}}
 
-% FIXME: Sigla da sua instituição
+% Sigla da sua instituição
 \instituicaosigla{UFSC}
 \instituicao{\lang{Federal University of}{Universidade Federal de} 
              \brazilword{Santa Catarina}}
 
-% FIXME: Preencha com Tese, Dissertação, Monografia ou Trabalho de Conclusão de Curso, Bachelor's Thesis, etc
+% Preencha com Tese, Dissertação, Monografia ou Trabalho de 
+% Conclusão de Curso, Bachelor's Thesis, etc
 \tipotrabalho{\lang{Monograph}{Dissertação}}
 
 % FIXME: Se houver Área de Concentração, descomente a linha abaixo
 % \area{\lang{Concentration Area}{Área de Concentração}}
 
-% FIXME: Preencha com Doutor, Bacharel ou Mestrando
+% Preencha com Doutor, Bacharel ou Mestrando
 \formacao{\lang
-    {Doctorate in XXXXXX}
+    {Master in Automation and Systems Engineering}
     {Mestrado em Engenharia de Automação e Sistemas}%
 }
 \programa{\lang
-    {Postgraduate Program in XXXXXX}
+    {Postgraduate Program in Automation and Systems Engineering}
     {Programa de Pós-Graduação em Engenharia de Automação e Sistemas}%
 }
 
-% FIXME: Preencha com Departamento de XXXXXX, Centro de XXXXXX
+% Preencha com Departamento de XXXXXX, Centro de XXXXXX
 \centro{\lang
-    {Department of XXXXXX, Center of XXXXXX}
+    {Department of Automation and Systems, Center of Technology}
     {Departamento de Automação e Sistemas, Centro Tecnológico}%
 }
 
-% FIXME: Data da sua defesa
-\data{\lang{30 of march of}{30 de agosto de} 2019}
+% Data da sua defesa
+\data{\lang{30 of August of}{30 de agosto de} 2019}
 
-% O preambulo deve conter tipo do trabalho, objetivo, nome da instituição e a área de concentração.
+% O preambulo deve conter tipo do trabalho, objetivo, nome da instituição 
+% e a área de concentração.
 \preambulo{\lang%
     {%
         \imprimirtipotrabalho~submitted to the \imprimirprograma~of
@@ -142,24 +147,35 @@ section=TITLE, % Título de seções em caixa alta
     }%
 }
 
-\palavraschaveufsc{palavraschaveingles}   {Keyword 1}
-\palavraschaveufsc{palavraschaveportugues}{Palavra Chave 1}
+\palavraschaveufsc{palavraschaveingles}   {Routing}
+\palavraschaveufsc{palavraschaveportugues}{Roteamento}
 
-\palavraschaveufsc{palavraschaveingles}   {Keyword 2}
-\palavraschaveufsc{palavraschaveportugues}{Palavra Chave 2}
+\palavraschaveufsc{palavraschaveingles}   {Dynamic}
+\palavraschaveufsc{palavraschaveportugues}{Dinâmico}
 
-\palavraschaveufsc{palavraschaveingles}   {Keyword 3}
-\palavraschaveufsc{palavraschaveportugues}{Palavra Chave 3}
+\palavraschaveufsc{palavraschaveingles}   {Instance}
+\palavraschaveufsc{palavraschaveportugues}{Instância}
 
-% Altere o arquivo 'settings.tex' para incluir customizações de aparência da sua tese
+\palavraschaveufsc{palavraschaveingles}   {Behchmark}
+\palavraschaveufsc{palavraschaveportugues}{Behchmark}
+
+\palavraschaveufsc{palavraschaveingles}   {PDPTW}
+\palavraschaveufsc{palavraschaveportugues}{PDPTW}
+
+\palavraschaveufsc{palavraschaveingles}   {DARP}
+\palavraschaveufsc{palavraschaveportugues}{DARP}
+
+% Altere o arquivo 'settings.tex' para incluir customizações de aparência 
+% da sua tese
 \input{settings.tex}
 
 % Allows you to use ~= instead of `\hyp{}`
 % https://tex.stackexchange.com/questions/488008/how-to-create-an-alternative-to-shortcut-or-hyp
 % \useshorthands{~}\defineshorthand{~=}{\hyp{}}
 
-% When writing a large document, it is sometimes useful to work on selected sections of the document
-% to speed up compilation time: https://en.wikibooks.org/wiki/TeX/includeonly
+% When writing a large document, it is sometimes useful to work on selected 
+% sections of the document to speed up compilation time: 
+% https://en.wikibooks.org/wiki/TeX/includeonly
 \newif\ifforcedinclude\forcedincludefalse
 
 % \addtoincludeonly{beforetext/agradecimentos}

@@ -48,9 +48,12 @@
 
 % Inserir errata
 
-% Inserir folha de aprovação. Isto é um exemplo de Folha de aprovação, elemento obrigatório da
-% NBR 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação do trabalho.
-% Após isso, substitua todo o conteúdo deste arquivo por uma imagem da página assinada pela banca com o comando  abaixo:
+% Inserir folha de aprovação. 
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da
+% NBR 14724/2011 (seção 4.2.1.3).
+% Você pode utilizar este modelo até a aprovação do trabalho.
+% Após isso, substitua todo o conteúdo deste arquivo por uma 
+% imagem da página assinada pela banca com o comando  abaixo:
 
 \ifforcedinclude\else\cleardoublepage\fi
 \include{beforetext/folhadeaprovacao}
@@ -86,10 +89,10 @@
     \listoffigures*
 
     % inserir lista de quadros
-    \ifforcedinclude\else\cleardoublepage\fi
-    \addtotextpreliminarycontent{\listofquadrosname}
-    \pdfbookmark[0]{\listofquadrosname}{loq}
-    \listofquadros*
+    %\ifforcedinclude\else\cleardoublepage\fi
+    %\addtotextpreliminarycontent{\listofquadrosname}
+    %\pdfbookmark[0]{\listofquadrosname}{loq}
+    %\listofquadros*
 
     % inserir lista de tabelas
     \ifforcedinclude\else\cleardoublepage\fi
@@ -98,10 +101,10 @@
     \listoftables*
 
     % inserir códigos fonte (List of Listings `lol`)
-    \ifforcedinclude\else\cleardoublepage\fi
-    \addtotextpreliminarycontent{\lstlistlistingname}
-    \pdfbookmark[0]{\lstlistlistingname}{lol}
-    \lstlistoflistings*
+    %\ifforcedinclude\else\cleardoublepage\fi
+    %\addtotextpreliminarycontent{\lstlistlistingname}
+    %\pdfbookmark[0]{\lstlistlistingname}{lol}
+    %\lstlistoflistings*
 \fi
 
 
