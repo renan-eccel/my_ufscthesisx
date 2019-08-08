@@ -5,24 +5,38 @@ Como mencionado no Capítulo~\ref{ch:formulacao_problemas}, uma instância
 simboliza uma determinada configuração dos parâmetros de um problema,
 representado um cenário de aplicação do problema.
 \textit{Benchmark}, por sua vez, simboliza o método de rodar um conjunto de
-testes padrões em um programa de computador com o objetivo de avaliar sua
-performance \cite{fleming_how_1986}.
+testes padrões em um programa de computador com o objetivo de avaliar seu
+desempenho \cite{fleming_how_1986}.
 
 Para o nosso caso, os programas de computador seriam os algoritmos de
 roteamento e os testes padrões consistem em achar as soluções para um conjunto 
 de instâncias padrão, denominado conjunto de instâncias de \textit{benchmark}.
-A avaliação de performance feita para esses casos é tanto no quesito de tempo
+A avaliação de desempenho feita para esses casos é tanto no quesito de tempo
 de computação como da qualidade da solução encontrada.
-Portanto, se faz interessante, para avanço de pesquisas que focam no
-desenvolvimento de algoritmos,  que existam conjuntos de instâncias de
+Portanto, para avanço de pesquisas que focam no desenvolvimento de algoritmos,
+é interessante que existam conjuntos de instâncias de
 \textit{benchmark} de referência, para que estes algoritmos possam ser
 comparados de forma direta.
 
 Entretanto, \textcite{pillac_review_2013} argumenta que não existe nenhum
 conjunto de instâncias de \textit{benchmark} de referência para os problemas 
 de roteamento dinâmico.
-Isso acarreta em um uso de diferentes instâncias em diferentes artigos,
-dificultando a comparação de performance dos algoritmos.
+A prática mais comum é a adaptação e utilização de instâncias de 
+\textit{benchmark} estáticas através de métodos que distribuem os instantes de 
+chegada dos pedidos ($\arrivalTime_\request$) ao longo do horizonte de
+planejamento.
+Contudo, \textcite{maciejewski_towards_2017} comenta que essa abordagem é 
+problemática.
+Ele menciona, como exemplo, que é impossível em uma instância estática fazer o 
+sistema reagir ao controle, como no caso de um cancelamento de pedido quando a
+coleta leva muito tempo. 
+Também comenta que mesmo simples sequencias de eventos pré planejados podem
+gerar inconsistências no sistema, como por exemplo o cancelamento de um pedido
+que já foi coletado.
+Portanto, a falta de instâncias de \textit{benchmark} devidamente apropriadas e
+que sejam conhecidas por sua boa qualidade acarreta em um uso de diferentes 
+instâncias em diferentes artigos, dificultando a comparação de desempenho dos 
+algoritmos.
 
 Esta seção tem como objetivo apresentar seis conjuntos de instâncias de 
 \textit{benchmark} dinâmicas DDARP ou DPDPTW cujos os dados estão disponíveis 
@@ -36,13 +50,14 @@ estáticos:
 e \textcite{fabri_dynamic_2006}
 aplicam, cada um, um método diferente para transformar as
 instâncias estáticas em dinâmicas.
-O quinto conjunto foi criado artificialmente de maneira a replicar o
-comportamento de um centro urbano, com horários de pico e uma demanda 
-concentrada no centro da cidade \cite{gendreau_neighborhood_2006}.
+O quinto conjunto foi criado artificialmente por 
+\textcite{gendreau_neighborhood_2006} de maneira a replicar o comportamento de 
+um centro urbano, com horários de pico e uma demanda concentrada no centro da 
+cidade.
 O sexto conjunto é baseado em dados reais, coletados em duas companhias 
 de correio de médio e grande porte, que operam em Vancouver, Canadá 
 \cite{mitrovic-minic_waiting_2004}.
-Os métodos de dinamização ou as formas de alocação temporal dos pedidos de cada 
+Os métodos de dinamização ou as formas de alocação temporal dos pedidos de cada
 um dos conjuntos serão apresentados nesta seção.
 
 Destaca-se que todos os dados dos conjuntos de instâncias de \textit{benchmark}
@@ -54,9 +69,99 @@ instâncias \cite{eccel_problemas_2019}.
 A Tabela~\ref{tab:instancias} mostra as características gerais das instâncias
 estudadas.
 
-
-% \input{tabelas/tabelainstancias.tex}
-
+\begin{table}[]
+\newcommand{\firstColumnWidth}{1.52cm}
+\newcommand{\columnWidth}{2.25cm}
+\newcommand{\numberOfRows}{2}
+\footnotesize
+\caption{Características estáticas dos conjuntos de instâncias de 
+         \textit{benchmark}}
+\label{tab:instancias}
+\begin{tabular}{llllll}
+\toprule
+\multirow{4}{\columnWidth}{} & 
+  \multirow{\numberOfRows}{\columnWidth}{\textcite{ropke_models_2007}} & 
+  \multirow{\numberOfRows}{\columnWidth}{\textcite{cordeau_tabu_2003}} & 
+  \multirow{\numberOfRows}{\columnWidth}{\textcite{li_metaheuristic_2003}} & 
+  \multirow{\numberOfRows}{\columnWidth}{
+    \textcite{gendreau_neighborhood_2006}} & 
+  \multirow{\numberOfRows}{\columnWidth}{
+    \textcite{mitrovic-minic_waiting_2004}}
+\\ & & & & & \\ & & & & & \\ & & & & & \\   
+\midrule
+\multirow{\numberOfRows}{\firstColumnWidth}{N. de instâncias} & 
+  \multirow{\numberOfRows}{\columnWidth}{42} & 
+  \multirow{\numberOfRows}{\columnWidth}{20} & 
+  \multirow{\numberOfRows}{\columnWidth}{354} & 
+  \multirow{\numberOfRows}{\columnWidth}{15} & 
+  \multirow{\numberOfRows}{\columnWidth}{220}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$\planingHorizon$ (min)} & 
+  \multirow{\numberOfRows}{\columnWidth}{1440} & 
+  \multirow{\numberOfRows}{\columnWidth}{1440} & 
+  \multirow{\numberOfRows}{\columnWidth}{[1236, 3693]} & 
+  \multirow{\numberOfRows}{\columnWidth}{240 ou 450} & 
+  \multirow{\numberOfRows}{\columnWidth}{600}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{Geometria (km $\times$ km)} & 
+  \multirow{\numberOfRows}{\columnWidth}{10 $\times$ 10} & 
+  \multirow{\numberOfRows}{\columnWidth}{10 $\times$ 10} & 
+  \multirow{\numberOfRows}{\columnWidth}{100 $\times$ 100} & 
+  \multirow{\numberOfRows}{\columnWidth}{5 $\times$ 5} & 
+  \multirow{\numberOfRows}{\columnWidth}{60 $\times$ 60}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$\numberOfRequests$} & 
+  \multirow{\numberOfRows}{\columnWidth}{[16, 96]} & 
+  \multirow{\numberOfRows}{\columnWidth}{[24, 144]} & 
+  \multirow{\numberOfRows}{\columnWidth}{[50, 500]} & 
+  \multirow{\numberOfRows}{\columnWidth}{[84, 217]} & 
+  \multirow{\numberOfRows}{\columnWidth}{[100, 1000]}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$|\vehiclesSet|$}  &
+  \multirow{\numberOfRows}{\columnWidth}{[2, 8]} & 
+  \multirow{\numberOfRows}{\columnWidth}{[3, 13]} & 
+  \multirow{\numberOfRows}{\columnWidth}{[25, 500]} & 
+  \multirow{\numberOfRows}{\columnWidth}{10 ou 20} & 
+  \multirow{\numberOfRows}{\columnWidth}{[20, 80]}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$\vehicleCapacity$}  &  
+  \multirow{\numberOfRows}{\columnWidth}{3 ou 6 } & 
+  \multirow{\numberOfRows}{\columnWidth}{6} & 
+  \multirow{\numberOfRows}{\columnWidth}{[200, 1000]} & 
+  \multirow{\numberOfRows}{\columnWidth}{$\infty$} & 
+  \multirow{\numberOfRows}{\columnWidth}{$\infty$}
+\\ & & & & & \\
+  \multirow{\numberOfRows}{\firstColumnWidth}{$\nodeLoad{\request}$} &
+  \multirow{\numberOfRows}{\columnWidth}{[1, 6]} & 
+  \multirow{\numberOfRows}{\columnWidth}{1} & 
+  \multirow{\numberOfRows}{\columnWidth}{[3, 36]} & 
+  \multirow{\numberOfRows}{\columnWidth}{1} & 
+  \multirow{\numberOfRows}{\columnWidth}{1}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$\serviceTime_\request$ (min)} & 
+  \multirow{\numberOfRows}{\columnWidth}{[1, 6]} & 
+  \multirow{\numberOfRows}{\columnWidth}{10} & 
+  \multirow{\numberOfRows}{\columnWidth}{90} & 
+  \multirow{\numberOfRows}{\columnWidth}{5} & 
+  \multirow{\numberOfRows}{\columnWidth}{0}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$\vehicleMaxRouteTime$  (min)}  &
+  \multirow{\numberOfRows}{\columnWidth}{[480, 720]} & 
+  \multirow{\numberOfRows}{\columnWidth}{480} & 
+  \multirow{\numberOfRows}{\columnWidth}{[1236, 3693]} & 
+  \multirow{\numberOfRows}{\columnWidth}{240 ou 450} & 
+  \multirow{\numberOfRows}{\columnWidth}{600}
+\\ & & & & & \\
+\multirow{\numberOfRows}{\firstColumnWidth}{$\maxRideTime_\request$ (min)}  &
+  \multirow{\numberOfRows}{\columnWidth}{30 ou 45} & 
+  \multirow{\numberOfRows}{\columnWidth}{90} & 
+  \multirow{\numberOfRows}{\columnWidth}{[1236, 3693]} & 
+  \multirow{\numberOfRows}{\columnWidth}{240 ou 450} & 
+  \multirow{\numberOfRows}{\columnWidth}{600}
+\\ & & & & & \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 

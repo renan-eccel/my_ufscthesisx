@@ -73,6 +73,9 @@ section=TITLE, % Título de seções em caixa alta
 % Load the symbols defined in symbols.sty 
 \usepackage{symbols} 
 
+% Use
+\usepackage{multirow}
+
 % Load extra commands for tables, lists, summaries, etc.
 \input{setup/utilities.tex}
 
@@ -81,21 +84,21 @@ section=TITLE, % Título de seções em caixa alta
 
 \autor{\brazilword{Renan Artur Lopes Eccel}}
 \titulo{\lang
-  {Dynamic Pickup and Delivery Problems with Time Windows}
-  {Problemas Dinâmicos de Coleta e Entrega com Janelas de Tempo}}
+  {Dynamic Pickup and Delivery Problems \\ with Time Windows}
+  {Problemas Dinâmicos de Coleta \\ e Entrega com Janelas de Tempo}}
 
 \subtitulo{\lang{Benchmark Instances}{Instâncias de Benchmark}}
 
 % Siglas para grau de formação Dr./Dra., Me./Ma, Bel. Bela. 
 % (inglês: PhD., MSc., Bs.)
 \orientador[\lang{Supervisor}{Orientador}]
-           {\brazilword{Rodrigo Castelan Carlson}, 
-           \lang{Phd.}{Dr.} \lang{Prof.}{Prof.}}
+           {\brazilword{Prof. Rodrigo Castelan Carlson}, 
+           \lang{Phd.}{Dr.} \lang{}{}}
 
 % Preencher com o nome do Coordenador de TCCs/Teses do seu curso
 \coordenador[\lang{Coordinator}{Coordenador}]
-            {\brazilword{Werner Kraus Jr.}, 
-            \lang{Phd.}{Dr.} \lang{Prof.}{Prof.}}
+            {\brazilword{Prof. Werner Kraus Jr.}, 
+            \lang{Phd.}{Dr.} \lang{}{}}
 
 % Local da sua defesa
 \local{\brazilword{Florianópolis}}
@@ -133,7 +136,7 @@ section=TITLE, % Título de seções em caixa alta
 }
 
 % Data da sua defesa
-\data{\lang{30 of August of}{30 de agosto de} 2019}
+\data{\lang{26 of August of}{26 de agosto de} 2019}
 
 % O preambulo deve conter tipo do trabalho, objetivo, nome da instituição 
 % e a área de concentração.

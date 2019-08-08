@@ -3,41 +3,39 @@ Neste documento o termo problema refere-se a um problema de otimização.
 Neste tipo de problemas o objetivo é encontrar a melhor solução dentre o
 conjunto de todas as soluções factíveis.
 Esses problemas podem ser representados matematicamente através de um conjunto
-de equações que denotam uma função objetivo e um conjunto de restrições que
-garantam a factibilidade da solução.
+de equações que descrevem uma função objetivo e um conjunto de restrições que
+determinam o espaço de soluções.
 A esta representação matemática se dá o nome de modelo, ou formulação.
 
 O modelo de um problema é feito de forma abstrata, ou seja, ele não
-contém nenhum dado numérico relativo a realidade e sua formulação é baseadas em
-parâmetros não definidos.
+contém nenhum dado numérico relativo à realidade. 
+Sua formulação é baseadas em parâmetros não definidos.
 Podemos ver como exemplo um problema de divisão.
 Podemos modelar o problema de divisão como sendo 
-
+%
 \begin{equation}
-  f(x, y) = x \div y,
+  f(x, y) = x \div y.
 \end{equation}
 
-neste contexto temos os parâmetros abstratos $x$ e $y$, mas nenhum valor 
+\noindent Os parâmetros abstratos são $x$ e $y$, e nenhum valor 
 numérico é dado a eles.
 Quando define-se os parâmetros de um modelo tem-se então uma instância do
 problema.
 Seguindo o exemplo, uma instância do problema de divisão poderia ser dada por:
-
+%
 \begin{equation}
-  f(15, 2) = 15 \div 2,
+  f(15, 2) = 15 \div 2.
 \end{equation}
 
+\noindent Um problema pode ter mais de um modelo ou formulação, assim como cada
+modelo pode possuir inúmeras instâncias.
 
-Um problema pode ter mais de um modelo ou formulação assim como cada modelo
-pode possuir inúmeras instâncias.
-
-O restante desse capítulo define uma formulação para o DDARP e o DPDPTW assim 
-como os elementos que comportam suas definições. 
-Para isso, começaremos definindo o DARP usando como base a formulção 
+O restante desse capítulo define uma formulação para o DDARP e o DPDPTW. 
+Para isso, inicialmente será definido o DARP usando como base a formulção 
 apresentada por \textcite{cordeau_tabu_2003}. 
 Após isso, expande-se a definição do DARP para o PDPTW. 
-Por fim, define-se o que seria dinamismo para estes dois problemas e por 
-consequência apresenta-se uma definição do DDARP e do DPDPTW.
+Por fim, define-se o que seria dinamismo para estes dois problemas, para então 
+apresentar as definições do DDARP e do DPDPTW.
 
 \section{Formulação do DARP}\label{sec:formulacao_DARP}
 O DARP consiste em um conjunto de pedidos de transporte de passageiros entre 
@@ -53,14 +51,14 @@ qual o usuário deseja ser coletado para viagem.
 De maneira análoga, o pedido de transporte também possui um ponto de destino do
 passageiro e janela de tempo para entrega.
 Além disso, os passageiros desejam chegar em seus destinos sem que pra isso
-precisem viajar por tempo demasiado.
+precisem viajar por muito tempo.
 Ou seja, apesar de ter definido uma janela de tempo para o início e o fim
 desejados de sua viagem, o passageiro também espera que seu trajeto não demore
 mais que o que ele considera necessário.
 
 Para servir o conjunto de pedidos de viagens anteriormente citado, uma frota de
 veículos com capacidade de transportar diversos passageiros, de maneira
-concomitante, é posta a disposição.
+concomitante, é posta à disposição.
 Quanto aos veículos, estes possuem também uma restrição de tempo de rota máxima
 devido a suas limitações com relação a combustível ou tempo de jornada do
 motorista.
@@ -73,9 +71,9 @@ veículo.
 
 Portanto, podemos definir o DARP através das seguintes considerações:
 Sendo $\numberOfRequests$ o número de pedidos a serem servidos.
-O DARP pode ser definido por um grafo direcional completo 
+O DARP pode ser definido por um grafo direcionado completo 
 $\graph(\nodes,\arcs)$, em que $\nodes$ são os nós e $\arcs$ são os arcos do
-grafo.  
+grafo, 
 $\nodes = \pickupNodes \cup \deliveryNodes \cup \{\startNode, \lastNode \}$ com
 $\pickupNodes = \{\node{1}, \ldots, \node{\numberOfRequests}\}$, e 
 $\deliveryNodes = \{\node{\numberOfRequests + 1}, \ldots,
@@ -110,14 +108,13 @@ de cada um dos nós. Denota-se por $\maxRideTime_\request$ o tempo máximo de
 viagem de um pedido, limitado pelo valor de tempo que o passageiro considera 
 aceitável para o seu trajeto. 
 
-Finalmente, defini-se um intervalo de tempo, denominado horizonte de
-planejamento, $[0, \planingHorizon]$, no qual o instante $0$ representa o 
-início da operação, em que todos os veículos estão localizados no nó inicial 
-($\startNode$) e todos os usuários estão aguardando ser coletados nos seus 
-respectivos pontos iniciais.
+Finalmente, define-se um intervalo de tempo, denominado horizonte de
+planejamento, $[0, \planingHorizon]$, no qual o instante $0$ (zero) representa
+o início da operação, em que todos os veículos estão localizados no nó inicial 
+($\startNode$) e nenhum outro ponto do grafo foi visitado.
 Por conseguinte, o instante $\planingHorizon$ representa o fim da operação, 
 em que os veículos terminaram de cumprir suas rotas, levando todos os usuários 
-do seus respectivos pontos iniciais para os pontos finais, e se 
+dos seus respectivos pontos iniciais para os pontos finais, e se 
 encontram no nó final ($\lastNode$). Todas as janelas de tempo dos nós de
 coleta e entrega ($[\earliestTimeWindow_i, \latestTimeWindow_i], 
 \forall \node{i} \in \pickupNodes \cup \deliveryNodes$) devem estar contidas 
@@ -214,11 +211,10 @@ veículos, perda de carga, acidentes de diversos tipos, entre outros, dos 117
 artigos estudados e catalogados por  \textcite{psaraftis_dynamic_2015}, 80\%
 deles envolvem o surgimento de novos pedidos.
 
-O restante dessa seção apresentará uma modificação para as formulações do DARP
-e PDPTW apresentadas nas 
-Seções~\ref{sec:formulacao_DARP}~e~\ref{sec:formulacao_PDPTW} para estender a
-formulação estática inicial para uma formulação dinâmica, tendo o surgimento de
-novos pedidos como a natureza de seu elemento dinâmico.
+Estendendo as formulações do DARP e do PDPTW apresentadas nas
+Seções~\ref{sec:formulacao_DARP}~e~\ref{sec:formulacao_PDPTW} gera-se uma
+formulação dinâmica em que o surgimento de novos pedidos como a natureza de 
+seu elemento dinâmico.
 
 Para que pedidos cheguem a qualquer instante contido dentro
 do intervalo $[0, \planingHorizon]$ define-se um instante 
