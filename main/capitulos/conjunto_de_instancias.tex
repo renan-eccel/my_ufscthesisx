@@ -167,7 +167,7 @@ estudadas.
 
 
 
-\section{Conjunto de instâncias DARP propostas por 
+\section{Conjunto de instâncias DDARP propostas por 
          Berbeglia, Cordeau e Laporte (2012)}
 \label{sec:instances_berbeglia}
 
@@ -186,16 +186,16 @@ como o método usado para dinamiza-los.
 
 \subsection{Primeiro conjunto}\label{sec:instances_berbeglia_1}
 \textcite{berbeglia_hybrid_tabu_2012} usam como base as instâncias estáticas 
-propostas por \textcite{ropke_models_2007}, os quais utilizaram o método 
-proposto por \textcite{savelsbergh_drive:_1998} para geração de instâncias 
-estáticas.
+propostas por \textcite{ropke_models_2007} que, por sua vez, utilizaram o 
+método proposto por \textcite{savelsbergh_drive:_1998} para geração de 
+instâncias estáticas.
 Destaca-se que essas mesmas instâncias estáticas foram usadas também por
 \textcite{cordeau_branch-and-cut_2006}.
 
 Neste conjunto de instâncias os pedidos estão contidos em um plano euclidiano
-delimitado por um quadrado 20 x 20, sendo que a distribuição espacial dos
-nós de coleta e de entrega é gerada através do sorteio de uma variável com 
-distribuição aleatória uniforme.
+delimitado por uma área de $20 \times 20 \text{ km}^2$, sendo que a 
+distribuição espacial dos nós de coleta e de entrega é gerada através do 
+sorteio de uma variável com distribuição aleatória uniforme.
 Os pedidos são divididos em duas categorias, pedidos de coleta e pedidos de
 entrega, sendo que o primeiro só possui uma janela de tempo definida na coleta 
 e o segundo apenas janela de tempo de entrega.
@@ -203,27 +203,27 @@ O horizonte de planejamento é de 12 horas e as janelas de tempo são de 15
 minutos.
 
 Dentro deste conjunto de instâncias existem os subconjuntos ``a'' e ``b'',
-sendo a capacidade dos veículos ($\capacity_\request$) e o tempo máximo de 
-viagem de um pedido ($\maxRideTime_\request$), o carregamento dos pedidos 
-($\load_\request$) e o tempo de serviço ($\serviceTime_i$) as diferenças entre 
-eles.
-No subconjunto ``a'' esses valores recebem: $\vehicleCapacity = 3, \forall
-\vehicle \in \vehiclesSet$; $\load_\request = 1, \forall \request \in
-\requests$; $\serviceTime_\request = 1\ \text{min}, \forall \request \in 
-\requests$ e $\maxRideTime_\request = 30\ \text{min}$ 
+que diferenciam entre si pelos valores de capacidade dos veículos 
+($\capacity_\request$), do tempo máximo de viagem de um pedido 
+($\maxRideTime_\request$), do carregamento dos pedidos 
+($\load_\request$) e do tempo de serviço ($\serviceTime_i$).
+No subconjunto ``a'' esses valores são: $\vehicleCapacity = 3, \forall
+\vehicle \in \vehiclesSet$ e $\load_\request = 1, \serviceTime_\request = 1\ 
+\text{min}, \maxRideTime_\request = 30\ \text{min}, \forall \request \in
+\requests$.
 No subconjunto ``b'' esses valores seriam: $\vehicleCapacity = 6, \forall
-\vehicle \in \vehiclesSet$; $\load_\request = \uniformDistribution{1}
-{\vehicleCapacity} \forall \request \in \requests$; 
-$\serviceTime_\request = \load_\request, \forall \request \in \requests$ e
-$\maxRideTime_\request = 45\ \text{min}$.
+\vehicle \in \vehiclesSet$ e $\load_\request = \uniformDistribution{1}
+{\vehicleCapacity}, \serviceTime_\request = \load_\request, 
+\maxRideTime_\request = 45\ \text{min}, \forall \request \in \requests$.
 
 Esses subconjuntos foram criados para representar o caso em que carros são
 usados para o transporte dos usuários (``a'') e o caso em que mini-ônibus 
 seriam usados para o mesmo fim (``b'').
 
 Por fim, a Tabela~\ref{tab:ropke_models_2007_DARP_instances_caracteristics}
-apresenta algumas das características das instâncias de ambos os subconjuntos
-propostos por \textcite{ropke_models_2007}
+apresenta algumas das características das instâncias estáticas de ambos os 
+subconjuntos propostos por \textcite{ropke_models_2007}, isto é, antes da
+dinamização.
 
 % TODO: apresentar as instâncias com <40 pedidos?
 
@@ -236,6 +236,8 @@ propostos por \textcite{ropke_models_2007}
   \label{tab:ropke_models_2007_DARP_instances_caracteristics}
   \begin{tabular}{lrrrrrr|lrrrrrr}
     \toprule
+    \multicolumn{7}{c|}{Subconjunto ``a''} &
+    \multicolumn{7}{c}{Subconjunto ``b''} \\
     ID & $\vehiclesSetSize$ & $\numberOfRequests$ & $\maxRouteTime_\request$ & 
     $\load_\request$ & $\capacity_\vehicle$ & $\maxRideTime_\request$ & 
     ID & $\vehiclesSetSize$ & $\numberOfRequests$ & $\maxRouteTime_\request$ & 
@@ -271,16 +273,17 @@ propostos por \textcite{ropke_models_2007}
 
 \subsection{Segundo conjunto}\label{sec:instances_berbeglia_2}
 
-Vinte instâncias estáticas propostas por \textcite{cordeau_tabu_2003} de
-acordo com parâmetros realísticos. Informações relativas ao tamanho das janelas
-de tempo, capacidade dos veículos, tempo máximo de rota e tempo máximo de
+Conjunto com vinte instâncias estáticas criado por \textcite{cordeau_tabu_2003}
+a partir de dados reais obtidos em campo. 
+As informações relativas ao tamanho das janelas de tempo, 
+capacidade dos veículos, tempo máximo de rota e tempo máximo de
 viagem foram fornecidas pela \textit{Montreal Transit Commission}.
 
-As instâncias foram geradas aleatoriamente e contém entre 24 e 144 pedidos. 
+As instâncias foram geradas aleatoriamente e contêm entre 24 e 144 pedidos. 
 Assim como no conjunto de instâncias apresentado na
 Seção~\ref{sec:instances_berbeglia_1}, os pedidos estão localizados em uma 
-quadrado 20 x 20 sendo que metade são pedidos de coleta e metade são pedidos 
-de entrega.
+área de $20 \times 20 \text{km}^2$ sendo que metade são pedidos de coleta e 
+metade são pedidos de entrega.
 
 Entretanto, diferente do conjunto apresentado na 
 Seção~\ref{sec:instances_berbeglia_1}, os pedidos não são alocados usando uma
@@ -294,16 +297,17 @@ dois subconjuntos, cuja diferença é dada na forma de geração das janelas de
 tempo.
 No subconjunto ``a'', janelas de tempo curtas são geradas usando uma
 distribuição uniforme dentro do intervalo $[60, 480]$ para a determinar o 
-limite inferior da janela de tempo de coleta.
-
-
+limite inferior ($\earliestTimeWindow_\originIndex$) da janela de tempo de 
+coleta:
+%
 \begin{equation}
   \earliestTimeWindow_\originIndex = \uniformDistribution{60}{480}.
   \label{eq:instances_berbeglia_2_earliestTimeWindow}
 \end{equation}
 
-Logo em seguida, determina-se o limite superior da janela de coleta por:
-
+\noindent Logo em seguida, determina-se o limite superior da janela de coleta 
+por:
+%
 \begin{equation}
   \latestTimeWindow_{\destinationIndex}  = \uniformDistribution
   {\earliestTimeWindow_\originIndex + 15}
@@ -311,11 +315,11 @@ Logo em seguida, determina-se o limite superior da janela de coleta por:
   \label{eq:instances_berbeglia_2_a_latestTimeWindow}
 \end{equation}
 
-No subconjunto ``b'', janelas de tempo longas são criadas através da
+\noindent No subconjunto ``b'', janelas de tempo longas são criadas através da
 determinação dos limites inferiores e superiores da janela de tempo de coleta.
 Para isso as Equações~\ref{eq:instances_berbeglia_2_earliestTimeWindow}~e
 \ref{eq:instances_berbeglia_2_b_latestTimeWindow}
-
+%
 \begin{equation}
   \latestTimeWindow_{\destinationIndex} = 
   \uniformDistribution
@@ -324,7 +328,7 @@ Para isso as Equações~\ref{eq:instances_berbeglia_2_earliestTimeWindow}~e
   \label{eq:instances_berbeglia_2_b_latestTimeWindow}
 \end{equation}
 
-Para todas as instâncias, o tempo de rota máxima é 480 minutos, enquanto a
+\noindent Para todas as instâncias, o tempo de rota máxima é 480 minutos, enquanto a
 capacidade de cada veículo é igual a 6 e o carregamento de todos os pedidos
 igual a 1.
 Por último, o tempo máximo de viagem é igual a 90 minutos e o horizonte de
@@ -333,10 +337,6 @@ planejamento é de 1440 minutos (24 horas x 60 minutos).
 A Tabela~\ref{tab:cordeau_tabu_2003_DARP_intances_characteristics} apresenta as
 características gerais de cada uma das instâncias apresentadas por
 \textcite{cordeau_tabu_2003}.
-As instâncias dos subconjuntos ``a'' e ``b'' podem ser distintas pelo último
-caractere do seu identificador (ID).
-
-% TODO: apresentar as instâncias com <40 pedidos?
 
 \begin{table}[h]
 \footnotesize
@@ -346,6 +346,8 @@ caractere do seu identificador (ID).
   \label{tab:cordeau_tabu_2003_DARP_intances_characteristics}
   \begin{tabular}{lrr|lrr}
     \toprule  
+    \multicolumn{3}{c|}{Subconjunto ``a''} & 
+    \multicolumn{3}{c}{Subconjunto ``b''} \\
     ID & $\numberOfRequests$ & $\vehiclesSetSize$ & 
     ID & $\numberOfRequests$ & $|\vehiclesSet|$\\
     \midrule
@@ -385,7 +387,7 @@ sempre será maior que $\beta$.
 Dado um pedido $\request$, o valor $\requestLatestArrivalTime$  consiste em um
 limite superior para o instante que o pedido deve ser conhecido para que seja
 possível servi-lo. Assim:
-
+%
 \begin{equation}
     \requestLatestArrivalTime = 
     \min\{\latestTimeWindow_{\originIndex},
@@ -395,8 +397,8 @@ possível servi-lo. Assim:
     \label{eq:berbeglia_hybrid_2012_requestLatestArrivalTime}
 \end{equation}
 
-Portanto, o instante de chegada do pedido pode ser definido como:
-
+\noindent Portanto, o instante de chegada do pedido pode ser definido como:
+%
 \begin{equation}
     \requestArrivalTime = \requestLatestArrivalTime - \maneuverTime.
     \label{eq:berbeglia_hybrid_2012_requestArrivalTime}
@@ -404,14 +406,14 @@ Portanto, o instante de chegada do pedido pode ser definido como:
 
 % TODO: Rodrigo: Qualitativamente, o que isso significa?
 
-\textcite{berbeglia_hybrid_tabu_2012} utilizam os parâmetros 
+\noindent \textcite{berbeglia_hybrid_tabu_2012} utilizam os parâmetros 
 $\staticPercentage = 0{,}25$ e $\maneuverTime = 60$ para a dinamização das 
 instâncias apresentadas por \textcite{ropke_models_2007}.
 Já o conjunto de instâncias pertencentes à \textcite{cordeau_tabu_2003}, foi 
 transformado em um conjunto de instâncias dinâmicas usando os parâmetros 
 $\staticPercentage = 0{,}25$ e $\maneuverTime =\uniformDistribution{60}{240}$.
 
-Destaca-se que o presente artigo usa o mesmo método de dinamização, porém usa 
+Destaca-se que o presente trabalho usa o mesmo método de dinamização, porém usa 
 $\alpha = 0$, já que o interesse é obter casos totalmente dinâmicos.
 
 %TODO Rodrigo: Porque existe esse interesse?
@@ -432,7 +434,7 @@ instâncias VRPTW de 100 pedidos, criadas por
 
 Seguindo a classificação de \textcite{solomon_algorithms_1987},  
 \textcite{li_metaheuristic_2003} organizaram as instâncias em seis classes, 
-denotadas por LC1, LC2, LR1, LR2, LRC1 e LRC2, indicando as respectivas 
+identificadas por LC1, LC2, LR1, LR2, LRC1 e LRC2, indicando as respectivas 
 distribuições espaciais dos nós e o tamanho dos horizontes de planejamento.
 Nos conjuntos LC1 e LC2 os nós são agrupados, enquanto LR1 e LR2 possuem nós 
 aleatoriamente distribuídos.
@@ -447,18 +449,19 @@ A Tabela~\ref{tab:li_metaheuristics_2003_PDPTW_instances_characteristics}
 apresenta algumas características das instâncias estáticas de
 \textcite{li_metaheuristic_2003}.
 
-\begin{table}[H]
-\footnotesize
-    \centering
-    \caption{Características das instâncias PDPTW de 
-             \textcite{li_metaheuristic_2003}}
-    \label{tab:li_metaheuristics_2003_PDPTW_instances_characteristics}
-    \begin{tabular}{lrrr|lrrr|lrrr}
-        \toprule  
+\newpage
+\begin{center}
+\begin{longtable}{lrrr|lrrr|lrrr}
+
+%\footnotesize
+%    \caption{Características das instâncias PDPTW de 
+%             \textcite{li_metaheuristic_2003}}
+%    \label{tab:li_metaheuristics_2003_PDPTW_instances_characteristics}
+        \hline
         ID & $\planingHorizon$ & $\numberOfRequests$ & $\vehicleCapacity$ & 
         ID & $\planingHorizon$ & $\numberOfRequests$ & $\vehicleCapacity$ & 
         ID & $\planingHorizon$ & $\numberOfRequests$ & $\vehicleCapacity$ \\ 
-        \midrule
+        \hline
         LC101      & 1236 &  53 & 200 & LR101      &  230 &  53 &  200 & LRC101      &  240 &  53 &  200\\
         LC102      & 1236 &  53 & 200 & LR102      &  230 &  55 &  200 & LRC102      &  240 &  53 &  200\\
         LC103      & 1236 &  52 & 200 & LR103      &  230 &  52 &  200 & LRC103      &  240 &  53 &  200\\
@@ -483,7 +486,7 @@ apresenta algumas características das instâncias estáticas de
                    &      &     &     & LR209      & 1000 &  51 & 1000 &             &      &     &     \\
                    &      &     &     & LR210      & 1000 &  51 & 1000 &             &      &     &     \\
                    &      &     &     & LR211      & 1000 &  50 & 1000 &             &      &     &     \\
-        \midrule
+        \hline
         LC1\_2\_1  & 1351 & 106 & 200 & LR1\_2\_1  &  634 & 105 &  200 & LRC1\_2\_1  &  634 & 106 &  200\\
         LC1\_2\_2  & 1351 & 105 & 200 & LR1\_2\_2  &  634 & 105 &  200 & LRC1\_2\_2  &  634 & 103 &  200\\
         LC1\_2\_3  & 1351 & 103 & 200 & LR1\_2\_3  &  634 & 104 &  200 & LRC1\_2\_3  &  634 & 105 &  200\\
@@ -505,7 +508,7 @@ apresenta algumas características das instâncias estáticas de
         LC2\_2\_8  & 3598 & 102 & 700 & LR2\_2\_8  & 2535 & 100 & 1000 & LRC2\_2\_8  & 2535 & 101 & 1000\\
         LC2\_2\_9  & 3598 & 101 & 700 & LR2\_2\_9  & 2535 & 100 & 1000 & LRC2\_2\_9  & 2535 & 101 & 1000\\
         LC2\_2\_10 & 3598 & 101 & 700 & LR2\_2\_10 & 2535 & 101 & 1000 & LRC2\_2\_10 & 2535 & 101 & 1000\\
-        \midrule
+        \hline
         LC1\_4\_1  & 1501 & 211 & 200 & LR1\_4\_1  &  804 & 208 &  200 & LRC1\_4\_1  &  765 & 208 &  200\\
         LC1\_4\_2  & 1501 & 211 & 200 & LR1\_4\_2  &  804 & 209 &  200 & LRC1\_4\_2  &  765 & 209 &  200\\
         LC1\_4\_3  & 1501 & 210 & 200 & LR1\_4\_3  &  804 & 208 &  200 & LRC1\_4\_3  &  765 & 206 &  200\\
@@ -527,23 +530,23 @@ apresenta algumas características das instâncias estáticas de
         LC2\_4\_8  & 3693 & 203 & 700 & LR2\_4\_8  & 3213 & 202 & 1000 & LRC2\_4\_8  & 3060 & 201 & 1000\\
         LC2\_4\_9  & 3693 & 205 & 700 & LR2\_4\_9  & 3213 & 202 & 1000 & LRC2\_4\_9  & 3060 & 203 & 1000\\
         LC2\_4\_10 & 3693 & 202 & 700 & LR2\_4\_10 & 3213 & 202 & 1000 & LRC2\_4\_10 & 3060 & 203 & 1000\\
-    \bottomrule
-  \end{tabular}
-\end{table}
+    \hline
+\end{longtable}
+\end{center}
 
 \textcite{pureza_laporte_waiting_2008} definem o instante de chegada dos
 pedidos como:
-
+%
 \begin{equation}
     \requestArrivalTime = \min\{\earliestTimeWindow_\originIndex,
     \max\{\uniformDistribution{1}{5}, \latestTimeWindow_\originIndex -
-    \arcTravelTime{\startIndex}{\originIndex} - \maneuverTime\}\}.
+    \arcTravelTime{\startIndex}{\originIndex} - \maneuverTime\}\},
   \label{eq:pureza_waiting_2008_requestArrivalTime}
 \end{equation}
 
 % TODO Rodrigo: O que isso quer dizer?
 
-em que, o valor $\arcTravelTime{0}{i}$ é usado como o tempo 
+\noindent em que, o valor $\arcTravelTime{0}{i}$ é usado como o tempo 
 de viagem médio de um veículo que deseja coletar o pedido $\request$.
 Para cada uma das instâncias PDPTW foram geradas quatro instâncias DPDPTW 
 através da variação de $\maneuverTime$ entre os valores 0, 100, 200 e 300.
@@ -574,7 +577,7 @@ de chegada do pedido  e o último instante de coleta do
 pedido ($\latestTimeWindow_\originIndex - \arrivalTime_\request$). 
 Para cada pedido $\request \in \requests$ o último instante de chegada 
 pode ser calculado por: 
-
+%
 \begin{equation}
   \requestLatestArrivalTime := 
   \min\{\latestTimeWindow_\originIndex, \latestTimeWindow_{\destinationIndex} 
@@ -583,21 +586,21 @@ pode ser calculado por:
   \label{eq:pankratz_dynamic_2005_requestLatestArrivalTime}
 \end{equation}
 
-em que $\requestLatestArrivalTime$ representa o último instante possível para
-que o pedido $\request$ seja recebido pelo sistema e possa ser coletado e
-entregue a seu destino final respeitando as suas janelas de tempo.
-Na Equação~\ref{eq:pankratz_dynamic_2005_requestLatestArrivalTime} o valor
+\noindent em que $\requestLatestArrivalTime$ representa o último instante 
+possível para que o pedido $\request$ seja recebido pelo sistema e possa ser 
+coletado e entregue a seu destino final respeitando as suas janelas de tempo.
+Em (\ref{eq:pankratz_dynamic_2005_requestLatestArrivalTime}) o valor
 $\arcTravelTime{\startIndex}{\originIndex}$ é usado para estimar um tempo de 
 viagem médio de um veículo que deseje coletar o pedido $\request$.
 
 Posteriormente, cada pedido recebeu um instante de chegada calculado por: 
-
+%
 \begin{equation}
-  \arrivalTime_\request = \maneuverTime \cdot \requestLatestArrivalTime, 
+  \arrivalTime_\request = \maneuverTime \requestLatestArrivalTime, 
 \end{equation}
 
-sendo $\maneuverTime$ um valor dentro do intervalo $[0,1; 1,0]$, com precisão 
-de 0,1. 
+\noindent sendo $\maneuverTime$ um valor dentro do intervalo $[0{,}1; 1{,}0]$, 
+com precisão de 0,1. 
 Para cada uma das 56 instâncias PDPTW, 10 instâncias DPDPTW foram geradas, 
 sendo cada uma gerada por um dos possíveis valores de $\maneuverTime$,
 resultando em um total de 560 instâncias dinâmicas.
@@ -610,13 +613,13 @@ delimitado pelo intervalo $[0,1; 0,9]$ com precisão de $0,1$.
 Todos os pedidos estáticos foram escolhidos aleatoriamente entre o conjunto de 
 todos os pedidos das instâncias estáticas. Já os pedidos dinâmicos receberem o 
 último instante de chegada possível:
-
+%
 \begin{equation}
   \arrivalTime_\request = \requestLatestArrivalTime,
 \end{equation}
 
-sendo que $\requestLatestArrivalTime$ é calculado usando a
-Equação~\ref{eq:pankratz_dynamic_2005_requestLatestArrivalTime}.
+\noindent sendo que $\requestLatestArrivalTime$ é calculado usando
+(\ref{eq:pankratz_dynamic_2005_requestLatestArrivalTime}).
 
 Para reduzir o risco de viés estocástico ao sortear os pedidos estáticos, 10 
 instâncias DPDPTW foram geradas para cada possível valor de $\staticPercentage$
@@ -638,7 +641,7 @@ Isso acarreta em cenários em que alguns dos pedidos não conseguem ser
 atendidos.
 Para tornar as instâncias dinâmicas, \textcite{fabri_dynamic_2006} sortearam 
 o instante de chegada dos pedidos como:
-
+%
 \begin{equation}
   \requestArrivalTime = 
   \uniformDistribution{0}{\min\{\earliestTimeWindow_\originIndex, 
@@ -662,12 +665,12 @@ o instante de chegada dos pedidos como:
 O conjunto de instâncias propostas por \textcite{gendreau_neighborhood_2006}
 contém instâncias com 10 e 20 veículos movendo a uma velocidade média de 30 
 km/h. 
-A área é um quadrado 5 $\times$ 5 km e o depósito se encontra na coordenada 
+A área de $5 \times 5 \text{km}^2$  e o depósito se encontra na coordenada 
 (2,0; 2,5). 
 Espaço e tempo são discretizados em um conjunto $Z$ com 20 zonas retangulares 
-de tamanho 1.25 $\times$ 1 e um conjunto $I$ de intervalos de tempo que 
-divide um dia de operação em cindo períodos: começo da manhã, final da manhã, 
-horário de almoço, começo da tarde e fim da tarde.
+de tamanho $1,25 \times 1 \text{km}^2$ e um conjunto $I$ de intervalos de tempo
+que divide um dia de operação em cinco períodos: começo da manhã, final da 
+manhã, horário de almoço, começo da tarde e fim da tarde.
 As extensões dos períodos são iguais entre si, com exceção do almoço, que é
 metade do valor dos demais.
 
@@ -682,27 +685,23 @@ probabilidade de um pedido com coleta na zona $z \in Z$ e entrega na zona $x
 \in Z$ acontecer no período de tempo $y$.
 
 Os instantes de chegada dos pedidos são dados por:
-
+%
 \begin{equation}
    \requestArrivalTime =
    \begin{cases}
        \expDistribution{\lambda^y},                     & \text{se $i = 0$} \\
-       \arrivalTime_{i-1} +\expDistribution{\lambda^y}, & \text{se $i > 0$.}
+       \arrivalTime_{i-1} +\expDistribution{\lambda^y} & \text{se $i > 0$},
      \end{cases}
 \end{equation}
 
-Em que:
-\begin{itemize}
-  \item $\expDistribution{\lambda^y}$: uma variável aleatória com distribuição
-    exponencial e média $\lambda^y$
-  \item $\lambda^y$: a média de pedidos por intervalo de tempo do período 
-    $y \in I$
-\end{itemize}
+\noindent em que $\expDistribution{\lambda^y}$ é uma variável aleatória com 
+distribuição exponencial e média $\lambda^y$ e $\lambda^y$ a média de pedidos 
+por intervalo de tempo do período $y \in I$.
 
 Com isso, a matriz $\Pi^y$ é usada para determinar em quais zonas os locais de 
 coleta e entrega vão aparecer. 
 Dois conjuntos de parâmetros de média Poisson foram usados para gerar os 
-intervalos de chegada de pedidos: (0,75; 1,10; 0,25; 0,40;0,10) e 
+intervalos de chegada de pedidos: (0,75; 1,10; 0,25; 0,40; 0,10) e 
 (0,55; 0,70; 0,10; 0,40; 0,10), sendo que cada elemento é relativo a
 um dos cinco períodos do dia. 
 Dentro destas zonas, os locais exatos de coleta e entrega 
@@ -714,31 +713,29 @@ Com relação a janelas de tempo, a distância euclidiana entre os pontos
 $\originNode$ e $\destinationNode$ é usada para computar o tempo mínimo de 
 viagem $\arcTravelTime{\originIndex}{\destinationIndex}^{\min}$.
 Com ele pode-se calcular o último instante factível para início do serviço:
-
+%
 \begin{equation}
   \Tilde{t}_{\request} = \planingHorizon 
     - (\arcTravelTime{\originIndex}{\destinationIndex}^{\min} 
-    + \arcTravelTime{\destinationIndex}{\lastIndex}^{min}).
+    + \arcTravelTime{\destinationIndex}{\lastIndex}^{\min}),
     \label{eq:gendreau2006_leat_feasible_time}
 \end{equation}
 
-Em que:
-  \begin{itemize}
-  \item $\Tilde{t}_\request$: último instante factível para início do serviço.
-  \item $\arcTravelTime{\originIndex}{\destinationIndex}^{\min}$: tempo de
-    viagem ente o nó $\originNode$ e o nó $\destinationNode$
-    usando a distância Euclidiana entre os pontos.
-  \item $\arcTravelTime{\destinationIndex}{\lastIndex}^{\min}$: tempo de viagem
-    entre o nó $\destinationNode$ e o nó $\lastNode$ usando
-    a distância Euclidiana entre os pontos.
-\end{itemize}
+\noindent em que $\Tilde{t}_\request$ representa o último instante factível 
+para início do serviço,
+$\arcTravelTime{\originIndex}{\destinationIndex}^{\min}$ o tempo de
+viagem ente o nó $\originNode$ e o nó $\destinationNode$ usando a distância 
+euclidiana entre os pontos e
+$\arcTravelTime{\destinationIndex}{\lastIndex}^{\min}$ o tempo de viagem entre 
+o nó $\destinationNode$ e o nó $\lastNode$ usando a distância euclidiana entre 
+os pontos.
 
 
 O valor do limite inferior da janela de tempo de coleta
 ($\earliestTimeWindow_\originIndex$) é determinado baseando-se na 
 distribuição da Figura~\ref{fig:gendreau2006_distribution} e formalmente 
 definido por:
-
+%
 \begin{equation}
   \earliestTimeWindow_\originIndex = 
     \begin{cases}
@@ -761,33 +758,32 @@ definido por:
     \label{fig:gendreau2006_distribution}
 \end{figure}
 
-Em que, $\mu$ simboliza a probabilidade do limite inferior da janela de
-tempo de coleta estar contido no intervalo 
-$[\arrivalTime_\request; \frac{\arrivalTime_\request + \Tilde{t}_\request}{2}]$
-, e é definodo por:
-
+\noindent em que, $\mu$ simboliza a probabilidade do limite inferior da janela 
+de tempo de coleta estar contido no intervalo $[\arrivalTime_\request; 
+\frac{\arrivalTime_\request + \Tilde{t}_\request}{2}]$, e é definido por:
+%
 \begin{equation}
-  \mu = \uniformDistribution{0,6}{1,0}
+  \mu = \uniformDistribution{0,6}{1,0}.
 \end{equation}
 
 Já o limite superior da janela de tempo de coleta é definido por:
-
+%
 \begin{equation}
     \latestTimeWindow_\originIndex = 
       \earliestTimeWindow_\originIndex 
       + \tau(\planingHorizon - \arrivalTime_\request),
 \end{equation}
 
-em que, $\tau(\planingHorizon - \arrivalTime_\request)$ representa uma fração
-do tempo entre o insntate de chegada do pedido e o fim do horizonte de
-planejamento. $\tau$ é portanto definido por:
-
+\noindent em que, $\tau(\planingHorizon - \arrivalTime_\request)$ 
+representa uma fração do tempo entre o instante de chegada do pedido e o fim 
+do horizonte de planejamento. Assim, $\tau$ é definido por:
+%
 \begin{equation}
   \tau = \uniformDistribution{\tau^{\min}}{\tau^{\max}},
 \end{equation}
 
-sendo $\tau^{\min}$ e $\tau^{\max}$ são parâmetros determinados pelo usuário,
-cujos valores podem variar com o tempo e localização.
+\noindent com $\tau^{\min}$ e $\tau^{\max}$ são parâmetros determinados pelo 
+usuário, cujos valores podem variar com o tempo e localização.
 
 Uma janela de tempo é gerada da mesma forma para o local de entrega. 
 Neste caso a distribuição de probabilidade para a geração do limite inferior 
@@ -852,12 +848,12 @@ características das instâncias apresentadas por
          Minic, Krishnamurti e Laporte (2004)}
 
 Composto por dois subconjuntos de instâncias, cada um contendo 30 instâncias de 
-100, 30 de 500 e 30 de 1000 pedidos.
+100, 30 instâncias de 500 e 30 instâncias de 1000 pedidos.
 Estes conjuntos diferem apenas em relação à distribuição e largura das 
 janelas de tempo, que dependem do tempo máximo permitido para servir o pedido, 
 assumindo que o pedido é coletado no primeiro instante possível, e são dadas 
 por:
-
+%
 \begin{equation}
     \Gamma = \latestTimeWindow_{\destinationIndex}
               - \earliestTimeWindow_\originIndex.
@@ -880,7 +876,7 @@ km$^2$, e a velocidade do veículo é de 60 km/h.
 Os instantes de chegada dos pedidos ocorrem dentro do horizonte de planejamento
 de acordo com uma distribuição uniforme contínua e nenhum pedido é conhecido 
 a priori,
-
+%
 \begin{equation}
   \arrivalTime_\request = \uniformDistribution{0}{\planingHorizon}.
 \end{equation}
@@ -891,32 +887,31 @@ Um pedido $\request$ é criado através da seguinte sequência de procedimentos:
 (ii) gerar aleatoriamente as posições de coleta e entrega e 
 (iii) gerar um valor para $\Gamma$.
 (iv) calcular os limites das janelas de tempo como:
-
+%
 \begin{equation}
   \earliestTimeWindow_\originIndex = \arrivalTime_\request,
 \end{equation}
-
+%
 \begin{equation}
   \latestTimeWindow_{\destinationIndex} = \earliestTimeWindow_\originIndex +
   \Gamma,
 \end{equation}
-
+%
 \begin{equation}
   \latestTimeWindow_\originIndex = \latestTimeWindow_{\destinationIndex}
   - \arcTravelTime{i}{i+n},
 \end{equation}
-
+%
 \begin{equation}
   \earliestTimeWindow_{\destinationIndex} = \earliestTimeWindow_\originIndex
   + \arcTravelTime{i}{i+n}.
 \end{equation}
 
-
 Rejeições de pedidos e violações de janelas de tempo não são permitidas. 
 Isso é feito possível pelo fato que a quantidade de veículos 
 ($\vehiclesSetSize$) é considerada ilimitada. 
-A frota inicial é considerada 20, 60 e 80 para as instâncias com 100, 500 e 
-1000 pedidos, respectivamente. 
+A frota inicial considerada é de 20, 60 e 80 veículos para as instâncias com 
+100, 500 e 1000 pedidos, respectivamente. 
 O ponto de início é posicionado em (20, 30) km.
 
 

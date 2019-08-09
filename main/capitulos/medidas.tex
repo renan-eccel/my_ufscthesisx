@@ -9,31 +9,28 @@
 Proposta primeiramente por \citeonline{lund_vehicle_1996}, o grau de dinamismo
 de uma instância de qualquer VRP dinâmico representa a razão entre a quantidade
 de pedidos dinâmicos, que se fazem conhecidos em um instante
-$\arrivalTime_\request > 0$, e a quantidade total de pedidos da instância.
-
+$\arrivalTime_\request > 0$, e a quantidade total de pedidos da instância:
+%
 \begin{equation}
-  \degreeOfDynamism = \frac{\numberOfRequests_{d}}{\numberOfRequests}.
+  \degreeOfDynamism = \frac{\numberOfRequests_{\text{d}}}{\numberOfRequests},
   \label{eq:degreeOfDynamism}
 \end{equation}
 
-Em que:
-\begin{itemize}
-  \item $\degreeOfDynamism$: grau de dinamismo
-  \item $\numberOfRequests_{d}$: número de pedidos dinâmicos
-\end{itemize}
+\noindent em que $\degreeOfDynamism$ é o grau de dinamismo e 
+$\numberOfRequests_{d}$ o número de pedidos dinâmicos
 
 Essa classificação proporcionou uma base para o estudo das relações entre o 
 grau de dinamismo, os tipos de métodos usados para a solução dos 
 problemas e as características das soluções obtidas.
 \citeonline{wong_dynamic_2014}, por exemplo, mostram que existe uma relação não
 linear entre o grau de dinamismo e o custo de transporte de uma instância de um
-problema DRT.
+problema responsivo à demanda.
 Suas análises numéricas elucidam a existência de um pico de ineficiência para
 vários algorítimos heurísticos quando $\degreeOfDynamism \approx 0{,}7$.
 Através dessa descoberta \citeonline{wong_dynamic_2014} descrevem uma série de
-políticas para que operadores de sistemas de transporte responsivos a demanda
-(DRT) possam seguir para permanecer longe do que eles classificam como "zona de
-dilema".
+políticas para que operadores de sistemas de transporte responsivos à demanda
+(DRT - \textit{Dynamic Responsive Transpot}) possam seguir para permanecer 
+longe do que eles classificam como ``zona de dilema''.
 
 Similarmente, \citeonline{larsen_partially_2002} usam essa mesma medida de 
 grau de dinamismo para estudar a relação entre o custo de rota para o 
@@ -44,28 +41,25 @@ dinamismo de uma instância e o custo da rota de um sistema relativamente ativo.
 
 Posteriormente, baseando-se no fato de que o instante de chegada dos pedidos
 dinâmicos também deve afetar o grau de dinamismo,
-\citeonline{larsen_dynamic_2000} define o grau efetivo de dinamismo por:
-
+\textcite{larsen_dynamic_2000} define o grau efetivo de dinamismo por:
+%
 \begin{equation}
   \eDegreeOfDynamism = 
   \frac{1}{\numberOfRequests}
   \sum_{\request \in \requests}
   {
     \frac{\arrivalTime_\request}{\planingHorizon}
-  }.
+  },
   \label{eq:eDegreeOfDynamism}
 \end{equation}
 
-Em que:
-\begin{itemize}
-  \item $\eDegreeOfDynamism$: grau efetivo de dinamismo
-\end{itemize}
+\noindent em que $\eDegreeOfDynamism$ é o grau efetivo de dinamismo e 
+representa a média da razão entre os instantes que os pedidos são conhecidos 
+quando comparados com o último instante possível para a chegada deles, 
+$\planingHorizon$, no caso. Os instantes de chegada dos pedidos estáticos são 
+considerados igual a zero.
 
-O grau efetivo de dinamismo representa a média da razão entre os instantes que
-os pedidos são conhecidos quando comparados com o último instante possível para
-a chegada deles, $\planingHorizon$, no caso.
-Os instantes de chegada dos pedidos estáticos são considerados igual a zero.
-É importante destacar que apesar de representarem formas de cálculo diferentes
+É importante destacar que apesar de representarem formas de cálculo diferentes,
 o grau de dinamismo e o grau de dinamismo efetivo compartilham entre si o mesmo
 intervalo de possíveis valores, contido entre $0$ e $1$, sendo que
 $\degreeOfDynamism = \eDegreeOfDynamism = 0$ classifica uma instância
@@ -91,22 +85,20 @@ $\arrivalTime_\request$, possa passar pelo nó de coleta $\originNode$
 antes do limite superior da janela de tempo de coleta
 $\latestTimeWindow_{\originIndex}$.
 \citeonline{larsen_dynamic_2000} define que: 
-
+%
 \begin{equation}
   \reactionTime_\request = \latestTimeWindow_{\originIndex}
-                           - \arrivalTime_\request.
+                           - \arrivalTime_\request,
 \end{equation}
 
-Em que:
-\begin{itemize}
-  \item $\reactionTime_\request$: tempo de reação do pedido $\request$
-\end{itemize}
+\noindent em que $\reactionTime_\request$ é o tempo de reação do pedido
+$\request$.
 
 Com isso, o grau efetivo de dinamismo, quando contabilizado o tempo de reação,
-é definido por \citeonline{larsen_dynamic_2000}:
-
+é definido por \cite{larsen_dynamic_2000}:
+%
 % TODO tentar alinhar os sinais de igualdade das duas equações a seguir
-
+%
 \begin{equation}
   \eDegreeOfDynamismTW := 
   \frac{1}{\numberOfRequests}
@@ -127,20 +119,18 @@ Com isso, o grau efetivo de dinamismo, quando contabilizado o tempo de reação,
   {
     \left(
       1 - \frac{\reactionTime_\request}{\planingHorizon}
-    \right).
+    \right),
   }
 \end{equation}
 
-Em que:
-\begin{itemize}
-  \item $\eDegreeOfDynamismTW$: grau efetivo de dinamismo com janelas de tempo
-\end{itemize}
+\noindent em que $\eDegreeOfDynamismTW$ é o grau efetivo de dinamismo com 
+janelas de tempo.
 
 É importante destacar que, assim como as medidas apresentadas anteriormente, o
 grau efetivo de dinamismo com janelas de tempo também apresenta valores somente
 dentro do intervalo $[0, 1]$.
 
-\citeonline{pillac_review_2013} relata que todas as três medidas expostas nesse
+\citeonline{pillac_review_2013} relata que todas as três medidas expostas neste
 capítulo se provaram úteis para capturar os aspectos do dinamismo relacionados
 com o tempo.
 Entretanto essas medidas não levam em consideração outras fontes de dinamismo,
@@ -152,18 +142,18 @@ Além disso, apesar de não considerada na definição das medidas de dinamismo,
 frequência com que os pedidos chegam ao sistema tem um grande impacto no tempo
 disponível para otimização \cite{pillac_review_2013}.
 Similarmente, \citeonline{kilby_dynamic_1998} fazem a observação de que a
-frequência dos pedidos influencia na quantidade de vezes que o algoritmo
-precisa ser refeito.
+frequência dos pedidos influencia a quantidade de vezes que o algoritmo
+precisa ser executado.
 Eles destacam que instâncias em que os pedidos estão agrupados em
 pequenos intervalos de tempo geram menos necessidade de reoptimização do que
 casos onde os pedidos estão separados um dos outros de maneira uniforme.
 
-No final do seu artigo, \citeonline{larsen_classification_2007} recomendam, 
-para futuras pesquisas, a extensão do grau de dinamismo para que ele também 
+No final do seu artigo, \citeonline{larsen_classification_2007} recomendam
+para futuras pesquisas a extensão do grau de dinamismo para que ele também 
 leve em conta outras características do problema, como o tamanho dos tempos de 
 serviço e o carregamento dos pedidos.
-Eles também mencionam que é desafiador encontrar uma medida única para 
-apreender múltiplas características de uma instância.
+Eles também mencionam que é desafiador encontrar uma medida única com
+capacidade de apreender múltiplas características de uma instância.
 
 Com o intuito de produzir medidas que melhor representam as características
 relacionadas ao dinamismo de um DPDPTW, \citeonline{van_lon_measures_2016} 
@@ -221,22 +211,23 @@ associando cada uma à um grau de dinamismo.
 Todos os gráficos da Figura~\ref{fig:van_lon_measures_2016_dynamism},
 identificados pelas letras (a-f), representam um cenário com horizonte de 
 planejamento de 10 minutos e com um total de 10 pedidos dinâmicos.
-No cenário Figura~\ref{fig:van_lon_measures_2016_dynamism}(a) os eventos 
+No cenário da Figura~\ref{fig:van_lon_measures_2016_dynamism}(a) os eventos 
 acontecem em intervalos igualmente espaçados e distribuídos proporcionalmente 
 no horizonte de planejamento.
-Nos cenários Figura~\ref{fig:van_lon_measures_2016_dynamism}(b, c) pode-se ver
-que mudanças ocorrem com menos frequência.
-Em Figura~\ref{fig:van_lon_measures_2016_dynamism}(d, e) todos os eventos
-ocorrem em uma ou duas bateladas, fazendo-os menos contínuos e portanto menos
-dinâmicos.
-Em Figura~\ref{fig:van_lon_measures_2016_dynamism}(f) todos os eventos chegam
-em um mesmos instante, resultando em um cenário sem dinamismo
+Nos cenários da Figura~\ref{fig:van_lon_measures_2016_dynamism}(b, c) 
+pode-se ver que mudanças ocorrem de maneira menos distribuída, apresentando uma
+leve concentração de pedidos.
+Na Figura~\ref{fig:van_lon_measures_2016_dynamism}(d, e) todos os eventos
+ocorrem em uma ou duas bateladas, diminuindo ainda mais a distribuição dos
+pedidos e, com isso, diminuindo o dinamismo dos cenários.
+Na Figura~\ref{fig:van_lon_measures_2016_dynamism}(f) todos os eventos chegam
+em um mesmo instante, resultando em um cenário sem dinamismo
 \cite{van_lon_measures_2016}.
 
-Para formular a medida de dinamismo \citeonline{van_lon_measures_2016} define
-primeiramente uma lista, $\intervalsBetweenArrivals$, de intervalos de chegadas 
+Para formular a medida de dinamismo \citeonline{van_lon_measures_2016} definem
+primeiramente uma lista, $\intervalsBetweenArrivals$, de intervalos de chegadas
 entre pedidos:
-
+%
 \begin{equation}
     \intervalsBetweenArrivals = 
     \{\intervalBetweenArrivals_0,\intervalBetweenArrivals_1,\ldots, 
@@ -245,39 +236,30 @@ entre pedidos:
     \mid j = i + 1 \wedge \forall i, j \in \pickupNodes\},
     \label{eq:van_lon_measures_2016_intervalsBetweenArrivals}
 \end{equation}
-
+%
 \begin{equation}
     |\intervalsBetweenArrivals| = \numberOfRequests - 1.
     \label{eq:van_lon_measures_2016_intervalsBetweenArrivalsSize}
 \end{equation}
 
-Em que:
-\begin{itemize}
-  \item $\intervalsBetweenArrivals$: lista de intervalos entre chegada de 
-    pedidos.
-  \item $\intervalBetweenArrivals_\request$: intervalo de tempo entre a chegada
-    do pedido $\request$ e seu sucessor.
-\end{itemize}
-
+\noindent em que $\intervalsBetweenArrivals$ é a lista de intervalos entre 
+chegada de pedidos e $\intervalBetweenArrivals_\request$ o intervalo de tempo 
+entre a chegada do pedido $\request$ e seu sucessor. 
 Portanto, $\intervalsBetweenArrivals$ representa uma lista com todos os valores
 de intervalos de tempo em que o estado do sistema não é alterado, ordenados
 cronologicamente.
 Essa lista possui uma quantidade de valores $|\intervalsBetweenArrivals|$ 
-cuja definição é apresentada na
-Equação~\ref{eq:van_lon_measures_2016_intervalsBetweenArrivalsSize}
+cuja definição é (\ref{eq:van_lon_measures_2016_intervalsBetweenArrivalsSize}).
 
-Para motivos de comparação, é definido um intervalo de chegada perfeito,
+Para fins de comparação, é definido um intervalo de chegada perfeito,
 $\perfectInterval$. Este é dado por:
-
+%
 \begin{equation}
-    \perfectInterval = \frac{H}{\numberOfRequests}.
+    \perfectInterval = \frac{H}{\numberOfRequests},
     \label{eq:van_lon_measures_2016_perfectInterval}
   \end{equation}
 
-Em que:
-\begin{itemize}
-  \item $\perfectInterval$: intervalo de chegada perfeito
-\end{itemize}
+\noindent em que $\perfectInterval$ é o intervalo de chegada perfeito.
 
 Com isso obtêm-se o espaço de tempo entre pedidos do cenário com maior
 dinamismo possível, dada uma quantia de pedidos $\numberOfRequests$ 
@@ -296,7 +278,7 @@ chegada perfeito definidos, pode-se definir o desvio,
 $\deviationFromPerfectInterval$, entre os intervalos de chegada contidos em
 $\intervalsBetweenArrivals$ com o intervalo de chegada perfeito,
 $\perfectInterval$:
-
+%
 \begin{equation}
     \deviationFromPerfectInterval_i =
         \begin{cases}
@@ -309,19 +291,15 @@ $\perfectInterval$:
             \cdot \deviationFromPerfectInterval_{i-1},
             & \text{se $i > 0$ 
                     e $\intervalBetweenArrivals_i < \perfectInterval$} \\
-            0, & \text{do contrário.}
+            0, & \text{caso contrário},
         \end{cases}
     \label{eq:van_lon_measures_2016_deviationFromPerfectInterval}
 \end{equation}
 
-Em que:
-\begin{itemize}
-  \item $\deviationFromPerfectInterval_i$: desvio entre os intervalo de chegada
-    $\intervalBetweenArrivals_i$ e o $\perfectInterval$
-\end{itemize}
-
-Sendo que o termo $\frac{\perfectInterval-\intervalBetweenArrivals_i}
-{\perfectInterval} \cdot \deviationFromPerfectInterval_{i-1}$ serve para 
+\noindent em que $\deviationFromPerfectInterval_i$ é o desvio entre os intervalo 
+de chegada $\intervalBetweenArrivals_i$ e o $\perfectInterval$. O
+termo ($\frac{\perfectInterval-\intervalBetweenArrivals_i}
+{\perfectInterval} \cdot \deviationFromPerfectInterval_{i-1}$) serve para 
 penalizar, de forma recursiva, a aglutinação de eventos em pequenos 
 períodos de tempo.
 
@@ -329,18 +307,17 @@ períodos de tempo.
 % assim como o conceito completo expresso por ela.
 
 Consequentemente, o desvio total do cenário pode ser calculado por:
-
+%
 \begin{equation}
     \deviation = 
     \sum_{i=0}^{|\intervalsBetweenArrivals|} \deviationFromPerfectInterval_i.
     \label{eq:van_lon_measures_2016_totalDeviationFromPerfectInterval}
 \end{equation}
 
-
 Entretanto, faz-se necessária a normalização do desvio total do cenário com
 relação ao desvio máximo possível.
 Para isso, calcula-se o maior valor:
-
+%
 \begin{equation}
     \maxDeviation =
     \sum_{i=0}^{|\intervalsBetweenArrivals|} 
@@ -348,8 +325,8 @@ Para isso, calcula-se o maior valor:
     \label{eq:van_lon_measures_2016_bigestTotalDeviationFromPerfectInterval}
 \end{equation}
 
-em que:
-
+\noindent em que:
+%
 \begin{equation}
     \overline{\deviationFromPerfectInterval}_i = \perfectInterval + 
         \begin{cases}
@@ -358,14 +335,14 @@ em que:
 						\cdot \deviationFromPerfectInterval_{i-1},
 						& \text{se $i>0$ e $\intervalBetweenArrivals_i 
                     < \perfectInterval$}\\
-            0, & \text{do contrário.}
+            0, & \text{caso contrário.}
         \end{cases}
     \label{eq:van_lon_measures_2016_bigestDeviationFromPerfectInterval}    
 \end{equation}
 
-Combinando as 
-Equações~\ref{eq:van_lon_measures_2016_bigestTotalDeviationFromPerfectInterval}
-e~\ref{eq:van_lon_measures_2016_bigestDeviationFromPerfectInterval}, define-se 
+Combinando  
+(\ref{eq:van_lon_measures_2016_bigestTotalDeviationFromPerfectInterval})
+e~(\ref{eq:van_lon_measures_2016_bigestDeviationFromPerfectInterval}), define-se 
 dinamismo como:
 
 \begin{equation}
@@ -386,7 +363,7 @@ dinamismo como:
 \section{Urgência}\label{sec:urgencia}
 
 No contexto dos DVRPs, a urgência representa o tempo de reação disponível ao 
-sistema de trasporte para que ele consiga atender a um pedido.
+sistema de transporte para que ele consiga atender a um pedido.
 Essa medida pode ser expressa através de unidades de tempo e definida pela 
 diferença entre o instante de chegada de um pedido ($\arrivalTime_\request$) 
 e o limite superior da janela de tempo de coleta 
@@ -404,29 +381,26 @@ A Figura~\ref{fig:van_lon_measures_2016_urgency} exemplifica dois casos.
     \end{center} 
 \end{figure}
 
-No cenário Figura~\ref{fig:van_lon_measures_2016_urgency}(a) temos o exemplo de
-um pedido com grande urgência, ou seja, menor tempo de reação.
-Já no caso Figura~\ref{fig:van_lon_measures_2016_urgency}(b) o tempo de reação
-é menor, portanto o pedido é menos urgente.
+No cenário da Figura~\ref{fig:van_lon_measures_2016_urgency}(a) temos o exemplo
+de um pedido com grande urgência, ou seja, menor tempo de reação.
+Já no caso da Figura~\ref{fig:van_lon_measures_2016_urgency}(b) o tempo de 
+reação é menor, portanto o pedido é menos urgente.
 
 Baseando-se na Figura~\ref{fig:van_lon_measures_2016_urgency}, 
 \citeonline{van_lon_measures_2016} define urgência por:
-
+%
 \begin{equation}
-    \urgency_\request = \latestTimeWindow_\request - \arrivalTime_\request.
+    \urgency_\request = \latestTimeWindow_\request - \arrivalTime_\request,
     \label{eq:van_lon_measures_2016_urgency}
 \end{equation}
 
-Em que:
-\begin{itemize}
-  \item $\urgency_\request$: urgência do pedido $\request$
-\end{itemize}
+\noindent em que $\urgency_\request$ é a urgência do pedido $\request$.
 
 Para obter uma indicação da urgência de um cenário completo, pode-se computar a
 média e o desvio padrão das urgências. 
 Esta definição é similar ao grau de dinamismo efetivo com janelas de tempo 
-proposto por \citeonline{larsen_dynamic_2000} e definido nas
-Equações~\ref{eq:degreeOfDynamism}~e~\ref{eq:eDegreeOfDynamism}.
+proposto por \citeonline{larsen_dynamic_2000} e definido por
+(\ref{eq:degreeOfDynamism})~e~(\ref{eq:eDegreeOfDynamism}).
 Entretanto, exite uma diferença entre estas duas definições.
 \citeonline{larsen_dynamic_2000} normaliza os valores do grau de dinamismo
 efetivo com janelas de tempo usando o horizonte de planejamento.  
