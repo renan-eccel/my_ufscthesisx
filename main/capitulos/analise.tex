@@ -39,28 +39,24 @@ A mediana dos valores é demarcada por um risco vertical dentro desta caixa e os
 limites inferiores ($LI$) e superiores ($LS$) são demarcados pelos segmentos 
 de reta vertical externos às caixas, cujos valores podem ser calculados 
 por:
-
+%
 \begin{equation}
   LI = Q_1 - 1{,}5 \cdot AIQ,
 \end{equation}
-
+%
 \begin{equation}
-  LS = Q_3 + 1{,}5 \cdot AIQ.
+  LS = Q_3 + 1{,}5 \cdot AIQ,
+\end{equation}
+%
+\begin{equation}
+  AIQ = Q_3 - Q_1,
 \end{equation}
 
-\begin{equation}
-  AIQ = Q_3 - Q_1
-\end{equation}
-
-Em que:
-\begin{itemize}
-  \item $Q_1$: primeiro quartil, correspondendo a 25\% das menores medidas.
-  \item $Q_3$: terceiro quartil, correspondendo a 75\% das menores medidas.
-  \item $AIQ$: amplitude interquartil.
-\end{itemize}
-
-Ainda no gráfico de caixas, podem ser encontrados pequenos losangos, indicando
-valores não contidos no intervalo $[LI; LS]$.
+\noindent em que $Q_1$ é o primeiro quartil, correspondendo a 25\% das menores 
+medidas, $Q_3$ é o terceiro quartil, correspondendo a 75\% das menores medidas
+e $AIQ$ é a amplitude interquartil. Ainda no gráfico de caixas, podem ser 
+encontrados pequenos losangos, indicando valores não contidos no intervalo 
+$[LI; LS]$.
 
 Pode-se observar que quatro dos seis conjuntos estudados possuem medianas 
 menores que 0,1 e uma alta concentração de instâncias com dinamismo menor que 
@@ -121,11 +117,11 @@ Entretanto, no Capítulo~\ref{ch:instancias}, percebe-se que grande parte dos
 conjuntos de \textit{benchmark} apresentados um único método de 
 dinamização, não possibilitando a diversificação do tamanho dos intervalos de 
 tempo entre instâncias.
-A única exceção é o \citeonline{pankratz_benchmark_2009} que varia o valor 
-$\maneuverTime$ garantido a geração de instâncias cujos instantes de chegadas 
-diferem entre si.
-Porém, mesmo variando esse valor, não foi alcança uma variedade muito grande de
-dinamismo entre cenários 
+A única exceção é o método de \citeonline{pankratz_benchmark_2009} que varia o 
+valor $\maneuverTime$ garantido a geração de instâncias cujos instantes de 
+chegadas diferem entre si.
+Porém, mesmo variando esse valor, não foi alcançada uma variedade muito grande 
+de dinamismo entre cenários 
 (Figuras~\ref{fig:scatterplot_instance_planing_horizon}~e
 \ref{fig:dynamism_boxplot_planing_horizon}).
 
