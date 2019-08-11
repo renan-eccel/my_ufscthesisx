@@ -120,6 +120,178 @@ coleta e entrega ($[\earliestTimeWindow_i, \latestTimeWindow_i],
 \forall \node{i} \in \pickupNodes \cup \deliveryNodes$) devem estar contidas 
 no intervalo de tempo $[0, \planingHorizon]$.
 
+O DARP pode ser formulado através do seguinte programa inteiro misto (MILP -
+\textit{Mixed Integer Linear Program}) \cite{cordeau_branch-and-cut_2006}: 
+\newline
+%
+\begin{equation} \label{eq:darp_objective}
+  \min \sum_{\vehicle \in \vehiclesSet}
+       \sum_{i \in \nodes}
+       \sum_{j \in \nodes}
+  \arcCost{i}{j}^{\vehicle}
+  x_{(i, j)}^{\vehicle}
+\end{equation}
+
+\noindent sujeito a:
+%
+\begin{equation} \label{eq:darp_constraint_1}
+  \sum_{\vehicle \in \vehiclesSet}
+  \sum_{j \in \nodes}
+  x_{(i, j)}^{\vehicle} 
+  = 1
+  \quad 
+  \forall i \in \pickupNodes,
+\end{equation}
+%
+\begin{equation} \label{eq:darp_constraint_2}
+  \sum_{j \in \nodes}
+  x_{(i, j)}^{\vehicle} 
+  -
+  \sum_{j \in \nodes}
+    x_{(\numberOfRequests + i, j)}^{\vehicle} 
+  = 0
+  \quad 
+  \forall i \in \pickupNodes, 
+  \ \vehicle \in \vehiclesSet,
+\end{equation}
+%
+\begin{equation} \label{eq:darp_constraint_3}
+  \sum_{j \in \nodes}
+  x_{(0, j)}^{\vehicle} 
+  = 1
+  \quad
+  \forall \vehicle \in \vehiclesSet,
+\end{equation}
+%
+\begin{equation} \label{eq:darp_constraint_4}
+  \sum_{j \in \nodes}
+   x_{(j, i)}^{\vehicle} 
+   -
+   \sum_{j \in \nodes}
+   x_{(i, j)}^{\vehicle} 
+   = 0
+   \quad
+   \forall i \in \pickupNodes \cup \deliveryNodes, 
+   \ \vehicle \in \vehiclesSet,
+\end{equation}
+%
+\begin{equation} \label{eq:darp_constraint_5}
+  \sum_{i \in \nodes}
+   x_{(i, \lastIndex)}^{\vehicle} 
+   = 1
+   \quad \forall \vehicle \in \vehiclesSet,
+\end{equation}
+%
+\begin{equation} \label{eq:darp_constraint_6}
+  B_{j}^{\vehicle}
+  \geqslant
+  (B_{i}^{\vehicle} + \serviceTime_i + \arcTravelTime{i}{j})
+  x_{(i, j)}^{\vehicle} 
+  \quad
+  \forall i \in \nodes, 
+  \ j \in \nodes, 
+  \ \vehicle \in \vehiclesSet,
+\end{equation}
+%
+\begin{equation} \label{eq:darp_constraint_7}
+  \vehicleCapacity_j
+  \geqslant
+  (\vehicleCapacity_i + \load_j)
+  x_{(i, j)}^{\vehicle} 
+  \quad
+  \forall i \in \nodes, 
+  \ j \in \nodes, 
+  \ \vehicle \in \vehiclesSet,
+\end{equation}
+%
+\begin{equation} \label{eq:darp_constraint_8}
+  \maxRideTime_i^\vehicle
+  =
+  B^\vehicle_{n+i}
+  -
+  (B^\vehicle_{i} + \serviceTime_i)
+  \quad
+  \forall i \in \requests,
+  \ \vehicle \in \vehiclesSet,
+\end{equation}
+%
+\begin{equation} \label{eq:darp_constraint_9}
+  B^\vehicle_{\lastIndex}
+  -
+  B^\vehicle_{\startIndex}
+  \leqslant
+  \vehicleMaxRouteTime
+  \quad
+  \forall \vehicle \in \vehiclesSet,
+\end{equation}
+%
+\begin{equation} \label{eq:darp_constraint_10}
+  \earliestTimeWindow_i 
+  \leqslant
+  B^\vehicle_{i}
+  \leqslant
+  \latestTimeWindow_i
+  \quad
+  \forall i \in \nodes,
+  \ \vehicle \in \vehiclesSet,
+\end{equation}
+%
+\begin{equation} \label{eq:darp_constraint_11}
+  \arcTravelTime{\originIndex}{\destinationIndex}
+  \leqslant
+  \maxRideTime_i^{\vehicle}
+  \leqslant
+  \maxRideTime_i
+  \quad
+  \forall i \in \requests,
+  \ \vehicle \in \vehiclesSet,
+\end{equation}
+%
+\begin{equation} \label{eq:darp_constraint_12}
+  \max \{0, \nodeLoad{i}\}
+  \leqslant
+  \vehicleCapacity_i
+  \leqslant
+  \min \{\vehicleCapacity, \vehicleCapacity + \nodeLoad{i}\}
+  \quad
+  \forall i \in \nodes,
+  \ \vehicle \in \vehiclesSet,
+\end{equation}
+%
+\begin{equation} \label{eq:darp_constraint_13}
+  x_{(i, j)}^{\vehicle} \in \{0, 1\}
+  \quad
+  \forall i \in \nodes,
+  \ j \in \nodes,
+  \ \vehicle \in \vehiclesSet.
+\end{equation}
+
+Nesta formulação $B_i^\vehicle$ é o instante em que o veículo $\vehicle$ inicia
+o serviço no nó $i$ e $\maxRideTime^\vehicle_i$ é o tempo de viagem do usuário
+$i$ no veículo $\vehicle$.
+
+Segundo \textcite{cordeau_branch-and-cut_2006}
+a função objetivo (\ref{eq:darp_objective})  minimiza o custo total de 
+roteamento de todos os veículos. 
+As restrições (\ref{eq:darp_constraint_1}) e (\ref{eq:darp_constraint_2}) 
+garantem que cada um dos pedidos seja servido apenas uma vez e que os nós de 
+origem e o destino sejam visitados pelo mesmo veículo.
+As restrições (\ref{eq:darp_constraint_3}) a (\ref{eq:darp_constraint_5})
+garantem que a rota de cada veículo $\vehicle$ comece e remina do nó de origem
+e destino dos veículos, $\startNode$ e $\lastNode$, respectivamente.
+Consistências de tempo e carregamento são garantidas pelas restrições
+(\ref{eq:darp_constraint_6}) e (\ref{eq:darp_constraint_7}).
+Igualdade (\ref{eq:darp_constraint_8}) define o tempo de viagem de cada
+usuário, que por sua vez é limitado pela restrição
+(\ref{eq:darp_constraint_11}).
+Finalmente, desigualdade (\ref{eq:darp_constraint_9}) limita a duração de cada
+rota, enquanto (\ref{eq:darp_constraint_10}) e (\ref{eq:darp_constraint_12})
+impõe janelas de tempo e restrições de capacidade, respectivamente.
+
+
+
+
+
 \section{Formulação do PDPTW}\label{sec:formulacao_PDPTW}
 
 O PDPTW é um problema de roteamento de pedidos muito semelhante ao DARP.
@@ -141,6 +313,11 @@ sofre nenhum desconforto com a demora no tempo de viagem, pode-se considerar
 que a formulação apresentada anteriormente para o DARP pode ser usada também 
 para o PDPTW, porém, para esse último, o parâmetro 
 $\maxRideTime_\request = \infty, \forall \request \in \requests$.
+
+Na formulação MILP do DARP apresntada na Seção~\ref{sec:formulacao_DARP} por
+(\ref{eq:darp_objective} - \ref{eq:darp_constraint_13}) suprimindo as
+restrições (\ref{eq:darp_constraint_}) e (\ref{eq:darp_constraint_11}) 
+tem-se uma formulação MILP para o PDPTW.
 
 % bloco comentado
 % explica as diferenças entre os problemas DARP e PDPTW
