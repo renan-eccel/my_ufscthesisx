@@ -2,7 +2,7 @@
 
 Problemas de roteamento dinâmico de veículos são objetos de pesquisa há cerca 
 de três décadas \cite{psaraftis_dynamic_2015}.
-Derivados de problemas de roteamento de veículos (VRP - \textit{Vehicle Routing 
+Derivados de problemas de roteamento de veículos (VRP - \textit{Vehicle Routing
 Problem}) clássicos, como o problema \textit{dial-a-ride} (DARP -
 \textit{Dial-A-Ride Problem}) e o problema de coleta e entrega com
 janelas de tempo (PDPTW - \textit{Pickup and Delivery Problem with 
@@ -30,25 +30,63 @@ principalmente por sistemas de mobilidade como um serviço (MaaS -
 para a solução dos problemas DDARP e DPDPTW em menor tempo e proporcionando 
 um melhor resultado \cite{fulton_three_2017}. 
 
-Uma pesquisa científica na área de algoritmos para soluções de problemas 
-desse tipo normalmente requer a montagem de uma simulação computacional,
-já que testes empíricos são economicamente inviáveis para
-esse tipo de pesquisa \cite{maciejewski_towards_2017}.
-A ideia do uso de simulações é poder gerar resultados de eficiência e de 
-tempo computacional dos métodos de solução dos problemas para, com isso, 
-comparar diferentes algoritmos.
+Para que avanços científicos ocorram, se faz necessária a montagem
+de experimentos para comparação direta de dois ou mais algoritmos. 
+Essa é uma tarefa extremamente técnica, e que muitas vezes é
+desconsiderada e ocultada em muitos artigos científicos.
 
-Entretanto, para que os resultados possam ser comparados entre artigos, sem a
-necessidade de reproduzir resultados gerados anteriormente,
+Um experimento científico na área de algoritmos para soluções de problemas 
+de roteamento dinâmico normalmente requer três componentes: um simulador, já 
+que testes empíricos são economicamente inviáveis para esse tipo de pesquisa 
+\cite{maciejewski_towards_2017}; um ou mais algoritmos que resolvam o problema 
+e um conjunto de dados que determina os cenários a serem simulados, intitulados
+instâncias.
+Com isso é possível gerar resultados de eficiência e de tempo computacional dos
+métodos de solução dos problemas para, então, compara-los com demais métodos
+expostos na literatura.
+
+Entretanto, como apontado por \textcite{merali_computational_2010}, atualmente
+a computação e as ferramentas de programação estão muito mais complexas que 
+antigamente, fazendo com que os cientistas, normalmente não preparados para 
+esse tipo de tarefa, tenham dificuldades em implementar códigos em um tempo 
+hábil, livres de erros, corretamente testados e bem documentados.
+
+Portanto, é crucial que todo código e dado utilizado ou produzido durante uma
+pesquisa científica deve ser publicado e tornado disponível para todos com
+licença de código aberto \cite{ince_case_2012}.
+Esta prática permite a validação do código usado e a reprodução do experimento,
+garantindo os resultados científicos encontrados e permitindo com que o
+código seja reutilizado para a experimentação de demais métodos.
+Além disso, facilita a manutenção e melhoramento do código para futuros usos,
+evitando o que \textcite{merali_computational_2010} intitulou de ``código
+monstro'' (``monster code''), códigos legado que foram alterados sem nenhum
+cuidado no decorrer dos anos e se tornaram conjuntos de arquivos mal 
+documentados e mal escritos.
+
+Sabe-se que a difusão do compartilhamento de informações relacionadas aos
+códigos e dados de experimentação requerer uma drástica mudança na cultura de 
+publicações acadêmicas \cite{leveque_reproducible_2012}.
+Atualmente, muitas das áreas de pesquisas não possuem boas práticas de 
+compartilhamento de dados. 
+A área de roteamento dinâmico de veículos não é diferente, porém existem
+exceções.
+
+Apesar de pouco usados já existem alguns simuladores de código aberto que 
+comportam a modelagem de problemas de roteamento dinâmico 
+\cite{maciejewski_towards_2017, van_lon_rinsim:_2012, mayer_open-source_2016}.
+Também existem casos de experimentos completos disponíveis para reprodução e
+reuso \cite{van_lon_when_2017, van_lon_towards_2015, van_lon_measures_2016}
+
+Entretanto, para que os resultados possam ser comparados entre artigos, 
 necessita-se que as simulações conduzidas usem os mesmos cenários de 
-simulação.
+simulação (instâncias).
 Na área de VRP estáticos é comum a existência de conjuntos de cenários
 canônicos extensivamente usados que facilitam a comparação entre 
 algoritmos \cite{mendoza_vrp-rep:_2014}, chamados de
 conjunto de instâncias de \textit{benchmark}.
 
-Na área de roteamento dinâmico de veículos não existem instâncias
-de \textit{benchmark} de referência que sejam amplamente usadas 
+Lamentavelmente, na área de roteamento dinâmico de veículos não existem 
+instâncias de \textit{benchmark} de referência que sejam amplamente usadas 
 \cite{pillac_review_2013, maciejewski_towards_2017}. 
 Isso faz com que a comparação entre algoritmos
 propostos para resolver problemas como DPDPTW e DDARP seja difícil e custosa.
