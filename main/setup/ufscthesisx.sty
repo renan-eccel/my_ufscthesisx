@@ -182,7 +182,7 @@
 
 % Fontes dos títulos e seções
 % Tamanho da fonte padrão do 'ABNTEX'
-\renewcommand{\normalsize}{\fontsize{10.5pt}{12pt}}
+\renewcommand{\normalsize}{\fontsize{12pt}{12pt}}
 
 % Caption package and Memoir
 % https://groups.google.com/forum/#!topic/comp.text.tex/RzpI2ATMev0
@@ -570,10 +570,15 @@
 
         \center
         {%
-            \ABNTEXchapterfont\ufsccaptionsize\MakeTextUppercase{\imprimirinstituicao}
-            \par\MakeTextUppercase{\imprimirautor}
+            \includegraphics[width=2cm]{./fig/vertical_sigla_fundo_claro.eps}
+            \par\ABNTEXchapterfont\ufsccaptionsize
+                \MakeTextUppercase{\imprimirinstituicao}
+            \par\MakeTextUppercase{\imprimircentro}
+            \par\MakeTextUppercase{\imprimirprograma}
         }
+        \vfill
 
+            \par\imprimirautor
 
         \vfill
         {%
@@ -616,7 +621,8 @@
         \begin{center}
 
             {\ABNTEXchapterfont\MakeUppercase{\imprimirtitulo}}
-            \abntex@ifnotempty{\imprimirsubtitulo}{{\ABNTEXchapterfont\!:} \\ \imprimirsubtitulo}
+            \abntex@ifnotempty{\imprimirsubtitulo}{{\ABNTEXchapterfont\!:} \\ 
+            \imprimirsubtitulo}
 
         \end{center}
         \vspace*{\fill}
