@@ -1,10 +1,60 @@
-\chapter{Medidas}\label{ch:medidas}
+\chapter{Medidas de dinamismo para roteamento dinâmico de veículos}
+\label{ch:medidas}
 % TODO Introduzir o que seriam medidas e a importância delas para as pesquisas 
 % com relação a roteamento dinâmico de veículos
 
 % TODO adicionar outros exemplos de medidas, explicando para que servem
 
 % TODO explicar o porque dinamismo e urgência foram escolhidas
+
+De acordo com o \textcite{michaelis_dinamico_2019}, dinâmico é algo que evolui
+permanentemente, mutável, que admite movimento ou mudança.
+Portanto, problemas de roteamento dinâmico de veículos são problemas que 
+evoluem com o tempo e que se modificam com o a chegada de novas informações 
+\cite{psaraftis_dynamic_2015}.
+
+Muitos dos problemas de roteamento do dia-a-dia são problemas de natureza
+dinâmica: entrega de encomendas, entrega de comida, serviços de emergência
+(ex.: bombeiros), táxis e transporte por aplicativos. 
+Entretanto, estes problemas apresentam diferenças em suas características 
+dinâmicas. 
+
+Analisando com atenção percebe-se que existem problemas em que o número de
+pedidos agendados (não dinâmicos) é grande quando comparado com os demais
+problemas, um exemplo disso é o problema de entrega de encomendas, muitas das
+entregas são conhecidas \textit{a priori}, entretanto, algumas encomendas de
+emergência podem aparecer durante o período de operação.
+Em contrapartida, existem problemas em que todos os pedidos são dinâmicos e
+devem ser atendidos com a maior rapidez possível, como por exemplo os serviços
+de bombeiros.
+Existem também os casos intermediários, em que pedidos podem surgir em forma de
+agendamento antecipado ou dinamicamente entretanto não existe urgência para o
+cumprimento destes.
+A entrega de alimentos, por exemplo, é um problema deste tipo.
+
+Percebendo que estas diferentes características no problemas dinâmicos eram 
+também associadas a diferenças nas qualidades das soluções encontradas,
+muitos pesquisadores tentaram criar medidas de dinamismo de forma a 
+possibilitar a classificação de problemas e auxiliar na escolha de métodos de 
+solução.
+
+A Seção~\ref{sec:medidas_revisao} dedica-se a relatar algumas das medidas de
+dinamismo propostas na área de roteamento dinâmico de veículos,
+além de relatar alguns dos usos práticos dessas medidas. 
+Posteriormente, a Seção~\ref{sec:medidas_van_lon} apresenta a definição das
+medidas de dinamismo e urgência propostas por \textcite{van_lon_measures_2016}.
+No Capítulo~\ref{ch:analise} usa-se estas medidas para analisar
+e comparar os conjuntos de instância de \textit{benchmark} expostos no 
+Capítulo~\ref{ch:instancias}.
+
+
+
+
+
+
+
+
+\section{Revisão bibliográfica}\label{sec:medidas_revisao}
 
 Proposta primeiramente por \citeonline{lund_vehicle_1996}, o grau de dinamismo
 de uma instância de qualquer VRP dinâmico representa a razão entre a quantidade
@@ -26,7 +76,8 @@ problemas e as características das soluções obtidas.
 linear entre o grau de dinamismo e o custo de transporte de uma instância de um
 problema responsivo à demanda.
 Suas análises numéricas elucidam a existência de um pico de ineficiência para
-vários algorítimos heurísticos quando $\degreeOfDynamism \approx 0{,}7$.
+vários algorítimos heurísticos quando $\degreeOfDynamism \approx 0{,}7$, o que
+os autores classificaram como ``zona de dilema''.
 Através dessa descoberta \citeonline{wong_dynamic_2014} descrevem uma série de
 políticas para que operadores de sistemas de transporte responsivos à demanda
 (DRT - \textit{Dynamic Responsive Transpot}) possam seguir para permanecer 
@@ -155,6 +206,13 @@ serviço e o carregamento dos pedidos.
 Eles também mencionam que é desafiador encontrar uma medida única com
 capacidade de apreender múltiplas características de uma instância.
 
+
+
+
+
+
+\section{Medida de dinamismo e urgência proposta por Van Lon, Ferrante et al.
+         (2016)}\label{sec:medidas_van_lon}
 Com o intuito de produzir medidas que melhor representam as características
 relacionadas ao dinamismo de um DPDPTW, \citeonline{van_lon_measures_2016} 
 propõem uma nova definição para a medida de dinamismo, como também uma nova
@@ -176,16 +234,13 @@ O restante desse capítulo apresenta a definição, feita por
 \citeonline{van_lon_measures_2016}, das duas medidas usadas para a determinação
 das características temporais dos pedidos de uma instância de um problema de 
 roteamento dinâmico qualquer.
-Posteriormente, no Capítulo~\ref{ch:analise} usa-se essas medidas para analisar
-e comparar os conjuntos de instância de \textit{benchmark} expostos no 
-Capítulo~\ref{ch:instancias}.
 
 
 
 
 
 
-\section{Dinamismo}\label{sec:dinamismo}
+\subsection{Dinamismo}\label{sec:dinamismo}
 Define-se, primeiramente, que o grau de dinamismo é dado através da 
 continuidade de mudança das informações presentes para um sistema. 
 Por esse ponto de vista, todo evento que introduz informações novas para o 
@@ -360,7 +415,7 @@ dinamismo como:
 
 
 
-\section{Urgência}\label{sec:urgencia}
+\subsection{Urgência}\label{sec:urgencia}
 
 No contexto dos DVRPs, a urgência representa o tempo de reação disponível ao 
 sistema de transporte para que ele consiga atender a um pedido.
