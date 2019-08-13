@@ -4,51 +4,51 @@
 
 % Devam aparecer na mesma ordem de ocorrência no texto.
 \begin{simbolos}
-    \item[$\numberOfRequests$] Número de pedidos de uma instância
-    \item[$\graph$] Grafo
-    \item[$\nodes$] Conjunto dos nós $\in \graph$
     \item[$\arcs$]{Conjunto dos arcos $\in \graph$}
+  \item[$\arrivalTime_\request$] Instante de chegada do pedido \request
+    \item[$\requestLatestArrivalTime$]
+      Último instante possível para a chegada do pedido $\request$
     \item[$\pickupNodes$] Subconjunto dos nós, contendo apenas nós de coleta
+    \item[$\arcCost{i}{j}$] Custo de viagem entre os nós $i$ e $j$
     \item[$\deliveryNodes$] Subconjunto dos nós, contendo apenas nós de entrega
-    \item[$\startNode$] Nó inicial
-    \item[$\lastNode$] Nó final 
-    \item[$\requests$] Conjunto dos pedidos de transporte 
-    \item[$\request$] Um elemento do conjunto $\requests$
-    \item[$\originNode$] O nó de coleta do pedido $\request$
-    \item[$\destinationNode$] O nó de entrega do pedido $\request$
-    \item[$\vehiclesSet$] Conjunto de veículos
-    \item[$\vehiclesSetSize$] Tamanho do conjunto de veículos
-    \item[$\vehicle$] Um elemento do conjunto $\vehiclesSet$
-    \item[$\capacity$] Capacidade global
-    \item[$\vehicleCapacity$] Capacidade do veículo $\vehicle$
-    \item[$\maxRouteTime$] Tempo de rota máximo global
-    \item[$\vehicleMaxRouteTime$] Tempo de rota máximo do veículo $\vehicle$
-    \item[$\load$] Carregamento global
-    \item[$\requestLoad$] Carregamento do pedido $\request$
-    \item[$\originNodeLoad$] Carregamento do pedido no nó $\startNode$
-   \item[$\destinationNodeLoad$]
-     Carregamento do pedido no nó $\destinationNode$
-    \item[$\nodeServiceTime{\originIndex}$]
-      Tempo de serviço no nó $\request$
+    \item[$\dynamism$] Dinamismo
     \item[$\earliestTimeWindow_{\originIndex}$]
       Limite inferior da janela de tempo da coleta do pedido $\request$
-    \item[$\latestTimeWindow_{\originIndex}$]
-      Limite superior da janela de tempo da coleta do pedido $\request$
     \item[$\earliestTimeWindow_{\destinationIndex}$]
       Limite inferior da janela de tempo da entrega do pedido $\request$
-    \item[$\latestTimeWindow_{\destinationIndex}$]
-      Limite superior da janela de tempo da entrega do pedido $\request$
-    \item[$\arcTravelTime{i}{j}$] Tempo de viagem entre os nós $i$ e $j$
-    \item[$\arcCost{i}{j}$] Custo de viagem entre os nós $i$ e $j$
+    \item[$\graph$] Grafo
+    \item[$\planingHorizon$] Limite superior do horizonte de planejamento
+    \item[$\request$] Um elemento do conjunto $\requests$
+    \item[$\vehiclesSet$] Conjunto de veículos
+    \item[$\vehicle$] Um elemento do conjunto $\vehiclesSet$
+    \item[$\vehiclesSetSize$] Tamanho do conjunto de veículos
     \item[$\maxRideTime$] Tempo máximo de viagem global
     \item[$\maxRideTime_\request$] Tempo máximo de viagem do pedido 
       $\request$
-    \item[$\arrivalTime_\request$] Instante de chegada do pedido \request
-    \item[$\requestLatestArrivalTime$]
-      Último instante possível para a chegada do pedido $\request$
-    \item[$\planingHorizon$] Horizonte de planejamento
-    \item[$\uniformDistribution{a}{b}$]
-      Distribuição uniforme entre os valores $a$ e $b$
+    \item[$\latestTimeWindow_{\originIndex}$]
+      Limite superior da janela de tempo da coleta do pedido $\request$
+    \item[$\latestTimeWindow_{\destinationIndex}$]
+      Limite superior da janela de tempo da entrega do pedido $\request$
+    \item[$\numberOfRequests$] Número de pedidos de uma instância
+    \item[$\requests$] Conjunto dos pedidos de transporte 
+    \item[$\capacity$] Capacidade global
+    \item[$\vehicleCapacity$] Capacidade do veículo $\vehicle$
+    \item[$\load$] Carregamento global
+    \item[$\requestLoad$] Carregamento do pedido $\request$
+    \item[$\originNodeLoad$] Carregamento do pedido no nó $\startNode$
+    \item[$\destinationNodeLoad$]
+     Carregamento do pedido no nó $\destinationNode$
+    \item[$\nodeServiceTime{\originIndex}$]
+      Tempo de serviço no nó $\request$
+    \item[$\maxRouteTime$] Tempo de rota máximo global
+    \item[$\vehicleMaxRouteTime$] Tempo de rota máximo do veículo $\vehicle$
+    \item[$\arcTravelTime{i}{j}$] Tempo de viagem entre os nós $i$ e $j$
+    \item[$\urgency$] Urgência
+    \item[$\nodes$] Conjunto dos nós $\in \graph$
+    \item[$\startNode$] Nó inicial
+    \item[$\lastNode$] Nó final 
+    \item[$\originNode$] O nó de coleta do pedido $\request$
+    \item[$\destinationNode$] O nó de entrega do pedido $\request$
     \item[$\timeWindowWidth$] Largura global das janelas de tempo 
     \item[$\staticPercentage$] Percentagem de pedidos estáticos
     \item[$\maneuverTime$] Tempo de manobra
@@ -61,9 +61,8 @@
     \item[$\deviationFromPerfectInterval_\request$]
       Diferença entre o $\perfectInterval$ e 
       $\intervalBetweenArrivals_\request$
-    \item[$\urgency$] Urgência
     \item[$\normalDistribution{a}{b}$]
        Distribuição normal entre os valores $a$ e $b$
-    \item[$\midTimeWindow$] Meio da janela de tempo
-    \item[$\speed$] Velocidade
+    \item[$\uniformDistribution{a}{b}$]
+      Distribuição uniforme entre os valores $a$ e $b$
 \end{simbolos}
