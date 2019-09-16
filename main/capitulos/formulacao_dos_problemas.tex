@@ -2,14 +2,14 @@
 Neste documento o termo problema refere-se a um problema de otimização.
 Neste tipo de problemas o objetivo é encontrar a melhor solução dentre o
 conjunto de todas as soluções factíveis.
-Esses problemas podem ser representados matematicamente através de um conjunto
-de equações que descrevem uma função objetivo e um conjunto de restrições que
+Esses problemas podem ser representados matematicamente através de uma 
+equação que descreve a função objetivo e um conjunto de restrições que
 determinam o espaço de soluções.
 A esta representação matemática se dá o nome de modelo, ou formulação.
 
 O modelo de um problema é feito de forma abstrata, ou seja, ele não
 contém nenhum dado numérico relativo à realidade. 
-Sua formulação é baseadas em parâmetros não definidos.
+Sua formulação é baseada em parâmetros não definidos.
 Podemos ver como exemplo um problema de divisão.
 Podemos modelar o problema de divisão como sendo:
 %
@@ -27,8 +27,8 @@ Seguindo o exemplo, uma instância do problema de divisão poderia ser dada por:
   f(15, 2) = 15 \div 2.
 \end{equation}
 
-\noindent Um problema pode ter mais de um modelo ou formulação, assim como cada
-modelo pode possuir inúmeras instâncias.
+\noindent Um problema tem mais de um modelo ou formulação, assim como cada
+modelo possui inúmeras instâncias.
 
 O restante desse capítulo define uma formulação para o DDARP e o DPDPTW. 
 Para isso, inicialmente será definido o DARP usando como base a formulção 
@@ -50,7 +50,7 @@ tempo associada que identifica os limites superiores e inferiores de tempo no
 qual o usuário deseja ser coletado para viagem.
 De maneira análoga, o pedido de transporte também possui um ponto de destino do
 passageiro e janela de tempo para entrega.
-Além disso, os passageiros desejam chegar em seus destinos sem que pra isso
+Além disso, os passageiros desejam chegar em seus destinos sem que para isso
 precisem viajar por muito tempo.
 Ou seja, apesar de ter definido uma janela de tempo para o início e o fim
 desejados de sua viagem, o passageiro também espera que seu trajeto não demore
@@ -66,7 +66,7 @@ motorista.
 O problema então é gerar uma rota para cada veículo da frota, de maneira a
 conseguir completar todos os pedidos de viagem, respeitando as janelas de tempo
 de entrega e coleta, o tempo de viagem considerado satisfatório
-pelos usuários, assim como a restrição de tempo máximo de rota pra cada
+pelos usuários, assim como a restrição de tempo máximo de rota para cada
 veículo.
 
 Portanto, podemos definir o DARP através das seguintes considerações:
@@ -277,7 +277,7 @@ As restrições (\ref{eq:darp_constraint_1}) e (\ref{eq:darp_constraint_2})
 garantem que cada um dos pedidos seja servido apenas uma vez e que os nós de 
 origem e o destino sejam visitados pelo mesmo veículo.
 As restrições (\ref{eq:darp_constraint_3}) a (\ref{eq:darp_constraint_5})
-garantem que a rota de cada veículo $\vehicle$ comece e remina do nó de origem
+garantem que a rota de cada veículo $\vehicle$ comece e termine do nó de origem
 e destino dos veículos, $\startNode$ e $\lastNode$, respectivamente.
 Consistências de tempo e carregamento são garantidas pelas restrições
 (\ref{eq:darp_constraint_6}) e (\ref{eq:darp_constraint_7}).
@@ -286,7 +286,7 @@ usuário, que por sua vez é limitado pela restrição
 (\ref{eq:darp_constraint_11}).
 Finalmente, desigualdade (\ref{eq:darp_constraint_9}) limita a duração de cada
 rota, enquanto (\ref{eq:darp_constraint_10}) e (\ref{eq:darp_constraint_12})
-impõe janelas de tempo e restrições de capacidade, respectivamente.
+impõem janelas de tempo e restrições de capacidade, respectivamente.
 
 
 
