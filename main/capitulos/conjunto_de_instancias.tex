@@ -4,7 +4,7 @@
 Como mencionado no Capítulo~\ref{ch:formulacao_problemas}, uma instância
 simboliza uma determinada configuração dos parâmetros de um problema,
 representado um cenário de aplicação do problema.
-\textit{Benchmark}, por sua vez, simboliza o método de rodar um conjunto de
+\textit{Benchmark}, por sua vez, simboliza o método de executar um conjunto de
 testes padrões em um programa de computador com o objetivo de avaliar seu
 desempenho \cite{fleming_how_1986}.
 
@@ -27,10 +27,10 @@ chegada dos pedidos ($\arrivalTime_\request$) ao longo do horizonte de
 planejamento.
 Contudo, \textcite{maciejewski_towards_2017} comenta que essa abordagem é 
 problemática.
-Ele menciona, como exemplo, que é impossível em uma instância estática fazer o 
-sistema reagir ao controle, como no caso de um cancelamento de pedido quando a
-coleta leva muito tempo. 
-Também comenta que mesmo simples sequencias de eventos pré planejados podem
+Eles mencionam, como exemplo, que é impossível em uma instância estática fazer 
+o sistema reagir ao controle, como no caso de um cancelamento de pedido quando 
+a coleta leva muito tempo. 
+Também comentam que mesmo simples sequências de eventos pré planejados podem
 gerar inconsistências no sistema, como por exemplo o cancelamento de um pedido
 que já foi coletado.
 Portanto, a falta de instâncias de \textit{benchmark} devidamente apropriadas e
@@ -102,7 +102,7 @@ estudadas.
   \multirow{\numberOfRows}{\columnWidth}{240 ou 450} & 
   \multirow{\numberOfRows}{\columnWidth}{600}
 \\ & & & & & \\
-\multirow{\numberOfRows}{\firstColumnWidth}{Geometria (km $\times$ km)} & 
+  \multirow{\numberOfRows}{\firstColumnWidth}{Geometria ($\text{km}^2$)} & 
   \multirow{\numberOfRows}{\columnWidth}{10 $\times$ 10} & 
   \multirow{\numberOfRows}{\columnWidth}{10 $\times$ 10} & 
   \multirow{\numberOfRows}{\columnWidth}{100 $\times$ 100} & 
@@ -180,8 +180,8 @@ Já no segundo são usadas as instâncias estáticas apresentadas por
 Destaca-se que \textcite{berbeglia_hybrid_tabu_2012} usaram apenas as 
 instâncias estáticas com no mínimo 40 pedidos.
 % TODO: Qual a relevância disso? Em que escala de tempo?
-O restante dessa sessão apresenta em detalhes cada um desses conjuntos, assim
-como o método usado para dinamiza-los.
+O restante dessa seção apresenta em detalhes cada um desses conjuntos, assim
+como o método usado para dinamizá-los.
 
 \subsection{Primeiro conjunto}\label{sec:instances_berbeglia_1}
 \textcite{berbeglia_hybrid_tabu_2012} usam como base as instâncias estáticas 
@@ -191,7 +191,7 @@ instâncias estáticas.
 Destaca-se que essas mesmas instâncias estáticas foram usadas também por
 \textcite{cordeau_branch-and-cut_2006}.
 
-Neste conjunto de instâncias os pedidos estão contidos em um plano euclidiano
+Neste conjunto de instâncias os pedidos estão contidos em um plano Euclidiano
 delimitado por uma área de $20 \times 20 \text{ km}^2$, sendo que a 
 distribuição espacial dos nós de coleta e de entrega é gerada através do 
 sorteio de uma variável com distribuição aleatória uniforme.
@@ -210,7 +210,7 @@ No subconjunto ``a'' esses valores são: $\vehicleCapacity = 3, \forall
 \vehicle \in \vehiclesSet$ e $\load_\request = 1, \serviceTime_\request = 1\ 
 \text{min}, \maxRideTime_\request = 30\ \text{min}, \forall \request \in
 \requests$.
-No subconjunto ``b'' esses valores seriam: $\vehicleCapacity = 6, \forall
+No subconjunto ``b'' esses valores são: $\vehicleCapacity = 6, \forall
 \vehicle \in \vehiclesSet$ e $\load_\request = \uniformDistribution{1}
 {\vehicleCapacity}, \serviceTime_\request = \load_\request, 
 \maxRideTime_\request = 45\ \text{min}, \forall \request \in \requests$.
@@ -281,8 +281,8 @@ viagem foram fornecidas pela \textit{Montreal Transit Commission}.
 As instâncias foram geradas aleatoriamente e contêm entre 24 e 144 pedidos. 
 Assim como no conjunto de instâncias apresentado na
 Seção~\ref{sec:instances_berbeglia_1}, os pedidos estão localizados em uma 
-área de $20 \times 20 \text{km}^2$ sendo que metade são pedidos de coleta e 
-metade são pedidos de entrega.
+área de $20 \times 20 \text{km}^2$ sendo que metade são pedidos que possuem
+apenas janelas de tempo de coleta e a outra metade apenas na entrega.
 
 Entretanto, diferente do conjunto apresentado na 
 Seção~\ref{sec:instances_berbeglia_1}, os pedidos não são alocados usando uma
@@ -545,7 +545,8 @@ pedidos como:
 % TODO Rodrigo: O que isso quer dizer?
 
 \noindent em que, o valor $\arcTravelTime{0}{i}$ é usado como o tempo 
-de viagem médio de um veículo que deseja coletar o pedido $\request$.
+de viagem médio de um veículo que deseja coletar o pedido $\request$, estando
+ele em qualquer ponto dentro do plano Euclidiano.
 Para cada uma das instâncias PDPTW foram geradas quatro instâncias DPDPTW 
 através da variação de $\maneuverTime$ entre os valores 0, 100, 200 e 300.
 
@@ -567,7 +568,8 @@ nas mesmas instâncias estáticas.
 Apesar de apresentarmos os dois conjuntos de instâncias nesta seção, as 
 análises do Capítulo~\ref{ch:analise} somente abordarão as instâncias do 
 primeiro conjunto (P1), tendo em vista que este é o único que apresenta apenas
-pedidos dinâmicos
+pedidos dinâmicos.
+
 
 \subsection{Primeiro conjunto (P1)}
 Contém instâncias com diferentes graus de urgência, diferença entre o instante 
@@ -743,14 +745,14 @@ definido por:
       \uniformDistribution{\frac
         {\arrivalTime_\request + \Tilde{t}_\request}{2}}{\Tilde{t}_\request}, 
         & \text{com probabilidade 1 - $\mu$}.
-    \end{cases}
+      \end{cases}
 \label{eq:gendreau2006_earliestTimewindow}
 \end{equation}
 
 % TODO: mudar arquivo para eps
 \begin{figure}[h]
     \centering
-    \includegraphics{fig/gendreau2006_distribution.png}
+    \includegraphics{fig/gendreau2006_distribution.eps}
     \caption{Distribuição do limite inferior da janela de tempo de coleta dos
              pedidos \cite{gendreau_neighborhood_2006}}
     \label{fig:gendreau2006_distribution}
