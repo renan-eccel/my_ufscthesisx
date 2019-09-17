@@ -32,7 +32,7 @@ agendamento antecipado ou dinamicamente entretanto não existe urgência para o
 cumprimento destes.
 A entrega de alimentos, por exemplo, é um problema deste tipo.
 
-Percebendo que estas diferentes características no problemas dinâmicos eram 
+Percebendo que estas diferentes características nos problemas dinâmicos eram 
 também associadas a diferenças nas qualidades das soluções encontradas,
 muitos pesquisadores tentaram criar medidas de dinamismo de forma a 
 possibilitar a classificação de problemas e auxiliar na escolha de métodos de 
@@ -76,12 +76,12 @@ problemas e as características das soluções obtidas.
 linear entre o grau de dinamismo e o custo de transporte de uma instância de um
 problema responsivo à demanda.
 Suas análises numéricas elucidam a existência de um pico de ineficiência para
-vários algorítimos heurísticos quando $\degreeOfDynamism \approx 0{,}7$, o que
+vários algoritimos heurísticos quando $\degreeOfDynamism \approx 0{,}7$, o que
 os autores classificaram como ``zona de dilema''.
 Através dessa descoberta \citeonline{wong_dynamic_2014} descrevem uma série de
 políticas para que operadores de sistemas de transporte responsivos à demanda
 (DRT - \textit{Dynamic Responsive Transpot}) possam seguir para permanecer 
-longe do que eles classificam como ``zona de dilema''.
+longe da ``zona de dilema''.
 
 Similarmente, \citeonline{larsen_partially_2002} usam essa mesma medida de 
 grau de dinamismo para estudar a relação entre o custo de rota para o 
@@ -351,9 +351,10 @@ $\perfectInterval$:
     \label{eq:van_lon_measures_2016_deviationFromPerfectInterval}
 \end{equation}
 
-\noindent em que $\deviationFromPerfectInterval_i$ é o desvio entre os intervalo 
-de chegada $\intervalBetweenArrivals_i$ e o $\perfectInterval$. O
-termo ($\frac{\perfectInterval-\intervalBetweenArrivals_i}
+\noindent em que $\deviationFromPerfectInterval_i$ é o desvio 
+entre os intervalos de chegada $\intervalBetweenArrivals_i$ e o 
+$\perfectInterval$. 
+O termo ($\frac{\perfectInterval-\intervalBetweenArrivals_i}
 {\perfectInterval} \cdot \deviationFromPerfectInterval_{i-1}$) serve para 
 penalizar, de forma recursiva, a aglutinação de eventos em pequenos 
 períodos de tempo.
@@ -439,13 +440,15 @@ A Figura~\ref{fig:van_lon_measures_2016_urgency} exemplifica dois casos.
 No cenário da Figura~\ref{fig:van_lon_measures_2016_urgency}(a) temos o exemplo
 de um pedido com grande urgência, ou seja, menor tempo de reação.
 Já no caso da Figura~\ref{fig:van_lon_measures_2016_urgency}(b) o tempo de 
-reação é menor, portanto o pedido é menos urgente.
+reação é maior, portanto o pedido é menos urgente.
 
 Baseando-se na Figura~\ref{fig:van_lon_measures_2016_urgency}, 
 \citeonline{van_lon_measures_2016} define urgência por:
 %
 \begin{equation}
-    \urgency_\request = \latestTimeWindow_\request - \arrivalTime_\request,
+    \urgency_\request = 
+    \reactionTime_\request =
+    \latestTimeWindow_\request - \arrivalTime_\request,
     \label{eq:van_lon_measures_2016_urgency}
 \end{equation}
 
@@ -456,7 +459,7 @@ média e o desvio padrão das urgências.
 Esta definição é similar ao grau de dinamismo efetivo com janelas de tempo 
 proposto por \citeonline{larsen_dynamic_2000} e definido por
 (\ref{eq:degreeOfDynamism})~e~(\ref{eq:eDegreeOfDynamism}).
-Entretanto, exite uma diferença entre estas duas definições.
+Entretanto, existe uma diferença entre estas duas definições.
 \citeonline{larsen_dynamic_2000} normaliza os valores do grau de dinamismo
 efetivo com janelas de tempo usando o horizonte de planejamento.  
 Já \citeonline{van_lon_measures_2016} acredita que a extensão do cenário e
