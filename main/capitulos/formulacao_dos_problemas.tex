@@ -120,6 +120,126 @@ coleta e entrega ($[\earliestTimeWindow_i, \latestTimeWindow_i],
 \forall \node{i} \in \pickupNodes \cup \deliveryNodes$) devem estar contidas 
 no intervalo de tempo $[0, \planingHorizon]$.
 
+A Figura~\ref{fig:darp_exemple_instance} apresenta uma instância exemplo
+do DARP com dois pedidos ($\numberOfRequests = 2$). 
+No grafo apresentado, os nós $\node_0$ e $\node_5$ representam os os nós 
+inicial ($\startNode$) e final ($\lastNode$), respectivamente.
+Os nós $\node_1$ e $\node_2$ representam os nós de coleta dos pedidos 1 e 2.
+Já os nós $\node_3$ e $\node_4$ representam os nós de entrega dos pedidos 1 e
+2.
+As janelas de tempo de cada um dos pedidos é representada abaixo do grafo
+através dos polígonos alocados dentro do horizonte de planejamento e
+delimitados pelos limites superiores e inferiores de coleta e entrega.
+
+\begin{figure}[H]
+    \centering
+      \begin{tikzpicture}
+
+       % Grafo 
+      \node (garage1) at (-5, 0) [garage] {$\startNode$};
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node_1$}
+        edge [pre] (garage1);
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node_2$}
+        edge [pre]  (garage1)
+        edge [duo] (pickup1);
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node_3$}
+        edge [pre]  (pickup1)
+        edge [duo] (pickup2);
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node_4$}
+        edge [duo] (pickup1)
+        edge [pre]  (pickup2)
+        edge [duo] (delivery1);
+      \node (garage2) at ( 5, 0) [garage] {$\node_5$}
+        edge [pre]  (delivery1)
+        edge [pre]  (delivery2);
+
+      % Linha de tempo pedido 1
+      \node (start) at (-5, -3.75) {\large 0};
+      \node (end) at (5, -3.75) {\large $H$}
+        edge [timeline] (start);
+
+      % Janelas de tempo pedido 1
+      \node (pickup1tw) at (-2, -3.75) [pickuptw, request1] {$\node_1$};
+      \node [above, align=center] at (pickup1tw.north east) 
+          {$\earliestTimeWindow_1$};
+      \node [above, align=center] at (pickup1tw.north west) 
+          {$\latestTimeWindow_1$};
+      \node (delivery1tw) at (2, -3.75) [deliverytw, request1] {$\node_3$};
+      \node [above, align=center] at (delivery1tw.north east) 
+          {$\earliestTimeWindow_3$};
+      \node [above, align=center] at (delivery1tw.north west) 
+          {$\latestTimeWindow_3$};
+
+      % Linha de tempo pedido 2
+      \node (start) at (-5, -5) {\large 0};
+      \node (end) at (5, -5) {\large $H$}
+        edge [timeline] (start);
+
+      % Janelas de tempo pedido 2
+      \node (pickup2tw) at (-2.5, -5) [pickuptw,request2,minimum width=17mm] 
+        {$\node_2$};
+      \node [above, align=center] at (pickup2tw.north east) 
+          {$\earliestTimeWindow_2$};
+      \node [above, align=center] at (pickup2tw.north west) 
+          {$\latestTimeWindow_2$};
+      \node (delivery2tw) at (3, -5) [deliverytw,request2,minimum width=15mm] 
+        {$\node_4$};
+      \node [above, align=center] at (delivery2tw.north east) 
+          {$\earliestTimeWindow_4$};
+      \node [above, align=center] at (delivery2tw.north west) 
+          {$\latestTimeWindow_4$};
+
+    \end{tikzpicture}  
+    \caption{Instância exemplo de um DARP}
+    \label{fig:darp_exemple_instance}
+\end{figure}
+
+Para esta instância exemplo temos no total 6 soluções.
+
+\begin{figure}[H]
+  \begin{minipage}{0.49\textwidth}
+    \begin{tikzpicture}[scale=0.5]
+       % Solução 1 
+      \node (garage1) at (-5, 0) [garage] {$\startNode$};
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node_1$}
+        edge [pre, red] (garage1);
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node_2$}
+        edge [pre] (garage1)
+        edge [duo] (pickup1);
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node_3$}
+        edge [pre, red]  (pickup1)
+        edge [duo, red] (pickup2);
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node_4$}
+        edge [duo] (pickup1)
+        edge [pre, red] (pickup2)
+        edge [duo] (delivery1);
+      \node (garage2) at ( 5, 0) [garage] {$\node_5$}
+        edge [pre]  (delivery1)
+        edge [pre, red]  (delivery2);
+    \end{tikzpicture}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \begin{tikzpicture}[scale=0.5]
+       % Solução 2 
+      \node (garage1) at (-5, 0) [garage] {$\startNode$};
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node_1$};
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node_2$}
+        edge [pre, red] (garage1);
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node_3$}
+        edge [pre, red] (pickup1);
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node_4$}
+        edge [post, red] (pickup1)
+        edge [pre, red] (pickup2);
+      \node (garage2) at ( 5, 0) [garage] {$\node_5$}
+        edge [pre, red]  (delivery1);
+    \end{tikzpicture}
+  \end{minipage}
+  \caption{}
+  \label{}
+\end{figure}
+
+
 O DARP pode ser formulado através do seguinte programa inteiro misto (MILP -
 \textit{Mixed Integer Linear Program}) \cite{cordeau_branch-and-cut_2006}: 
 \newline

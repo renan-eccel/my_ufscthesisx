@@ -82,6 +82,26 @@ section=TITLE, % Título de seções em caixa alta
 % Load extra commands for tables, lists, summaries, etc.
 \input{setup/utilities.tex}
 
+% Load tikz and tikz libraries
+\usepackage{tikz}
+\usetikzlibrary{arrows, decorations, backgrounds, positioning, shapes.misc}
+
+% create some tikz styles
+\tikzstyle{pickup} = [rectangle,minimum size=6mm]
+\tikzstyle{delivery} = [circle,minimum size=8mm]
+\tikzstyle{request1}=[draw=green!50,fill=green!20]
+\tikzstyle{request2}=[draw=blue!50,fill=blue!20]
+\tikzstyle{garage}=[circle,minimum size=6mm, draw=black!50,fill=black!5]
+\tikzstyle{pre}=[<-,>=stealth',semithick]
+\tikzstyle{post}=[->,>=stealth',semithick]
+\tikzstyle{duo}=[<->,>=stealth',semithick]
+\tikzstyle{pickuptw}=[rectangle, minimum width=10mm, minimum height=4mm]
+\tikzstyle{deliverytw}=[rounded rectangle, minimum width=20mm, 
+                       minimum height=4mm]
+\tikzstyle{timeline}=[|-|]
+
+
+
 % % Utilize o arquivo aftertext/references.bib para incluir sua bibliografia.
 \addbibresource{aftertext/references.bib}
 
