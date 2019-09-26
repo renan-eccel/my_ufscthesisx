@@ -122,10 +122,10 @@ no intervalo de tempo $[0, \planingHorizon]$.
 
 A Figura~\ref{fig:darp_exemple_instance} apresenta uma instância exemplo
 do DARP com dois pedidos ($\numberOfRequests = 2$). 
-No grafo apresentado, os nós $\node_0$ e $\node_5$ representam os os nós 
+No grafo apresentado, os nós $\node{0}$ e $\node{5}$ representam os os nós 
 inicial ($\startNode$) e final ($\lastNode$), respectivamente.
-Os nós $\node_1$ e $\node_2$ representam os nós de coleta dos pedidos 1 e 2.
-Já os nós $\node_3$ e $\node_4$ representam os nós de entrega dos pedidos 1 e
+Os nós $\node{1}$ e $\node{2}$ representam os nós de coleta dos pedidos 1 e 2.
+Já os nós $\node{3}$ e $\node{4}$ representam os nós de entrega dos pedidos 1 e
 2.
 As janelas de tempo de cada um dos pedidos é representada abaixo do grafo
 através dos polígonos alocados dentro do horizonte de planejamento e
@@ -137,19 +137,19 @@ delimitados pelos limites superiores e inferiores de coleta e entrega.
 
        % Grafo 
       \node (garage1) at (-5, 0) [garage] {$\startNode$};
-      \node (pickup1) at (-2, 2) [pickup, request1] {$\node_1$}
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node{1}$}
         edge [pre] (garage1);
-      \node (pickup2) at (-2,-2) [pickup, request2] {$\node_2$}
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node{2}$}
         edge [pre]  (garage1)
         edge [duo] (pickup1);
-      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node_3$}
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node{3}$}
         edge [pre]  (pickup1)
         edge [duo] (pickup2);
-      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node_4$}
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node{4}$}
         edge [duo] (pickup1)
         edge [pre]  (pickup2)
         edge [duo] (delivery1);
-      \node (garage2) at ( 5, 0) [garage] {$\node_5$}
+      \node (garage2) at ( 5, 0) [garage] {$\node{5}$}
         edge [pre]  (delivery1)
         edge [pre]  (delivery2);
 
@@ -159,12 +159,12 @@ delimitados pelos limites superiores e inferiores de coleta e entrega.
         edge [timeline] (start);
 
       % Janelas de tempo pedido 1
-      \node (pickup1tw) at (-2, -3.75) [pickuptw, request1] {$\node_1$};
+      \node (pickup1tw) at (-2, -3.75) [pickuptw, request1] {$\node{1}$};
       \node [above, align=center] at (pickup1tw.north east) 
           {$\earliestTimeWindow_1$};
       \node [above, align=center] at (pickup1tw.north west) 
           {$\latestTimeWindow_1$};
-      \node (delivery1tw) at (2, -3.75) [deliverytw, request1] {$\node_3$};
+      \node (delivery1tw) at (2, -3.75) [deliverytw, request1] {$\node{3}$};
       \node [above, align=center] at (delivery1tw.north east) 
           {$\earliestTimeWindow_3$};
       \node [above, align=center] at (delivery1tw.north west) 
@@ -177,13 +177,13 @@ delimitados pelos limites superiores e inferiores de coleta e entrega.
 
       % Janelas de tempo pedido 2
       \node (pickup2tw) at (-2.5, -5) [pickuptw,request2,minimum width=17mm] 
-        {$\node_2$};
+        {$\node{2}$};
       \node [above, align=center] at (pickup2tw.north east) 
           {$\earliestTimeWindow_2$};
       \node [above, align=center] at (pickup2tw.north west) 
           {$\latestTimeWindow_2$};
       \node (delivery2tw) at (3, -5) [deliverytw,request2,minimum width=15mm] 
-        {$\node_4$};
+        {$\node{4}$};
       \node [above, align=center] at (delivery2tw.north east) 
           {$\earliestTimeWindow_4$};
       \node [above, align=center] at (delivery2tw.north west) 
@@ -194,54 +194,110 @@ delimitados pelos limites superiores e inferiores de coleta e entrega.
     \label{fig:darp_exemple_instance}
 \end{figure}
 
-Para esta instância exemplo temos no total 6 soluções.
+Para esta instância exemplo temos no total 6 soluções apresentadas na
+Figura~\ref{fig:darp_exemple_instance_solutions}:
 
 \begin{figure}[H]
-  \begin{minipage}{0.49\textwidth}
+  \centering
+  \begin{tabular}{cc}
     \begin{tikzpicture}[scale=0.5]
-       % Solução 1 
+      % Solução (a) 
       \node (garage1) at (-5, 0) [garage] {$\startNode$};
-      \node (pickup1) at (-2, 2) [pickup, request1] {$\node_1$}
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node{1}$}
         edge [pre, red] (garage1);
-      \node (pickup2) at (-2,-2) [pickup, request2] {$\node_2$}
-        edge [pre] (garage1)
-        edge [duo] (pickup1);
-      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node_3$}
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node{2}$};
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node{3}$}
         edge [pre, red]  (pickup1)
-        edge [duo, red] (pickup2);
-      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node_4$}
-        edge [duo] (pickup1)
-        edge [pre, red] (pickup2)
-        edge [duo] (delivery1);
-      \node (garage2) at ( 5, 0) [garage] {$\node_5$}
-        edge [pre]  (delivery1)
+        edge [post, red] (pickup2);
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node{4}$}
+        edge [pre, red] (pickup2);
+      \node (garage2) at ( 5, 0) [garage] {$\node{5}$}
         edge [pre, red]  (delivery2);
     \end{tikzpicture}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.49\textwidth}
+    &
     \begin{tikzpicture}[scale=0.5]
-       % Solução 2 
+      % Solução (b) 
       \node (garage1) at (-5, 0) [garage] {$\startNode$};
-      \node (pickup1) at (-2, 2) [pickup, request1] {$\node_1$};
-      \node (pickup2) at (-2,-2) [pickup, request2] {$\node_2$}
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node{1}$};
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node{2}$}
         edge [pre, red] (garage1);
-      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node_3$}
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node{3}$}
         edge [pre, red] (pickup1);
-      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node_4$}
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node{4}$}
         edge [post, red] (pickup1)
         edge [pre, red] (pickup2);
-      \node (garage2) at ( 5, 0) [garage] {$\node_5$}
+      \node (garage2) at ( 5, 0) [garage] {$\node{5}$}
         edge [pre, red]  (delivery1);
     \end{tikzpicture}
-  \end{minipage}
-  \caption{}
-  \label{}
+    \\ (a) & (b) \\\\
+    \begin{tikzpicture}[scale=0.5]
+      % Solução (c) 
+      \node (garage1) at (-5, 0) [garage] {$\startNode$};
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node{1}$}
+        edge [pre, red] (garage1);
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node{2}$}
+        edge [pre, red]  (pickup1);
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node{3}$}
+        edge [pre, red] (delivery2);
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node{4}$}
+        edge [pre, red] (pickup2);
+      \node (garage2) at ( 5, 0) [garage] {$\node{5}$}
+        edge [pre, red]  (delivery1);
+    \end{tikzpicture}
+    &
+    \begin{tikzpicture}[scale=0.5]
+      % Solução (d) 
+      \node (garage1) at (-5, 0) [garage] {$\startNode$};
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node{1}$};
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node{2}$}
+        edge [pre, red] (garage1)
+        edge [post, red] (pickup1);
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node{3}$}
+        edge [pre, red] (pickup1);
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node{4}$}
+        edge [pre, red] (delivery1);
+      \node (garage2) at ( 5, 0) [garage] {$\node{5}$}
+        edge [pre, red]  (delivery2);
+    \end{tikzpicture}
+    \\ (c) & (d) \\\\
+    \begin{tikzpicture}[scale=0.5]
+      % Solução (e) 
+      \node (garage1) at (-5, 0) [garage] {$\startNode$};
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node{1}$}
+        edge [pre, red] (garage1);
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node{2}$}
+        edge [pre, red]  (pickup1);
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node{3}$}
+        edge [pre, red] (pickup2);
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node{4}$}
+        edge [pre, red] (delivery1);
+      \node (garage2) at ( 5, 0) [garage] {$\node{5}$}
+        edge [pre, red]  (delivery2);
+    \end{tikzpicture}
+    &
+    \begin{tikzpicture}[scale=0.5]
+      % Solução (f) 
+      \node (garage1) at (-5, 0) [garage] {$\startNode$};
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node{1}$};
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node{2}$}
+        edge [pre, red] (garage1)
+        edge [post, red] (pickup1);
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node{3}$};
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node{4}$}
+        edge [post, red] (delivery1)
+        edge [pre, red] (pickup1);
+      \node (garage2) at ( 5, 0) [garage] {$\node{5}$}
+        edge [pre, red]  (delivery1);
+    \end{tikzpicture}
+    \\ (e) & (f) \\\\
+  \end{tabular}
+  \caption{Soluções da instância exemplo de um DARP}
+  \label{fig:darp_exemple_instance_solutions}
 \end{figure}
 
-
-O DARP pode ser formulado através do seguinte programa inteiro misto (MILP -
-\textit{Mixed Integer Linear Program}) \cite{cordeau_branch-and-cut_2006}: 
+O DARP também pode ser formulado através do seguinte programa inteiro misto 
+(MILP - \textit{Mixed Integer Linear Program}) 
+\cite{cordeau_branch-and-cut_2006}: 
 \newline
 %
 \begin{equation} \label{eq:darp_objective}
@@ -313,17 +369,6 @@ O DARP pode ser formulado através do seguinte programa inteiro misto (MILP -
   \ \vehicle \in \vehiclesSet,
 \end{equation}
 %
-\begin{equation} \label{eq:darp_constraint_7}
-  \vehicleCapacity_j
-  \geqslant
-  (\vehicleCapacity_i + \load_j)
-  x_{(i, j)}^{\vehicle} 
-  \quad
-  \forall i \in \nodes, 
-  \ j \in \nodes, 
-  \ \vehicle \in \vehiclesSet,
-\end{equation}
-%
 \begin{equation} \label{eq:darp_constraint_8}
   \maxRideTime_i^\vehicle
   =
@@ -367,6 +412,17 @@ O DARP pode ser formulado através do seguinte programa inteiro misto (MILP -
   \ \vehicle \in \vehiclesSet,
 \end{equation}
 %
+\begin{equation} \label{eq:darp_constraint_7}
+  \vehicleCapacity_j
+  \geqslant
+  (\vehicleCapacity_i + \load_j)
+  x_{(i, j)}^{\vehicle} 
+  \quad
+  \forall i \in \nodes, 
+  \ j \in \nodes, 
+  \ \vehicle \in \vehiclesSet,
+\end{equation}
+%
 \begin{equation} \label{eq:darp_constraint_12}
   \max \{0, \nodeLoad{i}\}
   \leqslant
@@ -387,8 +443,14 @@ O DARP pode ser formulado através do seguinte programa inteiro misto (MILP -
 \end{equation}
 
 Nesta formulação $B_i^\vehicle$ é o instante em que o veículo $\vehicle$ inicia
-o serviço no nó $i$ e $\maxRideTime^\vehicle_i$ é o tempo de viagem do usuário
-$i$ no veículo $\vehicle$.
+o serviço no nó $i$, 
+$\maxRideTime^\vehicle_i$ é o tempo de viagem do usuário $i$ no veículo 
+$\vehicle$, 
+$\vehicleCapacity_i$ representa a ocupação do veículo $\vehicle$
+e 
+$x_{(i, j)}^{\vehicle}$ é a variável de decisão do problema que recebe valor 
+um quando o arco $(i, j)$ é percorrido pelo veículo $\vehicle$ e zero caso 
+contrário.
 
 Segundo \textcite{cordeau_branch-and-cut_2006}
 a função objetivo (\ref{eq:darp_objective})  minimiza o custo total de 
@@ -397,16 +459,22 @@ As restrições (\ref{eq:darp_constraint_1}) e (\ref{eq:darp_constraint_2})
 garantem que cada um dos pedidos seja servido apenas uma vez e que os nós de 
 origem e o destino sejam visitados pelo mesmo veículo.
 As restrições (\ref{eq:darp_constraint_3}) a (\ref{eq:darp_constraint_5})
-garantem que a rota de cada veículo $\vehicle$ comece e termine do nó de origem
+garantem que a rota de cada veículo $\vehicle$ comece e termine no nó de origem
 e destino dos veículos, $\startNode$ e $\lastNode$, respectivamente.
-Consistências de tempo e carregamento são garantidas pelas restrições
-(\ref{eq:darp_constraint_6}) e (\ref{eq:darp_constraint_7}).
+
+A consistência de tempo é garantida pela restrição
+(\ref{eq:darp_constraint_6}).
 Igualdade (\ref{eq:darp_constraint_8}) define o tempo de viagem de cada
 usuário, que por sua vez é limitado pela restrição
 (\ref{eq:darp_constraint_11}).
-Finalmente, desigualdade (\ref{eq:darp_constraint_9}) limita a duração de cada
-rota, enquanto (\ref{eq:darp_constraint_10}) e (\ref{eq:darp_constraint_12})
-impõem janelas de tempo e restrições de capacidade, respectivamente.
+Desigualdade (\ref{eq:darp_constraint_9}) limita a duração de cada
+rota, enquanto (\ref{eq:darp_constraint_10}) impõem as janelas de tempo.
+
+
+A consistência do carregamento é garantido pela restrição 
+(\ref{eq:darp_constraint_7}) e a desigualdade (\ref{eq:darp_constraint_12})
+representa as restrições de capacidade de cada um dos veículos em cada um dos
+nós do grafo.
 
 
 

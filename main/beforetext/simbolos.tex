@@ -5,9 +5,11 @@
 % Devam aparecer na mesma ordem de ocorrência no texto.
 \begin{simbolos}
     \item[$\arcs$]{Conjunto dos arcos $\in \graph$}
-  \item[$\arrivalTime_\request$] Instante de chegada do pedido $\request$
+    \item[$\arrivalTime_\request$] Instante de chegada do pedido $\request$
     \item[$\requestLatestArrivalTime$]
       Último instante possível para a chegada do pedido $\request$
+    \item[$B_i^\vehicle$] Instante em que o veículo $\vehicle$ inicia o serviço
+      no nó $i$
     \item[$\pickupNodes$] Subconjunto dos nós, contendo apenas nós de coleta
     \item[$\arcCost{i}{j}$] Custo de viagem entre os nós $i$ e $j$
     \item[$\deliveryNodes$] Subconjunto dos nós, contendo apenas nós de entrega
@@ -25,6 +27,8 @@
     \item[$\maxRideTime$] Tempo máximo de viagem global
     \item[$\maxRideTime_\request$] Tempo máximo de viagem do pedido 
       $\request$
+    \item[$\maxRideTime^\vehicle_i$] Tempo de viagem do usuário $i$ no veículo 
+      $\vehicle$.
     \item[$\latestTimeWindow_{\originIndex}$]
       Limite superior da janela de tempo da coleta do pedido $\request$
     \item[$\latestTimeWindow_{\destinationIndex}$]
@@ -33,11 +37,12 @@
     \item[$\requests$] Conjunto dos pedidos de transporte 
     \item[$\capacity$] Capacidade global
     \item[$\vehicleCapacity$] Capacidade do veículo $\vehicle$
+    \item[$\vehicleCapacity_i$] Ocupação do veículo $\vehicle$
     \item[$\load$] Carregamento global
     \item[$\requestLoad$] Carregamento do pedido $\request$
     \item[$\originNodeLoad$] Carregamento do pedido no nó $\startNode$
     \item[$\destinationNodeLoad$]
-     Carregamento do pedido no nó $\destinationNode$
+     Carregamento do pedido no nó $\lastNode$
     \item[$\nodeServiceTime{\originIndex}$]
       Tempo de serviço no nó $\request$
     \item[$\maxRouteTime$] Tempo de rota máximo global
@@ -49,6 +54,8 @@
     \item[$\lastNode$] Nó final 
     \item[$\originNode$] O nó de coleta do pedido $\request$
     \item[$\destinationNode$] O nó de entrega do pedido $\request$
+    \item[$x_{(i, j)}^{\vehicle}$] Variável de decisão do DARP quando formulado
+      como um MILP
     \item[$\timeWindowWidth$] Largura global das janelas de tempo 
     \item[$\staticPercentage$] Percentagem de pedidos estáticos
     \item[$\maneuverTime$] Tempo de manobra
