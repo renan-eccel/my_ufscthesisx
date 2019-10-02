@@ -120,7 +120,7 @@ coleta e entrega ($[\earliestTimeWindow_i, \latestTimeWindow_i],
 \forall \node{i} \in \pickupNodes \cup \deliveryNodes$) devem estar contidas 
 no intervalo de tempo $[0, \planingHorizon]$.
 
-A Figura~\ref{fig:darp_exemple_instance} apresenta uma instância exemplo
+A Figura~\ref{fig:darp_example_instance} apresenta uma instância exemplo
 do DARP com dois pedidos ($\numberOfRequests = 2$). 
 No grafo apresentado, os nós $\node{0}$ e $\node{5}$ representam os os nós 
 inicial ($\startNode$) e final ($\lastNode$), respectivamente.
@@ -191,11 +191,11 @@ delimitados pelos limites superiores e inferiores de coleta e entrega.
 
     \end{tikzpicture}  
     \caption{Instância exemplo de um DARP}
-    \label{fig:darp_exemple_instance}
+    \label{fig:darp_example_instance}
 \end{figure}
 
 Para esta instância exemplo temos no total 6 soluções apresentadas na
-Figura~\ref{fig:darp_exemple_instance_solutions}:
+Figura~\ref{fig:darp_example_instance_solutions}:
 
 \begin{figure}[H]
   \centering
@@ -292,7 +292,7 @@ Figura~\ref{fig:darp_exemple_instance_solutions}:
     \\ (e) & (f) \\\\
   \end{tabular}
   \caption{Soluções da instância exemplo de um DARP}
-  \label{fig:darp_exemple_instance_solutions}
+  \label{fig:darp_example_instance_solutions}
 \end{figure}
 
 O DARP também pode ser formulado através do seguinte programa inteiro misto 
@@ -502,9 +502,9 @@ que a formulação apresentada anteriormente para o DARP pode ser usada também
 para o PDPTW, porém, para esse último, o parâmetro 
 $\maxRideTime_\request = \infty, \forall \request \in \requests$.
 
-Na formulação MILP do DARP apresntada na Seção~\ref{sec:formulacao_DARP} por
+Na formulação MILP do DARP apresentada na Seção~\ref{sec:formulacao_DARP} por
 (\ref{eq:darp_objective} - \ref{eq:darp_constraint_13}) suprimindo as
-restrições (\ref{eq:darp_constraint_}) e (\ref{eq:darp_constraint_11}) 
+restrições (\ref{eq:darp_constraint_8}) e (\ref{eq:darp_constraint_11}) 
 tem-se uma formulação MILP para o PDPTW.
 
 % bloco comentado
@@ -599,4 +599,187 @@ anteriormente descritas obtemos uma formulação sucinta para o DDARP e o DPDPTW
 Destaca-se que o DARP e do PDPTW podem ser considerados como simplificações do
 DDARP e do DPDPTW em que $\arrivalTime_\request = 0, \forall \request \in
 \requests$.
+
+Pode-se então reformular a Figura~\ref{fig:darp_example_instance} para
+representar uma instância exemplo para o DDARP ou para o DPDPTW.
+
+\begin{figure}[H]
+    \centering
+      \begin{tikzpicture}
+
+       % Grafo 
+      \node (garage1) at (-5, 0) [garage] {$\startNode$};
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node{1}$}
+        edge [pre] (garage1);
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node{2}$}
+        edge [pre]  (garage1)
+        edge [duo] (pickup1);
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node{3}$}
+        edge [pre]  (pickup1)
+        edge [duo] (pickup2);
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node{4}$}
+        edge [duo] (pickup1)
+        edge [pre]  (pickup2)
+        edge [duo] (delivery1);
+      \node (garage2) at ( 5, 0) [garage] {$\node{5}$}
+        edge [pre]  (delivery1)
+        edge [pre]  (delivery2);
+
+      % Linha de tempo pedido 1
+      \node (start) at (-5, -3.75) {\large 0};
+      \node (end) at (5, -3.75) {\large $H$}
+        edge [timeline] (start);
+
+      % Tick de chegada do pedido 1
+      \coordinate (arrival) at (-3.5, -3.75) {};
+      \coordinate (arrivalTop) at ($(arrival) + (0,2mm)$) {};
+      \coordinate (arrivalBottom) at ($(arrival) - (0,2mm)$) {};
+      \draw (arrivalTop) -- (arrivalBottom);
+      \node (arrivalLabel) at ($(arrivalTop.north) + (0,3mm)$) 
+        {$\arrivalTime_1$};
+
+      % Janelas de tempo pedido 1
+      \node (pickup1tw) at (-2, -3.75) [pickuptw, request1] {$\node{1}$};
+      \node [above, align=center] at (pickup1tw.north east) 
+          {$\earliestTimeWindow_1$};
+      \node [above, align=center] at (pickup1tw.north west) 
+          {$\latestTimeWindow_1$};
+      \node (delivery1tw) at (2, -3.75) [deliverytw, request1] {$\node{3}$};
+      \node [above, align=center] at (delivery1tw.north east) 
+          {$\earliestTimeWindow_3$};
+      \node [above, align=center] at (delivery1tw.north west) 
+          {$\latestTimeWindow_3$};
+
+      % Linha de tempo pedido 2
+      \node (start) at (-5, -5) {\large 0};
+      \node (end) at (5, -5) {\large $H$}
+        edge [timeline] (start);
+
+      % Tick de chegada do pedido 1
+      \coordinate (arrival) at (-4.5, -5) {};
+      \coordinate (arrivalTop) at ($(arrival) + (0,2mm)$) {};
+      \coordinate (arrivalBottom) at ($(arrival) - (0,2mm)$) {};
+      \draw (arrivalTop) -- (arrivalBottom);
+      \node (arrivalLabel) at ($(arrivalTop.north) + (0,3mm)$) 
+        {$\arrivalTime_2$};
+
+      % Janelas de tempo pedido 2
+      \node (pickup2tw) at (-2.5, -5) [pickuptw,request2,minimum width=17mm] 
+        {$\node{2}$};
+      \node [above, align=center] at (pickup2tw.north east) 
+          {$\earliestTimeWindow_2$};
+      \node [above, align=center] at (pickup2tw.north west) 
+          {$\latestTimeWindow_2$};
+      \node (delivery2tw) at (3, -5) [deliverytw,request2,minimum width=15mm] 
+        {$\node{4}$};
+      \node [above, align=center] at (delivery2tw.north east) 
+          {$\earliestTimeWindow_4$};
+      \node [above, align=center] at (delivery2tw.north west) 
+          {$\latestTimeWindow_4$};
+
+    \end{tikzpicture}  
+    \caption{Instância exemplo de um DDARP ou DPDPTW}
+    \label{fig:ddarp_example_instance}
+\end{figure}
+
+Para esta instância exemplo temos no total 6 soluções apresentadas na
+Figura~\ref{fig:ddarp_example_instance_solutions}:
+
+\begin{figure}[H]
+  \centering
+  \begin{longtable}{cc}
+    \begin{tikzpicture}[scale=0.5]
+      % Solução (a) 
+      \node (garage1) at (-5, 0) [garage] {$\startNode$};
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node{1}$}
+        edge [pre, red] (garage1);
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node{2}$};
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node{3}$}
+        edge [pre, red]  (pickup1)
+        edge [post, red] (pickup2);
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node{4}$}
+        edge [pre, red] (pickup2);
+      \node (garage2) at ( 5, 0) [garage] {$\node{5}$}
+        edge [pre, red]  (delivery2);
+    \end{tikzpicture}
+    &
+    \begin{tikzpicture}[scale=0.5]
+      % Solução (b) 
+      \node (garage1) at (-5, 0) [garage] {$\startNode$};
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node{1}$};
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node{2}$}
+        edge [pre, red] (garage1);
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node{3}$}
+        edge [pre, red] (pickup1);
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node{4}$}
+        edge [post, red] (pickup1)
+        edge [pre, red] (pickup2);
+      \node (garage2) at ( 5, 0) [garage] {$\node{5}$}
+        edge [pre, red]  (delivery1);
+    \end{tikzpicture}
+    \\ (a) & (b) \\\\
+    \begin{tikzpicture}[scale=0.5]
+      % Solução (c) 
+      \node (garage1) at (-5, 0) [garage] {$\startNode$};
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node{1}$}
+        edge [pre, red] (garage1);
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node{2}$}
+        edge [pre, red]  (pickup1);
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node{3}$}
+        edge [pre, red] (delivery2);
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node{4}$}
+        edge [pre, red] (pickup2);
+      \node (garage2) at ( 5, 0) [garage] {$\node{5}$}
+        edge [pre, red]  (delivery1);
+    \end{tikzpicture}
+    &
+    \begin{tikzpicture}[scale=0.5]
+      % Solução (d) 
+      \node (garage1) at (-5, 0) [garage] {$\startNode$};
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node{1}$};
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node{2}$}
+        edge [pre, red] (garage1)
+        edge [post, red] (pickup1);
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node{3}$}
+        edge [pre, red] (pickup1);
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node{4}$}
+        edge [pre, red] (delivery1);
+      \node (garage2) at ( 5, 0) [garage] {$\node{5}$}
+        edge [pre, red]  (delivery2);
+    \end{tikzpicture}
+    \\ (c) & (d) \\\\
+    \begin{tikzpicture}[scale=0.5]
+      % Solução (e) 
+      \node (garage1) at (-5, 0) [garage] {$\startNode$};
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node{1}$}
+        edge [pre, red] (garage1);
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node{2}$}
+        edge [pre, red]  (pickup1);
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node{3}$}
+        edge [pre, red] (pickup2);
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node{4}$}
+        edge [pre, red] (delivery1);
+      \node (garage2) at ( 5, 0) [garage] {$\node{5}$}
+        edge [pre, red]  (delivery2);
+    \end{tikzpicture}
+    &
+    \begin{tikzpicture}[scale=0.5]
+      % Solução (f) 
+      \node (garage1) at (-5, 0) [garage] {$\startNode$};
+      \node (pickup1) at (-2, 2) [pickup, request1] {$\node{1}$};
+      \node (pickup2) at (-2,-2) [pickup, request2] {$\node{2}$}
+        edge [pre, red] (garage1)
+        edge [post, red] (pickup1);
+      \node (delivery1) at ( 2, 2) [delivery, request1] {$\node{3}$};
+      \node (delivery2) at ( 2,-2) [delivery, request2] {$\node{4}$}
+        edge [post, red] (delivery1)
+        edge [pre, red] (pickup1);
+      \node (garage2) at ( 5, 0) [garage] {$\node{5}$}
+        edge [pre, red]  (delivery1);
+    \end{tikzpicture}
+    \\ (e) & (f) \\\\
+  \end{longtable}
+  \caption{Soluções da instância exemplo de um DDARP}
+  \label{fig:ddarp_example_instance_solutions}
+\end{figure}
 
