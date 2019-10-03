@@ -80,14 +80,14 @@ $\deliveryNodes = \{\node{\numberOfRequests + 1}, \ldots,
 \node{2\numberOfRequests}\}$.
 Os subconjuntos $\pickupNodes$ e $\deliveryNodes$ contêm, respectivamente, 
 os nós de coleta e entrega dos pedidos, enquanto os nós $\startNode$ e 
-$\lastNode$ representam os nós de origem e destino dos veículos.
+$\lastNode$ representam os depósitos dos veículos.
 Todos os veículos da frota devem iniciar suas rotas no nó $\startNode$ e
 finalizá-las no nó $\lastNode$.
 Para cada pedido $\request \in \requests = \{\request, \ldots,
 \numberOfRequests\}$ temos associado um nó de origem $\originNode$ e um 
 nó de destino $\destinationNode$.
-A cada arco $\arc{\node{i}}{\node{j}} \in \arcs$ é associado um custo $\arcCost{i}{j}$ 
-e um tempo de viagem $\arcTravelTime{i}{j}$.
+A cada arco $\arc{\node{i}}{\node{j}} \in \arcs$ é associado um custo 
+$\arcCost{i}{j}$ e um tempo de viagem $\arcTravelTime{i}{j}$.
 
 Cada veículo $\vehicle \in \vehiclesSet$, sendo $\vehiclesSet$ o conjunto de 
 veículos disponíveis, possui uma capacidade $\vehicleCapacity$ e um tempo 
@@ -95,7 +95,10 @@ máximo total de rota $\vehicleMaxRouteTime$.
 Para cada nó $\node{i} \in \nodes$ existe um carregamento $\nodeLoad{i}$ 
 associado e um tempo de serviço $\nodeServiceTime{i}$, não negativo, sendo que 
 $\startNodeServiceTime = \lastNodeServiceTime = 0$, 
-$\originNodeLoad = -\destinationNodeLoad$. 
+$\originNodeLoad = -\destinationNodeLoad$.
+O carregamento, no caso so DARP, representa o número de passageiros relativo ao
+pedido em questão, e recebe valor positivo quando é referente ao embarque de
+passageiros e negativo quando há desembarque.
 
 As janelas de tempo dos pontos de coleta e entrega de cada pedido podem ser
 definidas por $[\earliestTimeWindow_{i},\latestTimeWindow_{i}]$ e são 
@@ -105,7 +108,8 @@ superior para o instante de tempo que o serviço deve começar no nó $\node{i}$
 Define-se também $\timeWindowWidth_{i} = \latestTimeWindow_{i} 
 - \earliestTimeWindow_{i}$ como o tamanho das janelas de tempo 
 de cada um dos nós. Denota-se por $\maxRideTime_\request$ o tempo máximo de 
-viagem de um pedido, limitado pelo valor de tempo que o passageiro considera 
+viagem de um pedido (intervalo máximo de tempo entre a coleta e a entrega de um
+pedido), limitado pelo valor de tempo que o passageiro considera 
 aceitável para o seu trajeto. 
 
 Finalmente, define-se um intervalo de tempo, denominado horizonte de
@@ -442,15 +446,55 @@ O DARP também pode ser formulado através do seguinte programa inteiro misto
   \ \vehicle \in \vehiclesSet.
 \end{equation}
 
-Nesta formulação $B_i^\vehicle$ é o instante em que o veículo $\vehicle$ inicia
-o serviço no nó $i$, 
-$\maxRideTime^\vehicle_i$ é o tempo de viagem do usuário $i$ no veículo 
-$\vehicle$, 
-$\vehicleCapacity_i$ representa a ocupação do veículo $\vehicle$
-e 
-$x_{(i, j)}^{\vehicle}$ é a variável de decisão do problema que recebe valor 
-um quando o arco $(i, j)$ é percorrido pelo veículo $\vehicle$ e zero caso 
-contrário.
+Sendo que:
+\begin{itemize}
+  \item[]{Variáveis:}
+  \begin{itemize}
+    \item[$B_\request^\vehicle$,] é o instante em que o veículo $\vehicle$ 
+      inicia o serviço no nó $i$.
+    \item[$\maxRideTime^\vehicle_i$,] representa o tempo de viagem do usuário 
+      $i$ quando no veículo $\vehicle$.
+    \item[$\vehicleCapacity_i$,] representa a ocupação do veículo $\vehicle$
+      quando no nó $\request$.
+    \item[$x_{(i, j)}^{\vehicle}$,] é a variável de decisão do problema, 
+      recebe valor um quando o arco $(i, j)$ é percorrido pelo veículo 
+      $\vehicle$ e zero caso contrário.
+  \end{itemize}
+  
+\item[]{Conjuntos:}
+  \begin{itemize}
+    \item[$\nodes$,] conjunto de nós (vértices) do grafo direcionado completo
+      $\graph(\nodes, \arcs)$ que define o problema.
+    \item[$\pickupNodes$,] conjunto de nós de coleta.
+    \item[$\deliveryNodes$,] conjunto de nós de entrega.
+    \item[$\requests$,] conjunto de pedidos, cada qual relacionado a um nó de
+      coleta e um de entrega.
+    \item[$\vehiclesSet$,] conjunto de veículos disponíveis para roteamento.
+  \end{itemize}
+
+\item[]{Parâmetros:}
+  \begin{itemize}
+    \item[$\arcCost{i}{j}^{\vehicle}$,] custo de transporte do veículo
+      $\vehicle$ ao passar pelo arco $\arc{i}{j}$.
+    \item[$\nodeServiceTime{i}$,] tempo de serviço (embarque ou desembarque) no
+      nó $\node{i} \in \pickupNodes \cup \deliveryNodes$.
+    \item[$\arcTravelTime{i}{j}$,] tempo de viagem de transpor o arco
+      $\arc{i}{j}$.
+    \item[$\nodeLoad{i}$,] carregamento do nó $\node{i} \in \pickupNodes \cup 
+      \deliveryNodes$. 
+      Valor é positivo se $\node{i} \in \pickupNodes$ e negativo se
+      $\node{i} \in \pickupNodes$.
+      Além disso, $\nodeLoad{i} = -\nodeLoad{\numberOfRequests + i}$.
+    \item[$\vehicleCapacity$,] capacidade do veículo $\vehicle \in 
+      \vehiclesSet$.
+    \item[$\earliestTimeWindow_i$,] limite inferior da janela de tempo do nó
+      $\node{i} \in \pickupNodes \cup \deliveryNodes$.
+    \item[$\latestTimeWindow_i$,] limite superior da janela de tempo do nó
+      $\node{i} \in \pickupNodes \cup \deliveryNodes$.
+    \item[$\maxRideTime_i$,] tempo de viagem máxima aceito pelo usuário do
+      pedido $\request$.
+  \end{itemize}
+\end{itemize}
 
 Segundo \textcite{cordeau_branch-and-cut_2006}
 a função objetivo (\ref{eq:darp_objective})  minimiza o custo total de 
@@ -783,3 +827,12 @@ Figura~\ref{fig:ddarp_example_instance_solutions}:
   \label{fig:ddarp_example_instance_solutions}
 \end{figure}
 
+Entretanto, deve-se notar que na Figura~\ref{fig:ddarp_example_instance} o
+instante de chegada do pedido um acontece depois do instante de chegado do
+pedido dois, portanto, no instante $\arrivalTime_2$ o sistema está apenas 
+ciente desse pedido.
+Dessa forma, se o algoritmo de roteamento optar por iniciar a coleta do pedido
+dois mais rápido possível, as soluções (a), (c) e (e) representadas na
+Figura~\ref{fig:ddarp_example_instance_solutions} não serão mais possíveis,
+podendo assim impactar na performance do algoritmo quando comparado com o ótimo
+global do problema.
