@@ -214,7 +214,7 @@ section=TITLE, % Título de seções em caixa alta
 % \addtoincludeonly{chapters/chapter_4}
 % \addtoincludeonly{chapters/conclusion}
 
-% \addtoincludeonly{aftertext/anexo_a}
+\addtoincludeonly{aftertext/anexo_li_2003_PDPTW_instances}
 % \addtoincludeonly{aftertext/anexo_b}
 % \addtoincludeonly{aftertext/apendice_a}
 
@@ -324,17 +324,16 @@ section=TITLE, % Título de seções em caixa alta
 %        \include{aftertext/apendice_a}
 %    \end{apendicesenv}
 
-%    % Inicia os anexos
-%    \begin{anexosenv}
-%        % Imprime uma página indicando o início dos anexos
-%        \ifforcedinclude\else\partanexos\fi
-%        \setlength\beforechapskip{50pt}
-%        \setlength\midchapskip{20pt}
-%        \setlength\afterchapskip{20pt}
-%
-%        \include{aftertext/anexo_a}
-%        \include{aftertext/anexo_b}
-%    \end{anexosenv}
+    % Inicia os anexos
+    \begin{anexosenv}
+        % Imprime uma página indicando o início dos anexos
+        \ifforcedinclude\else\partanexos\fi
+        \setlength\beforechapskip{50pt}
+        \setlength\midchapskip{20pt}
+        \setlength\afterchapskip{20pt}
+
+        \include{aftertext/anexo_li_2003_PDPTW_instances}
+    \end{anexosenv}
 
     % INDICE REMISSIVO
     \ifforcedinclude\else
