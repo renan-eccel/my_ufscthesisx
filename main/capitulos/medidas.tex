@@ -151,7 +151,7 @@ Com isso, o grau efetivo de dinamismo, quando contabilizado o tempo de reação,
 % TODO tentar alinhar os sinais de igualdade das duas equações a seguir
 %
 \begin{equation}
-  \eDegreeOfDynamismTW := 
+  \eDegreeOfDynamismTW = 
   \frac{1}{\numberOfRequests}
   \sum_{\request \in \requests}
   {
@@ -164,7 +164,7 @@ Com isso, o grau efetivo de dinamismo, quando contabilizado o tempo de reação,
 \end{equation}
 
 \begin{equation}
-  \eDegreeOfDynamismTW := 
+  \eDegreeOfDynamismTW = 
   \frac{1}{\numberOfRequests}
   \sum_{\request \in \requests}
   {
@@ -196,8 +196,9 @@ Similarmente, \citeonline{kilby_dynamic_1998} fazem a observação de que a
 frequência dos pedidos influencia a quantidade de vezes que o algoritmo
 precisa ser executado.
 Eles destacam que instâncias em que os pedidos estão agrupados em
-pequenos intervalos de tempo geram menos necessidade de reoptimização do que
-casos onde os pedidos estão separados um dos outros de maneira uniforme.
+pequenos intervalos de tempo geram menos necessidade de mais rodadas de
+otimização do que casos onde os pedidos estão separados um dos outros de 
+maneira uniforme.
 
 No final do seu artigo, \citeonline{larsen_classification_2007} recomendam
 para futuras pesquisas a extensão do grau de dinamismo para que ele também 

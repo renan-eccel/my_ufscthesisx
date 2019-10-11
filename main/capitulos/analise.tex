@@ -114,7 +114,7 @@ distribuição dos instantes de chegada seja diferente entre instâncias
 \cite{van_lon_measures_2016}.
 
 Entretanto, no Capítulo~\ref{ch:instancias}, percebe-se que grande parte dos 
-conjuntos de \textit{benchmark} apresentados um único método de 
+conjuntos de \textit{benchmark} apresentados possuem um único método de 
 dinamização, não possibilitando a diversificação do tamanho dos intervalos de 
 tempo entre instâncias.
 A única exceção é o método de \citeonline{pankratz_benchmark_2009} que varia o 
@@ -194,16 +194,18 @@ ser também observados na Figura~\ref{fig:hist_arrival_time}.
 \end{figure}
 
 A Tabela~\ref{tab:correlation_real_pltw_norm_h_and_arrival_time_norm_h} 
-apresenta, os valores das correlações entre os instantes de chegada dos 
-pedidos e os limites inferiores das janelas de tempo de coleta dos pedidos.
-Percebe-se uma correlação alta para as instâncias de 
+apresenta, os valores dos coeficientes de correlação de Pearson entre os 
+instantes de chegada dos pedidos e os limites inferiores das janelas de tempo 
+de coleta dos pedidos.
+Percebe-se uma correlação alta (maior que 0{,}75) para as instâncias de 
 \citeonline{berbeglia_hybrid_tabu_2012}, 
 \citeonline{mitrovic-minic_waiting_2004}, 
-\citeonline{pankratz_dynamic_2005} e 
-\citeonline{pureza_laporte_waiting_2008}.
-Já os conjuntos propostos por \citeonline{fabri_dynamic_2006}  e 
-\citeonline{gendreau_neighborhood_2006} possuem uma correlação baixa entre estes 
-dois parâmetros, que pode ser explicada pelo uso de variáveis aleatórias de 
+\citeonline{pankratz_dynamic_2005}, 
+\citeonline{pureza_laporte_waiting_2008} e
+\citeonline{fabri_dynamic_2006}.
+Já o conjunto proposto por \citeonline{gendreau_neighborhood_2006} 
+possuem uma correlação média (menor que 0{,}75) entre estes dois parâmetros, 
+que pode ser explicada pelo uso de variáveis aleatórias de 
 distribuição uniforme no processo de dinamização ou criação das instâncias.
 
 
@@ -237,7 +239,8 @@ de tempo de coleta.
 As Figuras~\ref{fig:scatterplot_pickup_lower_tw_x_arrival_time}~e
 \ref{fig:scatterplot_pickup_upper_tw_x_arrival_time} apresentam, 
 de forma visual, as correlações entre os instantes de chegada dos 
-pedidos e os limites das janelas de tempo de coleta dos pedidos.
+pedidos e os limites inferiores e superiores das janelas de tempo de coleta 
+dos pedidos.
 Percebe-se uma correlação alta para as instâncias de 
 \citeonline{berbeglia_hybrid_tabu_2012}, 
 \citeonline{mitrovic-minic_double-horizon_2004}, 
@@ -283,8 +286,8 @@ distribuição uniforme no processo de dinamização das instâncias.
 
 A análise dos valores dos instantes de chegada de cada conjunto mostra que 
 nos conjuntos propostos por \citeonline{berbeglia_hybrid_tabu_2012,
-fabri_dynamic_2006, pureza_laporte_waiting_2008} uma grande quantidade 
-de pedidos chegam no instante zero e, por definição, 
+fabri_dynamic_2006, pureza_laporte_waiting_2008} uma proporção considerável 
+de pedidos (mais que 10\%) chega no instante zero e, por definição, 
 são considerados pedidos estáticos.
 A Tabela~\ref{tab:percentage_arrival_time_equal_0} mostra a porcentagem de 
 pedidos com instante de chegada igual a zero para cada um dos conjuntos de
