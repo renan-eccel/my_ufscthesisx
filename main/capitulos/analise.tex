@@ -82,7 +82,7 @@ com esses valores de dinamismo prejudica a análise de cenários realísticos.
     \centering
     \makebox[\textwidth]
     {\includegraphics[width=\textwidth]
-    {fig/analyses/scatterplot_dynamism_x_urgency_mean_norm_max_planing_horizon.png}}
+    {fig/analyses/scatterplot_dynamism_x_urgency_mean_norm_max_planing_horizon.eps}}
     \caption{Gráfico de dispersão da urgência média e do dinamismo de cada 
     conjunto de \textit{benchmark}}
     \label{fig:scatterplot_instance_planing_horizon}
@@ -93,7 +93,7 @@ com esses valores de dinamismo prejudica a análise de cenários realísticos.
     \centering
     \makebox[\textwidth]
     {\includegraphics[width=\textwidth]
-    {fig/analyses/boxplot_dynamism_by_benchmark_planing_horizon.png}}
+    {fig/analyses/boxplot_dynamism_by_benchmark_planing_horizon.eps}}
     \caption{Diagrama de caixa dos valores de dinamismo por \textit{benchmark}}
     \label{fig:dynamism_boxplot_planing_horizon}
 \end{figure}
@@ -148,23 +148,21 @@ do horizonte de planejamento.
 Já os limites superiores possuem uma distribuição menos aglutinada, 
 porém apresentando ainda pontos de concentração.
 
-% TODO mudar imagem para .eps
 \begin{figure}[h]
     \centering
     \makebox[\textwidth]
     {\includegraphics[width=\textwidth]
-    {fig/analyses/hist_real_pltw_norm_h_by_benchmark_planing_horizon.png}}
+    {fig/analyses/hist_real_pltw_norm_h_by_benchmark_planing_horizon.eps}}
     \caption{Histograma dos limites inferiores das janelas de tempo 
              de coleta por conjunto de \textit{benchmark}}
     \label{fig:hist_pickup_lower_tw}
 \end{figure}
 
-% TODO mudar imagem para .eps
 \begin{figure}[h]
     \centering
     \makebox[\textwidth]
     {\includegraphics[width=\textwidth]
-    {fig/analyses/hist_putw_norm_h_by_benchmark_planing_horizon.png}}
+    {fig/analyses/hist_putw_norm_h_by_benchmark_planing_horizon.eps}}
     \caption{Histograma dos limites superiores das janelas de tempo de 
              coleta por conjunto de \textit{benchmark}}
     \label{fig:hist_pickup_upper_tw}
@@ -187,7 +185,7 @@ ser também observados na Figura~\ref{fig:hist_arrival_time}.
     \centering
     \makebox[\textwidth]
     {\includegraphics[width=\textwidth]
-    {fig/analyses/hist_arrival_time_norm_h_by_benchmark_planing_horizon.png}}
+    {fig/analyses/hist_arrival_time_norm_h_by_benchmark_planing_horizon.eps}}
     \caption{Histograma dos instantes de chegada para cada conjunto 
              de \textit{benchmark}}
     \label{fig:hist_arrival_time}
@@ -253,31 +251,47 @@ distribuição uniforme no processo de dinamização das instâncias.
 
 % TODO Rodrigo: Explicar melhor a última frase do parágrafo anterior
 
-% TODO mudar imagem para .eps
 \begin{figure}[h]
     \centering
     \makebox[\textwidth]
     {\includegraphics[width=\textwidth]
-    {fig/analyses/facetgrid_scatterplot_real_pltw_norm_h_x_arrival_time_norm_h_planing_horizon.png}}
+    {fig/analyses/facetgrid_scatterplot_real_pltw_norm_h_x_arrival_time_norm_h_planing_horizon.eps}}
     \caption{Gráfico de dispersão entre o limite inferior da janela de tempo
              de coleta e o instante de chegada do pedido para cada conjunto 
              de \textit{benchmark}}
     \label{fig:scatterplot_pickup_lower_tw_x_arrival_time}
 \end{figure}
 
-% TODO mudar imagem para .eps
 \begin{figure}[h]
     \centering
     \makebox[\textwidth]
     {\includegraphics[width=\textwidth]
-    {fig/analyses/facetgrid_scatterplot_putw_norm_h_x_arrival_time_norm_h_planing_horizon.png}}
+    {fig/analyses/facetgrid_scatterplot_putw_norm_h_x_arrival_time_norm_h_planing_horizon.eps}}
     \caption{Gráfico de dispersão entre o limite superior da janela de tempo 
              de coleta e o instante de chegada do pedido para cada conjunto 
              de \textit{benchmark}}
     \label{fig:scatterplot_pickup_upper_tw_x_arrival_time}
 \end{figure}
 
-
+Nas Figuras~\ref{fig:scatterplot_pickup_lower_tw_x_arrival_time} 
+e \ref{fig:scatterplot_pickup_upper_tw_x_arrival_time} a coloração dos
+pontos varia de acordo com o valor da urgência deles.
+Pode-se perceber que na 
+Figura~\ref{fig:scatterplot_pickup_upper_tw_x_arrival_time} 
+pontos mais afastados do centro tem uma coloração mais
+escura, menos urgente, que pontos próximos ao centro.
+Essa é uma característica espera, tendo em vista que a urgência é dada pelo
+cálculo da diferença entre o limite superior da janela de tempo de coleta e do
+instante de chegada do pedido.
+Já a Figura~\ref{fig:scatterplot_pickup_lower_tw_x_arrival_time} não obedece a
+mesma regra.
+O comportamento similar entre alguns dos gráficos apresentados nestas figuras
+se deve ao fato da janela de tempo de coleta ser criada através de um método
+não diversificado, gerando limites superiores e inferiores igualmente
+espaçados.
+Esta característica das janelas de tempo levam os conjuntos de instâncias a não
+possuírem uma variação entre o tamanho das janelas de tempo, o que pode
+enviesar os experimentos feitos nessas instâncias.
 
 
 
