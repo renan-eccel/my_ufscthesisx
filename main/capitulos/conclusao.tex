@@ -8,11 +8,17 @@ distribuição temporal dos instantes de chegadas dos pedidos usando, para isso,
 as medidas de dinamismo e urgência propostas por 
 \citeonline{van_lon_measures_2016}.
 
-Através dessa análise, observou-se que os conjuntos possuem pouca 
-variabilidade em relação aos valores de dinamismo e urgência, principalmente 
-devido ao baixo número de instâncias, ao uso de métodos de dinamização simples 
-e devido ao uso de instâncias estáticas com janelas de tempo de coleta
-acumuladas no início do horizonte de planejamento.
+Através dessa análise, observou-se que os conjuntos possuem uma distribuição 
+acumulada em intervalos de valores de dinamismo e urgência, principalmente 
+devido ao baixo número de instâncias, ao uso de métodos de dinamização simples,
+devido ao uso de instâncias estáticas com janelas de tempo de coleta
+acumuladas no início do horizonte de planejamento e da correlação entre os
+limites inferiores das janelas de tempo de coleta e os instantes de chegada dos
+pedidos.  
+
+Portanto, as instâncias de \textit{benchmark} apresentadas neste documento
+devem ser usadas com cautela em experimentos, tendo em vista que 
+essas características podem enviesar a comparação de dois algoritmos distintos.
 
 Espera-se que este trabalho sirva como base referencial dos conjuntos de 
 \textit{benchmark} disponíveis assim como algumas de suas características
