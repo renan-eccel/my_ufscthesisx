@@ -73,6 +73,9 @@ section=TITLE, % Título de seções em caixa alta
 % Load the symbols defined in symbols.sty 
 \usepackage{symbols} 
 
+% Load the pdfx package to create a PDF/A file
+% \usepackage[a-1b]{pdfx} 
+
 % Load extra commands for tables, lists, summaries, etc.
 \input{setup/utilities.tex}
 
@@ -239,17 +242,42 @@ section=TITLE, % Título de seções em caixa alta
     }
 \else
     \hypersetup
-    {
-        pdfauthor={Autores},
-        pdfsubject={Resumo da tese},
+   {
+        pdfauthor={Renan Artur Lopes Eccel},
+        pdfsubject={
+        O problema de coleta e entrega com janelas de tempo (PDPTW -Pickup and
+        Delivery Problem with Time Windows e o problema
+        dial-a-ride (DARP - Dial-A-Ride Problem) dinâmicos 
+        não possuem instâncias de benchmark que sejam 
+        amplamente usadas, o que dificulta a comparação de diferentes 
+        algoritmos de solução.
+        Por esse motivo, este trabalho tem como propósito analisar os conjuntos
+        de instâncias de problemas PDPTW e DARP dinâmicos atualmente 
+        disponíveis para uso, assim como os métodos usados para gerá-las.
+        Como base para análise serão usadas duas medidas, grau de dinamismo e 
+        urgência, que caracterizam a distribuição dos pedidos dinâmicos das 
+        instâncias.
+        Isto é feito com a finalidade de auxiliar a escolha de conjuntos de 
+        instâncias de interesse para teste de novos algoritmos, ou, caso 
+        necessário, a escolha de um método para geração de novas instâncias. 
+        Os resultados de análise mostram que, em sua maioria, os conjuntos 
+        estudados apresentam baixa variabilidade em suas medidas de dinamismo 
+        e urgência.
+        Isso acontece principalmente por causa do método utilizado para geração
+        das instâncias.},
         pdfcreator={LaTeX com abnTeX2 para UFSC},
-        pdfkeywords={abnt}{latex}{UFSC}{abntex2}{tese},
+        pdfkeywords={Roteamento, }
+                    {Dinâmico, }
+                    {Instâncias, }
+                    {Benchmark, }
+                    {Tese},
     }
 \fi
 
 \begin{document}
 
-    % FIXME: Comment this after finishing the thesis, so you can start fixing the \flushbottom vs \raggedbottom
+% FIXME: Comment this after finishing the thesis, so you can start fixing the 
+% \flushbottom vs \raggedbottom
     % https://tex.stackexchange.com/questions/65355/flushbottom-vs-raggedbottom
     \raggedbottom
 
